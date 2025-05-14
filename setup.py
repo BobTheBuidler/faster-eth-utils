@@ -14,6 +14,7 @@ else:
             "eth_utils/conversions.py",
             "eth_utils/currency.py",
             "eth_utils/debug.py",
+            "eth_utils/encoding.py",
             "eth_utils/exceptions.py",
             "eth_utils/hexadecimal.py",
             "eth_utils/humanize.py",
