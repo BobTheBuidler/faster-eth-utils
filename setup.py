@@ -12,9 +12,11 @@ else:
         [
             "eth_utils/abi.py",
             "eth_utils/address.py",
+            "eth_utils/applicators.py",
             "eth_utils/conversions.py",
             "eth_utils/currency.py",
             "eth_utils/debug.py",
+            "eth_utils/decorators.py",
             "eth_utils/encoding.py",
             "eth_utils/exceptions.py",
             "eth_utils/hexadecimal.py",
