@@ -24,6 +24,7 @@ else:
             "--pretty",
             "--install-types",
         ],
+    )
 
 MYPY_REQUIREMENT = "mypy==1.10.0"
 
