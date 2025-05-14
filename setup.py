@@ -19,7 +19,7 @@ else:
             "eth_utils/hexadecimal.py",
             "eth_utils/humanize.py",
             "eth_utils/module_loading.py",
-            "eth_utils/network.py",
+            # "eth_utils/network.py", compiled module has no __file__
             "eth_utils/types.py",
             "eth_utils/units.py",
             "--pretty",
