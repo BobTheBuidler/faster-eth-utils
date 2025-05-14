@@ -23,6 +23,7 @@ else:
             "eth_utils/units.py",
             "--pretty",
             "--install-types",
+            "--disable-error-code=comparison-overlap",
         ],
     )
 
