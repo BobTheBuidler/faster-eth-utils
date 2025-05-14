@@ -12,7 +12,7 @@ else:
         [
             #"eth_utils/abi.py",
             "eth_utils/address.py",
-            #"eth_utils/applicators.py",
+            "eth_utils/applicators.py",
             "eth_utils/conversions.py",
             "eth_utils/currency.py",
             "eth_utils/debug.py",
