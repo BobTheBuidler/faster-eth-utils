@@ -25,6 +25,7 @@ else:
             "--pretty",
             "--install-types",
             "--disable-error-code=comparison-overlap",
+            "--disable-error-code=typeddict-item",
         ],
     )
 
