@@ -10,7 +10,7 @@ except ImportError:
 else:
     ext_modules = mypycify(
         [
-            #"eth_utils/abi.py",
+            "eth_utils/abi.py",
             "eth_utils/address.py",
             #"eth_utils/applicators.py",
             "eth_utils/conversions.py",
