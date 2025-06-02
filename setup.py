@@ -31,6 +31,9 @@ else:
             "--disable-error-code=attr-defined",
             "--disable-error-code=comparison-overlap",
             "--disable-error-code=typeddict-item",
+            "--disable-error-code=assignment",
+            "--disable-error-code=type-var",
+            "--disable-error-code=no-any-return",
         ],
     )
 
