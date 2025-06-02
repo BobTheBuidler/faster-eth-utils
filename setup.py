@@ -34,6 +34,7 @@ else:
             "--disable-error-code=assignment",
             "--disable-error-code=type-var",
             "--disable-error-code=no-any-return",
+            "--disable-error-code=unused-ignore",
         ],
     )
 
