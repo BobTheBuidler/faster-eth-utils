@@ -30,7 +30,7 @@ jobs:
       - name: Run Mypyc (3.12)
         env:
           MYPYC_STRICT_DUNDER_TYPING: 1
-        run: make build
+        run: make compile
 
       - name: Check for changes
         run: |
