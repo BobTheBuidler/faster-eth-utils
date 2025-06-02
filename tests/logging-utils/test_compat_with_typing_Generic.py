@@ -3,7 +3,7 @@ import sys
 
 import pytest
 
-from eth_utils import HasLoggerMeta
+from faster_eth_utils import HasLoggerMeta
 
 
 @pytest.mark.skipif(

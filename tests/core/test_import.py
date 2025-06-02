@@ -1,2 +1,2 @@
 def test_import():
-    import eth_utils  # noqa: F401
+    import faster_eth_utils  # noqa: F401

@@ -1,13 +1,13 @@
 import pytest
 
-from eth_utils.abi import (
+from faster_eth_utils.abi import (
     _abi_to_signature,
     event_abi_to_log_topic,
     event_signature_to_log_topic,
     function_abi_to_4byte_selector,
     function_signature_to_4byte_selector,
 )
-from eth_utils.hexadecimal import encode_hex
+from faster_eth_utils.hexadecimal import encode_hex
 
 FN_ABI_A = {"name": "tokenLaunched", "type": "function", "inputs": []}
 FN_ABI_B = {"name": "CEILING", "type": "function", "inputs": []}

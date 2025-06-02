@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 import pytest
 
-from eth_utils.currency import MAX_WEI, MIN_WEI, from_wei, to_wei, units
+from faster_eth_utils.currency import MAX_WEI, MIN_WEI, from_wei, to_wei, units
 
 
 @given(

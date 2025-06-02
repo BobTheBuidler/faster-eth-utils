@@ -1,6 +1,6 @@
 import pytest
 
-from eth_utils import humanize_hash
+from faster_eth_utils import humanize_hash
 
 
 @pytest.mark.parametrize("hash32,expected", ((bytes(range(32)), "0001..1e1f"),))

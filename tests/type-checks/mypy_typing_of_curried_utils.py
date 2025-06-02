@@ -1,6 +1,6 @@
 from typing import List
 
-from eth_utils.curried import (  # noqa: F401
+from faster_eth_utils.curried import (  # noqa: F401
     ExtendedDebugLogger,
     HasExtendedDebugLogger,
     HasExtendedDebugLoggerMeta,

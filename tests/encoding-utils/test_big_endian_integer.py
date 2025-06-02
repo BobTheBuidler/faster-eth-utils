@@ -2,7 +2,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 import pytest
 
-from eth_utils.encoding import big_endian_to_int, int_to_big_endian
+from faster_eth_utils.encoding import big_endian_to_int, int_to_big_endian
 
 
 @pytest.mark.parametrize(
