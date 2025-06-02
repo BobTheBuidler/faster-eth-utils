@@ -6,7 +6,7 @@ import warnings
 
 from eth_typing import ChainId
 
-from eth_utils import ValidationError
+from faster_eth_utils import ValidationError
 
 
 @dataclass

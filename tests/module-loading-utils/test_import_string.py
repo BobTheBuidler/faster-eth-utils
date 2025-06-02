@@ -1,5 +1,5 @@
-from eth_utils.decorators import combomethod
-from eth_utils.module_loading import import_string
+from faster_eth_utils.decorators import combomethod
+from faster_eth_utils.module_loading import import_string
 
 
 def test_import_string():

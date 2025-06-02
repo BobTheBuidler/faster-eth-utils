@@ -3,7 +3,7 @@ from urllib import parse
 
 from eth_typing import URI, Hash32
 
-from eth_utils.currency import denoms, from_wei
+from faster_eth_utils.currency import denoms, from_wei
 
 from .toolz import sliding_window, take
 

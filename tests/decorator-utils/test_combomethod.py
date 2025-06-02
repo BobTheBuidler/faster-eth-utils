@@ -1,6 +1,6 @@
 import pytest
 
-from eth_utils import combomethod
+from faster_eth_utils import combomethod
 
 
 @pytest.fixture()

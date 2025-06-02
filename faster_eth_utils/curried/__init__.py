@@ -12,7 +12,7 @@ from typing import (
     overload,
 )
 
-from eth_utils import (
+from faster_eth_utils import (
     ExtendedDebugLogger,
     HasExtendedDebugLogger,
     HasExtendedDebugLoggerMeta,
@@ -23,7 +23,7 @@ from eth_utils import (
     add_0x_prefix,
     apply_formatter_at_index,
 )
-from eth_utils import (
+from faster_eth_utils import (
     apply_to_return_value,
     big_endian_to_int,
     clamp,
@@ -41,7 +41,7 @@ from eth_utils import (
     get_extended_debug_logger,
     get_logger,
 )
-from eth_utils import (
+from faster_eth_utils import (
     humanize_bytes,
     humanize_hash,
     humanize_integer_sequence,
@@ -82,7 +82,7 @@ from eth_utils import (
     short_name_from_chain_id,
     sort_return,
 )
-from eth_utils import (
+from faster_eth_utils import (
     to_bytes,
     to_canonical_address,
     to_checksum_address,
@@ -97,14 +97,14 @@ from eth_utils import (
     to_tuple,
     to_wei,
 )
-from eth_utils import apply_formatter_if as non_curried_apply_formatter_if
-from eth_utils import apply_formatter_to_array
-from eth_utils import apply_formatters_to_dict as non_curried_apply_formatters_to_dict
-from eth_utils import apply_formatters_to_sequence, apply_key_map
-from eth_utils import apply_one_of_formatters as non_curried_apply_one_of_formatters
-from eth_utils import hexstr_if_str as non_curried_hexstr_if_str
-from eth_utils import text_if_str as non_curried_text_if_str
-from eth_utils.toolz import curry
+from faster_eth_utils import apply_formatter_if as non_curried_apply_formatter_if
+from faster_eth_utils import apply_formatter_to_array
+from faster_eth_utils import apply_formatters_to_dict as non_curried_apply_formatters_to_dict
+from faster_eth_utils import apply_formatters_to_sequence, apply_key_map
+from faster_eth_utils import apply_one_of_formatters as non_curried_apply_one_of_formatters
+from faster_eth_utils import hexstr_if_str as non_curried_hexstr_if_str
+from faster_eth_utils import text_if_str as non_curried_text_if_str
+from faster_eth_utils.toolz import curry
 
 TReturn = TypeVar("TReturn")
 TValue = TypeVar("TValue")
