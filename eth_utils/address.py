@@ -1,5 +1,5 @@
 import re
-from typing import Any, Union, cast
+from typing import Any, Final, Union, cast
 
 from eth_typing import Address, AnyAddress, ChecksumAddress, HexAddress, HexStr
 
@@ -8,7 +8,7 @@ from .crypto import keccak
 from .hexadecimal import add_0x_prefix, decode_hex, encode_hex, remove_0x_prefix
 from .types import is_bytes, is_text
 
-_HEX_ADDRESS_REGEXP = re.compile("(0x)?[0-9a-f]{40}", re.IGNORECASE | re.ASCII)
+_HEX_ADDRESS_REGEXP: Final = re.compile("(0x)?[0-9a-f]{40}", re.IGNORECASE | re.ASCII)
 
 
 def is_hex_address(value: Any) -> bool:

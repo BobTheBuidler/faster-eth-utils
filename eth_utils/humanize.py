@@ -1,4 +1,4 @@
-from typing import Any, Iterable, Iterator, Tuple, Union
+from typing import Any, Final, Iterable, Iterator, Tuple, Union
 from urllib import parse
 
 from eth_typing import URI, Hash32
@@ -19,16 +19,16 @@ def humanize_seconds(seconds: Union[float, int]) -> str:
     )
 
 
-SECOND = 1
-MINUTE = 60
-HOUR = 60 * 60
-DAY = 24 * HOUR
-YEAR = 365 * DAY
-MONTH = YEAR // 12
-WEEK = 7 * DAY
+SECOND: Final = 1
+MINUTE: Final = 60
+HOUR: Final = 60 * 60
+DAY: Final = 24 * HOUR
+YEAR: Final = 365 * DAY
+MONTH: Final = YEAR // 12
+WEEK: Final = 7 * DAY
 
 
-UNITS = (
+UNITS: Final = (
     (YEAR, "y"),
     (MONTH, "m"),
     (WEEK, "w"),
@@ -65,7 +65,7 @@ def _humanize_seconds(seconds: int) -> Iterator[Tuple[int, str]]:
         remainder %= duration
 
 
-DISPLAY_HASH_CHARS = 4
+DISPLAY_HASH_CHARS: Final = 4
 
 
 def humanize_bytes(value: bytes) -> str:
