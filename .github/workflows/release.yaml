@@ -4,6 +4,7 @@ on:
   release:
     branches:
       - master
+      - faster-2.3.1
     types: [published]
 
 jobs:
