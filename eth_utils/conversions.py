@@ -2,7 +2,6 @@ from typing import Callable, TypeVar, Union
 
 from eth_typing import HexStr, Primitives
 
-from .decorators import validate_conversion_arguments
 from .encoding import big_endian_to_int, int_to_big_endian
 from .hexadecimal import (
     add_0x_prefix,
@@ -16,7 +15,6 @@ from .types import is_boolean, is_integer, is_string
 T = TypeVar("T")
 
 
-@validate_conversion_arguments
 def to_hex(
     primitive: Primitives = None, hexstr: HexStr = None, text: str = None
 ) -> HexStr:
@@ -51,7 +49,6 @@ def to_hex(
     )
 
 
-@validate_conversion_arguments
 def to_int(
     primitive: Primitives = None, hexstr: HexStr = None, text: str = None
 ) -> int:
@@ -83,7 +80,6 @@ def to_int(
         )
 
 
-@validate_conversion_arguments
 def to_bytes(
     primitive: Primitives = None, hexstr: HexStr = None, text: str = None
 ) -> bytes:
@@ -109,7 +105,6 @@ def to_bytes(
     )
 
 
-@validate_conversion_arguments
 def to_text(
     primitive: Primitives = None, hexstr: HexStr = None, text: str = None
 ) -> str:
