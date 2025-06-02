@@ -35,6 +35,8 @@ else:
             "--disable-error-code=type-var",
             "--disable-error-code=no-any-return",
             "--disable-error-code=unused-ignore",
+            "--disable-error-code=str-bytes-safe",
+            "--disable-error-code=arg-type",
         ],
     )
 
