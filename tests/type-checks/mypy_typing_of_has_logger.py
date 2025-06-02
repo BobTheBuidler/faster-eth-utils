@@ -1,7 +1,7 @@
 import logging
 from typing import Generic, TypeVar
 
-from eth_utils import (
+from faster_eth_utils import (
     ExtendedDebugLogger,
     HasExtendedDebugLogger,
     HasLogger,

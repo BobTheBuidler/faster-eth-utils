@@ -1,7 +1,7 @@
 import decimal
 from typing import TYPE_CHECKING, Dict, Iterable, List, NoReturn, Set, Tuple
 
-from eth_utils import (
+from faster_eth_utils import (
     clamp,
     denoms,
     replace_exceptions,

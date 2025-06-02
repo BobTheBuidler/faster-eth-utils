@@ -3,7 +3,7 @@ import logging
 
 import pytest
 
-from eth_utils import HasLoggerMeta
+from faster_eth_utils import HasLoggerMeta
 
 
 class HasLoggerCompatWithABC(metaclass=HasLoggerMeta.meta_compat(ABCMeta)):

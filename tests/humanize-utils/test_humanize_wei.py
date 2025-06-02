@@ -1,6 +1,6 @@
 import pytest
 
-from eth_utils import denoms, humanize_wei
+from faster_eth_utils import denoms, humanize_wei
 
 
 @pytest.mark.parametrize(

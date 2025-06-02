@@ -1,6 +1,6 @@
 import pytest
 
-from eth_utils import humanize_bytes
+from faster_eth_utils import humanize_bytes
 
 
 @pytest.mark.parametrize(
