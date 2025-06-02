@@ -4,6 +4,35 @@ from setuptools import (
     setup,
     find_packages,
 )
+try:
+    from mypyc.build import mypycify
+except ImportError:
+    ext_modules = []
+else:
+    ext_modules = mypycify(
+        [
+            "eth_utils/abi.py",
+            "eth_utils/address.py",
+            #"eth_utils/applicators.py",
+            "eth_utils/conversions.py",
+            "eth_utils/currency.py",
+            "eth_utils/debug.py",
+            "eth_utils/decorators.py",
+            "eth_utils/encoding.py",
+            "eth_utils/exceptions.py",
+            "eth_utils/hexadecimal.py",
+            "eth_utils/humanize.py",
+            "eth_utils/module_loading.py",
+            # "eth_utils/network.py", compiled module has no __file__
+            "eth_utils/types.py",
+            "eth_utils/units.py",
+            "--pretty",
+            "--install-types",
+            "--disable-error-code=attr-defined",
+            "--disable-error-code=comparison-overlap",
+            "--disable-error-code=typeddict-item",
+        ],
+    )
 
 extras_require = {
     'test': [
@@ -72,7 +101,8 @@ setup(
     zip_safe=False,
     keywords='ethereum',
     packages=find_packages(exclude=["tests", "tests.*"]),
-    package_data={'eth_utils': ['py.typed']},
+    ext_modules=ext_modules,
+    package_data={"eth_utils": ["py.typed"]},
     classifiers=[
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
