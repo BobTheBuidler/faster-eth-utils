@@ -42,7 +42,7 @@ with open("./README.md") as readme:
 
 
 setup(
-    name="eth-utils",
+    name="faster-eth-utils",
     # *IMPORTANT*: Don't manually change the version here. Use `make bump`, as described in readme
     version="5.3.0",
     description=(
