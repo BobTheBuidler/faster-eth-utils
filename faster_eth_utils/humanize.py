@@ -20,7 +20,7 @@ from faster_eth_utils.currency import (
     from_wei,
 )
 
-import .toolz
+from . import toolz
 
 
 sliding_window: Final = toolz.sliding_window
