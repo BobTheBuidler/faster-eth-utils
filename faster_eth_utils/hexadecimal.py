@@ -13,7 +13,6 @@ from eth_typing import (
 )
 
 from .types import (
-    is_text,
     string_types,
 )
 
@@ -21,7 +20,7 @@ _HEX_REGEXP: Final = re.compile("(0[xX])?[0-9a-fA-F]*")
 
 
 def decode_hex(value: str) -> bytes:
-    if not is_text(value):
+    if not isinstance(value, str):
         raise TypeError("Value must be an instance of str")
     non_prefixed = remove_0x_prefix(HexStr(value))
     # unhexlify will only accept bytes type someday
@@ -42,7 +41,7 @@ def encode_hex(value: AnyStr) -> HexStr:
 
 
 def is_0x_prefixed(value: str) -> bool:
-    if not is_text(value):
+    if not isinstance(value, str):
         raise TypeError(
             f"is_0x_prefixed requires text typed arguments. Got: {repr(value)}"
         )
@@ -62,13 +61,13 @@ def add_0x_prefix(value: HexStr) -> HexStr:
 
 
 def is_hexstr(value: Any) -> bool:
-    if not is_text(value) or not value:
+    if not isinstance(value, str) or not value:
         return False
     return _HEX_REGEXP.fullmatch(value) is not None
 
 
 def is_hex(value: Any) -> bool:
-    if not is_text(value):
+    if not isinstance(value, str):
         raise TypeError(f"is_hex requires text typed arguments. Got: {repr(value)}")
     if not value:
         return False
