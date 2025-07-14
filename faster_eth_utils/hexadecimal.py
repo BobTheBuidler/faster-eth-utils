@@ -12,10 +12,6 @@ from eth_typing import (
     HexStr,
 )
 
-from .types import (
-    string_types,
-)
-
 _HEX_REGEXP: Final = re.compile("(0[xX])?[0-9a-fA-F]*")
 
 
@@ -29,12 +25,12 @@ def decode_hex(value: str) -> bytes:
 
 
 def encode_hex(value: AnyStr) -> HexStr:
-    if not isinstance(value, string_types):
-        raise TypeError("Value must be an instance of str or unicode")
-    elif isinstance(value, (bytes, bytearray)):
+    if isinstance(value, (bytes, bytearray)):
         ascii_bytes = value
-    else:
+    elif isinstance(value, str):
         ascii_bytes = value.encode("ascii")
+    else:
+        raise TypeError("Value must be an instance of str or unicode")
 
     binary_hex = binascii.hexlify(ascii_bytes)
     return add_0x_prefix(HexStr(binary_hex.decode("ascii")))
