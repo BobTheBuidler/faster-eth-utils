@@ -57,7 +57,7 @@ def is_binary_address(value: Any) -> TypeGuard[bytes]:
         return True
 
 
-def is_address(value: Any) -> TypeGuard[AnyAddress]:
+def is_address(value: Any) -> bool:
     """
     Is the given string an address in any of the known formats?
     """
@@ -142,8 +142,7 @@ def to_checksum_address(value: Union[AnyAddress, str, bytes]) -> ChecksumAddress
 def is_checksum_address(value: Any) -> TypeGuard[ChecksumAddress]:
     if not is_hex_address(value):
         return False
-    is_equal = value == to_checksum_address(value)
-    return cast(bool, is_equal)
+    return value == to_checksum_address(value)
 
 
 def _is_checksum_formatted(value: Any) -> bool:
