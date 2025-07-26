@@ -47,7 +47,7 @@ def is_list(obj: Any) -> TypeGuard[List[Any]]:
     return isinstance(obj, list)
 
 
-def is_tuple(obj: Any) -> TypeGuard[Tuple[Any, ...]:
+def is_tuple(obj: Any) -> TypeGuard[Tuple[Any, ...]]:
     return isinstance(obj, tuple)
 
 
