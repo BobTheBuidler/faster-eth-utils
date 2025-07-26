@@ -2,7 +2,9 @@ import collections.abc
 import numbers
 from typing import (
     Any,
+    List,
     Literal,
+    Tuple,
     TypeGuard,
     Union,
 )
@@ -33,19 +35,19 @@ def is_boolean(value: Any) -> TypeGuard[bool]:
     return isinstance(value, bool)
 
 
-def is_dict(obj: Any) -> TypeGuard[collections.abc.Mapping]:
+def is_dict(obj: Any) -> TypeGuard[collections.abc.Mapping[Any, Any]]:
     return isinstance(obj, collections.abc.Mapping)
 
 
-def is_list_like(obj: Any) -> TypeGuard[collections.abc.Sequence]:
+def is_list_like(obj: Any) -> TypeGuard[collections.abc.Sequence[Any]]:
     return not is_string(obj) and isinstance(obj, collections.abc.Sequence)
 
 
-def is_list(obj: Any) -> TypeGuard[list]:
+def is_list(obj: Any) -> TypeGuard[List[Any]]:
     return isinstance(obj, list)
 
 
-def is_tuple(obj: Any) -> TypeGuard[tuple]:
+def is_tuple(obj: Any) -> TypeGuard[Tuple[Any, ...]:
     return isinstance(obj, tuple)
 
 
