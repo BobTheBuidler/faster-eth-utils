@@ -28,7 +28,7 @@ def encode_hex(value: AnyStr) -> HexStr:
     if isinstance(value, (bytes, bytearray)):
         ascii_bytes = value
     elif isinstance(value, str):
-        ascii_bytes = value.encode("ascii")
+        ascii_bytes = value.encode("ascii")  # type: ignore [assignment]
     else:
         raise TypeError("Value must be an instance of str or unicode")
 
