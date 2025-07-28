@@ -42,7 +42,7 @@ def encode_hex(value: AnyStr) -> HexStr:
     elif isinstance(value, (bytes, bytearray)):
         ascii_bytes = value
     else:
-        ascii_bytes = value.encode("ascii")
+        ascii_bytes = value.encode("ascii")  # type: ignore [assignment]
 
     binary_hex = hexlify(ascii_bytes)
     return add_0x_prefix(HexStr(binary_hex.decode("ascii")))
