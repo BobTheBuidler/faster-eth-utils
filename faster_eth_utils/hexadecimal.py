@@ -16,8 +16,7 @@ from typing_extensions import (
 )
 
 from .types import (
-    is_string,
-    is_text,
+    string_types,
 )
 
 _HEX_REGEXP_MATCH: Final = re.compile("(0[xX])?[0-9a-fA-F]*").fullmatch
@@ -37,12 +36,12 @@ def decode_hex(value: str) -> bytes:
 
 
 def encode_hex(value: AnyStr) -> HexStr:
-    if not is_string(value):
+    if not isinstance(value, string_types):
         raise TypeError("Value must be an instance of str or unicode")
     elif isinstance(value, (bytes, bytearray)):
         ascii_bytes = value
     else:
-        ascii_bytes = value.encode("ascii")  # type: ignore [assignment]
+        ascii_bytes = value.encode("ascii")
 
     binary_hex = hexlify(ascii_bytes)
     return add_0x_prefix(HexStr(binary_hex.decode("ascii")))
