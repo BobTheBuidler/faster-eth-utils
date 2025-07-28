@@ -15,10 +15,6 @@ from typing_extensions import (
     TypeGuard,
 )
 
-from .types import (
-    string_types,
-)
-
 _HEX_REGEXP_MATCH: Final = re.compile("(0[xX])?[0-9a-fA-F]*").fullmatch
 
 hexlify: Final = binascii.hexlify
