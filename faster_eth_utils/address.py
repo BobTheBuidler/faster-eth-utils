@@ -144,7 +144,7 @@ def to_checksum_address(value: Union[AnyAddress, str, bytes]) -> ChecksumAddress
 def is_checksum_address(value: Any) -> TypeGuard[ChecksumAddress]:
     if not is_hex_address(value):
         return False
-    return value == to_checksum_address(value)
+    return bool(value == to_checksum_address(value))
 
 
 def _is_checksum_formatted(value: Any) -> bool:
