@@ -6,6 +6,7 @@ from typing import (
     Any,
     AnyStr,
     Final,
+    Union,
 )
 
 from eth_typing import (
@@ -32,6 +33,7 @@ def decode_hex(value: str) -> bytes:
 
 
 def encode_hex(value: AnyStr) -> HexStr:
+    ascii_bytes: Union[bytes, bytearray]
     if isinstance(value, (bytes, bytearray)):
         ascii_bytes = value
     elif isinstance(value, str):
