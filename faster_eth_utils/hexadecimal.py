@@ -36,12 +36,12 @@ def decode_hex(value: str) -> bytes:
 
 
 def encode_hex(value: AnyStr) -> HexStr:
-    if not isinstance(value, string_types):
-        raise TypeError("Value must be an instance of str or unicode")
-    elif isinstance(value, (bytes, bytearray)):
+    if isinstance(value, (bytes, bytearray)):
         ascii_bytes = value
-    else:
+    elif isinstance(value, str):
         ascii_bytes = value.encode("ascii")
+    else:
+        raise TypeError("Value must be an instance of str or unicode")
 
     binary_hex = hexlify(ascii_bytes)
     return add_0x_prefix(HexStr(binary_hex.decode("ascii")))
