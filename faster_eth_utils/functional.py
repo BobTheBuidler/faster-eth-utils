@@ -63,19 +63,19 @@ def to_tuple(fn: Callable[P, Iterable[TVal]]) -> Callable[P, Tuple[TVal, ...]]:
     return to_tuple_wrap
 
 def to_list(fn: Callable[P, Iterable[TVal]]) -> Callable[P, List[TVal]]:
-    def to_list_wrap(*args: P.args, **kwargs: P.kwargs) -> T:
+    def to_list_wrap(*args: P.args, **kwargs: P.kwargs) -> List[TVal]:
         return list(fn(*args, **kwargs))
     return to_list_wrap
 
 def to_set(fn: Callable[P, Iterable[TVal]]) -> Callable[P, Set[TVal]]:
-    def to_set_wrap(*args: P.args, **kwargs: P.kwargs) -> T:
+    def to_set_wrap(*args: P.args, **kwargs: P.kwargs) -> Set[TVal]:
         return set(fn(*args, **kwargs))
     return to_set_wrap
 
 def to_dict(
     fn: Callable[P, Union[Mapping[TKey, TVal], Iterable[Tuple[TKey, TVal]]]]
 ) -> Callable[P, Dict[TKey, TVal]]:
-    def to_dict_wrap(*args: P.args, **kwargs: P.kwargs) -> T:
+    def to_dict_wrap(*args: P.args, **kwargs: P.kwargs) -> Dict[TKey, TVal]:
         return dict(fn(*args, **kwargs))
     return to_dict_wrap
 
