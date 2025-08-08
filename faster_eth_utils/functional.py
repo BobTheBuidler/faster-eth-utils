@@ -79,9 +79,9 @@ def to_dict(
         return dict(fn(*args, **kwargs))
     return to_dict_wrap
 
-to_ordered_dict = apply_to_return_value(
+to_ordered_dict = apply_to_return_value(  # type: ignore [assignment]
     collections.OrderedDict
-)  # type: Callable[[Callable[..., Iterable[Union[Mapping[TKey, TVal], Tuple[TKey, TVal]]]]], Callable[..., collections.OrderedDict[TKey, TVal]]]  # noqa: E501
+)  # type: Callable[[Callable[P, Union[Mapping[TKey, TVal], Iterable[Tuple[TKey, TVal]]]]], Callable[P, collections.OrderedDict[TKey, TVal]]]  # noqa: E501
 sort_return = _compose(to_tuple, apply_to_return_value(sorted))
 flatten_return = _compose(
     to_tuple, apply_to_return_value(itertools.chain.from_iterable)
