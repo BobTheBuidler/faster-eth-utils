@@ -40,18 +40,17 @@ def combine(
     return combined
 
 
+TCb = TypeVar("TCb")
+
+
 def apply_to_return_value(
-    callback: Callable[P, T]
-) -> Callable[[Callable[P, T]], Callable[P, T]]:
-    def outer(fn: Callable[P, T]) -> Callable[P, T]:
-        # We would need to type annotate *args and **kwargs but doing so segfaults
-        # the PyPy builds. We ignore instead.
+    callback: Callable[[T], TCb]
+) -> Callable[[Callable[P, T]], Callable[P, TCb]]:
+    def outer(fn: Callable[P, T]) -> Callable[P, TCb]:
         @functools.wraps(fn)
-        def inner(*args: P.args, **kwargs: P.kwargs) -> T:  # type: ignore
+        def inner(*args: P.args, **kwargs: P.kwargs) -> TCb:
             return callback(fn(*args, **kwargs))
-
         return inner
-
     return outer
 
 
