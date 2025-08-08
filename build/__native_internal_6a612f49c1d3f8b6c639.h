@@ -1,12 +1,12 @@
-#ifndef MYPYC_NATIVE_INTERNAL_bce0bfc64ce5e845ec4a_H
-#define MYPYC_NATIVE_INTERNAL_bce0bfc64ce5e845ec4a_H
+#ifndef MYPYC_NATIVE_INTERNAL_6a612f49c1d3f8b6c639_H
+#define MYPYC_NATIVE_INTERNAL_6a612f49c1d3f8b6c639_H
 #include <Python.h>
 #include <CPy.h>
-#include "__native_bce0bfc64ce5e845ec4a.h"
+#include "__native_6a612f49c1d3f8b6c639.h"
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[336];
+extern PyObject *CPyStatics[365];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -57,13 +57,17 @@ extern PyObject *CPyStatic_encoding___globals;
 extern CPyModule *CPyModule_faster_eth_utils___exceptions_internal;
 extern CPyModule *CPyModule_faster_eth_utils___exceptions;
 extern PyObject *CPyStatic_exceptions___globals;
+extern CPyModule *CPyModule_faster_eth_utils___functional_internal;
+extern CPyModule *CPyModule_faster_eth_utils___functional;
+extern PyObject *CPyStatic_functional___globals;
+extern CPyModule *CPyModule_collections;
+extern CPyModule *CPyModule_faster_eth_utils___toolz;
 extern PyObject *CPyStatic_hexadecimal___globals;
 extern CPyModule *CPyModule_binascii;
 extern CPyModule *CPyModule_faster_eth_utils___humanize_internal;
 extern CPyModule *CPyModule_faster_eth_utils___humanize;
 extern PyObject *CPyStatic_humanize___globals;
 extern CPyModule *CPyModule_urllib;
-extern CPyModule *CPyModule_faster_eth_utils___toolz;
 extern CPyModule *CPyModule_faster_eth_utils___module_loading_internal;
 extern CPyModule *CPyModule_faster_eth_utils___module_loading;
 extern PyObject *CPyStatic_module_loading___globals;
@@ -223,6 +227,77 @@ extern PyObject *CPyPy_encoding___big_endian_to_int(PyObject *self, PyObject *co
 extern char CPyDef_encoding_____top_level__(void);
 extern PyTypeObject *CPyType_exceptions___ValidationError;
 extern char CPyDef_exceptions_____top_level__(void);
+extern PyTypeObject *CPyType_functional___combine_env;
+extern PyObject *CPyDef_functional___combine_env(void);
+extern PyTypeObject *CPyType_functional___combined_combine_obj;
+extern PyObject *CPyDef_functional___combined_combine_obj(void);
+extern PyTypeObject *CPyType_functional___apply_to_return_value_env;
+extern PyObject *CPyDef_functional___apply_to_return_value_env(void);
+extern PyTypeObject *CPyType_functional___outer_apply_to_return_value_env;
+extern PyObject *CPyDef_functional___outer_apply_to_return_value_env(void);
+extern PyTypeObject *CPyType_functional___outer_apply_to_return_value_obj;
+extern PyObject *CPyDef_functional___outer_apply_to_return_value_obj(void);
+extern PyTypeObject *CPyType_functional___inner_apply_to_return_value_outer_obj;
+extern PyObject *CPyDef_functional___inner_apply_to_return_value_outer_obj(void);
+extern PyTypeObject *CPyType_functional___to_tuple_env;
+extern PyObject *CPyDef_functional___to_tuple_env(void);
+extern PyTypeObject *CPyType_functional___to_tuple_wrap_to_tuple_obj;
+extern PyObject *CPyDef_functional___to_tuple_wrap_to_tuple_obj(void);
+extern PyTypeObject *CPyType_functional___to_list_env;
+extern PyObject *CPyDef_functional___to_list_env(void);
+extern PyTypeObject *CPyType_functional___to_list_wrap_to_list_obj;
+extern PyObject *CPyDef_functional___to_list_wrap_to_list_obj(void);
+extern PyTypeObject *CPyType_functional___to_set_env;
+extern PyObject *CPyDef_functional___to_set_env(void);
+extern PyTypeObject *CPyType_functional___to_set_wrap_to_set_obj;
+extern PyObject *CPyDef_functional___to_set_wrap_to_set_obj(void);
+extern PyTypeObject *CPyType_functional___to_dict_env;
+extern PyObject *CPyDef_functional___to_dict_env(void);
+extern PyTypeObject *CPyType_functional___to_dict_wrap_to_dict_obj;
+extern PyObject *CPyDef_functional___to_dict_wrap_to_dict_obj(void);
+extern PyObject *CPyDef_functional___identity(PyObject *cpy_r_value);
+extern PyObject *CPyPy_functional___identity(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___combined_combine_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+extern PyObject *CPyPy_functional___combined_combine_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___combined_combine_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_x);
+extern PyObject *CPyPy_functional___combined_combine_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___combine(PyObject *cpy_r_f, PyObject *cpy_r_g);
+extern PyObject *CPyPy_functional___combine(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___inner_apply_to_return_value_outer_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+extern PyObject *CPyPy_functional___inner_apply_to_return_value_outer_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___inner_apply_to_return_value_outer_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+extern PyObject *CPyPy_functional___inner_apply_to_return_value_outer_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___outer_apply_to_return_value_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+extern PyObject *CPyPy_functional___outer_apply_to_return_value_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___outer_apply_to_return_value_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_fn);
+extern PyObject *CPyPy_functional___outer_apply_to_return_value_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___apply_to_return_value(PyObject *cpy_r_callback);
+extern PyObject *CPyPy_functional___apply_to_return_value(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___to_tuple_wrap_to_tuple_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+extern PyObject *CPyPy_functional___to_tuple_wrap_to_tuple_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___to_tuple_wrap_to_tuple_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+extern PyObject *CPyPy_functional___to_tuple_wrap_to_tuple_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___to_tuple(PyObject *cpy_r_fn);
+extern PyObject *CPyPy_functional___to_tuple(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___to_list_wrap_to_list_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+extern PyObject *CPyPy_functional___to_list_wrap_to_list_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___to_list_wrap_to_list_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+extern PyObject *CPyPy_functional___to_list_wrap_to_list_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___to_list(PyObject *cpy_r_fn);
+extern PyObject *CPyPy_functional___to_list(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___to_set_wrap_to_set_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+extern PyObject *CPyPy_functional___to_set_wrap_to_set_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___to_set_wrap_to_set_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+extern PyObject *CPyPy_functional___to_set_wrap_to_set_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___to_set(PyObject *cpy_r_fn);
+extern PyObject *CPyPy_functional___to_set(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___to_dict_wrap_to_dict_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+extern PyObject *CPyPy_functional___to_dict_wrap_to_dict_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___to_dict_wrap_to_dict_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+extern PyObject *CPyPy_functional___to_dict_wrap_to_dict_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_functional___to_dict(PyObject *cpy_r_fn);
+extern PyObject *CPyPy_functional___to_dict(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef_functional_____top_level__(void);
 extern PyObject *CPyStatic_hexadecimal____HEX_REGEXP;
 extern PyObject *CPyDef_hexadecimal___decode_hex(PyObject *cpy_r_value);
 extern PyObject *CPyPy_hexadecimal___decode_hex(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
