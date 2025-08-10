@@ -119,38 +119,38 @@ jobs:
   docs:
     <<: *docs
     docker:
-      - image: cimg/python:3.10
+      - image: cimg/python:3.13
         environment:
           TOXENV: docs
 
   py38-core:
     <<: *common
     docker:
-      - image: cimg/python:3.8
+      - image: cimg/python:3.13
         environment:
           TOXENV: py38-core
   py39-core:
     <<: *common
     docker:
-      - image: cimg/python:3.9
+      - image: cimg/python:3.13
         environment:
           TOXENV: py39-core
   py310-core:
     <<: *common
     docker:
-      - image: cimg/python:3.10
+      - image: cimg/python:3.13
         environment:
           TOXENV: py310-core
   py311-core:
     <<: *common
     docker:
-      - image: cimg/python:3.11
+      - image: cimg/python:3.13
         environment:
           TOXENV: py311-core
   py312-core:
     <<: *common
     docker:
-      - image: cimg/python:3.12
+      - image: cimg/python:3.13
         environment:
           TOXENV: py312-core
   py313-core:
@@ -163,31 +163,31 @@ jobs:
   py38-lint:
     <<: *common
     docker:
-      - image: cimg/python:3.8
+      - image: cimg/python:3.13
         environment:
           TOXENV: py38-lint
   py39-lint:
     <<: *common
     docker:
-      - image: cimg/python:3.9
+      - image: cimg/python:3.13
         environment:
           TOXENV: py39-lint
   py310-lint:
     <<: *common
     docker:
-      - image: cimg/python:3.10
+      - image: cimg/python:3.13
         environment:
           TOXENV: py310-lint
   py311-lint:
     <<: *common
     docker:
-      - image: cimg/python:3.11
+      - image: cimg/python:3.13
         environment:
           TOXENV: py311-lint
   py312-lint:
     <<: *common
     docker:
-      - image: cimg/python:3.12
+      - image: cimg/python:3.13
         environment:
           TOXENV: py312-lint
   py313-lint:
@@ -200,31 +200,31 @@ jobs:
   py38-wheel:
     <<: *common
     docker:
-      - image: cimg/python:3.8
+      - image: cimg/python:3.13
         environment:
           TOXENV: py38-wheel
   py39-wheel:
     <<: *common
     docker:
-      - image: cimg/python:3.9
+      - image: cimg/python:3.13
         environment:
           TOXENV: py39-wheel
   py310-wheel:
     <<: *common
     docker:
-      - image: cimg/python:3.10
+      - image: cimg/python:3.13
         environment:
           TOXENV: py310-wheel
   py311-wheel:
     <<: *common
     docker:
-      - image: cimg/python:3.11
+      - image: cimg/python:3.13
         environment:
           TOXENV: py311-wheel
   py312-wheel:
     <<: *common
     docker:
-      - image: cimg/python:3.12
+      - image: cimg/python:3.13
         environment:
           TOXENV: py312-wheel
   py313-wheel:
