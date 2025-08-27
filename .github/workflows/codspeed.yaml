@@ -9,7 +9,7 @@ on:
 jobs:
   benchmark:
     name: Run CodSpeed Benchmarks
-    runs-on: ubuntu-22.04
+    runs-on: codspeed-macro
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
@@ -22,6 +22,6 @@ jobs:
           pip install .[dev]
           pip install pytest-codspeed eth-utils "eth-hash[pycryptodome]"
       - name: Run CodSpeed
-        uses: CodSpeedHQ/action@v2
+        uses: CodSpeedHQ/action@v3
         with:
           run: pytest --codspeed benchmarks/
