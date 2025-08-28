@@ -77,19 +77,21 @@ def test_faster_get_all_event_abis(benchmark: BenchmarkFixture) -> None:
 
 @pytest.mark.benchmark(group="get_normalized_abi_inputs")
 def test_get_normalized_abi_inputs(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 100, e_abi.get_normalized_abi_inputs, abi_element)
+    benchmark(_batch, 100, e_abi.get_normalized_abi_inputs, abi_element, 10, 10)
 
 @pytest.mark.benchmark(group="get_normalized_abi_inputs")
 def test_faster_get_normalized_abi_inputs(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 100, fe_abi.get_normalized_abi_inputs, abi_element)
+    benchmark(_batch, 100, fe_abi.get_normalized_abi_inputs, abi_element, 10, 10)
 
 @pytest.mark.benchmark(group="get_aligned_abi_inputs")
 def test_get_aligned_abi_inputs(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 100, e_abi.get_aligned_abi_inputs, abi_element)
+    normalized_inputs = fe_abi.get_normalized_abi_inputs(abi_element, 10, 10)
+    benchmark(_batch, 100, e_abi.get_aligned_abi_inputs, abi_element, normalized_inputs)
 
 @pytest.mark.benchmark(group="get_aligned_abi_inputs")
 def test_faster_get_aligned_abi_inputs(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 100, fe_abi.get_aligned_abi_inputs, abi_element)
+    normalized_inputs = fe_abi.get_normalized_abi_inputs(abi_element, 10, 10)
+    benchmark(_batch, 100, fe_abi.get_aligned_abi_inputs, abi_element, normalized_inputs)
 
 @pytest.mark.benchmark(group="get_abi_input_names")
 def test_get_abi_input_names(benchmark: BenchmarkFixture) -> None:

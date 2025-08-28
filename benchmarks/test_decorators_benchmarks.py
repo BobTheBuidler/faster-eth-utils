@@ -26,7 +26,7 @@ def test_faster_return_arg_type(benchmark: BenchmarkFixture) -> None:
 def test_replace_exceptions(benchmark: BenchmarkFixture) -> None:
     def raise_fn():
         raise ValueError("fail")
-    decorated = e_deco.replace_exceptions(ValueError, RuntimeError)(raise_fn)
+    decorated = e_deco.replace_exceptions({ValueError: RuntimeError})(raise_fn)
     try:
         benchmark(_batch, 100, decorated)
     except RuntimeError:
@@ -36,7 +36,7 @@ def test_replace_exceptions(benchmark: BenchmarkFixture) -> None:
 def test_faster_replace_exceptions(benchmark: BenchmarkFixture) -> None:
     def raise_fn():
         raise ValueError("fail")
-    decorated = fe_deco.replace_exceptions(ValueError, RuntimeError)(raise_fn)
+    decorated = fe_deco.replace_exceptions({ValueError: RuntimeError})(raise_fn)
     try:
         benchmark(_batch, 100, decorated)
     except RuntimeError:

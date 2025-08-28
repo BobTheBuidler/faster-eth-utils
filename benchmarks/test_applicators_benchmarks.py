@@ -11,12 +11,12 @@ def _batch(i: int, fn: Callable[..., Any], *inputs: Any) -> None:
 @pytest.mark.benchmark(group="apply_formatter_at_index")
 def test_apply_formatter_at_index(benchmark: BenchmarkFixture) -> None:
     formatter = lambda x: x + 1
-    benchmark(_batch, 100, e_app.apply_formatter_at_index, 0, formatter, [1, 2, 3])
+    benchmark(_batch, 100, e_app.apply_formatter_at_index, formatter, 0, [1, 2, 3])
 
 @pytest.mark.benchmark(group="apply_formatter_at_index")
 def test_faster_apply_formatter_at_index(benchmark: BenchmarkFixture) -> None:
     formatter = lambda x: x + 1
-    benchmark(_batch, 100, fe_app.apply_formatter_at_index, 0, formatter, [1, 2, 3])
+    benchmark(_batch, 100, fe_app.apply_formatter_at_index, formatter, 0, [1, 2, 3])
 
 @pytest.mark.benchmark(group="combine_argument_formatters")
 def test_combine_argument_formatters(benchmark: BenchmarkFixture) -> None:
@@ -74,12 +74,12 @@ def test_faster_apply_formatter_to_array(benchmark: BenchmarkFixture) -> None:
 
 @pytest.mark.benchmark(group="apply_one_of_formatters")
 def test_apply_one_of_formatters(benchmark: BenchmarkFixture) -> None:
-    formatters = [lambda x: x + 1, lambda x: x * 2]
+    formatters = ((lambda x: x + 1, lambda x: x * 2),)
     benchmark(_batch, 100, e_app.apply_one_of_formatters, formatters, 2)
 
 @pytest.mark.benchmark(group="apply_one_of_formatters")
 def test_faster_apply_one_of_formatters(benchmark: BenchmarkFixture) -> None:
-    formatters = [lambda x: x + 1, lambda x: x * 2]
+    formatters = ((lambda x: x + 1, lambda x: x * 2),)
     benchmark(_batch, 100, fe_app.apply_one_of_formatters, formatters, 2)
 
 @pytest.mark.benchmark(group="apply_key_map")
