@@ -426,8 +426,8 @@ def get_all_event_abis(contract_abi: ABI) -> Sequence[ABIEvent]:
 
 def get_normalized_abi_inputs(
     abi_element: ABIElement,
-    *args: Optional[Sequence[Any]],
-    **kwargs: Optional[Dict[str, Any]],
+    *args: Any,
+    **kwargs: Any,
 ) -> Tuple[Any, ...]:
     r"""
     Flattens positional args (``args``) and keyword args (``kwargs``) into a Tuple and
