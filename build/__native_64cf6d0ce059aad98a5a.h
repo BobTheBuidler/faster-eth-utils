@@ -1,5 +1,5 @@
-#ifndef MYPYC_NATIVE_2d40105c8a25df98ee50_H
-#define MYPYC_NATIVE_2d40105c8a25df98ee50_H
+#ifndef MYPYC_NATIVE_64cf6d0ce059aad98a5a_H
+#define MYPYC_NATIVE_64cf6d0ce059aad98a5a_H
 #include <Python.h>
 #include <CPy.h>
 #ifndef MYPYC_DECLARED_tuple_T3OOO
@@ -63,6 +63,13 @@ typedef struct tuple_T2II {
     CPyTagged f0;
     CPyTagged f1;
 } tuple_T2II;
+#endif
+
+#ifndef MYPYC_DECLARED_tuple_T0
+#define MYPYC_DECLARED_tuple_T0
+typedef struct tuple_T0 {
+    int empty_struct_error_flag;
+} tuple_T0;
 #endif
 
 #ifndef MYPYC_DECLARED_tuple_T1O
@@ -434,8 +441,17 @@ typedef struct {
     PyObject *_chunk;
 } faster_eth_utils___humanize____extract_integer_ranges_genObject;
 
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    CPyTagged _chain_id;
+    PyObject *_name;
+    PyObject *_shortName;
+    PyObject *_symbol;
+} faster_eth_utils___network___NetworkObject;
 
-struct export_table_2d40105c8a25df98ee50 {
+
+struct export_table_64cf6d0ce059aad98a5a {
     PyObject *(*CPyDef_abi___collapse_if_tuple)(PyObject *cpy_r_abi);
     PyObject *(*CPyDef_abi____abi_to_signature)(PyObject *cpy_r_abi);
     PyObject *(*CPyDef_abi___function_signature_to_4byte_selector)(PyObject *cpy_r_event_signature);
@@ -697,6 +713,14 @@ struct export_table_2d40105c8a25df98ee50 {
     char (*CPyDef_humanize_____top_level__)(void);
     PyObject *(*CPyDef_module_loading___import_string)(PyObject *cpy_r_dotted_path);
     char (*CPyDef_module_loading_____top_level__)(void);
+    PyObject **CPyStatic_network___FASTER_ETH_UTILS_FOLDER;
+    PyTypeObject **CPyType_network___Network;
+    PyObject *(*CPyDef_network___Network)(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+    PyObject *(*CPyDef_network___initialize_network_objects)(void);
+    PyObject *(*CPyDef_network___network_from_chain_id)(CPyTagged cpy_r_chain_id);
+    PyObject *(*CPyDef_network___name_from_chain_id)(CPyTagged cpy_r_chain_id);
+    PyObject *(*CPyDef_network___short_name_from_chain_id)(CPyTagged cpy_r_chain_id);
+    char (*CPyDef_network_____top_level__)(void);
     char (*CPyDef_types___is_integer)(PyObject *cpy_r_value);
     char (*CPyDef_types___is_bytes)(PyObject *cpy_r_value);
     char (*CPyDef_types___is_text)(PyObject *cpy_r_value);

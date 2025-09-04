@@ -1,12 +1,12 @@
-#ifndef MYPYC_NATIVE_INTERNAL_2d40105c8a25df98ee50_H
-#define MYPYC_NATIVE_INTERNAL_2d40105c8a25df98ee50_H
+#ifndef MYPYC_NATIVE_INTERNAL_64cf6d0ce059aad98a5a_H
+#define MYPYC_NATIVE_INTERNAL_64cf6d0ce059aad98a5a_H
 #include <Python.h>
 #include <CPy.h>
-#include "__native_2d40105c8a25df98ee50.h"
+#include "__native_64cf6d0ce059aad98a5a.h"
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[402];
+extern PyObject *CPyStatics[446];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -76,6 +76,13 @@ extern CPyModule *CPyModule_faster_eth_utils___module_loading_internal;
 extern CPyModule *CPyModule_faster_eth_utils___module_loading;
 extern PyObject *CPyStatic_module_loading___globals;
 extern CPyModule *CPyModule_importlib;
+extern CPyModule *CPyModule_faster_eth_utils___network_internal;
+extern CPyModule *CPyModule_faster_eth_utils___network;
+extern PyObject *CPyStatic_network___globals;
+extern CPyModule *CPyModule_dataclasses;
+extern CPyModule *CPyModule_json;
+extern CPyModule *CPyModule_pathlib;
+extern CPyModule *CPyModule_faster_eth_utils;
 extern PyObject *CPyStatic_types___globals;
 extern CPyModule *CPyModule_collections___abc;
 extern CPyModule *CPyModule_numbers;
@@ -483,6 +490,18 @@ extern char CPyDef_humanize_____top_level__(void);
 extern PyObject *CPyDef_module_loading___import_string(PyObject *cpy_r_dotted_path);
 extern PyObject *CPyPy_module_loading___import_string(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_module_loading_____top_level__(void);
+extern PyObject *CPyStatic_network___FASTER_ETH_UTILS_FOLDER;
+extern PyTypeObject *CPyType_network___Network;
+extern PyObject *CPyDef_network___Network(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+extern PyObject *CPyDef_network___initialize_network_objects(void);
+extern PyObject *CPyPy_network___initialize_network_objects(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_network___network_from_chain_id(CPyTagged cpy_r_chain_id);
+extern PyObject *CPyPy_network___network_from_chain_id(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_network___name_from_chain_id(CPyTagged cpy_r_chain_id);
+extern PyObject *CPyPy_network___name_from_chain_id(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_network___short_name_from_chain_id(CPyTagged cpy_r_chain_id);
+extern PyObject *CPyPy_network___short_name_from_chain_id(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef_network_____top_level__(void);
 extern char CPyDef_types___is_integer(PyObject *cpy_r_value);
 extern PyObject *CPyPy_types___is_integer(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_types___is_bytes(PyObject *cpy_r_value);
