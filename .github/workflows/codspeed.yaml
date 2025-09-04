@@ -5,8 +5,6 @@ on:
     branches: [main, master]
   push:
     branches: [main, master]
-  # `workflow_dispatch` allows CodSpeed to trigger backtest
-  # performance analysis in order to generate initial data.
   workflow_dispatch:
 
 jobs:
@@ -27,7 +25,7 @@ jobs:
       - name: Run CodSpeed & Save Output
         uses: CodSpeedHQ/action@v3
         with:
-          run: pytest --codspeed benchmarks/ | tee codspeed_output.txt
+          run: pytest --codspeed -v benchmarks/ | tee codspeed_output.txt
       - name: Parse CodSpeed Output
         run: python scripts/parse_codspeed_output.py codspeed_output.txt codspeed_results.json
       - name: Compare CodSpeed Results
@@ -49,12 +47,16 @@ jobs:
             const fs = require('fs');
             const diff = JSON.parse(fs.readFileSync('codspeed_diff.json', 'utf8'));
             let body = '### CodSpeed Benchmark Diff\n\n';
-            for (const [func, data] of Object.entries(diff)) {
-              if (data.percent_change !== null && data.percent_change !== undefined) {
-                body += `- \`${func}\`: ${data.reference_mean} → ${data.faster_mean} ${data.unit} (${data.percent_change.toFixed(2)}%)\n`;
-              } else if (data.note) {
-                body += `- \`${func}\`: ${data.note}\n`;
+            for (const [submodule, groupDiffs] of Object.entries(diff)) {
+              body += `#### ${submodule}\n`;
+              for (const [func, data] of Object.entries(groupDiffs)) {
+                if (data.percent_change !== null && data.percent_change !== undefined) {
+                  body += `- \`${func}\`: ${data.reference_mean} → ${data.faster_mean} ${data.unit} (${data.percent_change.toFixed(2)}%)\n`;
+                } else if (data.note) {
+                  body += `- \`${func}\`: ${data.note}\n`;
+                }
               }
+              body += '\n';
             }
             github.rest.issues.createComment({
               ...context.repo,
