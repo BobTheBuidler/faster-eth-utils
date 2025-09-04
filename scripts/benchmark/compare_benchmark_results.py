@@ -17,6 +17,7 @@ import re
 from typing import Any, Dict
 
 def get_group_name(test_name: str) -> str:
+    # Extract group from test name, e.g., test_foo, test_faster_foo -> group: foo
     m = re.match(r"test_faster_(.+)", test_name)
     if m:
         return m.group(1)
@@ -26,6 +27,7 @@ def get_group_name(test_name: str) -> str:
     return test_name
 
 def compare_group(group_results: Dict[str, Any]) -> Dict[str, Any]:
+    # Find reference and faster implementations in the group
     ref = None
     fast = None
     ref_name = None
@@ -70,12 +72,13 @@ def main() -> None:
         results = json.load(f)
 
     # results: {submodule: {group: {function_name: {...}}}}
-    diff_by_submodule = {}
-    for submodule, groups in results.items():
-        diff_by_group = {}
-        for group, group_results in groups.items():
-            diff_by_group[group] = compare_group(group_results)
-        diff_by_submodule[submodule] = diff_by_group
+    diff_by_submodule = {
+        submodule: {
+            group: compare_group(group_results)
+            for group, group_results in groups.items()
+        }
+        for submodule, groups in results.items()
+    }
 
     with open(output_path, "w") as f:
         json.dump(diff_by_submodule, f, indent=2)
