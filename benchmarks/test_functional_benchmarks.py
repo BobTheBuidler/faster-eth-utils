@@ -1,10 +1,12 @@
 from typing import Any, Callable, Iterable
 
 import eth_utils
+import eth_utils.functional
 import pytest
 from pytest_codspeed import BenchmarkFixture
 
 import faster_eth_utils
+import faster_eth_utils.functional
 
 
 def _batch(i: int, fn: Callable[..., Any], *inputs: Any) -> None:
@@ -14,19 +16,19 @@ def _batch(i: int, fn: Callable[..., Any], *inputs: Any) -> None:
 
 @pytest.mark.benchmark(group="identity")
 def test_identity(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 100, eth_utils.identity, 123)
+    benchmark(_batch, 100, eth_utils.functional.identity, 123)
 
 
 @pytest.mark.benchmark(group="identity")
 def test_faster_identity(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 100, faster_eth_utils.identity, 123)
+    benchmark(_batch, 100, faster_eth_utils.functional.identity, 123)
 
 
 @pytest.mark.benchmark(group="combine")
 def test_combine(benchmark: BenchmarkFixture) -> None:
     f1 = lambda x: x + 1
     f2 = lambda x: x * 2
-    combined = eth_utils.combine(f1, f2)
+    combined = eth_utils.functional.combine(f1, f2)
     benchmark(_batch, 100, combined, 5)
 
 
@@ -34,7 +36,7 @@ def test_combine(benchmark: BenchmarkFixture) -> None:
 def test_faster_combine(benchmark: BenchmarkFixture) -> None:
     f1 = lambda x: x + 1
     f2 = lambda x: x * 2
-    combined = faster_eth_utils.combine(f1, f2)
+    combined = faster_eth_utils.functional.combine(f1, f2)
     benchmark(_batch, 100, combined, 5)
 
 

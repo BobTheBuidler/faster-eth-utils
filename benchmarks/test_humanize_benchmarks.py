@@ -1,10 +1,12 @@
 from typing import Any, Callable
 
 import eth_utils
+import eth_utils.humanize
 import pytest
 from pytest_codspeed import BenchmarkFixture
 
 import faster_eth_utils
+import faster_eth_utils.humanize
 
 
 def _batch(i: int, fn: Callable[..., Any], *inputs: Any) -> None:
@@ -77,7 +79,7 @@ def test_is_ipfs_uri(benchmark: BenchmarkFixture) -> None:
     benchmark(
         _batch,
         100,
-        eth_utils.is_ipfs_uri,
+        eth_utils.humanize.is_ipfs_uri,
         "ipfs://QmYwAPJzv5CZsnAzt8auVTL5zL2b8w6Q7rKjz3bgiGkXkP",
     )
 
@@ -87,7 +89,7 @@ def test_faster_is_ipfs_uri(benchmark: BenchmarkFixture) -> None:
     benchmark(
         _batch,
         100,
-        faster_eth_utils.is_ipfs_uri,
+        faster_eth_utils.humanize.is_ipfs_uri,
         "ipfs://QmYwAPJzv5CZsnAzt8auVTL5zL2b8w6Q7rKjz3bgiGkXkP",
     )
 

@@ -1,10 +1,12 @@
 from typing import Any, Callable
 
 import eth_utils
+import eth_utils.decorators
 import pytest
 from pytest_codspeed import BenchmarkFixture
 
 import faster_eth_utils
+import faster_eth_utils.decorators
 
 
 def _batch(i: int, fn: Callable[..., Any], *inputs: Any) -> None:
@@ -17,7 +19,7 @@ def test_return_arg_type(benchmark: BenchmarkFixture) -> None:
     def add(x: int, y: int) -> int:
         return x + y
 
-    decorated = eth_utils.return_arg_type(0)(add)
+    decorated = eth_utils.decorators.return_arg_type(0)(add)
     benchmark(_batch, 100, decorated, 1, 2)
 
 
@@ -26,7 +28,7 @@ def test_faster_return_arg_type(benchmark: BenchmarkFixture) -> None:
     def add(x: int, y: int) -> int:
         return x + y
 
-    decorated = faster_eth_utils.return_arg_type(0)(add)
+    decorated = faster_eth_utils.decorators.return_arg_type(0)(add)
     benchmark(_batch, 100, decorated, 1, 2)
 
 

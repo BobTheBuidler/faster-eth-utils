@@ -1,10 +1,12 @@
 from typing import Any, Callable
 
 import eth_utils
+import eth_utils.network
 import pytest
 from pytest_codspeed import BenchmarkFixture
 
 import faster_eth_utils
+import faster_eth_utils.network
 
 
 def _batch(i: int, fn: Callable[..., Any], *inputs: Any) -> None:
@@ -14,12 +16,12 @@ def _batch(i: int, fn: Callable[..., Any], *inputs: Any) -> None:
 
 @pytest.mark.benchmark(group="initialize_network_objects")
 def test_initialize_network_objects(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 10, eth_utils.initialize_network_objects)
+    benchmark(_batch, 10, eth_utils.network.initialize_network_objects)
 
 
 @pytest.mark.benchmark(group="initialize_network_objects")
 def test_faster_initialize_network_objects(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 10, faster_eth_utils.initialize_network_objects)
+    benchmark(_batch, 10, faster_eth_utils.network.initialize_network_objects)
 
 
 @pytest.mark.benchmark(group="network_from_chain_id")
