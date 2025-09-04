@@ -9,7 +9,7 @@ on:
 
 jobs:
   benchmark:
-    name: Run CodSpeed Benchmarks
+    name: Run Benchmarks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,10 +22,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install .[dev]
           pip install pytest-codspeed pytest-benchmark eth-utils "eth-hash[pycryptodome]"
-      - name: Run CodSpeed & Save Output
+      - name: Run CodSpeed
         uses: CodSpeedHQ/action@v3
         with:
-          run: pytest --codspeed -v benchmarks/ | tee codspeed_output.txt
+          run: pytest --codspeed benchmarks/
       - name: Run Pytest Benchmark & Save Output
         run: pytest --benchmark-only --benchmark-json=benchmark.json benchmarks/
       - name: Upload Pytest Benchmark Results

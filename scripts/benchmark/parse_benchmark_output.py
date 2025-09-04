@@ -1,12 +1,12 @@
 """
-parse_codspeed_output.py
+parse_benchmark_output.py
 
-Refactored: Extracts per-function benchmark timings from pytest-benchmark's benchmark.json output.
+Extracts per-function benchmark timings from pytest-benchmark's benchmark.json output.
 Parses the JSON file, finds all test function results, and writes a JSON file
 mapping groups (e.g., "abi_to_signature") to their test functions and results.
 
 Usage:
-    python parse_codspeed_output.py <benchmark.json> [output.json]
+    python parse_benchmark_output.py <benchmark.json> [output.json]
 """
 
 import json
@@ -37,22 +37,21 @@ def parse_pytest_benchmark_json(data: dict) -> Dict[str, Dict[str, Any]]:
         group = get_group_name(name)
         stats = bench["stats"]
         results[group][name] = {
-            "mean": stats["mean"],
-            "unit": stats["unit"],
-            "stddev": stats["stddev"],
-            "iqr": stats.get("iqr"),
-            "min": stats.get("min"),
-            "max": stats.get("max"),
-            "rounds": stats.get("rounds"),
+            "mean": stats.get("mean"),
+            "stddev": stats.get("stddev", None),
+            "iqr": stats.get("iqr", None),
+            "min": stats.get("min", None),
+            "max": stats.get("max", None),
+            "rounds": stats.get("rounds", None),
         }
     return results
 
 def main() -> None:
     if len(sys.argv) < 2:
-        print("Usage: python parse_codspeed_output.py <benchmark.json> [output.json]")
+        print("Usage: python parse_benchmark_output.py <benchmark.json> [output.json]")
         sys.exit(1)
     infile = sys.argv[1]
-    outfile = sys.argv[2] if len(sys.argv) > 2 else "codspeed_results.json"
+    outfile = sys.argv[2] if len(sys.argv) > 2 else "benchmark_results.json"
     with open(infile, "r") as f:
         data = json.load(f)
     results = parse_pytest_benchmark_json(data)
