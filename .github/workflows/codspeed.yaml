@@ -31,9 +31,9 @@ jobs:
         with:
           run: pytest --codspeed -v benchmarks/ | tee codspeed_output.txt
       - name: Parse CodSpeed Output
-        run: python scripts/parse_codspeed_output.py codspeed_output.txt codspeed_results.json
+        run: python scripts/benchmark/parse_codspeed_output.py codspeed_output.txt codspeed_results.json
       - name: Compare CodSpeed Results
-        run: python scripts/compare_codspeed_results.py codspeed_results.json codspeed_diff.json
+        run: python scripts/benchmark/compare_codspeed_results.py codspeed_results.json codspeed_diff.json
       - name: Upload CodSpeed Results
         uses: actions/upload-artifact@v4
         with:
