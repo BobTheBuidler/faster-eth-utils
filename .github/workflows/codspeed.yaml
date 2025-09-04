@@ -53,17 +53,24 @@ jobs:
             const repo = `${context.repo.owner}/${context.repo.repo}`;
             const branch = context.payload.pull_request ? context.payload.pull_request.head.ref : context.ref.replace('refs/heads/', '');
             for (const [submodule, groupDiffs] of Object.entries(diff)) {
-              // Convert submodule name to directory path (e.g., faster_eth_utils.abi -> faster_eth_utils/abi)
-              const submodulePath = submodule.replace(/\./g, '/');
-              const url = `https://github.com/${repo}/tree/${branch}/${submodulePath}`;
+              // Convert submodule name to benchmark file path (e.g., faster_eth_utils.abi -> benchmarks/test_abi_benchmarks.py)
+              let filePath = "unknown";
+              const m = submodule.match(/^faster_eth_utils\.(.+)$/);
+              if (m) {
+                filePath = `benchmarks/test_${m[1]}_benchmarks.py`;
+              }
+              const url = `https://github.com/${repo}/blob/${branch}/${filePath}`;
               body += `#### [${submodule}](${url})\n`;
-              body += '| Group | Reference Mean | Faster Mean | % Change | Note |\n';
-              body += '|-------|---------------|-------------|----------|------|\n';
+              body += '| Function | Reference Mean | Faster Mean | % Change | Faster | Note |\n';
+              body += '|----------|---------------|-------------|----------|--------|------|\n';
               for (const [group, data] of Object.entries(groupDiffs).sort(([a], [b]) => a.localeCompare(b))) {
                 if (data.percent_change !== null && data.percent_change !== undefined) {
-                  body += `| \`${group}\` | ${data.reference_mean} | ${data.faster_mean} | ${data.percent_change.toFixed(2)}% | |\n`;
+                  let emoji = '➖';
+                  if (data.percent_change > 0) emoji = '✅';
+                  else if (data.percent_change < 0) emoji = '❌';
+                  body += `| \`${group}\` | ${data.reference_mean} | ${data.faster_mean} | ${data.percent_change.toFixed(2)}% | ${emoji} | |\n`;
                 } else if (data.note) {
-                  body += `| \`${group}\` |  |  |  | ${data.note} |\n`;
+                  body += `| \`${group}\` |  |  |  |  | ${data.note} |\n`;
                 }
               }
               body += '\n';
