@@ -23,6 +23,7 @@ else:
             "faster_eth_utils/functional.py",
             "faster_eth_utils/hexadecimal.py",
             "faster_eth_utils/humanize.py",
+            "faster_eth_utils/logging.py",
             "faster_eth_utils/module_loading.py",
             "faster_eth_utils/network.py",
             "faster_eth_utils/numeric.py",
