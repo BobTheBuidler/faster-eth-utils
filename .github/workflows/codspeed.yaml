@@ -51,11 +51,13 @@ jobs:
             let body = '### Pytest Benchmark Diff\n\n';
             for (const [submodule, groupDiffs] of Object.entries(diff)) {
               body += `#### ${submodule}\n`;
+              body += '| Group | Reference Mean | Faster Mean | % Change | Note |\n';
+              body += '|-------|---------------|-------------|----------|------|\n';
               for (const [group, data] of Object.entries(groupDiffs)) {
                 if (data.percent_change !== null && data.percent_change !== undefined) {
-                  body += `- \`${group}\`: ${data.reference_mean} → ${data.faster_mean} (${data.percent_change.toFixed(2)}%)\n`;
+                  body += `| \`${group}\` | ${data.reference_mean} | ${data.faster_mean} | ${data.percent_change.toFixed(2)}% | |\n`;
                 } else if (data.note) {
-                  body += `- \`${group}\`: ${data.note}\n`;
+                  body += `| \`${group}\` |  |  |  | ${data.note} |\n`;
                 }
               }
               body += '\n';
