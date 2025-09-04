@@ -1,13 +1,13 @@
 """
-compare_codspeed_results.py
+compare_benchmark_results.py
 
-Refactored: Compares the two implementations in each benchmark group from a pytest-benchmark parsed results JSON file.
+Compares the two implementations in each benchmark group from a pytest-benchmark parsed results JSON file.
 For each group (e.g., "abi_to_signature"), finds both implementations
 (e.g., "test_abi_to_signature" and "test_faster_abi_to_signature"), computes the percent change
 in mean execution time, and writes a diff JSON file summarizing the results.
 
 Usage:
-    python compare_codspeed_results.py <results.json> [output.json]
+    python compare_benchmark_results.py <results.json> [output.json]
 """
 
 import json
@@ -29,11 +29,15 @@ def compare_group(group_results: Dict[str, Any]) -> Dict[str, Any]:
     # Find reference and faster implementations in the group
     ref = None
     fast = None
+    ref_name = None
+    fast_name = None
     for func_name, data in group_results.items():
         if func_name.startswith("test_faster_"):
             fast = data
+            fast_name = func_name
         elif func_name.startswith("test_"):
             ref = data
+            ref_name = func_name
 
     if ref and fast:
         mean_ref = ref["mean"]
@@ -42,22 +46,26 @@ def compare_group(group_results: Dict[str, Any]) -> Dict[str, Any]:
         return {
             "reference_mean": mean_ref,
             "faster_mean": mean_fast,
-            "unit": ref["unit"],
             "percent_change": percent,
-            "reference": [k for k in group_results if k.startswith("test_") and not k.startswith("test_faster_")][0],
-            "faster": [k for k in group_results if k.startswith("test_faster_")][0]
+            "reference": ref_name,
+            "faster": fast_name
         }
     else:
+        missing = []
+        if not ref:
+            missing.append("reference")
+        if not fast:
+            missing.append("faster")
         return {
-            "note": f"Missing implementation(s): {['reference' if not ref else '', 'faster' if not fast else '']}"
+            "note": f"Missing implementation(s): {missing}"
         }
 
 def main() -> None:
     if len(sys.argv) < 2:
-        print("Usage: python compare_codspeed_results.py <results.json> [output.json]")
+        print("Usage: python compare_benchmark_results.py <results.json> [output.json]")
         sys.exit(1)
     results_path = sys.argv[1]
-    output_path = sys.argv[2] if len(sys.argv) > 2 else "codspeed_diff.json"
+    output_path = sys.argv[2] if len(sys.argv) > 2 else "benchmark_diff.json"
 
     with open(results_path, "r") as f:
         results = json.load(f)
