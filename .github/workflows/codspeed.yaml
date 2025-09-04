@@ -22,6 +22,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install .[dev]
           pip install pytest-codspeed eth-utils "eth-hash[pycryptodome]"
+      - name: Print working directory
+        run: pwd
+      - name: List scripts directory
+        run: ls -l scripts/
       - name: Run CodSpeed & Save Output
         uses: CodSpeedHQ/action@v3
         with:
