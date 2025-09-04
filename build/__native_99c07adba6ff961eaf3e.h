@@ -1,5 +1,5 @@
-#ifndef MYPYC_NATIVE_a12de8d4beb198db8e1f_H
-#define MYPYC_NATIVE_a12de8d4beb198db8e1f_H
+#ifndef MYPYC_NATIVE_99c07adba6ff961eaf3e_H
+#define MYPYC_NATIVE_99c07adba6ff961eaf3e_H
 #include <Python.h>
 #include <CPy.h>
 #ifndef MYPYC_DECLARED_tuple_T3OOO
@@ -467,7 +467,7 @@ typedef struct {
 } faster_eth_utils___numeric___ComparableObject;
 
 
-struct export_table_a12de8d4beb198db8e1f {
+struct export_table_99c07adba6ff961eaf3e {
     PyObject *(*CPyDef_abi___collapse_if_tuple)(PyObject *cpy_r_abi);
     PyObject *(*CPyDef_abi____abi_to_signature)(PyObject *cpy_r_abi);
     PyObject *(*CPyDef_abi___function_signature_to_4byte_selector)(PyObject *cpy_r_event_signature);
@@ -745,6 +745,7 @@ struct export_table_a12de8d4beb198db8e1f {
     PyObject *(*CPyDef_numeric___Comparable_____gt__)(PyObject *cpy_r_self, PyObject *cpy_r_other);
     PyObject *(*CPyDef_numeric___clamp)(PyObject *cpy_r_lower_bound, PyObject *cpy_r_upper_bound, PyObject *cpy_r_value);
     char (*CPyDef_numeric_____top_level__)(void);
+    char (*CPyDef_toolz_____top_level__)(void);
     char (*CPyDef_types___is_integer)(PyObject *cpy_r_value);
     char (*CPyDef_types___is_bytes)(PyObject *cpy_r_value);
     char (*CPyDef_types___is_text)(PyObject *cpy_r_value);
