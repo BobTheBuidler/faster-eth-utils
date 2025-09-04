@@ -3,7 +3,7 @@ parse_benchmark_output.py
 
 Extracts per-function benchmark timings from pytest-benchmark's benchmark.json output.
 Parses the JSON file, finds all test function results, and writes a JSON file
-mapping groups (e.g., "abi_to_signature") to their test functions and results.
+mapping submodules (e.g., benchmark files) to groups and their test functions and results.
 
 Usage:
     python parse_benchmark_output.py <benchmark.json> [output.json]
@@ -15,6 +15,14 @@ import re
 from collections import defaultdict
 from typing import Dict, Any
 
+def get_submodule(bench: dict) -> str:
+    # Extract submodule (benchmark file) from fullname, e.g., "benchmarks/test_abi_benchmarks.py::test_abi_to_signature"
+    fullname = bench.get("fullname", "")
+    m = re.match(r"(benchmarks/[^:]+)", fullname)
+    if m:
+        return m.group(1)
+    return "unknown"
+
 def get_group_name(test_name: str) -> str:
     # Extract group from test name, e.g., test_foo, test_faster_foo -> group: foo
     m = re.match(r"test_faster_(.+)", test_name)
@@ -25,18 +33,19 @@ def get_group_name(test_name: str) -> str:
         return m.group(1)
     return test_name
 
-def parse_pytest_benchmark_json(data: dict) -> Dict[str, Dict[str, Any]]:
+def parse_pytest_benchmark_json(data: dict) -> Dict[str, Dict[str, Dict[str, Any]]]:
     """
     Parses pytest-benchmark's benchmark.json and extracts per-function timings,
-    grouped by group name (e.g., "abi_to_signature").
-    Returns a dict: {group: {function_name: {...}}}
+    grouped by submodule and group name.
+    Returns a dict: {submodule: {group: {function_name: {...}}}}
     """
-    results = defaultdict(dict)
+    results = defaultdict(lambda: defaultdict(dict))
     for bench in data.get("benchmarks", []):
         name = bench["name"]
+        submodule = get_submodule(bench)
         group = get_group_name(name)
         stats = bench["stats"]
-        results[group][name] = {
+        results[submodule][group][name] = {
             "mean": stats.get("mean"),
             "stddev": stats.get("stddev", None),
             "iqr": stats.get("iqr", None),

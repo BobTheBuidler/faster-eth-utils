@@ -25,7 +25,7 @@ jobs:
       - name: Run CodSpeed
         uses: CodSpeedHQ/action@v3
         with:
-          run: pytest --codspeed benchmarks/
+          run: pytest --codspeed -k "test_faster_" benchmarks/
       - name: Run Pytest Benchmark & Save Output
         run: pytest --benchmark-only --benchmark-json=benchmark.json benchmarks/
       - name: Upload Pytest Benchmark Results
@@ -49,12 +49,16 @@ jobs:
             const fs = require('fs');
             const diff = JSON.parse(fs.readFileSync('pytest_benchmark_diff.json', 'utf8'));
             let body = '### Pytest Benchmark Diff\n\n';
-            for (const [group, data] of Object.entries(diff)) {
-              if (data.percent_change !== null && data.percent_change !== undefined) {
-                body += `- \`${group}\`: ${data.reference_mean} → ${data.faster_mean} (${data.percent_change.toFixed(2)}%)\n`;
-              } else if (data.note) {
-                body += `- \`${group}\`: ${data.note}\n`;
+            for (const [submodule, groupDiffs] of Object.entries(diff)) {
+              body += `#### ${submodule}\n`;
+              for (const [group, data] of Object.entries(groupDiffs)) {
+                if (data.percent_change !== null && data.percent_change !== undefined) {
+                  body += `- \`${group}\`: ${data.reference_mean} → ${data.faster_mean} (${data.percent_change.toFixed(2)}%)\n`;
+                } else if (data.note) {
+                  body += `- \`${group}\`: ${data.note}\n`;
+                }
               }
+              body += '\n';
             }
             github.rest.issues.createComment({
               ...context.repo,

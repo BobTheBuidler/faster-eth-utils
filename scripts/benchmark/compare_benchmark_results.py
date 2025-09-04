@@ -1,8 +1,9 @@
 """
 compare_benchmark_results.py
 
-Compares the two implementations in each benchmark group from a pytest-benchmark parsed results JSON file.
-For each group (e.g., "abi_to_signature"), finds both implementations
+Compares the two implementations in each benchmark group from a pytest-benchmark parsed results JSON file,
+grouped by submodule.
+For each submodule and group (e.g., "abi_to_signature"), finds both implementations
 (e.g., "test_abi_to_signature" and "test_faster_abi_to_signature"), computes the percent change
 in mean execution time, and writes a diff JSON file summarizing the results.
 
@@ -16,7 +17,6 @@ import re
 from typing import Any, Dict
 
 def get_group_name(test_name: str) -> str:
-    # Extract group from test name, e.g., test_foo, test_faster_foo -> group: foo
     m = re.match(r"test_faster_(.+)", test_name)
     if m:
         return m.group(1)
@@ -26,7 +26,6 @@ def get_group_name(test_name: str) -> str:
     return test_name
 
 def compare_group(group_results: Dict[str, Any]) -> Dict[str, Any]:
-    # Find reference and faster implementations in the group
     ref = None
     fast = None
     ref_name = None
@@ -70,13 +69,16 @@ def main() -> None:
     with open(results_path, "r") as f:
         results = json.load(f)
 
-    # results: {group: {function_name: {...}}}
-    diff_by_group = {}
-    for group, group_results in results.items():
-        diff_by_group[group] = compare_group(group_results)
+    # results: {submodule: {group: {function_name: {...}}}}
+    diff_by_submodule = {}
+    for submodule, groups in results.items():
+        diff_by_group = {}
+        for group, group_results in groups.items():
+            diff_by_group[group] = compare_group(group_results)
+        diff_by_submodule[submodule] = diff_by_group
 
     with open(output_path, "w") as f:
-        json.dump(diff_by_group, f, indent=2)
+        json.dump(diff_by_submodule, f, indent=2)
     print(f"Diff written to {output_path}")
 
 if __name__ == "__main__":
