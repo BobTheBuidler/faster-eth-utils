@@ -53,14 +53,17 @@ jobs:
             const repo = `${context.repo.owner}/${context.repo.repo}`;
             const branch = context.payload.pull_request ? context.payload.pull_request.head.ref : context.ref.replace('refs/heads/', '');
             for (const [submodule, groupDiffs] of Object.entries(diff)) {
-              // Convert submodule name to benchmark file path (e.g., faster_eth_utils.abi -> benchmarks/test_abi_benchmarks.py)
-              let filePath = "unknown";
+              // Convert submodule name to submodule file path (e.g., faster_eth_utils.abi -> faster_eth_utils/types.py)
+              let submoduleFile = "unknown";
+              let benchmarkFile = "unknown";
               const m = submodule.match(/^faster_eth_utils\.(.+)$/);
               if (m) {
-                filePath = `benchmarks/test_${m[1]}_benchmarks.py`;
+                submoduleFile = `faster_eth_utils/${m[1]}.py`;
+                benchmarkFile = `benchmarks/test_${m[1]}_benchmarks.py`;
               }
-              const url = `https://github.com/${repo}/blob/${branch}/${filePath}`;
-              body += `#### [${submodule}](${url})\n`;
+              const submoduleUrl = `https://github.com/${repo}/blob/${branch}/${submoduleFile}`;
+              const benchmarkUrl = `https://github.com/${repo}/blob/${branch}/${benchmarkFile}`;
+              body += `#### [${submodule}](${submoduleUrl}) - [view benchmarks](${benchmarkUrl})\n`;
               body += '| Function | Reference Mean | Faster Mean | % Change | Faster |\n';
               body += '|----------|---------------|-------------|----------|--------|\n';
               for (const [group, data] of Object.entries(groupDiffs).sort(([a], [b]) => a.localeCompare(b))) {
