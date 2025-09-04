@@ -51,7 +51,7 @@ jobs:
             let body = '### Pytest Benchmark Diff\n\n';
             for (const [group, data] of Object.entries(diff)) {
               if (data.percent_change !== null && data.percent_change !== undefined) {
-                body += `- \`${group}\`: ${data.reference_mean} → ${data.faster_mean} ${data.unit} (${data.percent_change.toFixed(2)}%)\n`;
+                body += `- \`${group}\`: ${data.reference_mean} → ${data.faster_mean} (${data.percent_change.toFixed(2)}%)\n`;
               } else if (data.note) {
                 body += `- \`${group}\`: ${data.note}\n`;
               }
