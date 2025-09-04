@@ -3,7 +3,7 @@ parse_benchmark_output.py
 
 Extracts per-function benchmark timings from pytest-benchmark's benchmark.json output.
 Parses the JSON file, finds all test function results, and writes a JSON file
-mapping submodules (e.g., benchmark files) to groups and their test functions and results.
+mapping submodules (e.g., Python submodules like faster_eth_utils.abi) to groups and their test functions and results.
 
 Usage:
     python parse_benchmark_output.py <benchmark.json> [output.json]
@@ -16,11 +16,12 @@ from collections import defaultdict
 from typing import Dict, Any
 
 def get_submodule(bench: dict) -> str:
-    # Extract submodule (benchmark file) from fullname, e.g., "benchmarks/test_abi_benchmarks.py::test_abi_to_signature"
+    # Extract Python submodule from fullname, e.g., "benchmarks/test_abi_benchmarks.py::test_abi_to_signature"
     fullname = bench.get("fullname", "")
-    m = re.match(r"(benchmarks/[^:]+)", fullname)
+    # Try to extract the submodule from the test file path
+    m = re.search(r"benchmarks/test_([a-zA-Z0-9_]+)_benchmarks\.py", fullname)
     if m:
-        return m.group(1)
+        return f"faster_eth_utils.{m.group(1)}"
     return "unknown"
 
 def get_group_name(test_name: str) -> str:
