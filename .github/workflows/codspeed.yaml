@@ -61,16 +61,16 @@ jobs:
               }
               const url = `https://github.com/${repo}/blob/${branch}/${filePath}`;
               body += `#### [${submodule}](${url})\n`;
-              body += '| Function | Reference Mean | Faster Mean | % Change | Faster | Note |\n';
-              body += '|----------|---------------|-------------|----------|--------|------|\n';
+              body += '| Function | Reference Mean | Faster Mean | % Change | Faster |\n';
+              body += '|----------|---------------|-------------|----------|--------|\n';
               for (const [group, data] of Object.entries(groupDiffs).sort(([a], [b]) => a.localeCompare(b))) {
                 if (data.percent_change !== null && data.percent_change !== undefined) {
                   let emoji = '➖';
                   if (data.percent_change > 0) emoji = '✅';
                   else if (data.percent_change < 0) emoji = '❌';
-                  body += `| \`${group}\` | ${data.reference_mean} | ${data.faster_mean} | ${data.percent_change.toFixed(2)}% | ${emoji} | |\n`;
+                  body += `| \`${group}\` | ${data.reference_mean} | ${data.faster_mean} | ${data.percent_change.toFixed(2)}% | ${emoji} |\n`;
                 } else if (data.note) {
-                  body += `| \`${group}\` |  |  |  |  | ${data.note} |\n`;
+                  body += `| \`${group}\` |  |  |  | ➖ |\n`;
                 }
               }
               body += '\n';
