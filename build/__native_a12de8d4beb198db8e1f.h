@@ -1,5 +1,5 @@
-#ifndef MYPYC_NATIVE_0c9a7842e0a0cfa13326_H
-#define MYPYC_NATIVE_0c9a7842e0a0cfa13326_H
+#ifndef MYPYC_NATIVE_a12de8d4beb198db8e1f_H
+#define MYPYC_NATIVE_a12de8d4beb198db8e1f_H
 #include <Python.h>
 #include <CPy.h>
 #ifndef MYPYC_DECLARED_tuple_T3OOO
@@ -70,6 +70,17 @@ typedef struct tuple_T2II {
 typedef struct tuple_T0 {
     int empty_struct_error_flag;
 } tuple_T0;
+#endif
+
+#ifndef MYPYC_DECLARED_tuple_T5OOOOO
+#define MYPYC_DECLARED_tuple_T5OOOOO
+typedef struct tuple_T5OOOOO {
+    PyObject *f0;
+    PyObject *f1;
+    PyObject *f2;
+    PyObject *f3;
+    PyObject *f4;
+} tuple_T5OOOOO;
 #endif
 
 #ifndef MYPYC_DECLARED_tuple_T1O
@@ -450,8 +461,13 @@ typedef struct {
     PyObject *_symbol;
 } faster_eth_utils___network___NetworkObject;
 
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+} faster_eth_utils___numeric___ComparableObject;
 
-struct export_table_0c9a7842e0a0cfa13326 {
+
+struct export_table_a12de8d4beb198db8e1f {
     PyObject *(*CPyDef_abi___collapse_if_tuple)(PyObject *cpy_r_abi);
     PyObject *(*CPyDef_abi____abi_to_signature)(PyObject *cpy_r_abi);
     PyObject *(*CPyDef_abi___function_signature_to_4byte_selector)(PyObject *cpy_r_event_signature);
@@ -723,6 +739,12 @@ struct export_table_0c9a7842e0a0cfa13326 {
     PyObject *(*CPyDef_network___name_from_chain_id)(CPyTagged cpy_r_chain_id);
     PyObject *(*CPyDef_network___short_name_from_chain_id)(CPyTagged cpy_r_chain_id);
     char (*CPyDef_network_____top_level__)(void);
+    PyTypeObject **CPyType_numeric___Comparable;
+    PyObject *(*CPyDef_numeric___Comparable)(void);
+    PyObject *(*CPyDef_numeric___Comparable_____lt__)(PyObject *cpy_r_self, PyObject *cpy_r_other);
+    PyObject *(*CPyDef_numeric___Comparable_____gt__)(PyObject *cpy_r_self, PyObject *cpy_r_other);
+    PyObject *(*CPyDef_numeric___clamp)(PyObject *cpy_r_lower_bound, PyObject *cpy_r_upper_bound, PyObject *cpy_r_value);
+    char (*CPyDef_numeric_____top_level__)(void);
     char (*CPyDef_types___is_integer)(PyObject *cpy_r_value);
     char (*CPyDef_types___is_bytes)(PyObject *cpy_r_value);
     char (*CPyDef_types___is_text)(PyObject *cpy_r_value);
