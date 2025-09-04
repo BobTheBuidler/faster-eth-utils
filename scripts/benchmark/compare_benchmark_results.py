@@ -16,6 +16,7 @@ import sys
 import re
 from typing import Any, Dict
 
+
 def get_group_name(test_name: str) -> str:
     # Extract group from test name, e.g., test_foo, test_faster_foo -> group: foo
     m = re.match(r"test_faster_(.+)", test_name)
@@ -25,6 +26,7 @@ def get_group_name(test_name: str) -> str:
     if m:
         return m.group(1)
     return test_name
+
 
 def compare_group(group_results: Dict[str, Any]) -> Dict[str, Any]:
     # Find reference and faster implementations in the group
@@ -49,7 +51,7 @@ def compare_group(group_results: Dict[str, Any]) -> Dict[str, Any]:
             "faster_mean": mean_fast,
             "percent_change": percent,
             "reference": ref_name,
-            "faster": fast_name
+            "faster": fast_name,
         }
     else:
         missing = []
@@ -57,9 +59,8 @@ def compare_group(group_results: Dict[str, Any]) -> Dict[str, Any]:
             missing.append("reference")
         if not fast:
             missing.append("faster")
-        return {
-            "note": f"Missing implementation(s): {missing}"
-        }
+        return {"note": f"Missing implementation(s): {missing}"}
+
 
 def main() -> None:
     if len(sys.argv) < 2:
@@ -83,6 +84,7 @@ def main() -> None:
     with open(output_path, "w") as f:
         json.dump(diff_by_submodule, f, indent=2)
     print(f"Diff written to {output_path}")
+
 
 if __name__ == "__main__":
     main()

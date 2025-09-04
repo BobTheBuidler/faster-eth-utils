@@ -15,6 +15,7 @@ import re
 from collections import defaultdict
 from typing import Dict, Any
 
+
 def get_submodule(bench: dict) -> str:
     # Extract Python submodule from fullname, e.g., "benchmarks/test_abi_benchmarks.py::test_abi_to_signature"
     fullname = bench.get("fullname", "")
@@ -23,6 +24,7 @@ def get_submodule(bench: dict) -> str:
     if m:
         return f"faster_eth_utils.{m.group(1)}"
     return "unknown"
+
 
 def get_group_name(test_name: str) -> str:
     # Extract group from test name, e.g., test_foo, test_faster_foo -> group: foo
@@ -33,6 +35,7 @@ def get_group_name(test_name: str) -> str:
     if m:
         return m.group(1)
     return test_name
+
 
 def parse_pytest_benchmark_json(data: dict) -> Dict[str, Dict[str, Dict[str, Any]]]:
     """
@@ -56,6 +59,7 @@ def parse_pytest_benchmark_json(data: dict) -> Dict[str, Dict[str, Dict[str, Any
         }
     return results
 
+
 def main() -> None:
     if len(sys.argv) < 2:
         print("Usage: python parse_benchmark_output.py <benchmark.json> [output.json]")
@@ -68,6 +72,7 @@ def main() -> None:
     with open(outfile, "w") as f:
         json.dump(results, f, indent=2)
     print(f"Parsed results written to {outfile}")
+
 
 if __name__ == "__main__":
     main()
