@@ -1,5 +1,6 @@
+# mypy: disable-error-code=misc
 # benchmarks/test_conversions_benchmarks.py
-from typing import Any, Callable
+from typing import Any, Callable, List, Optional, Union, Tuple
 
 import eth_utils
 import pytest
@@ -7,67 +8,111 @@ from pytest_codspeed import BenchmarkFixture
 
 import faster_eth_utils
 
-
 def _batch(i: int, fn: Callable[..., Any], *inputs: Any) -> None:
     for _ in range(i):
         fn(*inputs)
 
 
+to_hex_cases: List[Any] = [
+    b"helloworld",  # bytes
+    123456789,      # int
+    True,           # bool
+    None,           # invalid (should raise)
+    "0x68656c6c6f", # str (should raise)
+]
+
+to_int_cases: List[Any] = [
+    123456789,      # int
+    True,           # bool
+    b"\x07[\xcd\x15", # bytes (big-endian)
+    "0x68656c6c6f", # str (should raise)
+    None,           # invalid (should raise)
+]
+
+to_bytes_cases: List[Any] = [
+    123456789,      # int
+    b"helloworld",  # bytes
+    True,           # bool
+    "0x68656c6c6f", # str (should raise)
+    None,           # invalid (should raise)
+]
+
+to_text_cases: List[Any] = [
+    b"helloworld",  # bytes
+    123456789,      # int
+    "0x68656c6c6f", # str (should decode as hexstr)
+    None,           # invalid (should raise)
+]
+
+text_if_str_cases: List[Tuple[Any, ...]] = [
+    ("helloworld",),  # str
+    (b"helloworld",), # bytes
+    (123456789,),     # int
+]
+
+hexstr_if_str_cases: List[Tuple[Any, ...]] = [
+    ("0x68656c6c6f",),  # valid hexstr
+    ("nothex",),        # invalid hexstr (should raise)
+    (b"helloworld",),   # bytes
+    (123456789,),       # int
+]
+
 @pytest.mark.benchmark(group="to_hex")
-def test_to_hex(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 100, eth_utils.to_hex, b"helloworld")
-
+@pytest.mark.parametrize("value", to_hex_cases)
+def test_to_hex(benchmark: BenchmarkFixture, value: Any) -> None:
+    benchmark(_batch, 10, eth_utils.to_hex, value)
 
 @pytest.mark.benchmark(group="to_hex")
-def test_faster_to_hex(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 100, faster_eth_utils.to_hex, b"helloworld")
-
+@pytest.mark.parametrize("value", to_hex_cases)
+def test_faster_to_hex(benchmark: BenchmarkFixture, value: Any) -> None:
+    benchmark(_batch, 10, faster_eth_utils.to_hex, value)
 
 @pytest.mark.benchmark(group="to_int")
-def test_to_int(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 100, eth_utils.to_int, 123456789)
-
+@pytest.mark.parametrize("value", to_int_cases)
+def test_to_int(benchmark: BenchmarkFixture, value: Any) -> None:
+    benchmark(_batch, 10, eth_utils.to_int, value)
 
 @pytest.mark.benchmark(group="to_int")
-def test_faster_to_int(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 100, faster_eth_utils.to_int, 123456789)
-
-
-@pytest.mark.benchmark(group="to_bytes")
-def test_to_bytes(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 100, eth_utils.to_bytes, 123456789)
-
+@pytest.mark.parametrize("value", to_int_cases)
+def test_faster_to_int(benchmark: BenchmarkFixture, value: Any) -> None:
+    benchmark(_batch, 10, faster_eth_utils.to_int, value)
 
 @pytest.mark.benchmark(group="to_bytes")
-def test_faster_to_bytes(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 100, faster_eth_utils.to_bytes, 123456789)
+@pytest.mark.parametrize("value", to_bytes_cases)
+def test_to_bytes(benchmark: BenchmarkFixture, value: Any) -> None:
+    benchmark(_batch, 10, eth_utils.to_bytes, value)
 
+@pytest.mark.benchmark(group="to_bytes")
+@pytest.mark.parametrize("value", to_bytes_cases)
+def test_faster_to_bytes(benchmark: BenchmarkFixture, value: Any) -> None:
+    benchmark(_batch, 10, faster_eth_utils.to_bytes, value)
 
 @pytest.mark.benchmark(group="to_text")
-def test_to_text(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 200, eth_utils.to_text, b"helloworld")
-
+@pytest.mark.parametrize("value", to_text_cases)
+def test_to_text(benchmark: BenchmarkFixture, value: Any) -> None:
+    benchmark(_batch, 10, eth_utils.to_text, value)
 
 @pytest.mark.benchmark(group="to_text")
-def test_faster_to_text(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 200, faster_eth_utils.to_text, b"helloworld")
-
-
-@pytest.mark.benchmark(group="text_if_str")
-def test_text_if_str(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 100, eth_utils.text_if_str, eth_utils.to_text, "helloworld")
-
+@pytest.mark.parametrize("value", to_text_cases)
+def test_faster_to_text(benchmark: BenchmarkFixture, value: Any) -> None:
+    benchmark(_batch, 10, faster_eth_utils.to_text, value)
 
 @pytest.mark.benchmark(group="text_if_str")
-def test_faster_text_if_str(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 100, faster_eth_utils.text_if_str, faster_eth_utils.to_text, "helloworld")
+@pytest.mark.parametrize("args", text_if_str_cases)
+def test_text_if_str(benchmark: BenchmarkFixture, args: Tuple[Any, ...]) -> None:
+    benchmark(_batch, 10, eth_utils.text_if_str, eth_utils.to_text, *args)
 
+@pytest.mark.benchmark(group="text_if_str")
+@pytest.mark.parametrize("args", text_if_str_cases)
+def test_faster_text_if_str(benchmark: BenchmarkFixture, args: Tuple[Any, ...]) -> None:
+    benchmark(_batch, 10, faster_eth_utils.text_if_str, faster_eth_utils.to_text, *args)
 
 @pytest.mark.benchmark(group="hexstr_if_str")
-def test_hexstr_if_str(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 100, eth_utils.hexstr_if_str, eth_utils.to_hex, "0x68656c6c6f")
-
+@pytest.mark.parametrize("args", hexstr_if_str_cases)
+def test_hexstr_if_str(benchmark: BenchmarkFixture, args: Tuple[Any, ...]) -> None:
+    benchmark(_batch, 10, eth_utils.hexstr_if_str, eth_utils.to_hex, *args)
 
 @pytest.mark.benchmark(group="hexstr_if_str")
-def test_faster_hexstr_if_str(benchmark: BenchmarkFixture) -> None:
-    benchmark(_batch, 100, faster_eth_utils.hexstr_if_str, faster_eth_utils.to_hex, "0x68656c6c6f")
+@pytest.mark.parametrize("args", hexstr_if_str_cases)
+def test_faster_hexstr_if_str(benchmark: BenchmarkFixture, args: Tuple[Any, ...]) -> None:
+    benchmark(_batch, 10, faster_eth_utils.hexstr_if_str, faster_eth_utils.to_hex, *args)
