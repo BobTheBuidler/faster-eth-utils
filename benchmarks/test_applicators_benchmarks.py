@@ -17,7 +17,7 @@ is_gt_0 = lambda x: x > 0
 is_lt_0 = lambda x: x < 0
 
 # apply_formatter_at_index
-afi_cases = [0, 1, 2]
+afi_cases = list(range(3))
 afi_ids = [f"at-index-{i}" for i in range(3)]
 
 # combine_argument_formatters
@@ -137,15 +137,21 @@ def test_faster_combine_argument_formatters(
     benchmark(_batch, 10, faster_eth_utils.combine_argument_formatters, *formatters)
 
 @pytest.mark.benchmark(group="apply_formatters_to_sequence")
-def test_apply_formatters_to_sequence(benchmark: BenchmarkFixture) -> None:
-    formatters = [some_func, some_func]
-    sequence = [1, 2]
+@pytest.mark.parametrize("formatters,sequence", afts_cases, ids=afts_ids)
+def test_apply_formatters_to_sequence(
+    benchmark: BenchmarkFixture,
+    formatters: List[Callable[[int], int]],
+    sequence: List[int]
+) -> None:
     benchmark(_batch, 10, eth_utils.apply_formatters_to_sequence, formatters, sequence)
 
 @pytest.mark.benchmark(group="apply_formatters_to_sequence")
-def test_faster_apply_formatters_to_sequence(benchmark: BenchmarkFixture) -> None:
-    formatters = [some_func, some_func]
-    sequence = [1, 2]
+@pytest.mark.parametrize("formatters,sequence", afts_cases, ids=afts_ids)
+def test_faster_apply_formatters_to_sequence(
+    benchmark: BenchmarkFixture,
+    formatters: List[Callable[[int], int]],
+    sequence: List[int]
+) -> None:
     benchmark(_batch, 10, faster_eth_utils.apply_formatters_to_sequence, formatters, sequence)
 
 @pytest.mark.benchmark(group="apply_formatter_if")
