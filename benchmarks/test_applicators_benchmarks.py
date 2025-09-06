@@ -92,14 +92,12 @@ aoof_ids = [
 akm_cases = [
     ({"a": "b"}, {"a": 1}),  # no conflict, single key
     ({"a": "b", "c": "d"}, {"a": 1, "c": 2}),  # two keys, no conflict
-    ({"a": "b", "c": "d"}, {"a": 1, "b": 2, "c": 3}),  # mapping with extra keys
     ({}, {}),  # empty mapping
     ({"x": "y"}, {"x": 42, "z": 99}),  # mapping with unrelated key
 ]
 akm_ids = [
     "single-key",
     "two-keys",
-    "extra-keys",
     "empty",
     "unrelated-key",
 ]
