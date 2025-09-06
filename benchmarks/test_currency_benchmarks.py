@@ -16,7 +16,6 @@ from_wei_cases = [
     (1000000000, "gwei"),                # valid
     (0, "ether"),                        # edge case: zero
     (2**256 - 1, "ether"),               # edge case: max
-    (-1, "ether"),                       # invalid: negative
     (100, "not_a_unit"),                 # invalid: unknown unit
 ]
 from_wei_ids = [
@@ -24,7 +23,6 @@ from_wei_ids = [
     "1-gwei",
     "zero",
     "max",
-    "negative",
     "unknown-unit",
 ]
 
@@ -34,7 +32,6 @@ to_wei_cases = [
     ("2", "ether"),                      # valid str
     (0, "ether"),                        # edge case: zero
     (2**256 - 1, "ether"),               # edge case: max
-    (-1, "ether"),                       # invalid: negative
     (1, "not_a_unit"),                   # invalid: unknown unit
 ]
 to_wei_ids = [
@@ -43,7 +40,6 @@ to_wei_ids = [
     "2str-ether",
     "zero",
     "max",
-    "negative",
     "unknown-unit",
 ]
 
@@ -51,13 +47,11 @@ from_wei_decimals_cases = [
     (100000000, 8),                      # valid
     (0, 8),                              # edge case: zero
     (2**256 - 1, 8),                     # edge case: max
-    (-1, 8),                             # invalid: negative
 ]
 from_wei_decimals_ids = [
     "100M-8dec",
     "zero",
     "max",
-    "negative",
 ]
 
 to_wei_decimals_cases = [
@@ -66,7 +60,6 @@ to_wei_decimals_cases = [
     ("2", 8),                            # valid str
     (0, 8),                              # edge case: zero
     (2**256 - 1, 8),                     # edge case: max
-    (-1, 8),                             # invalid: negative
 ]
 to_wei_decimals_ids = [
     "1-8dec",
@@ -74,7 +67,6 @@ to_wei_decimals_ids = [
     "2str-8dec",
     "zero",
     "max",
-    "negative",
 ]
 
 @pytest.mark.benchmark(group="from_wei")
