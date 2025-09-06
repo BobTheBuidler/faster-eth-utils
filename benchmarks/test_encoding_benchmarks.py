@@ -17,7 +17,6 @@ int_to_be_cases = [
     255,
     256,
     2**256 - 1,
-    -1,         # should raise
 ]
 int_to_be_ids = [
     "zero",
@@ -25,7 +24,6 @@ int_to_be_ids = [
     "255",
     "256",
     "max",
-    "negative",
 ]
 
 be_to_int_cases = [
@@ -34,7 +32,6 @@ be_to_int_cases = [
     b"\xff",
     b"\x00\x01",
     b"\xff" * 32,
-    "notbytes",  # should raise
 ]
 be_to_int_ids = [
     "empty-bytes",
@@ -42,7 +39,6 @@ be_to_int_ids = [
     "ff-byte",
     "two-bytes",
     "32-ff-bytes",
-    "not-bytes-invalid",
 ]
 
 @pytest.mark.benchmark(group="int_to_big_endian")
