@@ -40,7 +40,7 @@ jobs:
       - name: Generate Markdown Benchmark Results
         run: python scripts/benchmark/generate_benchmark_markdown.py
       - name: Commit and Push Markdown Benchmark Results
-        if: github.event.pull_request.head.repo.fork == false
+        if: github.event.pull_request.head.repo.fork == false || github.event.pull_request.head.repo.fork == null
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
