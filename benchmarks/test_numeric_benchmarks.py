@@ -18,13 +18,20 @@ clamp_cases = [
     (0, 10, 0),    # value == lower_bound
     (0, 10, 10),   # value == upper_bound
 ]
+clamp_ids = [
+    "below-lower",
+    "above-upper",
+    "within-bounds",
+    "at-lower",
+    "at-upper",
+]
 
 @pytest.mark.benchmark(group="clamp")
-@pytest.mark.parametrize("lower,upper,value", clamp_cases)
+@pytest.mark.parametrize("lower,upper,value", clamp_cases, ids=clamp_ids)
 def test_clamp(benchmark: BenchmarkFixture, lower: int, upper: int, value: int) -> None:
     benchmark(_batch, 10, eth_utils.clamp, lower, upper, value)
 
 @pytest.mark.benchmark(group="clamp")
-@pytest.mark.parametrize("lower,upper,value", clamp_cases)
+@pytest.mark.parametrize("lower,upper,value", clamp_cases, ids=clamp_ids)
 def test_faster_clamp(benchmark: BenchmarkFixture, lower: int, upper: int, value: int) -> None:
     benchmark(_batch, 10, faster_eth_utils.clamp, lower, upper, value)
