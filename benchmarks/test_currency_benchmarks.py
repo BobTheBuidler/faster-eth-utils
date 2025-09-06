@@ -11,11 +11,16 @@ def _batch(i: int, fn: Callable[..., Any], *inputs: Any) -> None:
     for _ in range(i):
         fn(*inputs)
 
+# Calculate the largest value that does not overflow for "ether" (10**18)
+MAX_UINT256 = 2**256 - 1
+ETHER_UNIT = 10**18
+MAX_SAFE_ETHER = MAX_UINT256 // ETHER_UNIT
+
 from_wei_cases = [
     (1000000000000000000, "ether"),      # valid
     (1000000000, "gwei"),                # valid
     (0, "ether"),                        # edge case: zero
-    (2**256 - 1, "ether"),               # edge case: max
+    (MAX_UINT256, "ether"),              # max input (safe for from_wei)
 ]
 from_wei_ids = [
     "1-ether",
@@ -29,7 +34,7 @@ to_wei_cases = [
     (1.5, "ether"),                      # valid float
     ("2", "ether"),                      # valid str
     (0, "ether"),                        # edge case: zero
-    (2**256 - 1, "ether"),               # edge case: max
+    (MAX_SAFE_ETHER, "ether"),           # max safe value
 ]
 to_wei_ids = [
     "1-ether",
@@ -42,7 +47,7 @@ to_wei_ids = [
 from_wei_decimals_cases = [
     (100000000, 8),                      # valid
     (0, 8),                              # edge case: zero
-    (2**256 - 1, 8),                     # edge case: max
+    (MAX_UINT256, 8),                    # max input (safe for from_wei_decimals)
 ]
 from_wei_decimals_ids = [
     "100M-8dec",
@@ -50,12 +55,14 @@ from_wei_decimals_ids = [
     "max",
 ]
 
+# For decimals=8, max safe value is MAX_UINT256 // 10**8
+MAX_SAFE_DEC8 = MAX_UINT256 // (10**8)
 to_wei_decimals_cases = [
     (1, 8),                              # valid
     (1.5, 8),                            # valid float
     ("2", 8),                            # valid str
     (0, 8),                              # edge case: zero
-    (2**256 - 1, 8),                     # edge case: max
+    (MAX_SAFE_DEC8, 8),                  # max safe value
 ]
 to_wei_decimals_ids = [
     "1-8dec",
