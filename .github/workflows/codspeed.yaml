@@ -37,6 +37,13 @@ jobs:
         run: python scripts/benchmark/parse_benchmark_output.py benchmark.json pytest_benchmark_results.json
       - name: Compare Pytest Benchmark Results
         run: python scripts/benchmark/compare_benchmark_results.py pytest_benchmark_results.json pytest_benchmark_diff.json
+      - name: Generate Markdown Benchmark Results
+        run: python scripts/benchmark/generate_benchmark_markdown.py
+      - name: Upload Markdown Benchmark Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: markdown-benchmark-results
+          path: benchmarks/results/*.md
       - name: Upload Pytest Benchmark Diff
         uses: actions/upload-artifact@v4
         with:
