@@ -13,30 +13,37 @@ def _batch(i: int, fn: Callable[..., Any], *inputs: Any) -> None:
 
 # Deduplicated lambdas
 some_func = lambda x: x
-neg = lambda x: -x
-zero = lambda x: x * 0
-div_three = lambda x: x / 3
 is_gt_0 = lambda x: x > 0
 is_lt_0 = lambda x: x < 0
 
 # apply_formatter_at_index
 afi_cases = [0, 1, 2]
-afi_ids = [
-    "at-index-0",
-    "at-index-1",
-    "at-index-2",
-]
+afi_ids = [f"at-index-{i}" for i in range(3)]
 
 # combine_argument_formatters
 caf_cases = [
     (some_func,),
     (some_func, some_func),
-    (some_func, some_func, div_three),
+    (some_func, some_func, some_func),
 ]
 caf_ids = [
     "one-formatter",
     "two-formatters",
     "three-formatters",
+]
+
+# apply_formatters_to_sequence
+afts_cases = [
+    ([some_func], [1]),
+    ([some_func, some_func], [1, 2]),
+    ([some_func, some_func, some_func], [1, 2, 3]),
+    ([some_func, some_func, some_func, some_func], [1, 2, 3, 4]),
+]
+afts_ids = [
+    "1-item",
+    "2-items",
+    "3-items",
+    "4-items",
 ]
 
 # apply_formatter_if: condition true and false
@@ -56,7 +63,7 @@ af2d_cases = [
 ]
 af2d_ids = [
     "all-keys-present",
-    "key-not-in-formatters",
+    "key-not-present",
 ]
 
 # apply_formatter_to_array
@@ -101,9 +108,7 @@ akm_ids = [
 @pytest.mark.parametrize("formatter,at_index,value", afi_cases, ids=afi_ids)
 def test_apply_formatter_at_index(
     benchmark: BenchmarkFixture,
-    formatter: Callable[[int], int],
     at_index: int,
-    value: List[int]
 ) -> None:
     benchmark(_batch, 10, eth_utils.apply_formatter_at_index, some_func, at_index, [0, 1, 2])
 
@@ -111,9 +116,7 @@ def test_apply_formatter_at_index(
 @pytest.mark.parametrize("formatter,at_index,value", afi_cases, ids=afi_ids)
 def test_faster_apply_formatter_at_index(
     benchmark: BenchmarkFixture,
-    formatter: Callable[[int], int],
     at_index: int,
-    value: List[int]
 ) -> None:
     benchmark(_batch, 10, faster_eth_utils.apply_formatter_at_index, some_func, at_index, [0, 1, 2])
 
