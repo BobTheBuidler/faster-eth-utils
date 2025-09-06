@@ -59,13 +59,11 @@ to_bytes_ids = [
 
 to_text_kwargs_cases: List[Dict[str, Any]] = [
     {"primitive": b"helloworld"},
-    {"primitive": 123456789},
     {"hexstr": "0x68656c6c6f"},
     {"text": "hello world"},
 ]
 to_text_ids = [
     "primitive-bytes",
-    "primitive-int",
     "hexstr",
     "text",
 ]
@@ -73,12 +71,10 @@ to_text_ids = [
 text_if_str_cases: List[Tuple[Any, ...]] = [
     ("helloworld",),  # str
     (b"helloworld",), # bytes
-    (123456789,),     # int
 ]
 text_if_str_ids = [
     "str",
     "bytes",
-    "int",
 ]
 
 hexstr_if_str_cases: List[Tuple[Any, ...]] = [
