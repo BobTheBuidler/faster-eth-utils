@@ -105,7 +105,7 @@ akm_ids = [
 ]
 
 @pytest.mark.benchmark(group="apply_formatter_at_index")
-@pytest.mark.parametrize("formatter,at_index,value", afi_cases, ids=afi_ids)
+@pytest.mark.parametrize("at_index", afi_cases, ids=afi_ids)
 def test_apply_formatter_at_index(
     benchmark: BenchmarkFixture,
     at_index: int,
@@ -113,7 +113,7 @@ def test_apply_formatter_at_index(
     benchmark(_batch, 10, eth_utils.apply_formatter_at_index, some_func, at_index, [0, 1, 2])
 
 @pytest.mark.benchmark(group="apply_formatter_at_index")
-@pytest.mark.parametrize("formatter,at_index,value", afi_cases, ids=afi_ids)
+@pytest.mark.parametrize("at_index", afi_cases, ids=afi_ids)
 def test_faster_apply_formatter_at_index(
     benchmark: BenchmarkFixture,
     at_index: int,
