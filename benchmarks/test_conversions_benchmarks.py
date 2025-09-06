@@ -8,9 +8,9 @@ from pytest_codspeed import BenchmarkFixture
 
 import faster_eth_utils
 
-def _batch(i: int, fn: Callable[..., Any], **kwargs: Any) -> None:
+def _batch(i: int, fn: Callable[..., Any], *args: Any, **kwargs: Any) -> None:
     for _ in range(i):
-        fn(**kwargs)
+        fn(*args, **kwargs)
 
 to_hex_kwargs_cases: List[Dict[str, Any]] = [
     {"primitive": b"helloworld"},
