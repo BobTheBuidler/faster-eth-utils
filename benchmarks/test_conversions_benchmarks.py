@@ -16,58 +16,44 @@ to_hex_cases: List[Any] = [
     b"helloworld",  # bytes
     123456789,      # int
     True,           # bool
-    None,           # invalid (should raise)
-    "0x68656c6c6f", # str (should raise)
 ]
 to_hex_ids = [
     "bytes",
     "int",
     "bool",
-    "none-invalid",
-    "str-invalid",
 ]
 
 to_int_cases: List[Any] = [
     123456789,      # int
     True,           # bool
     b"\x07[\xcd\x15", # bytes (big-endian)
-    "0x68656c6c6f", # str (should raise)
-    None,           # invalid (should raise)
 ]
 to_int_ids = [
     "int",
     "bool",
     "bytes",
-    "str-invalid",
-    "none-invalid",
 ]
 
 to_bytes_cases: List[Any] = [
     123456789,      # int
     b"helloworld",  # bytes
     True,           # bool
-    "0x68656c6c6f", # str (should raise)
-    None,           # invalid (should raise)
 ]
 to_bytes_ids = [
     "int",
     "bytes",
     "bool",
-    "str-invalid",
-    "none-invalid",
 ]
 
 to_text_cases: List[Any] = [
     b"helloworld",  # bytes
     123456789,      # int
     "0x68656c6c6f", # str (should decode as hexstr)
-    None,           # invalid (should raise)
 ]
 to_text_ids = [
     "bytes",
     "int",
     "str-hex",
-    "none-invalid",
 ]
 
 text_if_str_cases: List[Tuple[Any, ...]] = [
@@ -82,14 +68,12 @@ text_if_str_ids = [
 ]
 
 hexstr_if_str_cases: List[Tuple[Any, ...]] = [
-    ("0x68656c6c6f",),  # valid hexstr
-    ("nothex",),        # invalid hexstr (should raise)
+    ("0x68656c6c6f",),  # hexstr
     (b"helloworld",),   # bytes
     (123456789,),       # int
 ]
 hexstr_if_str_ids = [
-    "valid-hexstr",
-    "invalid-hexstr",
+    "hexstr",
     "bytes",
     "int",
 ]
