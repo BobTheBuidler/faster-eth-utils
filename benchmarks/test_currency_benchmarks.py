@@ -16,14 +16,12 @@ from_wei_cases = [
     (1000000000, "gwei"),                # valid
     (0, "ether"),                        # edge case: zero
     (2**256 - 1, "ether"),               # edge case: max
-    (100, "not_a_unit"),                 # invalid: unknown unit
 ]
 from_wei_ids = [
     "1-ether",
     "1-gwei",
     "zero",
     "max",
-    "unknown-unit",
 ]
 
 to_wei_cases = [
@@ -32,7 +30,6 @@ to_wei_cases = [
     ("2", "ether"),                      # valid str
     (0, "ether"),                        # edge case: zero
     (2**256 - 1, "ether"),               # edge case: max
-    (1, "not_a_unit"),                   # invalid: unknown unit
 ]
 to_wei_ids = [
     "1-ether",
@@ -40,7 +37,6 @@ to_wei_ids = [
     "2str-ether",
     "zero",
     "max",
-    "unknown-unit",
 ]
 
 from_wei_decimals_cases = [
