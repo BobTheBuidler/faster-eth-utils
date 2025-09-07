@@ -1,5 +1,5 @@
 # mypy: disable-error-code=misc
-from typing import Any, Callable, Tuple
+from typing import Any, Callable, Dict, Tuple
 
 import eth_utils
 import eth_utils.decorators
@@ -29,7 +29,6 @@ rat_ids = [
     "float-pos0",
 ]
 
-# replace_exceptions: mapped, unmapped, no exception
 def raise_value_error():
     raise ValueError("fail")
 
@@ -39,10 +38,14 @@ def raise_type_error():
 def no_raise():
     return 42
 
+re_func_lookup: Dict[str, Callable[[], Any]] = {
+    "raise_value_error": raise_value_error,
+    "no_raise": no_raise,
+}
 re_cases = [
-    (raise_value_error, {ValueError: RuntimeError}),  # mapped
-    (raise_type_error, {ValueError: RuntimeError}),   # unmapped (should raise TypeError)
-    (no_raise, {ValueError: RuntimeError}),           # no exception
+    ("raise_value_error", {ValueError: RuntimeError}),  # mapped
+    ("raise_type_error", {ValueError: RuntimeError}),   # unmapped
+    ("no_raise", {ValueError: RuntimeError}),           # no exception
 ]
 re_ids = [
     "mapped-exception",
@@ -75,27 +78,23 @@ def test_faster_return_arg_type(
     benchmark(_batch, 10, decorated, *args)
 
 @pytest.mark.benchmark(group="replace_exceptions")
-@pytest.mark.parametrize("fn,exc_map", re_cases, ids=re_ids)
+@pytest.mark.parametrize("func_key,exc_map", re_cases, ids=re_ids)
 def test_replace_exceptions(
     benchmark: BenchmarkFixture,
-    fn: Callable[[], Any],
+    func_key: str,
     exc_map: dict
 ) -> None:
+    fn = re_func_lookup[func_key]
     decorated = eth_utils.replace_exceptions(exc_map)(fn)
-    try:
-        benchmark(_batch, 10, decorated)
-    except Exception:
-        pass
+    benchmark(_batch, 10, decorated)
 
 @pytest.mark.benchmark(group="replace_exceptions")
-@pytest.mark.parametrize("fn,exc_map", re_cases, ids=re_ids)
+@pytest.mark.parametrize("func_key,exc_map", re_cases, ids=re_ids)
 def test_faster_replace_exceptions(
     benchmark: BenchmarkFixture,
-    fn: Callable[[], Any],
+    func_key: str,
     exc_map: dict
 ) -> None:
+    fn = re_func_lookup[func_key]
     decorated = faster_eth_utils.replace_exceptions(exc_map)(fn)
-    try:
-        benchmark(_batch, 10, decorated)
-    except Exception:
-        pass
+    benchmark(_batch, 10, decorated)
