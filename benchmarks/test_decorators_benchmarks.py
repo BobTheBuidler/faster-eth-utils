@@ -11,7 +11,11 @@ import faster_eth_utils.decorators
 
 def _batch(i: int, fn: Callable[..., Any], *inputs: Any) -> None:
     for _ in range(i):
-        fn(*inputs)
+        try:
+            fn(*inputs)
+        except TypeError as e:
+            if str(e) != "fail":
+                raise
 
 # return_arg_type: test with int, str, float, at_position 0 and 1
 rat_cases = [
@@ -40,11 +44,12 @@ def no_raise():
 
 re_func_lookup: Dict[str, Callable[[], Any]] = {
     "raise_value_error": raise_value_error,
+    "raise_type_error": raise_type_error,
     "no_raise": no_raise,
 }
 re_cases = [
     ("raise_value_error", {ValueError: RuntimeError}),  # mapped
-    ("raise_type_error", {ValueError: RuntimeError}),   # unmapped
+    ("raise_type_error", {ValueError: RuntimeError}),   # unmapped (should raise TypeError)
     ("no_raise", {ValueError: RuntimeError}),           # no exception
 ]
 re_ids = [
