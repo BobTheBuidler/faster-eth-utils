@@ -77,7 +77,7 @@ text_if_str_ids = [
     "bytes",
 ]
 
-hexstr_if_str_cases: List[Any]] = [
+hexstr_if_str_cases: List[Any] = [
     "0x68656c6c6f",  # hexstr
     b"helloworld",   # bytes
     123456789,       # int
