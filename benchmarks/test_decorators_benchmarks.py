@@ -13,7 +13,7 @@ def _batch(i: int, fn: Callable[..., Any], *inputs: Any) -> None:
     for _ in range(i):
         try:
             fn(*inputs)
-        except TypeError as e:
+        except (TypeError, RuntimeError) as e:
             if str(e) != "fail":
                 raise
 
