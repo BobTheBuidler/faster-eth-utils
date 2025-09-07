@@ -90,12 +90,12 @@ hexstr_if_str_ids = [
 
 @pytest.mark.benchmark(group="to_hex")
 @pytest.mark.parametrize("kwarg,value", to_hex_kwargs_cases, ids=to_hex_ids)
-def test_to_hex(benchmark: BenchmarkFixture, kwarg: str, value: Any)) -> None:
+def test_to_hex(benchmark: BenchmarkFixture, kwarg: str, value: Any) -> None:
     benchmark(_batch, 10, eth_utils.to_hex, **{kwarg: value})
 
 @pytest.mark.benchmark(group="to_hex")
 @pytest.mark.parametrize("kwarg,value", to_hex_kwargs_cases, ids=to_hex_ids)
-def test_faster_to_hex(benchmark: BenchmarkFixture, kwarg: str, value: Any)) -> None:
+def test_faster_to_hex(benchmark: BenchmarkFixture, kwarg: str, value: Any) -> None:
     benchmark(_batch, 10, faster_eth_utils.to_hex, **{kwarg: value})
 
 @pytest.mark.benchmark(group="to_int")
