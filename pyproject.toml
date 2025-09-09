@@ -2,7 +2,10 @@
 requires = [
   "setuptools",
   "wheel",
-  "mypy[mypyc]>=1.14.1,<1.18.2",
+  # For Python < 3.9, use the regular PyPI mypy release
+  "mypy[mypyc]>=1.14.1,<1.17.1 ; python_version < '3.9'",
+  # For Python >= 3.9, install mypy from a specific Git commit
+  "mypy[mypyc] @ git+https://github.com/python/mypy.git@8256fbb0169876f921769f7c42253a3dc7d4b1cc#egg=mypy[mypyc] ; python_version >= '3.9'",
   "cchecksum>=0.0.3",
   "eth-hash>=0.3.1",
   "eth-typing>=5.0.0",
