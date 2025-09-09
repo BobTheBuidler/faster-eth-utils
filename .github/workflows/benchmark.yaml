@@ -1,4 +1,4 @@
-name: CodSpeed Benchmarks
+name: Pytest Benchmarks
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   benchmark:
-    name: Run Pytest Benchmarks
+    name: Run Benchmarks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
