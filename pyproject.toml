@@ -6,7 +6,7 @@ requires = [
   # For Python < 3.9, use the regular PyPI mypy release
   "mypy[mypyc]>=1.14.1,<1.17.1 ; python_version < '3.9'",
   # For Python >= 3.9, install mypy from a specific Git commit
-  "mypy[mypyc] @ git+https://github.com/python/mypy.git@a7151dd1fdbe3338e3070d8bd8668ac67ffa095e#egg=mypy[mypyc] ; python_version >= '3.9'",
+  "mypy[mypyc] @ git+https://github.com/python/mypy.git@d291fb1f450ddf9a0218a42a54efe42f0ed85bba#egg=mypy[mypyc] ; python_version >= '3.9'",
   "cchecksum>=0.0.3",
   "eth-hash>=0.3.1",
   "eth-typing>=5.0.0",
