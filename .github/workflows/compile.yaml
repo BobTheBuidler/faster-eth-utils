@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install Mypyc (3.12)
-        run: pip install git+https://github.com/python/mypy.git@acacc9eba333701efbc1beedfe87245d4743bf94#egg=mypy[mypyc] .
+        run: pip install mypy[mypyc]==1.18.1 .
       - name: Run Mypyc (3.12)
         env:
           MYPYC_STRICT_DUNDER_TYPING: 1
