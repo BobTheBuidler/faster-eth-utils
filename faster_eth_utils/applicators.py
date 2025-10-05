@@ -4,6 +4,7 @@ from typing import (
     Dict,
     Generator,
     List,
+    Sequence,
     Tuple,
     TypeVar,
     Union,
@@ -24,6 +25,7 @@ from .toolz import (
     curry,
 )
 
+T = TypeVar("T")
 TArg = TypeVar("TArg")
 TReturn = TypeVar("TReturn")
 
@@ -32,8 +34,8 @@ Formatters = Callable[[List[Any]], List[Any]]
 
 @return_arg_type(2)
 def apply_formatter_at_index(
-    formatter: Callable[..., Any], at_index: int, value: List[Any]
-) -> Generator[List[Any], None, None]:
+    formatter: Callable[..., TReturn], at_index: int, value: Sequence[T]
+) -> Generator[Union[T, TReturn], None, None]:
     try:
         item = value[at_index]
     except IndexError:
