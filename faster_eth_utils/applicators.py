@@ -8,6 +8,7 @@ from typing import (
     Tuple,
     TypeVar,
     Union,
+    cast,
 )
 import warnings
 
@@ -45,7 +46,7 @@ def apply_formatter_at_index(
         ) from None
 
     yield from value[:at_index]
-    yield formatter(item)
+    yield formatter(cast(TArg, item))
     yield from value[at_index + 1 :]
 
 
