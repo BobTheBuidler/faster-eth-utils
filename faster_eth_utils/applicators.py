@@ -25,17 +25,17 @@ from .toolz import (
     curry,
 )
 
-T = TypeVar("T")
 TArg = TypeVar("TArg")
 TReturn = TypeVar("TReturn")
+TOther = TypeVar("TOther")
 
 Formatters = Callable[[List[Any]], List[Any]]
 
 
 @return_arg_type(2)
 def apply_formatter_at_index(
-    formatter: Callable[..., TReturn], at_index: int, value: Sequence[T]
-) -> Generator[Union[T, TReturn], None, None]:
+    formatter: Callable[[TArg], TReturn], at_index: int, value: Sequence[Union[TArg, TOther]]
+) -> Generator[Union[TOther, TReturn], None, None]:
     try:
         item = value[at_index]
     except IndexError:
