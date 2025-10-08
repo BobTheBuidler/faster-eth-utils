@@ -1,8 +1,8 @@
-#### [faster_eth_utils.network](https://github.com/BobTheBuidler/faster-eth-utils/blob/master/faster_eth_utils/network.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/master/benchmarks/test_network_benchmarks.py)
+#### [faster_eth_utils.network](https://github.com/BobTheBuidler/faster-eth-utils/blob/runners/faster_eth_utils/network.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/runners/benchmarks/test_network_benchmarks.py)
 
 | Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
 |----------|---------------|-------------|----------|-------------|----------|--------|
-| `initialize_network_objects` | 0.12069852140000421 | 0.10075830106248418 | 16.52% | 19.79% | 1.20x | ✅ |
-| `name_from_chain_id` | 6.2224340761816855e-06 | 5.91160632989587e-06 | 5.00% | 5.26% | 1.05x | ✅ |
-| `network_from_chain_id` | 6.322269716384075e-06 | 5.978582878966184e-06 | 5.44% | 5.75% | 1.06x | ✅ |
-| `short_name_from_chain_id` | 6.2022506715693546e-06 | 5.834602093807359e-06 | 5.93% | 6.30% | 1.06x | ✅ |
+| `initialize_network_objects` | 0.06268999920000624 | 0.06242714149999529 | 0.42% | 0.42% | 1.00x | ✅ |
+| `name_from_chain_id` | 7.241966756254061e-06 | 6.4777321072431505e-06 | 10.55% | 11.80% | 1.12x | ✅ |
+| `network_from_chain_id` | 7.176774225714199e-06 | 6.447352826977539e-06 | 10.16% | 11.31% | 1.11x | ✅ |
+| `short_name_from_chain_id` | 7.262764791749096e-06 | 6.43857875374806e-06 | 11.35% | 12.80% | 1.13x | ✅ |
