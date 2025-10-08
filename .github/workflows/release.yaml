@@ -90,7 +90,7 @@ jobs:
           cache: pip
           cache-dependency-path: |
             setup.py
-            tox.ini
+            pyproject.toml
 
       - name: Install cibuildwheel
         run: |
@@ -132,7 +132,7 @@ jobs:
           cache: pip
           cache-dependency-path: |
             setup.py
-            tox.ini
+            pyproject.toml
 
       - name: Install dependencies
         run: |
