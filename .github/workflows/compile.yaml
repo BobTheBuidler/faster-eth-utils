@@ -30,7 +30,7 @@ jobs:
           cache: pip
           cache-dependency-path: |
             setup.py
-            tox.ini
+            pyproject.toml
         
       - name: Install Mypyc
         env:
