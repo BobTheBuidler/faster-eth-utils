@@ -41,7 +41,7 @@ else:
         ],
     )
 
-MYPY_REQUIREMENT = f"mypy==f{'1.14.1' if sys.version_info == (3, 8) else '1.18.2'}"
+MYPY_REQUIREMENT = f"mypy=={'1.14.1' if sys.version_info == (3, 8) else '1.18.2'}"
 
 extras_require = {
     "dev": [
