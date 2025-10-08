@@ -68,6 +68,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-tox-${{ hashFiles('pyproject.toml', 'setup.py', 'tox.ini') }}-${{ matrix.python-version }}-${{ matrix.jobtype }}
             ${{ runner.os }}-tox-${{ hashFiles('pyproject.toml', 'setup.py', 'tox.ini') }}-${{ matrix.python-version }}
+          save-on-cache-miss: ${{ env.TOX_RECREATE_FLAG == '-r' }}
 
       - name: Run tox
         run: python -m tox run ${{ env.TOX_RECREATE_FLAG }}
