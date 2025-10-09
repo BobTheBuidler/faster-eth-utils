@@ -111,7 +111,7 @@ def apply_formatter_if(
     value: TArg,
 ) -> Union[TArg, TReturn]:
     if condition(value):
-        return formatter(value)
+        return formatter(value)  # type: ignore [arg-type]
     else:
         return value
 
