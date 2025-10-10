@@ -50,7 +50,7 @@ def apply_formatter_at_index(
             f"Need: {at_index + 1}"
         ) from None
 
-    yield from cast(Sequence[TOther], [value[:at_index])
+    yield from cast(Sequence[TOther], value[:at_index])
     yield formatter(cast(TArg, item))
     yield from cast(Sequence[TOther], value[at_index + 1 :])
 
