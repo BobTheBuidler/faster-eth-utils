@@ -105,8 +105,15 @@ def apply_formatter_if(
     condition: Callable[[TArg], bool], formatter: Callable[[TArg], TReturn], value: TArg
 ) -> Union[TArg, TReturn]: ...
 
-def apply_formatter_if(condition, formatter, value):  # type: ignore [no-untyped-def]
-    return formatter(value) if condition(value) else value
+def apply_formatter_if(  # type: ignore [misc]
+    condition: Union[Callable[[TArg], TypeGuard[TOther]], Callable[[TArg], bool]],
+    formatter: Union[Callable[[TOther], TReturn], Callable[[TArg], TReturn]],
+    value: TArg,
+) -> Union[TArg, TReturn]:
+    if condition(value):
+        return formatter(value)  # type: ignore [arg-type]
+    else:
+        return value
 
 
 @to_dict
