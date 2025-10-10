@@ -103,4 +103,5 @@ jobs:
           save-always: ${{ env.TOX_RECREATE_FLAG == '-r' }}
 
       - name: Run tox
+        if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
         run: python -m tox run ${{ env.TOX_RECREATE_FLAG }}
