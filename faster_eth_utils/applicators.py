@@ -106,7 +106,7 @@ def apply_formatter_if(
 ) -> Union[TArg, TReturn]: ...
 
 def apply_formatter_if(
-    condition: Union[Callable[[TArg], TypeGuard[TOther]], Callable[[TArg], bool]],
+    condition: Union[Callable[[TArg], TypeGuard[TOther]], Callable[[Any], TypeGuard[TOther]], Callable[[TArg], bool]],
     formatter: Union[Callable[[TOther], TReturn], Callable[[TArg], TReturn]],
     value: TArg,
 ) -> Union[TArg, TReturn]:
