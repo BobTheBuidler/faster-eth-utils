@@ -377,7 +377,7 @@ ABIEvent, ABIError]]`
     if abi_type_string is None:
         raise ValueError(f"Unsupported ABI type: {abi_type}")
     
-    return [abi for abi in contract_abi if abi["type"] == abi_type_string]
+    return [abi for abi in contract_abi if abi["type"] == abi_type_string]  # type: ignore [return-value]
 
 
 def get_all_function_abis(contract_abi: ABI) -> Sequence[ABIFunction]:
