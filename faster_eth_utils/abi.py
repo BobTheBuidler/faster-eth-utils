@@ -40,6 +40,9 @@ from .crypto import (
 )
 
 
+ABIType = Literal["function", "constructor", "fallback", "receive", "event", "error"]
+
+
 def _align_abi_input(
     arg_abi: ABIComponent, normalized_arg: Any
 ) -> Union[Any, Tuple[Any, ...]]:
@@ -278,6 +281,16 @@ def filter_abi_by_name(abi_name: str, contract_abi: ABI) -> Sequence[ABIElement]
     ]
 
 
+__ABI_TYPE_LITERALS: Final  = {
+    Literal["function"]: "function",
+    Literal["constructor"]: "constructor",
+    Literal["fallback"]: "fallback",
+    Literal["receive"]: "receive",
+    Literal["event"]: "event",
+    Literal["error"]: "error",
+}
+
+
 @overload
 def filter_abi_by_type(
     abi_type: Literal["function"],
@@ -327,9 +340,7 @@ def filter_abi_by_type(
 
 
 def filter_abi_by_type(
-    abi_type: Literal[
-        "function", "constructor", "fallback", "receive", "event", "error"
-    ],
+    abi_type: ABIType,
     contract_abi: ABI,
 ) -> Union[
     List[ABIFunction], List[ABIConstructor], List[ABIFallback], List[ABIReceive], List[ABIEvent], List[ABIError]
@@ -363,21 +374,10 @@ ABIEvent, ABIError]]`
     """
     if abi_type in ("function", "constructor", "fallback", "receive", "event", "error"):
         return [abi for abi in contract_abi if abi["type"] == abi_type]  # type: ignore [return-value]
-        
-    literal_to_string = {
-        Literal["function"]: "function",
-        Literal["constructor"]: "constructor",
-        Literal["fallback"]: "fallback",
-        Literal["receive"]: "receive",
-        Literal["event"]: "event",
-        Literal["error"]: "error",
-    }
-
-    abi_type_string = literal_to_string.get(abi_type)  # type: ignore [call-overload]
+    abi_type_string: Optional[ABIType] = __ABI_TYPE_LITERALS.get(abi_type)  # type: ignore [call-overload]
     if abi_type_string is None:
         raise ValueError(f"Unsupported ABI type: {abi_type}")
-    
-    return [abi for abi in contract_abi if abi["type"] == abi_type_string]  # type: ignore [return-value]
+    return [abi for abi in contract_abi if abi["type"] == abi_type_string]  # type: ignore [return-value]    
 
 
 def get_all_function_abis(contract_abi: ABI) -> Sequence[ABIFunction]:
