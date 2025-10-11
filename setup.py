@@ -4,8 +4,6 @@ from setuptools import (
     find_packages,
     setup,
 )
-
-
 try:
     from mypyc.build import mypycify
 except ImportError:
