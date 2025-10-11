@@ -4,9 +4,17 @@ from setuptools import (
     find_packages,
     setup,
 )
+
+skip_mypyc = any(
+    cmd in sys.argv
+    for cmd in ("sdist", "egg_info", "--name", "--version", "--help", "--help-commands")
+)
 try:
     from mypyc.build import mypycify
 except ImportError:
+    skip_mypyc = True
+
+if skip_mypyc:
     ext_modules = []
 else:
     ext_modules = mypycify(
