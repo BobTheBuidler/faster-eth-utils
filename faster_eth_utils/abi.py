@@ -362,7 +362,7 @@ ABIEvent, ABIError]]`
 {'type': 'function', 'name': 'myFunction2', 'inputs': [], 'outputs': []}]
     """
     if abi_type in ("function", "constructor", "fallback", "receive", "event", "error"):
-        return [abi for abi in contract_abi if abi["type"] == abi_type]
+        return [abi for abi in contract_abi if abi["type"] == abi_type]  # type: ignore [return-value]
         
     literal_to_string = {
         Literal["function"]: "function",
@@ -373,7 +373,7 @@ ABIEvent, ABIError]]`
         Literal["error"]: "error",
     }
 
-    abi_type_string = literal_to_string.get(abi_type)
+    abi_type_string = literal_to_string.get(abi_type)  # type: ignore [call-overload]
     if abi_type_string is None:
         raise ValueError(f"Unsupported ABI type: {abi_type}")
     
