@@ -361,20 +361,23 @@ ABIEvent, ABIError]]`
         [{'type': 'function', 'name': 'myFunction', 'inputs': [], 'outputs': []}, \
 {'type': 'function', 'name': 'myFunction2', 'inputs': [], 'outputs': []}]
     """
-    if abi_type == Literal["function"] or abi_type == "function":
-        return [abi for abi in contract_abi if abi["type"] == "function"]
-    elif abi_type == Literal["constructor"] or abi_type == "constructor":
-        return [abi for abi in contract_abi if abi["type"] == "constructor"]
-    elif abi_type == Literal["fallback"] or abi_type == "fallback":
-        return [abi for abi in contract_abi if abi["type"] == "fallback"]
-    elif abi_type == Literal["receive"] or abi_type == "receive":
-        return [abi for abi in contract_abi if abi["type"] == "receive"]
-    elif abi_type == Literal["event"] or abi_type == "event":
-        return [abi for abi in contract_abi if abi["type"] == "event"]
-    elif abi_type == Literal["error"] or abi_type == "error":
-        return [abi for abi in contract_abi if abi["type"] == "error"]
-    else:
+    if abi_type in ("function", "constructor", "fallback", "receive", "event", "error"):
+        return [abi for abi in contract_abi if abi["type"] == abi_type]
+        
+    literal_to_string = {
+        Literal["function"]: "function",
+        Literal["constructor"]: "constructor",
+        Literal["fallback"]: "fallback",
+        Literal["receive"]: "receive",
+        Literal["event"]: "event",
+        Literal["error"]: "error",
+    }
+
+    abi_type_string = literal_to_string.get(abi_type)
+    if abi_type_string is None:
         raise ValueError(f"Unsupported ABI type: {abi_type}")
+    
+    return [abi for abi in contract_abi if abi["type"] == abi_type_string]
 
 
 def get_all_function_abis(contract_abi: ABI) -> Sequence[ABIFunction]:
