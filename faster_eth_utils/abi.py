@@ -7,6 +7,7 @@ import re
 from typing import (
     Any,
     Dict,
+    Final,
     Iterable,
     List,
     Literal,
