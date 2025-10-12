@@ -120,7 +120,7 @@ def apply_formatters_to_dict(
     formatters: Dict[Any, Any],
     value: Union[Dict[Any, Any], CamelModel],
     unaliased: bool = False,
-) -> Generator[Tuple[Any, Any], None, None]:
+) -> Dict[Any, Any]]:
     """
     Apply formatters to a dictionary of values. If the value is a pydantic model,
     it will be serialized to a dictionary first, taking into account the
