@@ -91,7 +91,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .mypy_cache
-          key: mypy-cache-${{ runner.os }}-${{ hashFiles('**/*.py', 'pyproject.toml') }}
+          key: mypy-cache-${{ runner.os }}-${{ matrix.architecture }}-${{ hashFiles('**/*.py', 'pyproject.toml') }}
 
       - name: Install tox
         if: ${{ env.IS_UBUNTU_32BIT != 'true' }}
