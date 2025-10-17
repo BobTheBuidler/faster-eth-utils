@@ -17,6 +17,10 @@ else:
 if skip_mypyc:
     ext_modules = []
 else:
+    mypycify_kwargs = {"strict_dunder_typing": True}
+    if sys.version_info >= (3, 9):
+        mypycify_kwargs["group_name"] = "faster_eth_utils"
+    
     ext_modules = mypycify(
         [
             "faster_eth_utils/abi.py",
@@ -47,8 +51,7 @@ else:
             "--disable-error-code=misc",
             "--disable-error-code=unused-ignore",
         ],
-        group_name="faster_eth_utils",
-        strict_dunder_typing=True,
+        **mypycify_kwargs,
     )
 
 MYPY_REQUIREMENT = f"mypy=={'1.14.1' if sys.version_info < (3, 9) else '1.18.2'}"
