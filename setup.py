@@ -11,11 +11,34 @@ except ImportError:
 else:
     skip_mypyc = any(
         cmd in sys.argv
-        for cmd in ("sdist", "egg_info", "--name", "--version", "--help", "--help-commands")
+        for cmd in (
+            # Main metadata/dep/build hooks
+            "egg_info",
+            "sdist",
+            "dist_info",
+            "bdist_egg",
+            "prepare_metadata_for_build_wheel",
+            "get_requires_for_build_wheel",
+            "get_requires_for_build_sdist",
+            "get_requires_for_build_editable",
+            "pip-egg-info",
+            # Misc setuptools/pip commands
+            "clean",
+            "check",
+            "pyproject-build-requires",
+            "pyproject-hooks",
+            "pyproject-install-requires",
+            # Query modes/help/information calls
+            "--name",
+            "--version",
+            "--help",
+            "--help-commands",
+        )
     )
 
 if skip_mypyc:
     ext_modules = []
+    print("Skipping mypyc build due to metadata command:", sys.argv)
 else:
     ext_modules = mypycify(
         [
