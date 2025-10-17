@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[607];
+extern PyObject *CPyStatics[605];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -390,7 +390,6 @@ extern CPyTagged CPyDef_encoding___big_endian_to_int(PyObject *cpy_r_value);
 extern PyObject *CPyPy_encoding___big_endian_to_int(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_encoding_____top_level__(void);
 extern PyTypeObject *CPyType_exceptions___ValidationError;
-extern PyObject *CPyDef_exceptions___ValidationError(void);
 extern char CPyDef_exceptions_____top_level__(void);
 extern PyTypeObject *CPyType_functional___combine_env;
 extern PyObject *CPyDef_functional___combine_env(void);
