@@ -6,6 +6,8 @@
 
 ##### This fork will be kept up-to-date with [eth-utils](https://github.com/ethereum/eth-utils). I will pull updates as they are released and push new [faster-eth-utils](https://github.com/BobTheBuidler/faster-eth-utils) releases to [PyPI](https://pypi.org/project/faster-eth-utils/).
 
+##### Starting with version 5.3.11, all faster-eth-utils Exception classes inherit from the matching Exception class in eth-utils, so porting to faster-eth-utils does not require any change to your existing exception handlers. All existing exception handling in your codebase will continue to work as it did when you implemented it.
+
 ##### You can find the compiled C code on faster-eth-utils [master](https://github.com/BobTheBuidler/eth-utils/tree/master) branch.
 
 ##### We benchmark `faster-eth-utils` against the original `eth-utils` for your convenience. [See results](https://github.com/BobTheBuidler/faster-eth-utils/tree/master/benchmarks/results).
