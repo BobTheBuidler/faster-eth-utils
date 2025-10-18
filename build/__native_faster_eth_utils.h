@@ -150,6 +150,8 @@ typedef struct {
     PyObject *___mypyc_generator_attribute__formatters;
     PyObject *___mypyc_generator_attribute__sequence;
     int32_t ___mypyc_next_label__;
+    CPyTagged ___mypyc_generator_attribute__num_formatters;
+    CPyTagged ___mypyc_generator_attribute__num_items;
     PyObject *___mypyc_temp__5;
     int64_t ___mypyc_temp__6;
     PyObject *___mypyc_temp__7;

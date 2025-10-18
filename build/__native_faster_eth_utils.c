@@ -6850,6 +6850,12 @@ applicators___apply_formatters_to_sequence_gen_traverse(faster_eth_utils___appli
 {
     Py_VISIT(self->___mypyc_generator_attribute__formatters);
     Py_VISIT(self->___mypyc_generator_attribute__sequence);
+    if (CPyTagged_CheckLong(self->___mypyc_generator_attribute__num_formatters)) {
+        Py_VISIT(CPyTagged_LongAsObject(self->___mypyc_generator_attribute__num_formatters));
+    }
+    if (CPyTagged_CheckLong(self->___mypyc_generator_attribute__num_items)) {
+        Py_VISIT(CPyTagged_LongAsObject(self->___mypyc_generator_attribute__num_items));
+    }
     Py_VISIT(self->___mypyc_temp__5);
     Py_VISIT(self->___mypyc_temp__7);
     Py_VISIT(self->___mypyc_temp__8);
@@ -6863,6 +6869,16 @@ applicators___apply_formatters_to_sequence_gen_clear(faster_eth_utils___applicat
 {
     Py_CLEAR(self->___mypyc_generator_attribute__formatters);
     Py_CLEAR(self->___mypyc_generator_attribute__sequence);
+    if (CPyTagged_CheckLong(self->___mypyc_generator_attribute__num_formatters)) {
+        CPyTagged __tmp = self->___mypyc_generator_attribute__num_formatters;
+        self->___mypyc_generator_attribute__num_formatters = CPY_INT_TAG;
+        Py_XDECREF(CPyTagged_LongAsObject(__tmp));
+    }
+    if (CPyTagged_CheckLong(self->___mypyc_generator_attribute__num_items)) {
+        CPyTagged __tmp = self->___mypyc_generator_attribute__num_items;
+        self->___mypyc_generator_attribute__num_items = CPY_INT_TAG;
+        Py_XDECREF(CPyTagged_LongAsObject(__tmp));
+    }
     Py_CLEAR(self->___mypyc_temp__5);
     Py_CLEAR(self->___mypyc_temp__7);
     Py_CLEAR(self->___mypyc_temp__8);
@@ -6880,6 +6896,20 @@ applicators___apply_formatters_to_sequence_gen_dealloc(faster_eth_utils___applic
         Py_CLEAR(self->___mypyc_generator_attribute__formatters);
         Py_CLEAR(self->___mypyc_generator_attribute__sequence);
         self->___mypyc_next_label__ = -113;
+        if (CPyTagged_CheckLong(self->___mypyc_generator_attribute__num_formatters)) {
+            CPyTagged __tmp = self->___mypyc_generator_attribute__num_formatters;
+            self->___mypyc_generator_attribute__num_formatters = CPY_INT_TAG;
+            Py_XDECREF(CPyTagged_LongAsObject(__tmp));
+        } else {
+            self->___mypyc_generator_attribute__num_formatters = CPY_INT_TAG;
+        }
+        if (CPyTagged_CheckLong(self->___mypyc_generator_attribute__num_items)) {
+            CPyTagged __tmp = self->___mypyc_generator_attribute__num_items;
+            self->___mypyc_generator_attribute__num_items = CPY_INT_TAG;
+            Py_XDECREF(CPyTagged_LongAsObject(__tmp));
+        } else {
+            self->___mypyc_generator_attribute__num_items = CPY_INT_TAG;
+        }
         Py_CLEAR(self->___mypyc_temp__5);
         self->___mypyc_temp__6 = -113;
         Py_CLEAR(self->___mypyc_temp__7);
@@ -6963,6 +6993,8 @@ PyObject *CPyDef_applicators_____mypyc__apply_formatters_to_sequence_gen_setup(P
         return NULL;
     self->vtable = applicators___apply_formatters_to_sequence_gen_vtable;
     self->___mypyc_next_label__ = -113;
+    self->___mypyc_generator_attribute__num_formatters = CPY_INT_TAG;
+    self->___mypyc_generator_attribute__num_items = CPY_INT_TAG;
     self->___mypyc_temp__6 = -113;
     return (PyObject *)self;
 }
@@ -9178,94 +9210,128 @@ PyObject *CPyDef_applicators___apply_formatters_to_sequence_gen_____mypyc_genera
     CPyPtr cpy_r_r4;
     int64_t cpy_r_r5;
     CPyTagged cpy_r_r6;
-    PyObject *cpy_r_r7;
-    CPyTagged cpy_r_r8;
-    char cpy_r_r9;
-    PyObject *cpy_r_r10;
-    char cpy_r_r11;
-    char cpy_r_r12;
-    PyObject *cpy_r_r13;
-    PyObject *cpy_r_r14;
+    char cpy_r_r7;
+    PyObject *cpy_r_r8;
+    CPyTagged cpy_r_r9;
+    char cpy_r_r10;
+    CPyTagged cpy_r_r11;
+    CPyTagged cpy_r_r12;
+    int64_t cpy_r_r13;
+    char cpy_r_r14;
     char cpy_r_r15;
     char cpy_r_r16;
-    PyObject *cpy_r_r17;
-    CPyPtr cpy_r_r18;
-    int64_t cpy_r_r19;
-    int64_t cpy_r_r20;
-    char cpy_r_r21;
+    char cpy_r_r17;
+    PyObject *cpy_r_r18;
+    char cpy_r_r19;
+    char cpy_r_r20;
+    PyObject *cpy_r_r21;
     PyObject *cpy_r_r22;
-    PyObject *cpy_r_r23;
-    PyObject *cpy_r_r24;
-    int64_t cpy_r_r25;
+    char cpy_r_r23;
+    char cpy_r_r24;
+    PyObject *cpy_r_r25;
     CPyPtr cpy_r_r26;
-    CPyPtr cpy_r_r27;
+    int64_t cpy_r_r27;
     int64_t cpy_r_r28;
-    CPyPtr cpy_r_r29;
+    char cpy_r_r29;
     PyObject *cpy_r_r30;
-    char cpy_r_r31;
-    char cpy_r_r32;
-    PyObject *cpy_r_r33;
-    PyObject *cpy_r_r34;
-    PyObject **cpy_r_r36;
-    PyObject *cpy_r_r37;
-    char cpy_r_r38;
-    PyObject *cpy_r_r39;
+    PyObject *cpy_r_r31;
+    PyObject *cpy_r_r32;
+    int64_t cpy_r_r33;
+    CPyPtr cpy_r_r34;
+    CPyPtr cpy_r_r35;
+    int64_t cpy_r_r36;
+    CPyPtr cpy_r_r37;
+    PyObject *cpy_r_r38;
+    char cpy_r_r39;
     char cpy_r_r40;
-    int64_t cpy_r_r41;
-    int64_t cpy_r_r42;
-    char cpy_r_r43;
-    char cpy_r_r44;
+    PyObject *cpy_r_r41;
+    PyObject *cpy_r_r42;
+    PyObject **cpy_r_r44;
     PyObject *cpy_r_r45;
-    CPyPtr cpy_r_r46;
-    int64_t cpy_r_r47;
-    CPyTagged cpy_r_r48;
-    PyObject *cpy_r_r49;
-    CPyTagged cpy_r_r50;
-    int64_t cpy_r_r51;
+    char cpy_r_r46;
+    PyObject *cpy_r_r47;
+    char cpy_r_r48;
+    int64_t cpy_r_r49;
+    int64_t cpy_r_r50;
+    char cpy_r_r51;
     char cpy_r_r52;
-    int64_t cpy_r_r53;
-    char cpy_r_r54;
-    char cpy_r_r55;
+    CPyTagged cpy_r_r53;
+    CPyTagged cpy_r_r54;
+    int64_t cpy_r_r55;
     char cpy_r_r56;
-    char cpy_r_r57;
-    PyObject *cpy_r_r58;
-    PyObject *cpy_r_r59;
-    CPyPtr cpy_r_r60;
-    int64_t cpy_r_r61;
-    CPyTagged cpy_r_r62;
+    int64_t cpy_r_r57;
+    char cpy_r_r58;
+    char cpy_r_r59;
+    char cpy_r_r60;
+    char cpy_r_r61;
+    PyObject *cpy_r_r62;
     PyObject *cpy_r_r63;
     PyObject *cpy_r_r64;
-    PyObject *cpy_r_r65;
+    CPyTagged cpy_r_r65;
     PyObject *cpy_r_r66;
     PyObject *cpy_r_r67;
     PyObject *cpy_r_r68;
-    PyObject *cpy_r_r69;
-    PyObject *cpy_r_r70;
-    PyObject **cpy_r_r72;
+    PyObject **cpy_r_r70;
+    PyObject *cpy_r_r71;
+    PyObject *cpy_r_r72;
     PyObject *cpy_r_r73;
     PyObject *cpy_r_r74;
     PyObject *cpy_r_r75;
-    CPyPtr cpy_r_r76;
-    int64_t cpy_r_r77;
-    CPyTagged cpy_r_r78;
-    PyObject *cpy_r_r79;
+    PyObject *cpy_r_r76;
+    PyObject *cpy_r_r77;
+    PyObject **cpy_r_r79;
     PyObject *cpy_r_r80;
     PyObject *cpy_r_r81;
     PyObject *cpy_r_r82;
-    PyObject *cpy_r_r83;
-    PyObject *cpy_r_r84;
-    PyObject *cpy_r_r85;
-    PyObject *cpy_r_r86;
-    PyObject **cpy_r_r88;
+    CPyPtr cpy_r_r83;
+    CPyPtr cpy_r_r84;
+    CPyPtr cpy_r_r85;
+    CPyPtr cpy_r_r86;
+    CPyPtr cpy_r_r87;
+    PyObject *cpy_r_r88;
     PyObject *cpy_r_r89;
     PyObject *cpy_r_r90;
-    char cpy_r_r91;
-    char cpy_r_r92;
-    char cpy_r_r93;
-    char cpy_r_r94;
+    PyObject *cpy_r_r91;
+    PyObject **cpy_r_r93;
+    PyObject *cpy_r_r94;
     PyObject *cpy_r_r95;
+    PyObject *cpy_r_r96;
+    PyObject *cpy_r_r97;
+    CPyTagged cpy_r_r98;
+    PyObject *cpy_r_r99;
+    PyObject *cpy_r_r100;
+    PyObject *cpy_r_r101;
+    PyObject **cpy_r_r103;
+    PyObject *cpy_r_r104;
+    PyObject *cpy_r_r105;
+    PyObject *cpy_r_r106;
+    PyObject *cpy_r_r107;
+    PyObject *cpy_r_r108;
+    PyObject *cpy_r_r109;
+    PyObject *cpy_r_r110;
+    PyObject **cpy_r_r112;
+    PyObject *cpy_r_r113;
+    PyObject *cpy_r_r114;
+    PyObject *cpy_r_r115;
+    CPyPtr cpy_r_r116;
+    CPyPtr cpy_r_r117;
+    CPyPtr cpy_r_r118;
+    CPyPtr cpy_r_r119;
+    CPyPtr cpy_r_r120;
+    PyObject *cpy_r_r121;
+    PyObject *cpy_r_r122;
+    PyObject *cpy_r_r123;
+    PyObject *cpy_r_r124;
+    PyObject **cpy_r_r126;
+    PyObject *cpy_r_r127;
+    PyObject *cpy_r_r128;
+    char cpy_r_r129;
+    char cpy_r_r130;
+    char cpy_r_r131;
+    char cpy_r_r132;
+    PyObject *cpy_r_r133;
     cpy_r_r0 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_next_label__;
-    goto CPyL65;
+    goto CPyL77;
 CPyL1: ;
     cpy_r_r1 = (PyObject *)&_Py_NoneStruct;
     cpy_r_r2 = cpy_r_type != cpy_r_r1;
@@ -9273,14 +9339,14 @@ CPyL1: ;
     CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
     if (unlikely(!0)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL69;
+        goto CPyL81;
     }
     CPy_Unreachable();
 CPyL4: ;
     cpy_r_r3 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__formatters;
     if (unlikely(cpy_r_r3 == NULL)) {
         CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "formatters", 83, CPyStatic_applicators___globals);
-        goto CPyL69;
+        goto CPyL81;
     }
     CPy_INCREF_NO_IMM(cpy_r_r3);
 CPyL5: ;
@@ -9288,415 +9354,548 @@ CPyL5: ;
     cpy_r_r5 = *(int64_t *)cpy_r_r4;
     CPy_DECREF_NO_IMM(cpy_r_r3);
     cpy_r_r6 = cpy_r_r5 << 1;
-    cpy_r_r7 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__sequence;
-    if (unlikely(cpy_r_r7 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "sequence", 83, CPyStatic_applicators___globals);
-        goto CPyL69;
+    if (((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__num_formatters != CPY_INT_TAG) {
+        CPyTagged_DECREF(((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__num_formatters);
     }
-    CPy_INCREF(cpy_r_r7);
-CPyL6: ;
-    cpy_r_r8 = CPyObject_Size(cpy_r_r7);
-    CPy_DECREF(cpy_r_r7);
-    if (unlikely(cpy_r_r8 == CPY_INT_TAG)) {
+    ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__num_formatters = cpy_r_r6;
+    cpy_r_r7 = 1;
+    if (unlikely(!cpy_r_r7)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL69;
+        goto CPyL81;
     }
-    cpy_r_r9 = cpy_r_r6 == cpy_r_r8;
-    CPyTagged_DECREF(cpy_r_r8);
-    if (!cpy_r_r9) goto CPyL34;
-    cpy_r_r10 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__formatters;
-    if (unlikely(cpy_r_r10 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "formatters", 84, CPyStatic_applicators___globals);
-        goto CPyL69;
+    cpy_r_r8 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__sequence;
+    if (unlikely(cpy_r_r8 == NULL)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "sequence", 84, CPyStatic_applicators___globals);
+        goto CPyL81;
     }
-    CPy_INCREF_NO_IMM(cpy_r_r10);
-CPyL9: ;
+    CPy_INCREF(cpy_r_r8);
+CPyL7: ;
+    cpy_r_r9 = CPyObject_Size(cpy_r_r8);
+    CPy_DECREF(cpy_r_r8);
+    if (unlikely(cpy_r_r9 == CPY_INT_TAG)) {
+        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
+        goto CPyL81;
+    }
+    if (((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__num_items != CPY_INT_TAG) {
+        CPyTagged_DECREF(((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__num_items);
+    }
+    ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__num_items = cpy_r_r9;
+    cpy_r_r10 = 1;
+    if (unlikely(!cpy_r_r10)) {
+        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
+        goto CPyL81;
+    }
+    cpy_r_r11 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__num_formatters;
+    if (unlikely(cpy_r_r11 == CPY_INT_TAG)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "num_formatters", 85, CPyStatic_applicators___globals);
+        goto CPyL81;
+    }
+    CPyTagged_INCREF(cpy_r_r11);
+CPyL10: ;
+    cpy_r_r12 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__num_items;
+    if (unlikely(cpy_r_r12 == CPY_INT_TAG)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "num_items", 85, CPyStatic_applicators___globals);
+        goto CPyL82;
+    }
+    CPyTagged_INCREF(cpy_r_r12);
+CPyL11: ;
+    cpy_r_r13 = cpy_r_r11 & 1;
+    cpy_r_r14 = cpy_r_r13 != 0;
+    if (!cpy_r_r14) goto CPyL13;
+    cpy_r_r15 = CPyTagged_IsEq_(cpy_r_r11, cpy_r_r12);
+    cpy_r_r16 = cpy_r_r15;
+    goto CPyL14;
+CPyL13: ;
+    cpy_r_r17 = cpy_r_r11 == cpy_r_r12;
+    cpy_r_r16 = cpy_r_r17;
+CPyL14: ;
+    CPyTagged_DECREF(cpy_r_r11);
+    CPyTagged_DECREF(cpy_r_r12);
+    if (!cpy_r_r16) goto CPyL41;
+    cpy_r_r18 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__formatters;
+    if (unlikely(cpy_r_r18 == NULL)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "formatters", 86, CPyStatic_applicators___globals);
+        goto CPyL81;
+    }
+    CPy_INCREF_NO_IMM(cpy_r_r18);
+CPyL16: ;
     if (((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__5 != NULL) {
         CPy_DECREF_NO_IMM(((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__5);
     }
-    ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__5 = cpy_r_r10;
-    cpy_r_r11 = 1;
-    if (unlikely(!cpy_r_r11)) {
+    ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__5 = cpy_r_r18;
+    cpy_r_r19 = 1;
+    if (unlikely(!cpy_r_r19)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", -1, CPyStatic_applicators___globals);
-        goto CPyL69;
+        goto CPyL81;
     }
     ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__6 = 0;
-    cpy_r_r12 = 1;
-    if (unlikely(!cpy_r_r12)) {
+    cpy_r_r20 = 1;
+    if (unlikely(!cpy_r_r20)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", -1, CPyStatic_applicators___globals);
-        goto CPyL69;
+        goto CPyL81;
     }
-    cpy_r_r13 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__sequence;
-    if (unlikely(cpy_r_r13 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "sequence", 84, CPyStatic_applicators___globals);
-        goto CPyL69;
+    cpy_r_r21 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__sequence;
+    if (unlikely(cpy_r_r21 == NULL)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "sequence", 86, CPyStatic_applicators___globals);
+        goto CPyL81;
     }
-    CPy_INCREF(cpy_r_r13);
-CPyL12: ;
-    cpy_r_r14 = PyObject_GetIter(cpy_r_r13);
-    if (unlikely(cpy_r_r14 == NULL)) {
+    CPy_INCREF(cpy_r_r21);
+CPyL19: ;
+    cpy_r_r22 = PyObject_GetIter(cpy_r_r21);
+    if (unlikely(cpy_r_r22 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL70;
+        goto CPyL83;
     }
     if (((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__7 != NULL) {
         CPy_DECREF(((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__7);
     }
-    ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__7 = cpy_r_r13;
-    cpy_r_r15 = 1;
-    if (unlikely(!cpy_r_r15)) {
+    ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__7 = cpy_r_r21;
+    cpy_r_r23 = 1;
+    if (unlikely(!cpy_r_r23)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", -1, CPyStatic_applicators___globals);
-        goto CPyL71;
+        goto CPyL84;
     }
     if (((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__8 != NULL) {
         CPy_DECREF(((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__8);
     }
-    ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__8 = cpy_r_r14;
-    cpy_r_r16 = 1;
-    if (unlikely(!cpy_r_r16)) {
+    ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__8 = cpy_r_r22;
+    cpy_r_r24 = 1;
+    if (unlikely(!cpy_r_r24)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", -1, CPyStatic_applicators___globals);
-        goto CPyL69;
-    }
-CPyL15: ;
-    cpy_r_r17 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__5;
-    if (unlikely(cpy_r_r17 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "__mypyc_temp__5", 84, CPyStatic_applicators___globals);
-        goto CPyL69;
-    }
-    CPy_INCREF_NO_IMM(cpy_r_r17);
-CPyL16: ;
-    cpy_r_r18 = (CPyPtr)&((PyVarObject *)cpy_r_r17)->ob_size;
-    cpy_r_r19 = *(int64_t *)cpy_r_r18;
-    CPy_DECREF_NO_IMM(cpy_r_r17);
-    cpy_r_r20 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__6;
-    if (unlikely(cpy_r_r20 == -113)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "__mypyc_temp__6", 84, CPyStatic_applicators___globals);
-        goto CPyL69;
-    }
-CPyL17: ;
-    cpy_r_r21 = cpy_r_r20 < cpy_r_r19;
-    if (!cpy_r_r21) goto CPyL33;
-    cpy_r_r22 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__8;
-    if (unlikely(cpy_r_r22 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "__mypyc_temp__8", 84, CPyStatic_applicators___globals);
-        goto CPyL69;
-    }
-    CPy_INCREF(cpy_r_r22);
-CPyL19: ;
-    cpy_r_r23 = PyIter_Next(cpy_r_r22);
-    CPy_DECREF(cpy_r_r22);
-    if (cpy_r_r23 == NULL) goto CPyL33;
-    cpy_r_r24 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__5;
-    if (unlikely(cpy_r_r24 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "__mypyc_temp__5", 84, CPyStatic_applicators___globals);
-        goto CPyL72;
-    }
-    CPy_INCREF_NO_IMM(cpy_r_r24);
-CPyL21: ;
-    cpy_r_r25 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__6;
-    if (unlikely(cpy_r_r25 == -113)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "__mypyc_temp__6", 84, CPyStatic_applicators___globals);
-        goto CPyL73;
+        goto CPyL81;
     }
 CPyL22: ;
-    cpy_r_r26 = (CPyPtr)&((PyListObject *)cpy_r_r24)->ob_item;
-    cpy_r_r27 = *(CPyPtr *)cpy_r_r26;
-    cpy_r_r28 = cpy_r_r25 * 8;
-    cpy_r_r29 = cpy_r_r27 + cpy_r_r28;
-    cpy_r_r30 = *(PyObject * *)cpy_r_r29;
+    cpy_r_r25 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__5;
+    if (unlikely(cpy_r_r25 == NULL)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "__mypyc_temp__5", 86, CPyStatic_applicators___globals);
+        goto CPyL81;
+    }
+    CPy_INCREF_NO_IMM(cpy_r_r25);
+CPyL23: ;
+    cpy_r_r26 = (CPyPtr)&((PyVarObject *)cpy_r_r25)->ob_size;
+    cpy_r_r27 = *(int64_t *)cpy_r_r26;
+    CPy_DECREF_NO_IMM(cpy_r_r25);
+    cpy_r_r28 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__6;
+    if (unlikely(cpy_r_r28 == -113)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "__mypyc_temp__6", 86, CPyStatic_applicators___globals);
+        goto CPyL81;
+    }
+CPyL24: ;
+    cpy_r_r29 = cpy_r_r28 < cpy_r_r27;
+    if (!cpy_r_r29) goto CPyL40;
+    cpy_r_r30 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__8;
+    if (unlikely(cpy_r_r30 == NULL)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "__mypyc_temp__8", 86, CPyStatic_applicators___globals);
+        goto CPyL81;
+    }
     CPy_INCREF(cpy_r_r30);
-    CPy_DECREF_NO_IMM(cpy_r_r24);
+CPyL26: ;
+    cpy_r_r31 = PyIter_Next(cpy_r_r30);
+    CPy_DECREF(cpy_r_r30);
+    if (cpy_r_r31 == NULL) goto CPyL40;
+    cpy_r_r32 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__5;
+    if (unlikely(cpy_r_r32 == NULL)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "__mypyc_temp__5", 86, CPyStatic_applicators___globals);
+        goto CPyL85;
+    }
+    CPy_INCREF_NO_IMM(cpy_r_r32);
+CPyL28: ;
+    cpy_r_r33 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__6;
+    if (unlikely(cpy_r_r33 == -113)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "__mypyc_temp__6", 86, CPyStatic_applicators___globals);
+        goto CPyL86;
+    }
+CPyL29: ;
+    cpy_r_r34 = (CPyPtr)&((PyListObject *)cpy_r_r32)->ob_item;
+    cpy_r_r35 = *(CPyPtr *)cpy_r_r34;
+    cpy_r_r36 = cpy_r_r33 * 8;
+    cpy_r_r37 = cpy_r_r35 + cpy_r_r36;
+    cpy_r_r38 = *(PyObject * *)cpy_r_r37;
+    CPy_INCREF(cpy_r_r38);
+    CPy_DECREF_NO_IMM(cpy_r_r32);
     if (((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__formatter != NULL) {
         CPy_DECREF(((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__formatter);
     }
-    ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__formatter = cpy_r_r30;
-    cpy_r_r31 = 1;
-    if (unlikely(!cpy_r_r31)) {
+    ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__formatter = cpy_r_r38;
+    cpy_r_r39 = 1;
+    if (unlikely(!cpy_r_r39)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL72;
+        goto CPyL85;
     }
     if (((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__item != NULL) {
         CPy_DECREF(((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__item);
     }
-    ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__item = cpy_r_r23;
-    cpy_r_r32 = 1;
-    if (unlikely(!cpy_r_r32)) {
+    ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__item = cpy_r_r31;
+    cpy_r_r40 = 1;
+    if (unlikely(!cpy_r_r40)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL69;
+        goto CPyL81;
     }
-    cpy_r_r33 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__item;
-    if (unlikely(cpy_r_r33 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "item", 85, CPyStatic_applicators___globals);
-        goto CPyL69;
+    cpy_r_r41 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__item;
+    if (unlikely(cpy_r_r41 == NULL)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "item", 87, CPyStatic_applicators___globals);
+        goto CPyL81;
     }
-    CPy_INCREF(cpy_r_r33);
-CPyL25: ;
-    cpy_r_r34 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__formatter;
-    if (unlikely(cpy_r_r34 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "formatter", 85, CPyStatic_applicators___globals);
-        goto CPyL74;
+    CPy_INCREF(cpy_r_r41);
+CPyL32: ;
+    cpy_r_r42 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__formatter;
+    if (unlikely(cpy_r_r42 == NULL)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "formatter", 87, CPyStatic_applicators___globals);
+        goto CPyL87;
     }
-    CPy_INCREF(cpy_r_r34);
-CPyL26: ;
-    PyObject *cpy_r_r35[1] = {cpy_r_r33};
-    cpy_r_r36 = (PyObject **)&cpy_r_r35;
-    cpy_r_r37 = PyObject_Vectorcall(cpy_r_r34, cpy_r_r36, 1, 0);
-    CPy_DECREF(cpy_r_r34);
-    if (unlikely(cpy_r_r37 == NULL)) {
+    CPy_INCREF(cpy_r_r42);
+CPyL33: ;
+    PyObject *cpy_r_r43[1] = {cpy_r_r41};
+    cpy_r_r44 = (PyObject **)&cpy_r_r43;
+    cpy_r_r45 = PyObject_Vectorcall(cpy_r_r42, cpy_r_r44, 1, 0);
+    CPy_DECREF(cpy_r_r42);
+    if (unlikely(cpy_r_r45 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL74;
+        goto CPyL87;
     }
-    CPy_DECREF(cpy_r_r33);
+    CPy_DECREF(cpy_r_r41);
     ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_next_label__ = 1;
-    return cpy_r_r37;
-CPyL28: ;
-    cpy_r_r39 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r40 = cpy_r_type != cpy_r_r39;
-    if (!cpy_r_r40) goto CPyL31;
+    return cpy_r_r45;
+CPyL35: ;
+    cpy_r_r47 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r48 = cpy_r_type != cpy_r_r47;
+    if (!cpy_r_r48) goto CPyL38;
     CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
     if (unlikely(!0)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL69;
+        goto CPyL81;
     }
     CPy_Unreachable();
-CPyL31: ;
-    cpy_r_r41 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__6;
-    if (unlikely(cpy_r_r41 == -113)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "__mypyc_temp__6", 84, CPyStatic_applicators___globals);
-        goto CPyL69;
+CPyL38: ;
+    cpy_r_r49 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__6;
+    if (unlikely(cpy_r_r49 == -113)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "__mypyc_temp__6", 86, CPyStatic_applicators___globals);
+        goto CPyL81;
     }
-CPyL32: ;
-    cpy_r_r42 = cpy_r_r41 + 1;
-    ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__6 = cpy_r_r42;
-    cpy_r_r43 = 1;
-    if (unlikely(!cpy_r_r43)) {
-        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL69;
-    } else
-        goto CPyL15;
-CPyL33: ;
-    cpy_r_r44 = CPy_NoErrOccurred();
-    if (unlikely(!cpy_r_r44)) {
-        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL69;
-    } else
-        goto CPyL60;
-CPyL34: ;
-    cpy_r_r45 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__formatters;
-    if (unlikely(cpy_r_r45 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "formatters", 86, CPyStatic_applicators___globals);
-        goto CPyL69;
-    }
-    CPy_INCREF_NO_IMM(cpy_r_r45);
-CPyL35: ;
-    cpy_r_r46 = (CPyPtr)&((PyVarObject *)cpy_r_r45)->ob_size;
-    cpy_r_r47 = *(int64_t *)cpy_r_r46;
-    CPy_DECREF_NO_IMM(cpy_r_r45);
-    cpy_r_r48 = cpy_r_r47 << 1;
-    cpy_r_r49 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__sequence;
-    if (unlikely(cpy_r_r49 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "sequence", 86, CPyStatic_applicators___globals);
-        goto CPyL69;
-    }
-    CPy_INCREF(cpy_r_r49);
-CPyL36: ;
-    cpy_r_r50 = CPyObject_Size(cpy_r_r49);
-    CPy_DECREF(cpy_r_r49);
-    if (unlikely(cpy_r_r50 == CPY_INT_TAG)) {
-        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL69;
-    }
-    cpy_r_r51 = cpy_r_r48 & 1;
-    cpy_r_r52 = cpy_r_r51 != 0;
-    if (cpy_r_r52) goto CPyL39;
-    cpy_r_r53 = cpy_r_r50 & 1;
-    cpy_r_r54 = cpy_r_r53 != 0;
-    if (!cpy_r_r54) goto CPyL40;
 CPyL39: ;
-    cpy_r_r55 = CPyTagged_IsLt_(cpy_r_r50, cpy_r_r48);
-    cpy_r_r56 = cpy_r_r55;
-    goto CPyL41;
+    cpy_r_r50 = cpy_r_r49 + 1;
+    ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__6 = cpy_r_r50;
+    cpy_r_r51 = 1;
+    if (unlikely(!cpy_r_r51)) {
+        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
+        goto CPyL81;
+    } else
+        goto CPyL22;
 CPyL40: ;
-    cpy_r_r57 = (Py_ssize_t)cpy_r_r48 > (Py_ssize_t)cpy_r_r50;
-    cpy_r_r56 = cpy_r_r57;
+    cpy_r_r52 = CPy_NoErrOccurred();
+    if (unlikely(!cpy_r_r52)) {
+        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
+        goto CPyL81;
+    } else
+        goto CPyL72;
 CPyL41: ;
-    CPyTagged_DECREF(cpy_r_r50);
-    if (!cpy_r_r56) goto CPyL51;
-    cpy_r_r58 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Too many formatters for sequence: ' */
-    cpy_r_r59 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__formatters;
-    if (unlikely(cpy_r_r59 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "formatters", 88, CPyStatic_applicators___globals);
-        goto CPyL69;
+    cpy_r_r53 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__num_formatters;
+    if (unlikely(cpy_r_r53 == CPY_INT_TAG)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "num_formatters", 88, CPyStatic_applicators___globals);
+        goto CPyL81;
     }
-    CPy_INCREF_NO_IMM(cpy_r_r59);
+    CPyTagged_INCREF(cpy_r_r53);
+CPyL42: ;
+    cpy_r_r54 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__num_items;
+    if (unlikely(cpy_r_r54 == CPY_INT_TAG)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "num_items", 88, CPyStatic_applicators___globals);
+        goto CPyL88;
+    }
+    CPyTagged_INCREF(cpy_r_r54);
 CPyL43: ;
-    cpy_r_r60 = (CPyPtr)&((PyVarObject *)cpy_r_r59)->ob_size;
-    cpy_r_r61 = *(int64_t *)cpy_r_r60;
-    CPy_DECREF_NO_IMM(cpy_r_r59);
-    cpy_r_r62 = cpy_r_r61 << 1;
-    cpy_r_r63 = CPyTagged_Str(cpy_r_r62);
-    if (unlikely(cpy_r_r63 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL69;
-    }
-    cpy_r_r64 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ' formatters for ' */
-    cpy_r_r65 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__sequence;
-    if (unlikely(cpy_r_r65 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "sequence", 89, CPyStatic_applicators___globals);
-        goto CPyL75;
-    }
-    CPy_INCREF(cpy_r_r65);
+    cpy_r_r55 = cpy_r_r53 & 1;
+    cpy_r_r56 = cpy_r_r55 != 0;
+    if (cpy_r_r56) goto CPyL45;
+    cpy_r_r57 = cpy_r_r54 & 1;
+    cpy_r_r58 = cpy_r_r57 != 0;
+    if (!cpy_r_r58) goto CPyL46;
 CPyL45: ;
-    cpy_r_r66 = PyObject_Repr(cpy_r_r65);
-    CPy_DECREF(cpy_r_r65);
-    if (unlikely(cpy_r_r66 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL75;
+    cpy_r_r59 = CPyTagged_IsLt_(cpy_r_r54, cpy_r_r53);
+    cpy_r_r60 = cpy_r_r59;
+    goto CPyL47;
+CPyL46: ;
+    cpy_r_r61 = (Py_ssize_t)cpy_r_r53 > (Py_ssize_t)cpy_r_r54;
+    cpy_r_r60 = cpy_r_r61;
+CPyL47: ;
+    CPyTagged_DECREF(cpy_r_r53);
+    CPyTagged_DECREF(cpy_r_r54);
+    if (!cpy_r_r60) goto CPyL60;
+    cpy_r_r62 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '' */
+    cpy_r_r63 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Too many formatters for sequence: ' */
+    cpy_r_r64 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '{:{}}' */
+    cpy_r_r65 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__num_formatters;
+    if (unlikely(cpy_r_r65 == CPY_INT_TAG)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "num_formatters", 90, CPyStatic_applicators___globals);
+        goto CPyL81;
     }
-    cpy_r_r67 = CPyStr_Build(4, cpy_r_r58, cpy_r_r63, cpy_r_r64, cpy_r_r66);
-    CPy_DECREF(cpy_r_r63);
-    CPy_DECREF(cpy_r_r66);
-    if (unlikely(cpy_r_r67 == NULL)) {
+    CPyTagged_INCREF(cpy_r_r65);
+CPyL49: ;
+    cpy_r_r66 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '' */
+    cpy_r_r67 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'format' */
+    cpy_r_r68 = CPyTagged_StealAsObject(cpy_r_r65);
+    PyObject *cpy_r_r69[3] = {cpy_r_r64, cpy_r_r68, cpy_r_r66};
+    cpy_r_r70 = (PyObject **)&cpy_r_r69;
+    cpy_r_r71 = PyObject_VectorcallMethod(cpy_r_r67, cpy_r_r70, 9223372036854775811ULL, 0);
+    if (unlikely(cpy_r_r71 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL69;
+        goto CPyL89;
     }
-    cpy_r_r68 = CPyModule_builtins;
-    cpy_r_r69 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'IndexError' */
-    cpy_r_r70 = CPyObject_GetAttr(cpy_r_r68, cpy_r_r69);
-    if (unlikely(cpy_r_r70 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL76;
+    CPy_DECREF(cpy_r_r68);
+    if (likely(PyUnicode_Check(cpy_r_r71)))
+        cpy_r_r72 = cpy_r_r71;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", 90, CPyStatic_applicators___globals, "str", cpy_r_r71);
+        goto CPyL81;
     }
-    PyObject *cpy_r_r71[1] = {cpy_r_r67};
-    cpy_r_r72 = (PyObject **)&cpy_r_r71;
-    cpy_r_r73 = PyObject_Vectorcall(cpy_r_r70, cpy_r_r72, 1, 0);
-    CPy_DECREF(cpy_r_r70);
-    if (unlikely(cpy_r_r73 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL76;
-    }
-    CPy_DECREF(cpy_r_r67);
-    CPy_Raise(cpy_r_r73);
-    CPy_DECREF(cpy_r_r73);
-    if (unlikely(!0)) {
-        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL69;
-    }
-    CPy_Unreachable();
-CPyL51: ;
-    cpy_r_r74 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Too few formatters for sequence: ' */
-    cpy_r_r75 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__formatters;
+    cpy_r_r73 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ' formatters for ' */
+    cpy_r_r74 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '{!r:{}}' */
+    cpy_r_r75 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__sequence;
     if (unlikely(cpy_r_r75 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "formatters", 93, CPyStatic_applicators___globals);
-        goto CPyL69;
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "sequence", 91, CPyStatic_applicators___globals);
+        goto CPyL90;
     }
-    CPy_INCREF_NO_IMM(cpy_r_r75);
+    CPy_INCREF(cpy_r_r75);
 CPyL52: ;
-    cpy_r_r76 = (CPyPtr)&((PyVarObject *)cpy_r_r75)->ob_size;
-    cpy_r_r77 = *(int64_t *)cpy_r_r76;
-    CPy_DECREF_NO_IMM(cpy_r_r75);
-    cpy_r_r78 = cpy_r_r77 << 1;
-    cpy_r_r79 = CPyTagged_Str(cpy_r_r78);
-    if (unlikely(cpy_r_r79 == NULL)) {
+    cpy_r_r76 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '' */
+    cpy_r_r77 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'format' */
+    PyObject *cpy_r_r78[3] = {cpy_r_r74, cpy_r_r75, cpy_r_r76};
+    cpy_r_r79 = (PyObject **)&cpy_r_r78;
+    cpy_r_r80 = PyObject_VectorcallMethod(cpy_r_r77, cpy_r_r79, 9223372036854775811ULL, 0);
+    if (unlikely(cpy_r_r80 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL69;
+        goto CPyL91;
     }
-    cpy_r_r80 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ' formatters for ' */
-    cpy_r_r81 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__sequence;
-    if (unlikely(cpy_r_r81 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "sequence", 94, CPyStatic_applicators___globals);
-        goto CPyL77;
+    CPy_DECREF(cpy_r_r75);
+    if (likely(PyUnicode_Check(cpy_r_r80)))
+        cpy_r_r81 = cpy_r_r80;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", 91, CPyStatic_applicators___globals, "str", cpy_r_r80);
+        goto CPyL90;
     }
-    CPy_INCREF(cpy_r_r81);
-CPyL54: ;
-    cpy_r_r82 = PyObject_Repr(cpy_r_r81);
-    CPy_DECREF(cpy_r_r81);
+    cpy_r_r82 = PyList_New(4);
     if (unlikely(cpy_r_r82 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL77;
+        goto CPyL92;
     }
-    cpy_r_r83 = CPyStr_Build(4, cpy_r_r74, cpy_r_r79, cpy_r_r80, cpy_r_r82);
-    CPy_DECREF(cpy_r_r79);
-    CPy_DECREF(cpy_r_r82);
-    if (unlikely(cpy_r_r83 == NULL)) {
+    cpy_r_r83 = (CPyPtr)&((PyListObject *)cpy_r_r82)->ob_item;
+    cpy_r_r84 = *(CPyPtr *)cpy_r_r83;
+    CPy_INCREF(cpy_r_r63);
+    *(PyObject * *)cpy_r_r84 = cpy_r_r63;
+    cpy_r_r85 = cpy_r_r84 + 8;
+    *(PyObject * *)cpy_r_r85 = cpy_r_r72;
+    CPy_INCREF(cpy_r_r73);
+    cpy_r_r86 = cpy_r_r84 + 16;
+    *(PyObject * *)cpy_r_r86 = cpy_r_r73;
+    cpy_r_r87 = cpy_r_r84 + 24;
+    *(PyObject * *)cpy_r_r87 = cpy_r_r81;
+    cpy_r_r88 = PyUnicode_Join(cpy_r_r62, cpy_r_r82);
+    CPy_DECREF_NO_IMM(cpy_r_r82);
+    if (unlikely(cpy_r_r88 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL69;
+        goto CPyL81;
     }
-    cpy_r_r84 = CPyModule_builtins;
-    cpy_r_r85 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'IndexError' */
-    cpy_r_r86 = CPyObject_GetAttr(cpy_r_r84, cpy_r_r85);
-    if (unlikely(cpy_r_r86 == NULL)) {
+    cpy_r_r89 = CPyModule_builtins;
+    cpy_r_r90 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'IndexError' */
+    cpy_r_r91 = CPyObject_GetAttr(cpy_r_r89, cpy_r_r90);
+    if (unlikely(cpy_r_r91 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL78;
+        goto CPyL93;
     }
-    PyObject *cpy_r_r87[1] = {cpy_r_r83};
-    cpy_r_r88 = (PyObject **)&cpy_r_r87;
-    cpy_r_r89 = PyObject_Vectorcall(cpy_r_r86, cpy_r_r88, 1, 0);
-    CPy_DECREF(cpy_r_r86);
-    if (unlikely(cpy_r_r89 == NULL)) {
+    PyObject *cpy_r_r92[1] = {cpy_r_r88};
+    cpy_r_r93 = (PyObject **)&cpy_r_r92;
+    cpy_r_r94 = PyObject_Vectorcall(cpy_r_r91, cpy_r_r93, 1, 0);
+    CPy_DECREF(cpy_r_r91);
+    if (unlikely(cpy_r_r94 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL78;
+        goto CPyL93;
     }
-    CPy_DECREF(cpy_r_r83);
-    CPy_Raise(cpy_r_r89);
-    CPy_DECREF(cpy_r_r89);
+    CPy_DECREF(cpy_r_r88);
+    CPy_Raise(cpy_r_r94);
+    CPy_DECREF(cpy_r_r94);
     if (unlikely(!0)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL69;
+        goto CPyL81;
     }
     CPy_Unreachable();
 CPyL60: ;
-    cpy_r_r90 = Py_None;
-    ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_next_label__ = -1;
-    if (cpy_r_stop_iter_ptr != NULL) goto CPyL64;
-    CPyGen_SetStopIterationValue(cpy_r_r90);
-    if (!0) goto CPyL69;
-    CPy_Unreachable();
-CPyL64: ;
-    *(PyObject * *)cpy_r_stop_iter_ptr = cpy_r_r90;
-    return 0;
-CPyL65: ;
-    cpy_r_r92 = cpy_r_r0 == 0;
-    if (cpy_r_r92) goto CPyL1;
-    cpy_r_r93 = cpy_r_r0 == 1;
-    if (cpy_r_r93) goto CPyL28;
-    PyErr_SetNone(PyExc_StopIteration);
-    cpy_r_r94 = 0;
-    if (unlikely(!cpy_r_r94)) {
+    cpy_r_r95 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '' */
+    cpy_r_r96 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Too few formatters for sequence: ' */
+    cpy_r_r97 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '{:{}}' */
+    cpy_r_r98 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__num_formatters;
+    if (unlikely(cpy_r_r98 == CPY_INT_TAG)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "num_formatters", 95, CPyStatic_applicators___globals);
+        goto CPyL81;
+    }
+    CPyTagged_INCREF(cpy_r_r98);
+CPyL61: ;
+    cpy_r_r99 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '' */
+    cpy_r_r100 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'format' */
+    cpy_r_r101 = CPyTagged_StealAsObject(cpy_r_r98);
+    PyObject *cpy_r_r102[3] = {cpy_r_r97, cpy_r_r101, cpy_r_r99};
+    cpy_r_r103 = (PyObject **)&cpy_r_r102;
+    cpy_r_r104 = PyObject_VectorcallMethod(cpy_r_r100, cpy_r_r103, 9223372036854775811ULL, 0);
+    if (unlikely(cpy_r_r104 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
-        goto CPyL69;
+        goto CPyL94;
+    }
+    CPy_DECREF(cpy_r_r101);
+    if (likely(PyUnicode_Check(cpy_r_r104)))
+        cpy_r_r105 = cpy_r_r104;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", 95, CPyStatic_applicators___globals, "str", cpy_r_r104);
+        goto CPyL81;
+    }
+    cpy_r_r106 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ' formatters for ' */
+    cpy_r_r107 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '{!r:{}}' */
+    cpy_r_r108 = ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__sequence;
+    if (unlikely(cpy_r_r108 == NULL)) {
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", "apply_formatters_to_sequence_gen", "sequence", 96, CPyStatic_applicators___globals);
+        goto CPyL95;
+    }
+    CPy_INCREF(cpy_r_r108);
+CPyL64: ;
+    cpy_r_r109 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '' */
+    cpy_r_r110 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'format' */
+    PyObject *cpy_r_r111[3] = {cpy_r_r107, cpy_r_r108, cpy_r_r109};
+    cpy_r_r112 = (PyObject **)&cpy_r_r111;
+    cpy_r_r113 = PyObject_VectorcallMethod(cpy_r_r110, cpy_r_r112, 9223372036854775811ULL, 0);
+    if (unlikely(cpy_r_r113 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
+        goto CPyL96;
+    }
+    CPy_DECREF(cpy_r_r108);
+    if (likely(PyUnicode_Check(cpy_r_r113)))
+        cpy_r_r114 = cpy_r_r113;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", 96, CPyStatic_applicators___globals, "str", cpy_r_r113);
+        goto CPyL95;
+    }
+    cpy_r_r115 = PyList_New(4);
+    if (unlikely(cpy_r_r115 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
+        goto CPyL97;
+    }
+    cpy_r_r116 = (CPyPtr)&((PyListObject *)cpy_r_r115)->ob_item;
+    cpy_r_r117 = *(CPyPtr *)cpy_r_r116;
+    CPy_INCREF(cpy_r_r96);
+    *(PyObject * *)cpy_r_r117 = cpy_r_r96;
+    cpy_r_r118 = cpy_r_r117 + 8;
+    *(PyObject * *)cpy_r_r118 = cpy_r_r105;
+    CPy_INCREF(cpy_r_r106);
+    cpy_r_r119 = cpy_r_r117 + 16;
+    *(PyObject * *)cpy_r_r119 = cpy_r_r106;
+    cpy_r_r120 = cpy_r_r117 + 24;
+    *(PyObject * *)cpy_r_r120 = cpy_r_r114;
+    cpy_r_r121 = PyUnicode_Join(cpy_r_r95, cpy_r_r115);
+    CPy_DECREF_NO_IMM(cpy_r_r115);
+    if (unlikely(cpy_r_r121 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
+        goto CPyL81;
+    }
+    cpy_r_r122 = CPyModule_builtins;
+    cpy_r_r123 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'IndexError' */
+    cpy_r_r124 = CPyObject_GetAttr(cpy_r_r122, cpy_r_r123);
+    if (unlikely(cpy_r_r124 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
+        goto CPyL98;
+    }
+    PyObject *cpy_r_r125[1] = {cpy_r_r121};
+    cpy_r_r126 = (PyObject **)&cpy_r_r125;
+    cpy_r_r127 = PyObject_Vectorcall(cpy_r_r124, cpy_r_r126, 1, 0);
+    CPy_DECREF(cpy_r_r124);
+    if (unlikely(cpy_r_r127 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
+        goto CPyL98;
+    }
+    CPy_DECREF(cpy_r_r121);
+    CPy_Raise(cpy_r_r127);
+    CPy_DECREF(cpy_r_r127);
+    if (unlikely(!0)) {
+        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
+        goto CPyL81;
     }
     CPy_Unreachable();
-CPyL69: ;
-    cpy_r_r95 = NULL;
-    return cpy_r_r95;
-CPyL70: ;
-    CPy_DecRef(cpy_r_r13);
-    goto CPyL69;
-CPyL71: ;
-    CPy_DecRef(cpy_r_r14);
-    goto CPyL69;
 CPyL72: ;
-    CPy_DecRef(cpy_r_r23);
-    goto CPyL69;
-CPyL73: ;
-    CPy_DecRef(cpy_r_r23);
-    CPy_DecRef(cpy_r_r24);
-    goto CPyL69;
-CPyL74: ;
-    CPy_DecRef(cpy_r_r33);
-    goto CPyL69;
-CPyL75: ;
-    CPy_DecRef(cpy_r_r63);
-    goto CPyL69;
+    cpy_r_r128 = Py_None;
+    ((faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *)cpy_r___mypyc_self__)->___mypyc_next_label__ = -1;
+    if (cpy_r_stop_iter_ptr != NULL) goto CPyL76;
+    CPyGen_SetStopIterationValue(cpy_r_r128);
+    if (!0) goto CPyL81;
+    CPy_Unreachable();
 CPyL76: ;
-    CPy_DecRef(cpy_r_r67);
-    goto CPyL69;
+    *(PyObject * *)cpy_r_stop_iter_ptr = cpy_r_r128;
+    return 0;
 CPyL77: ;
-    CPy_DecRef(cpy_r_r79);
-    goto CPyL69;
-CPyL78: ;
-    CPy_DecRef(cpy_r_r83);
-    goto CPyL69;
+    cpy_r_r130 = cpy_r_r0 == 0;
+    if (cpy_r_r130) goto CPyL1;
+    cpy_r_r131 = cpy_r_r0 == 1;
+    if (cpy_r_r131) goto CPyL35;
+    PyErr_SetNone(PyExc_StopIteration);
+    cpy_r_r132 = 0;
+    if (unlikely(!cpy_r_r132)) {
+        CPy_AddTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_sequence", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
+        goto CPyL81;
+    }
+    CPy_Unreachable();
+CPyL81: ;
+    cpy_r_r133 = NULL;
+    return cpy_r_r133;
+CPyL82: ;
+    CPyTagged_DecRef(cpy_r_r11);
+    goto CPyL81;
+CPyL83: ;
+    CPy_DecRef(cpy_r_r21);
+    goto CPyL81;
+CPyL84: ;
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL81;
+CPyL85: ;
+    CPy_DecRef(cpy_r_r31);
+    goto CPyL81;
+CPyL86: ;
+    CPy_DecRef(cpy_r_r31);
+    CPy_DecRef(cpy_r_r32);
+    goto CPyL81;
+CPyL87: ;
+    CPy_DecRef(cpy_r_r41);
+    goto CPyL81;
+CPyL88: ;
+    CPyTagged_DecRef(cpy_r_r53);
+    goto CPyL81;
+CPyL89: ;
+    CPy_DecRef(cpy_r_r68);
+    goto CPyL81;
+CPyL90: ;
+    CPy_DecRef(cpy_r_r72);
+    goto CPyL81;
+CPyL91: ;
+    CPy_DecRef(cpy_r_r72);
+    CPy_DecRef(cpy_r_r75);
+    goto CPyL81;
+CPyL92: ;
+    CPy_DecRef(cpy_r_r72);
+    CPy_DecRef(cpy_r_r81);
+    goto CPyL81;
+CPyL93: ;
+    CPy_DecRef(cpy_r_r88);
+    goto CPyL81;
+CPyL94: ;
+    CPy_DecRef(cpy_r_r101);
+    goto CPyL81;
+CPyL95: ;
+    CPy_DecRef(cpy_r_r105);
+    goto CPyL81;
+CPyL96: ;
+    CPy_DecRef(cpy_r_r105);
+    CPy_DecRef(cpy_r_r108);
+    goto CPyL81;
+CPyL97: ;
+    CPy_DecRef(cpy_r_r105);
+    CPy_DecRef(cpy_r_r114);
+    goto CPyL81;
+CPyL98: ;
+    CPy_DecRef(cpy_r_r121);
+    goto CPyL81;
 }
 
 PyObject *CPyDef_applicators___apply_formatters_to_sequence_gen_____next__(PyObject *cpy_r___mypyc_self__) {
@@ -10169,14 +10368,14 @@ PyObject *CPyDef_applicators___get_value_apply_formatters_to_dict_obj_____call__
     PyObject *cpy_r_r45;
     cpy_r_r0 = ((faster_eth_utils___applicators___get_value_apply_formatters_to_dict_objObject *)cpy_r___mypyc_self__)->___mypyc_env__;
     if (unlikely(cpy_r_r0 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "get_value", "get_value_apply_formatters_to_dict_obj", "__mypyc_env__", 138, CPyStatic_applicators___globals);
+        CPy_AttributeError("faster_eth_utils/applicators.py", "get_value", "get_value_apply_formatters_to_dict_obj", "__mypyc_env__", 140, CPyStatic_applicators___globals);
         goto CPyL31;
     }
     CPy_INCREF_NO_IMM(cpy_r_r0);
 CPyL1: ;
     cpy_r_r1 = ((faster_eth_utils___applicators___apply_formatters_to_dict_envObject *)cpy_r_r0)->_formatters;
     if (unlikely(cpy_r_r1 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "get_value", "apply_formatters_to_dict_env", "formatters", 139, CPyStatic_applicators___globals);
+        CPy_AttributeError("faster_eth_utils/applicators.py", "get_value", "apply_formatters_to_dict_env", "formatters", 141, CPyStatic_applicators___globals);
         goto CPyL32;
     }
     CPy_INCREF(cpy_r_r1);
@@ -10509,7 +10708,7 @@ CPyL2: ;
     if (likely(PyDict_Check(cpy_r_r15)))
         cpy_r_r16 = cpy_r_r15;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_dict", 136, CPyStatic_applicators___globals, "dict", cpy_r_r15);
+        CPy_TypeErrorTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_dict", 138, CPyStatic_applicators___globals, "dict", cpy_r_r15);
         goto CPyL28;
     }
     cpy_r_value = cpy_r_r16;
@@ -10538,7 +10737,7 @@ CPyL11: ;
     if (likely(PyDict_Check(cpy_r_value)))
         cpy_r_r20 = cpy_r_value;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_dict", 154, CPyStatic_applicators___globals, "dict", cpy_r_value);
+        CPy_TypeErrorTraceback("faster_eth_utils/applicators.py", "apply_formatters_to_dict", 156, CPyStatic_applicators___globals, "dict", cpy_r_value);
         goto CPyL34;
     }
     cpy_r_r21 = 0;
@@ -10563,7 +10762,7 @@ CPyL16: ;
     cpy_r_key = cpy_r_r27;
     cpy_r_r29 = ((faster_eth_utils___applicators___apply_formatters_to_dict_envObject *)cpy_r_r0)->_formatters;
     if (unlikely(cpy_r_r29 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_dict", "apply_formatters_to_dict_env", "formatters", 153, CPyStatic_applicators___globals);
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatters_to_dict", "apply_formatters_to_dict_env", "formatters", 155, CPyStatic_applicators___globals);
         goto CPyL37;
     }
     CPy_INCREF(cpy_r_r29);
@@ -10764,7 +10963,7 @@ CPyL1: ;
 CPyL4: ;
     cpy_r_r3 = ((faster_eth_utils___applicators___apply_formatter_to_array_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__value;
     if (unlikely(cpy_r_r3 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatter_to_array", "apply_formatter_to_array_gen", "value", 162, CPyStatic_applicators___globals);
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatter_to_array", "apply_formatter_to_array_gen", "value", 164, CPyStatic_applicators___globals);
         goto CPyL28;
     }
     CPy_INCREF(cpy_r_r3);
@@ -10795,7 +10994,7 @@ CPyL5: ;
 CPyL8: ;
     cpy_r_r7 = ((faster_eth_utils___applicators___apply_formatter_to_array_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__10;
     if (unlikely(cpy_r_r7 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatter_to_array", "apply_formatter_to_array_gen", "__mypyc_temp__10", 162, CPyStatic_applicators___globals);
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatter_to_array", "apply_formatter_to_array_gen", "__mypyc_temp__10", 164, CPyStatic_applicators___globals);
         goto CPyL28;
     }
     CPy_INCREF(cpy_r_r7);
@@ -10814,14 +11013,14 @@ CPyL9: ;
     }
     cpy_r_r10 = ((faster_eth_utils___applicators___apply_formatter_to_array_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__item;
     if (unlikely(cpy_r_r10 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatter_to_array", "apply_formatter_to_array_gen", "item", 163, CPyStatic_applicators___globals);
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatter_to_array", "apply_formatter_to_array_gen", "item", 165, CPyStatic_applicators___globals);
         goto CPyL28;
     }
     CPy_INCREF(cpy_r_r10);
 CPyL12: ;
     cpy_r_r11 = ((faster_eth_utils___applicators___apply_formatter_to_array_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__formatter;
     if (unlikely(cpy_r_r11 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatter_to_array", "apply_formatter_to_array_gen", "formatter", 163, CPyStatic_applicators___globals);
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_formatter_to_array", "apply_formatter_to_array_gen", "formatter", 165, CPyStatic_applicators___globals);
         goto CPyL31;
     }
     CPy_INCREF(cpy_r_r11);
@@ -11414,14 +11613,14 @@ PyObject *CPyDef_applicators___get_key_apply_key_map_obj_____call__(PyObject *cp
     PyObject *cpy_r_r8;
     cpy_r_r0 = ((faster_eth_utils___applicators___get_key_apply_key_map_objObject *)cpy_r___mypyc_self__)->___mypyc_env__;
     if (unlikely(cpy_r_r0 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "get_key", "get_key_apply_key_map_obj", "__mypyc_env__", 192, CPyStatic_applicators___globals);
+        CPy_AttributeError("faster_eth_utils/applicators.py", "get_key", "get_key_apply_key_map_obj", "__mypyc_env__", 194, CPyStatic_applicators___globals);
         goto CPyL9;
     }
     CPy_INCREF_NO_IMM(cpy_r_r0);
 CPyL1: ;
     cpy_r_r1 = ((faster_eth_utils___applicators___apply_key_map_envObject *)cpy_r_r0)->_key_mappings;
     if (unlikely(cpy_r_r1 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "get_key", "apply_key_map_env", "key_mappings", 193, CPyStatic_applicators___globals);
+        CPy_AttributeError("faster_eth_utils/applicators.py", "get_key", "apply_key_map_env", "key_mappings", 195, CPyStatic_applicators___globals);
         goto CPyL10;
     }
     CPy_INCREF(cpy_r_r1);
@@ -11579,7 +11778,7 @@ PyObject *CPyDef_applicators___apply_key_map(PyObject *cpy_r_key_mappings, PyObj
     }
     cpy_r_r4 = ((faster_eth_utils___applicators___apply_key_map_envObject *)cpy_r_r0)->_key_mappings;
     if (unlikely(cpy_r_r4 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_key_map", "apply_key_map_env", "key_mappings", 184, CPyStatic_applicators___globals);
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_key_map", "apply_key_map_env", "key_mappings", 186, CPyStatic_applicators___globals);
         goto CPyL40;
     }
     CPy_INCREF(cpy_r_r4);
@@ -11603,7 +11802,7 @@ CPyL5: ;
     if (likely(PySet_Check(cpy_r_r9)))
         cpy_r_r10 = cpy_r_r9;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/applicators.py", "apply_key_map", 183, CPyStatic_applicators___globals, "set", cpy_r_r9);
+        CPy_TypeErrorTraceback("faster_eth_utils/applicators.py", "apply_key_map", 185, CPyStatic_applicators___globals, "set", cpy_r_r9);
         goto CPyL39;
     }
     cpy_r_r11 = PyList_New(0);
@@ -11613,7 +11812,7 @@ CPyL5: ;
     }
     cpy_r_r12 = ((faster_eth_utils___applicators___apply_key_map_envObject *)cpy_r_r0)->_key_mappings;
     if (unlikely(cpy_r_r12 == NULL)) {
-        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_key_map", "apply_key_map_env", "key_mappings", 185, CPyStatic_applicators___globals);
+        CPy_AttributeError("faster_eth_utils/applicators.py", "apply_key_map", "apply_key_map_env", "key_mappings", 187, CPyStatic_applicators___globals);
         goto CPyL43;
     }
     CPy_INCREF(cpy_r_r12);
@@ -11685,7 +11884,7 @@ CPyL16: ;
     if (likely(PySet_Check(cpy_r_r32)))
         cpy_r_r33 = cpy_r_r32;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/applicators.py", "apply_key_map", 183, CPyStatic_applicators___globals, "set", cpy_r_r32);
+        CPy_TypeErrorTraceback("faster_eth_utils/applicators.py", "apply_key_map", 185, CPyStatic_applicators___globals, "set", cpy_r_r32);
         goto CPyL39;
     }
     cpy_r_r34 = PyObject_IsTrue(cpy_r_r33);
@@ -48478,7 +48677,7 @@ const char * const CPyLit_Str[] = {
     "\002\rGeneratorExit\rStopIteration",
     "\001\202\023combine_argument_formatters(formatter1, formatter2)([item1, item2])has been deprecated and will be removed in a subsequent major version release of the eth-utils library. Update your calls to use apply_formatters_to_sequence([formatter1, formatter2], [item1, item2]) instead.",
     "\004\022DeprecationWarning\004warn\nstacklevel\030apply_formatter_at_index",
-    "\002\"Too many formatters for sequence: \020 formatters for ",
+    "\004\"Too many formatters for sequence: \005{:{}}\020 formatters for \a{!r:{}}",
     "\002!Too few formatters for sequence: \037Could not format invalid value ",
     "\004\n as field \036Could not format invalid type \nCamelModel\nmodel_dump",
     "\001\bby_alias",
@@ -48570,25 +48769,25 @@ const double CPyLit_Float[] = {0};
 const double CPyLit_Complex[] = {0};
 const int CPyLit_Tuple[] = {
     97, 2, 12, 38, 1, 58, 1, 10, 3, 7, 7, 7, 3, 62, 62, 62, 3, 63, 63,
-    63, 3, 510, 511, 512, 13, 66, 67, 68, 69, 70, 71, 11, 72, 73, 74, 75,
-    76, 77, 9, 79, 80, 81, 82, 83, 84, 85, 86, 87, 1, 89, 1, 91, 1, 512,
-    3, 66, 68, 75, 3, 107, 107, 107, 1, 520, 5, 108, 109, 110, 111, 112,
+    63, 3, 512, 513, 514, 13, 66, 67, 68, 69, 70, 71, 11, 72, 73, 74, 75,
+    76, 77, 9, 79, 80, 81, 82, 83, 84, 85, 86, 87, 1, 89, 1, 91, 1, 514,
+    3, 66, 68, 75, 3, 107, 107, 107, 1, 522, 5, 108, 109, 110, 111, 112,
     1, 113, 2, 115, 96, 4, 117, 118, 119, 120, 2, 122, 123, 1, 137, 1,
-    147, 11, 66, 151, 67, 152, 70, 73, 74, 153, 75, 76, 77, 3, 154, 154,
-    154, 1, 530, 1, 156, 1, 158, 1, 145, 2, 161, 162, 1, 184, 1, 186, 4,
-    151, 72, 153, 75, 2, 112, 187, 2, 188, 189, 5, 117, 118, 119, 191,
-    120, 1, 192, 2, 72, 75, 1, 195, 1, 112, 1, 197, 2, 228, 229, 1, 228,
-    3, 235, 235, 235, 1, 549, 1, 223, 3, 68, 75, 237, 2, 238, 192, 1, 198,
-    1, 249, 3, 254, 254, 254, 3, 256, 256, 256, 3, 257, 257, 257, 3, 556,
-    557, 558, 3, 265, 265, 265, 3, 266, 266, 266, 3, 560, 511, 561, 7, 66,
-    151, 67, 72, 268, 153, 237, 1, 123, 3, 273, 274, 274, 1, 565, 3, 61,
-    61, 61, 3, 567, 560, 511, 9, 151, 67, 69, 70, 11, 281, 74, 153, 75, 1,
-    282, 1, 161, 1, 283, 3, 304, 304, 304, 2, 573, 512, 4, 66, 306, 68,
-    75, 6, 66, 68, 69, 325, 74, 75, 1, 314, 2, 327, 328, 2, 242, 329, 1,
-    330, 1, 349, 1, 66, 1, 361, 1, 372, 3, 374, 374, 374, 3, 585, 561,
-    558, 1, 376, 2, 68, 70, 1, 365, 1, 276, 2, 389, 390, 3, 391, 391, 391,
-    2, 549, 592, 3, 66, 153, 75, 1, 398, 1, 68, 3, 399, 399, 399, 1, 597,
-    3, 330, 330, 330, 1, 599, 3, 472, 61, 61, 2, 601, 592, 6, 66, 68, 70,
+    149, 11, 66, 153, 67, 154, 70, 73, 74, 155, 75, 76, 77, 3, 156, 156,
+    156, 1, 532, 1, 158, 1, 160, 1, 147, 2, 163, 164, 1, 186, 1, 188, 4,
+    153, 72, 155, 75, 2, 112, 189, 2, 190, 191, 5, 117, 118, 119, 193,
+    120, 1, 194, 2, 72, 75, 1, 197, 1, 112, 1, 199, 2, 230, 231, 1, 230,
+    3, 237, 237, 237, 1, 551, 1, 225, 3, 68, 75, 239, 2, 240, 194, 1, 200,
+    1, 251, 3, 256, 256, 256, 3, 258, 258, 258, 3, 259, 259, 259, 3, 558,
+    559, 560, 3, 267, 267, 267, 3, 268, 268, 268, 3, 562, 513, 563, 7, 66,
+    153, 67, 72, 270, 155, 239, 1, 123, 3, 275, 276, 276, 1, 567, 3, 61,
+    61, 61, 3, 569, 562, 513, 9, 153, 67, 69, 70, 11, 283, 74, 155, 75, 1,
+    284, 1, 163, 1, 285, 3, 306, 306, 306, 2, 575, 514, 4, 66, 308, 68,
+    75, 6, 66, 68, 69, 327, 74, 75, 1, 316, 2, 329, 330, 2, 244, 331, 1,
+    332, 1, 351, 1, 66, 1, 363, 1, 374, 3, 376, 376, 376, 3, 587, 563,
+    560, 1, 378, 2, 68, 70, 1, 367, 1, 278, 2, 391, 392, 3, 393, 393, 393,
+    2, 551, 594, 3, 66, 155, 75, 1, 400, 1, 68, 3, 401, 401, 401, 1, 599,
+    3, 332, 332, 332, 1, 601, 3, 474, 61, 61, 2, 603, 594, 6, 66, 68, 70,
     71, 74, 75
 };
 const int CPyLit_FrozenSet[] = {1, 2, 26, 25};
