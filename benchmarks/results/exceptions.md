@@ -1,5 +1,5 @@
-#### [faster_eth_utils.exceptions](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/actions-github-script-8.x/faster_eth_utils/exceptions.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/actions-github-script-8.x/benchmarks/test_exceptions_benchmarks.py)
+#### [faster_eth_utils.exceptions](https://github.com/BobTheBuidler/faster-eth-utils/blob/BobTheBuidler-patch-4/faster_eth_utils/exceptions.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/BobTheBuidler-patch-4/benchmarks/test_exceptions_benchmarks.py)
 
 | Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
 |----------|---------------|-------------|----------|-------------|----------|--------|
-| `validation_error` | 1.953588069229015e-05 | 1.7760390971995565e-05 | 9.09% | 10.00% | 1.10x | ✅ |
+| `validation_error` | 2.021878382572731e-05 | 2.0243500732335684e-05 | -0.12% | -0.12% | 1.00x | ❌ |
