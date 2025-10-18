@@ -1,27 +1,27 @@
-#### [faster_eth_utils.applicators](https://github.com/BobTheBuidler/faster-eth-utils/blob/BobTheBuidler-patch-4/faster_eth_utils/applicators.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/BobTheBuidler-patch-4/benchmarks/test_applicators_benchmarks.py)
+#### [faster_eth_utils.applicators](https://github.com/BobTheBuidler/faster-eth-utils/blob/runners/faster_eth_utils/applicators.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/runners/benchmarks/test_applicators_benchmarks.py)
 
 | Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
 |----------|---------------|-------------|----------|-------------|----------|--------|
-| `apply_formatter_at_index[at-index-0]` | 8.163682780159424e-06 | 8.73207669406119e-06 | -6.96% | -6.51% | 0.93x | ❌ |
-| `apply_formatter_at_index[at-index-1]` | 8.154501394714544e-06 | 8.777092290534443e-06 | -7.63% | -7.09% | 0.93x | ❌ |
-| `apply_formatter_at_index[at-index-2]` | 8.131316774010384e-06 | 8.602994578306572e-06 | -5.80% | -5.48% | 0.95x | ❌ |
-| `apply_formatter_if[condition-false]` | 9.405052207458032e-07 | 1.073663770935239e-06 | -14.16% | -12.40% | 0.88x | ❌ |
-| `apply_formatter_if[condition-true]` | 1.1593580513137487e-06 | 1.6312561185327331e-06 | -40.70% | -28.93% | 0.71x | ❌ |
-| `apply_formatter_to_array[empty]` | 4.972699374678401e-06 | 5.062981613181468e-06 | -1.82% | -1.78% | 0.98x | ❌ |
-| `apply_formatter_to_array[multi-item]` | 6.315994459159084e-06 | 6.585511959030706e-06 | -4.27% | -4.09% | 0.96x | ❌ |
-| `apply_formatter_to_array[single-item]` | 5.347235169918367e-06 | 5.6387029315675075e-06 | -5.45% | -5.17% | 0.95x | ❌ |
-| `apply_formatters_to_dict[all-keys-present]` | 1.0495296731852631e-05 | 5.52233338285417e-06 | 47.38% | 90.05% | 1.90x | ✅ |
-| `apply_formatters_to_dict[key-not-present]` | 1.0118050463499568e-05 | 4.7543547511760054e-06 | 53.01% | 112.82% | 2.13x | ✅ |
-| `apply_formatters_to_sequence[1-item]` | 8.655258626718793e-06 | 6.279035947455587e-06 | 27.45% | 37.84% | 1.38x | ✅ |
-| `apply_formatters_to_sequence[2-items]` | 9.21661925370336e-06 | 6.602561263405117e-06 | 28.36% | 39.59% | 1.40x | ✅ |
-| `apply_formatters_to_sequence[3-items]` | 9.654965073695513e-06 | 7.0067556248146275e-06 | 27.43% | 37.80% | 1.38x | ✅ |
-| `apply_formatters_to_sequence[4-items]` | 1.0307793395926626e-05 | 7.249503686623858e-06 | 29.67% | 42.19% | 1.42x | ✅ |
-| `apply_key_map[empty]` | 1.4883449882234792e-05 | 7.526260075324267e-06 | 49.43% | 97.75% | 1.98x | ✅ |
-| `apply_key_map[single-key]` | 1.742602754324981e-05 | 9.342033498592502e-06 | 46.39% | 86.53% | 1.87x | ✅ |
-| `apply_key_map[two-keys]` | 1.9708810379483768e-05 | 1.0815139038996988e-05 | 45.13% | 82.23% | 1.82x | ✅ |
-| `apply_key_map[unrelated-key]` | 1.881923424662327e-05 | 1.0150235239387517e-05 | 46.06% | 85.41% | 1.85x | ✅ |
-| `apply_one_of_formatters[first-matches]` | 1.6964192353222825e-06 | 1.736358345383402e-06 | -2.35% | -2.30% | 0.98x | ❌ |
-| `apply_one_of_formatters[second-matches]` | 2.2718866232704793e-06 | 2.04746098747985e-06 | 9.88% | 10.96% | 1.11x | ✅ |
-| `combine_argument_formatters[one-formatter]` | 0.00035211300318265773 | 0.0012328748630342447 | -250.14% | -71.44% | 0.29x | ❌ |
-| `combine_argument_formatters[three-formatters]` | 0.0005695005048387943 | 0.0014896976366900014 | -161.58% | -61.77% | 0.38x | ❌ |
-| `combine_argument_formatters[two-formatters]` | 0.0004602782968257642 | 0.001545245614583024 | -235.72% | -70.21% | 0.30x | ❌ |
+| `apply_formatter_at_index[at-index-0]` | 7.720359342668012e-06 | 8.527134928175674e-06 | -10.45% | -9.46% | 0.91x | ❌ |
+| `apply_formatter_at_index[at-index-1]` | 7.73193505757523e-06 | 8.546359706449525e-06 | -10.53% | -9.53% | 0.90x | ❌ |
+| `apply_formatter_at_index[at-index-2]` | 7.731490126874663e-06 | 8.544464232857207e-06 | -10.52% | -9.51% | 0.90x | ❌ |
+| `apply_formatter_if[condition-false]` | 9.963604802609707e-07 | 9.715602173282769e-07 | 2.49% | 2.55% | 1.03x | ✅ |
+| `apply_formatter_if[condition-true]` | 1.2120589317920618e-06 | 1.447813761398099e-06 | -19.45% | -16.28% | 0.84x | ❌ |
+| `apply_formatter_to_array[empty]` | 4.903142400170244e-06 | 5.025077240510514e-06 | -2.49% | -2.43% | 0.98x | ❌ |
+| `apply_formatter_to_array[multi-item]` | 6.0876279477706575e-06 | 6.5230151227432355e-06 | -7.15% | -6.67% | 0.93x | ❌ |
+| `apply_formatter_to_array[single-item]` | 5.27437988052197e-06 | 5.67283412044937e-06 | -7.55% | -7.02% | 0.93x | ❌ |
+| `apply_formatters_to_dict[all-keys-present]` | 1.0130992377323027e-05 | 5.1997688971436355e-06 | 48.67% | 94.84% | 1.95x | ✅ |
+| `apply_formatters_to_dict[key-not-present]` | 9.703072567659811e-06 | 4.424291306244472e-06 | 54.40% | 119.31% | 2.19x | ✅ |
+| `apply_formatters_to_sequence[1-item]` | 8.80714477803104e-06 | 5.489306424466362e-06 | 37.67% | 60.44% | 1.60x | ✅ |
+| `apply_formatters_to_sequence[2-items]` | 9.26859992893965e-06 | 5.883687553301564e-06 | 36.52% | 57.53% | 1.58x | ✅ |
+| `apply_formatters_to_sequence[3-items]` | 9.708602950704538e-06 | 6.307423528678696e-06 | 35.03% | 53.92% | 1.54x | ✅ |
+| `apply_formatters_to_sequence[4-items]` | 1.0078628815539287e-05 | 6.706975264444298e-06 | 33.45% | 50.27% | 1.50x | ✅ |
+| `apply_key_map[empty]` | 1.463467028861718e-05 | 6.991790194205202e-06 | 52.22% | 109.31% | 2.09x | ✅ |
+| `apply_key_map[single-key]` | 1.673609915233458e-05 | 8.464606520015846e-06 | 49.42% | 97.72% | 1.98x | ✅ |
+| `apply_key_map[two-keys]` | 1.8828552126460118e-05 | 1.0113257605843039e-05 | 46.29% | 86.18% | 1.86x | ✅ |
+| `apply_key_map[unrelated-key]` | 1.7866629112631525e-05 | 9.24103323007553e-06 | 48.28% | 93.34% | 1.93x | ✅ |
+| `apply_one_of_formatters[first-matches]` | 1.7322970932299998e-06 | 1.5451019708484545e-06 | 10.81% | 12.12% | 1.12x | ✅ |
+| `apply_one_of_formatters[second-matches]` | 2.3042888261654044e-06 | 1.850274061287756e-06 | 19.70% | 24.54% | 1.25x | ✅ |
+| `combine_argument_formatters[one-formatter]` | 0.0003624615904476429 | 0.0012913631178253849 | -256.28% | -71.93% | 0.28x | ❌ |
+| `combine_argument_formatters[three-formatters]` | 0.0005791018628330892 | 0.0015446224634950143 | -166.73% | -62.51% | 0.37x | ❌ |
+| `combine_argument_formatters[two-formatters]` | 0.00048679910134238744 | 0.0015060053682584122 | -209.37% | -67.68% | 0.32x | ❌ |
