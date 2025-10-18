@@ -10,7 +10,7 @@
 
 ##### We benchmark `faster-eth-utils` against the original `eth-utils` for your convenience. [See results](https://github.com/BobTheBuidler/faster-eth-utils/tree/master/benchmarks/results).
 
-##### You can find the compiled C code on faster-eth-utils [master](https://github.com/BobTheBuidler/eth-utils/tree/master) branch.
+##### You can find the compiled C code and header files in the [build](https://github.com/BobTheBuidler/eth-utils/tree/master/build) directory.
 
 ###### You may also be interested in: [faster-web3.py](https://github.com/BobTheBuidler/faster-web3.py/), [faster-eth-abi](https://github.com/BobTheBuidler/faster-eth-abi/), and [faster-hexbytes](https://github.com/BobTheBuidler/faster-hexbytes/)
 
