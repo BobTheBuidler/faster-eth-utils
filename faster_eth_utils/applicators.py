@@ -179,7 +179,7 @@ def apply_one_of_formatters(
 
 
 def apply_key_map(
-    key_mappings: Dict[Any, Any], value: Dict[Any, Any]
+    key_mappings: Dict[Any, Any], value: Mapping[Any, Any]
 ) -> Dict[Any, Any]:
     key_conflicts = (
         set(value.keys())
