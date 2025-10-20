@@ -103,7 +103,14 @@ setup(
     long_description_content_type="text/markdown",
     author="The Ethereum Foundation",
     author_email="snakecharmers@ethereum.org",
-    url="https://github.com/BobTheBuidler/eth-utils",
+    url="https://github.com/BobTheBuidler/faster-eth-utils",
+    project_urls={
+        "Documentation": "https://eth-utils.readthedocs.io/en/stable/",
+        "Release Notes": "https://github.com/BobTheBuidler/faster-eth-utils/releases",
+        "Issues": "https://github.com/BobTheBuidler/faster-eth-utils/issues",
+        "Source": "https://github.com/BobTheBuidler/faster-eth-utils",
+        "Original": "https://github.com/ethereum/eth-utils",
+    },
     include_package_data=True,
     install_requires=[
         "cchecksum>=0.0.3",
