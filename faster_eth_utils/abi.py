@@ -86,12 +86,12 @@ def _align_abi_input(
         )
 
     # convert NamedTuple to regular tuple
-    typing = tuple if isinstance(aligned_arg, tuple) else type(aligned_arg)
-
-    return typing(  # type: ignore [call-arg]
-        _align_abi_input(sub_abi, sub_arg)
-        for sub_abi, sub_arg in zip(sub_abis, aligned_arg)
-    )
+    if isinstance(aligned_arg, tuple):
+        return tuple(map(_align_abi_input, sub_abis, aligned_arg))
+    elif type(aligned_arg) is list:
+        return list(map(_align_abi_input, sub_abis, aligned_arg))
+    else:
+        return type(aligned_arg)(map(_align_abi_input, sub_abis, aligned_arg))
 
 
 def _get_tuple_type_str_and_dims(s: str) -> Optional[Tuple[str, Optional[str]]]:
@@ -162,7 +162,7 @@ def collapse_if_tuple(abi: Union[ABIComponent, Dict[str, Any], str]) -> str:
     elif not element_type.startswith("tuple"):
         return element_type
 
-    delimited = ",".join(collapse_if_tuple(c) for c in abi["components"])
+    delimited = ",".join(map(collapse_if_tuple, abi["components"]))
     # Whatever comes after "tuple" is the array dims. The ABI spec states that
     # this will have the form "", "[]", or "[k]".
     array_dim = element_type[5:]
@@ -585,17 +585,23 @@ def get_aligned_abi_inputs(
     abi_element_inputs = cast(Sequence[ABIComponent], abi_element.get("inputs", []))
     if isinstance(normalized_args, abc.Mapping):
         # `args` is mapping.  Align values according to abi order.
-        normalized_args = tuple(
-            normalized_args[abi["name"]] for abi in abi_element_inputs
+        aligned_args = tuple(
+            map(
+                _align_abi_input,
+                abi_element_inputs,
+                (normalized_args[abi["name"]] for abi in abi_element_inputs),
+            )
         )
-
-    return (
-        tuple(collapse_if_tuple(abi) for abi in abi_element_inputs),
-        type(normalized_args)(
-            _align_abi_input(abi, arg)
-            for abi, arg in zip(abi_element_inputs, normalized_args)
-        ),
-    )
+    elif type(normalized_args) is list:
+        aligned_args = list(map(_align_abi_input, abi_element_inputs, normalized_args))
+    elif type(normalized_args) is tuple:
+        aligned_args = tuple(map(_align_abi_input, abi_element_inputs, normalized_args))
+    else:
+        aligned_args = type(normalized_args)(
+            map(_align_abi_input, abi_element_inputs, normalized_args)
+        )
+        
+    return types, aligned_args
 
 
 def get_abi_input_names(abi_element: ABIElement) -> List[Optional[str]]:
