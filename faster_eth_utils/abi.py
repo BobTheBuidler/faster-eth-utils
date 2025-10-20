@@ -589,7 +589,7 @@ def get_aligned_abi_inputs(
     elif isinstance(normalized_args, dict):
         # `args` is dict.  Align values according to abi order.
         # NOTE While the 'else' clause would work for dict instances as well, dict instancecheck is fast
-        # and the subsequent code block compiles to faster C code when type is known to be dict
+        # and the subsequent code block compiles to faster C code when type is known to be dict.
         aligned_args = tuple(
             map(
                 _align_abi_input,
