@@ -232,7 +232,7 @@ extern PyObject *CPyDef_applicators___apply_formatter_if(PyObject *cpy_r_conditi
 extern PyObject *CPyPy_applicators___apply_formatter_if(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_applicators___get_value_apply_formatters_to_dict_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
 extern PyObject *CPyPy_applicators___get_value_apply_formatters_to_dict_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_applicators___get_value_apply_formatters_to_dict_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_key, PyObject *cpy_r_item);
+extern PyObject *CPyDef_applicators___get_value_apply_formatters_to_dict_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_key, PyObject *cpy_r_val);
 extern PyObject *CPyPy_applicators___get_value_apply_formatters_to_dict_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_applicators___apply_formatters_to_dict(PyObject *cpy_r_formatters, PyObject *cpy_r_value, char cpy_r_unaliased);
 extern PyObject *CPyPy_applicators___apply_formatters_to_dict(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
