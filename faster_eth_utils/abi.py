@@ -586,7 +586,19 @@ def get_aligned_abi_inputs(
     types = tuple(map(collapse_if_tuple, abi_element_inputs))
     if type(normalized_args) is tuple:
         aligned_args = tuple(map(_align_abi_input, abi_element_inputs, normalized_args))
-    # Mapping instance check is slow, so it can go last
+    elif isinstance(normalized_args, dict):
+        # `args` is dict.  Align values according to abi order.
+        # NOTE While the next 'if' clause would catch dict instances as well, dict instance check
+        # is faster than Mapping, and the subsequent code block compiles to faster C code
+        # when type is known to be dict
+        aligned_args = tuple(
+            map(
+                _align_abi_input,
+                abi_element_inputs,
+                (normalized_args[abi["name"]] for abi in abi_element_inputs),
+            )
+        )
+    # Mapping instance check is slow, so it can go last.
     elif isinstance(normalized_args, abc.Mapping):
         # `args` is mapping.  Align values according to abi order.
         aligned_args = tuple(
