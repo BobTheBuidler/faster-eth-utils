@@ -91,7 +91,7 @@ def _align_abi_input(
     elif type(aligned_arg) is list:
         return list(map(_align_abi_input, sub_abis, aligned_arg))
     else:
-        return type(aligned_arg)(map(_align_abi_input, sub_abis, aligned_arg))
+        return type(aligned_arg)(map(_align_abi_input, sub_abis, aligned_arg))  # type: ignore [call-arg]
 
 
 def _get_tuple_type_str_and_dims(s: str) -> Optional[Tuple[str, Optional[str]]]:
