@@ -583,6 +583,7 @@ def get_aligned_abi_inputs(
     _raise_if_fallback_or_receive_abi(abi_element)
 
     abi_element_inputs = cast(Sequence[ABIComponent], abi_element.get("inputs", []))
+    types = tuple(map(collapse_if_tuple, abi_element_inputs))
     if isinstance(normalized_args, abc.Mapping):
         # `args` is mapping.  Align values according to abi order.
         aligned_args = tuple(
