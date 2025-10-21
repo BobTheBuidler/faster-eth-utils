@@ -6,6 +6,7 @@ on:
       - master
       - faster-4.1.1
     paths-ignore:
+      - '.circleci/**'
       - '.github/workflows/**'
       - '!.github/workflows/compile.yaml'
       - 'benchmarks/**'
