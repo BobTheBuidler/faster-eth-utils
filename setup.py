@@ -84,7 +84,7 @@ extras_require = {
     ],
     "codspeed": [
         PYTEST_REQUIREMENT,
-        "pytest-codspeed>=4.2,4.3",
+        "pytest-codspeed>=4.2,<4.3",
     ],
 }
 
