@@ -55,6 +55,7 @@ else:
     )
 
 MYPY_REQUIREMENT = f"mypy=={'1.14.1' if sys.version_info < (3, 9) else '1.18.2'}"
+PYTEST_REQUIREMENT = "pytest>=7.0.0"
 
 extras_require = {
     "dev": [
@@ -77,9 +78,13 @@ extras_require = {
     "test": [
         "hypothesis>=4.43.0",
         MYPY_REQUIREMENT,
-        "pytest>=7.0.0",
+        PYTEST_REQUIREMENT,
         "pytest-codspeed>=2.0.0",
         "pytest-xdist>=2.4.0",
+    ],
+    "codspeed": [
+        PYTEST_REQUIREMENT,
+        "pytest-codspeed>=4.2,<4.3",
     ],
 }
 
