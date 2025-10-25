@@ -4,14 +4,16 @@ on:
   pull_request:
     branches: [main, master]
     paths:
-      - '**.py'
+      - 'faster_eth_utils/**/*.py'
+      - 'benchmarks/**/*.py'
       - '.github/workflows/benchmark.yaml'
       - 'pyproject.toml'
       - 'setup.py'
   push:
     branches: [main, master]
     paths:
-      - '**.py'
+      - 'faster_eth_utils/**/*.py'
+      - 'benchmarks/**/*.py'
       - '.github/workflows/benchmark.yaml'
       - 'pyproject.toml'
       - 'setup.py'

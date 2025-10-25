@@ -55,6 +55,7 @@ else:
     )
 
 MYPY_REQUIREMENT = f"mypy=={'1.14.1' if sys.version_info < (3, 9) else '1.18.2'}"
+PYTEST_REQUIREMENT = "pytest>=7.0.0"
 
 extras_require = {
     "dev": [
@@ -77,9 +78,13 @@ extras_require = {
     "test": [
         "hypothesis>=4.43.0",
         MYPY_REQUIREMENT,
-        "pytest>=7.0.0",
+        PYTEST_REQUIREMENT,
         "pytest-codspeed>=2.0.0",
         "pytest-xdist>=2.4.0",
+    ],
+    "codspeed": [
+        PYTEST_REQUIREMENT,
+        "pytest-codspeed>=4.2,<4.3",
     ],
 }
 
@@ -95,7 +100,7 @@ with open("./README.md") as readme:
 setup(
     name="faster-eth-utils",
     # *IMPORTANT*: Don't manually change the version here. Use `make bump`, as described in readme
-    version="5.3.11",
+    version="5.3.13",
     description=(
         """A fork of eth-utils: Common utility functions for python code that interacts with Ethereum, implemented in C"""
     ),
@@ -103,7 +108,17 @@ setup(
     long_description_content_type="text/markdown",
     author="The Ethereum Foundation",
     author_email="snakecharmers@ethereum.org",
-    url="https://github.com/BobTheBuidler/eth-utils",
+    url="https://github.com/BobTheBuidler/faster-eth-utils",
+    project_urls={
+        "Documentation": "https://eth-utils.readthedocs.io/en/stable/",
+        "Release Notes": "https://github.com/BobTheBuidler/faster-eth-utils/releases",
+        "Issues": "https://github.com/BobTheBuidler/faster-eth-utils/issues",
+        "Source - Precompiled (.py)": "https://github.com/BobTheBuidler/faster-eth-utils/tree/master/faster_eth_utils",
+        "Source - Compiled (.c)": "https://github.com/BobTheBuidler/faster-eth-utils/tree/master/build",
+        "Benchmarks": "https://github.com/BobTheBuidler/faster-eth-utils/tree/master/benchmarks",
+        "Benchmarks - Results": "https://github.com/BobTheBuidler/faster-eth-utils/tree/master/benchmarks/results",
+        "Original": "https://github.com/ethereum/eth-utils",
+    },
     include_package_data=True,
     install_requires=[
         "cchecksum>=0.0.3",

@@ -4,6 +4,7 @@ from typing import (
     Dict,
     Generator,
     List,
+    Mapping,
     Sequence,
     Tuple,
     TypeVar,
@@ -137,24 +138,21 @@ def apply_formatters_to_dict(
     if isinstance(value, CamelModel):
         value = value.model_dump(by_alias=not unaliased)
 
-    def get_value(key: Any, item: Any) -> Any:
+    def get_value(key: Any, val: Any) -> Any:
         if key not in formatters:
-            return item
+            return val
         try:
-            return formatters[key](item)
+            return formatters[key](val)
         except ValueError as exc:
             raise ValueError(
-                f"Could not format invalid value {repr(item)} as field {repr(key)}"
+                f"Could not format invalid value {val!r} as field {key!r}"
             ) from exc
         except TypeError as exc:
             raise TypeError(
-                f"Could not format invalid type {repr(item)} as field {repr(key)}"
+                f"Could not format invalid type {val!r} as field {key!r}"
             ) from exc
 
-    return {
-        key: get_value(key, item) if key in formatters else key
-        for key, item in value.items()
-    }
+    return {key: get_value(key, val) for key, val in value.items()}
 
 
 @return_arg_type(1)
@@ -179,7 +177,7 @@ def apply_one_of_formatters(
 
 
 def apply_key_map(
-    key_mappings: Dict[Any, Any], value: Dict[Any, Any]
+    key_mappings: Dict[Any, Any], value: Mapping[Any, Any]
 ) -> Dict[Any, Any]:
     key_conflicts = (
         set(value.keys())
