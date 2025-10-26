@@ -46,7 +46,6 @@ else:
             "--install-types",
             "--disable-error-code=attr-defined",
             "--disable-error-code=comparison-overlap",
-            "--disable-error-code=typeddict-item",
             "--disable-error-code=no-any-return",
             "--disable-error-code=misc",
             "--disable-error-code=unused-ignore",
