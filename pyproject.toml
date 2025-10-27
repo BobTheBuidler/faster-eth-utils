@@ -9,7 +9,7 @@ requires = [
   "eth-typing==5.2.1",
   # puccinialin (installed with eth-utils) is unable to install for
   # Python3.14 on 32-bit manylinux or on 32-bit musllinux for any Python version
-  "eth-utils==5.2.13; platform_system != 'Linux' or platform_machine != 'i686'",
+  "eth-utils==5.2.1; platform_system != 'Linux' or platform_machine != 'i686'",
 ]
 build-backend = "setuptools.build_meta"
 
