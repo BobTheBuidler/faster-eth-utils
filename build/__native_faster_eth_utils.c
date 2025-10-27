@@ -1921,7 +1921,7 @@ PyObject *CPyDef_abi___abi_to_signature(PyObject *cpy_r_abi_element) {
         CPy_AddTraceback("faster_eth_utils/abi.py", "abi_to_signature", DIFFCHECK_PLACEHOLDER, CPyStatic_abi___globals);
         goto CPyL18;
     }
-    cpy_r_r5 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* frozenset({'receive', 'fallback'}) */
+    cpy_r_r5 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* frozenset({'fallback', 'receive'}) */
     cpy_r_r6 = PySet_Contains(cpy_r_r5, cpy_r_r4);
     cpy_r_r7 = cpy_r_r6 >= 0;
     if (unlikely(!cpy_r_r7)) {
@@ -48895,7 +48895,7 @@ const int CPyLit_Tuple[] = {
     3, 334, 334, 334, 1, 603, 3, 476, 61, 61, 2, 605, 596, 6, 66, 68, 70,
     71, 74, 75
 };
-const int CPyLit_FrozenSet[] = {1, 2, 26, 25};
+const int CPyLit_FrozenSet[] = {1, 2, 25, 26};
 CPyModule *CPyModule_faster_eth_utils___abi__internal = NULL;
 CPyModule *CPyModule_faster_eth_utils___abi;
 PyObject *CPyStatic_abi___globals;
