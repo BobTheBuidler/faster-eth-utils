@@ -2,13 +2,14 @@
 requires = [
   "setuptools",
   "wheel",
-  "mypy[mypyc]>=1.14.1,<1.18.3",
-  "cchecksum>=0.0.3",
-  "eth-hash>=0.3.1",
-  "eth-typing>=5.0.0",
-  # puccinialin (installed with faster-eth-utils) is unable to install for
+  "mypy[mypyc]==1.14.1; python_version == '3.8'",
+  "mypy[mypyc]==1.18.2; python_version != '3.8'",
+  "cchecksum==0.3.3",
+  "eth-hash==0.7.1",
+  "eth-typing==5.2.1",
+  # puccinialin (installed with eth-utils) is unable to install for
   # Python3.14 on 32-bit manylinux or on 32-bit musllinux for any Python version
-  "eth-utils>=5.2.0,<6; platform_system != 'Linux' or platform_machine != 'i686'",
+  "eth-utils==5.2.13; platform_system != 'Linux' or platform_machine != 'i686'",
 ]
 build-backend = "setuptools.build_meta"
 
