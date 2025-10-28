@@ -24,7 +24,7 @@ from .types import (
 )
 
 T = TypeVar("T")
-I = TypeVar("I", object)
+I = TypeVar("I", bound=object)
 # a TypeVar representing an instance that a method can bind to
 
 P = ParamSpec("P")
