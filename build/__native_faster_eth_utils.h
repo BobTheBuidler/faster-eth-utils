@@ -264,6 +264,7 @@ typedef struct {
     PyObject *___mypyc_self__;
     CPyTagged _at_position;
     PyObject *_decorator;
+    PyObject *_deco;
 } faster_eth_utils___decorators___return_arg_type_envObject;
 
 typedef struct {
@@ -275,6 +276,7 @@ typedef struct {
     PyObject *_wrapper;
     CPyTagged _at_position;
     PyObject *_decorator;
+    PyObject *_deco;
 } faster_eth_utils___decorators___decorator_return_arg_type_envObject;
 
 typedef struct {
@@ -298,6 +300,8 @@ typedef struct {
     PyObject *_old_to_new_exceptions;
     PyObject *_old_exceptions;
     PyObject *_decorator;
+    PyObject *_cache_key;
+    PyObject *_deco;
 } faster_eth_utils___decorators___replace_exceptions_envObject;
 
 typedef struct {
@@ -310,6 +314,8 @@ typedef struct {
     PyObject *_old_to_new_exceptions;
     PyObject *_old_exceptions;
     PyObject *_decorator;
+    PyObject *_cache_key;
+    PyObject *_deco;
 } faster_eth_utils___decorators___decorator_replace_exceptions_envObject;
 
 typedef struct {

@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[616];
+extern PyObject *CPyStatics[619];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -67,7 +67,6 @@ extern CPyModule *CPyModule_subprocess;
 extern CPyModule *CPyModule_sys;
 extern PyObject *CPyStatic_decorators___globals;
 extern CPyModule *CPyModule_functools;
-extern CPyModule *CPyModule_os;
 extern PyObject *CPyStatic_encoding___globals;
 extern CPyModule *CPyModule_faster_eth_utils___exceptions__internal;
 extern CPyModule *CPyModule_faster_eth_utils___exceptions;
@@ -90,6 +89,7 @@ extern CPyModule *CPyModule_faster_eth_utils___network;
 extern PyObject *CPyStatic_network___globals;
 extern CPyModule *CPyModule_dataclasses;
 extern CPyModule *CPyModule_json;
+extern CPyModule *CPyModule_os;
 extern CPyModule *CPyModule_pathlib;
 extern CPyModule *CPyModule_faster_eth_utils___numeric__internal;
 extern CPyModule *CPyModule_faster_eth_utils___numeric;
@@ -323,6 +323,8 @@ extern PyObject *CPyPy_debug___platform_info(PyObject *self, PyObject *const *ar
 extern PyObject *CPyDef_debug___get_environment_summary(void);
 extern PyObject *CPyPy_debug___get_environment_summary(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_debug_____top_level__(void);
+extern PyObject *CPyStatic_decorators____return_arg_type_deco_cache;
+extern PyObject *CPyStatic_decorators____replace_exceptions_deco_cache;
 extern PyTypeObject *CPyType_decorators___combomethod;
 extern PyObject *CPyDef_decorators___combomethod(PyObject *cpy_r_method);
 extern PyTypeObject *CPyType_decorators_____get___3_combomethod_env;
