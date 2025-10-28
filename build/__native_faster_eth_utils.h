@@ -248,7 +248,6 @@ typedef struct {
     PyObject *_self;
     PyObject *_obj;
     PyObject *_objtype;
-    char _None;
     PyObject *__wrapper;
 } faster_eth_utils___decorators_____get___3_combomethod_envObject;
 
