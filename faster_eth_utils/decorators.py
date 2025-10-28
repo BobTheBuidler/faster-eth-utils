@@ -62,7 +62,7 @@ def return_arg_type(at_position: int) -> Callable[[Callable[P, T]], Callable[P, 
         def wrapper(*args: P.args, **kwargs: P.kwargs) -> Any:
             result = to_wrap(*args, **kwargs)
             ReturnType = type(args[at_position])
-            return ReturnType(result)  # type: ignore
+            return ReturnType(result)  # type: ignore [call-arg]
 
         return wrapper
 

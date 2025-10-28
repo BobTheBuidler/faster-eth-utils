@@ -69,7 +69,7 @@ def combine_argument_formatters(*formatters: Callable[..., Any]) -> Formatters:
     )
 
     _formatter_at_index = curry(apply_formatter_at_index)
-    return compose(  # type: ignore
+    return compose(  # type: ignore [no-any-return]
         *(
             _formatter_at_index(formatter, index)
             for index, formatter in enumerate(formatters)
