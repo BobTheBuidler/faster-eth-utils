@@ -294,6 +294,7 @@ del Sequence
 del TReturn
 del TValue
 del Tuple
+del TypeGuard
 del TypeVar
 del Union
 del curry
