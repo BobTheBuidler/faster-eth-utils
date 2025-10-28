@@ -5,10 +5,18 @@ from typing import (
     Any,
     Callable,
     Dict,
+    Final,
+    Generic,
     Optional,
     Type,
     TypeVar,
+    Union,
     final,
+)
+
+from typing_extensions import (
+    Concatenate,
+    ParamSpec
 )
 
 from .types import (
@@ -16,22 +24,27 @@ from .types import (
 )
 
 T = TypeVar("T")
+I = TypeVar("I", bound=object)
+# a TypeVar representing an instance that a method can bind to
 
+P = ParamSpec("P")
 
+        
 @final
-class combomethod:
-    def __init__(self, method: Callable[..., Any]) -> None:
-        self.method = method
+class combomethod(Generic[I, P, T]):
+    def __init__(self, method: Callable[Concatenate[Union[I, Type[I]], P], T]) -> None:
+        self.method: Final = method
 
-    def __get__(
-        self, obj: Optional[T] = None, objtype: Optional[Type[T]] = None
-    ) -> Callable[..., Any]:
+    def __repr__(self) -> str:
+        return f"combomethod({self.method})"
+    
+    def __get__(self, obj: Optional[I], objtype: Type[I]) -> Callable[P, T]:
         @functools.wraps(self.method)
-        def _wrapper(*args: Any, **kwargs: Any) -> Any:
+        def _wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
             if obj is not None:
                 return self.method(obj, *args, **kwargs)
             else:
-                return self.method(objtype, *args, **kwargs)
+                return self.method(objtype, *args, **kwargs)  # type: ignore [arg-type]
 
         return _wrapper
 

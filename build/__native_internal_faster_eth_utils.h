@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[609];
+extern PyObject *CPyStatics[615];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -357,6 +357,8 @@ extern PyObject *CPyDef_decorators___wrapped_replace_exceptions_decorator_obj(vo
 extern CPyThreadLocal faster_eth_utils___decorators___wrapped_replace_exceptions_decorator_objObject *decorators___wrapped_replace_exceptions_decorator_obj_free_instance;
 extern char CPyDef_decorators___combomethod_____init__(PyObject *cpy_r_self, PyObject *cpy_r_method);
 extern PyObject *CPyPy_decorators___combomethod_____init__(PyObject *self, PyObject *args, PyObject *kw);
+extern PyObject *CPyDef_decorators___combomethod_____repr__(PyObject *cpy_r_self);
+extern PyObject *CPyPy_decorators___combomethod_____repr__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_decorators____wrapper___3_get___3_combomethod_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
 extern PyObject *CPyPy_decorators____wrapper___3_get___3_combomethod_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_decorators____wrapper___3_get___3_combomethod_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
