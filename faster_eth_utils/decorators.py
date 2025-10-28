@@ -10,6 +10,7 @@ from typing import (
     Optional,
     Type,
     TypeVar,
+    Union,
     final,
 )
 
@@ -23,7 +24,7 @@ from .types import (
 )
 
 T = TypeVar("T")
-I = TypeVar("I", bound=object)
+I = TypeVar("I", object)
 # a TypeVar representing an instance that a method can bind to
 
 P = ParamSpec("P")
@@ -31,15 +32,13 @@ P = ParamSpec("P")
         
 @final
 class combomethod(Generic[I, P, T]):
-    def __init__(self, method: Callable[Concatenate[I, P], T]) -> None:
+    def __init__(self, method: Callable[Concatenate[Union[I, Type[I]], P], T]) -> None:
         self.method: Final = method
 
     def __repr__(self) -> str:
         return f"combomethod({self.method})"
     
-    def __get__(
-        self, obj: Optional[I] = None, objtype: Optional[Type[I]] = None
-    ) -> Callable[P, T]:
+    def __get__(self, obj: Optional[I], objtype: Type[I]) -> Callable[P, T]:
         @functools.wraps(self.method)
         def _wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
             if obj is not None:
