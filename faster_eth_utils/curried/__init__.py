@@ -170,7 +170,7 @@ def apply_formatter_if(  # type: ignore
 @overload
 def apply_one_of_formatters(
     formatter_condition_pairs: Sequence[
-        Tuple[Callable[[TArg], SupportsBool], Callable[[TArg], TReturn]]
+        Tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]]
     ],
 ) -> Callable[[TArg], TReturn]: ...
 
@@ -178,7 +178,7 @@ def apply_one_of_formatters(
 @overload
 def apply_one_of_formatters(
     formatter_condition_pairs: Sequence[
-        Tuple[Callable[[TArg], SupportsBool], Callable[[TArg], TReturn]]
+        Tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]]
     ],
     value: TArg,
 ) -> TReturn: ...
@@ -187,7 +187,7 @@ def apply_one_of_formatters(
 # This is just a stub to appease mypy, it gets overwritten later
 def apply_one_of_formatters(
     formatter_condition_pairs: Sequence[
-        Tuple[Callable[[TArg], SupportsBool], Callable[[TArg], TReturn]]
+        Tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]]
     ],
     value: Optional[TArg] = None,
 ) -> TReturn: ...
