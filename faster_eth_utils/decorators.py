@@ -84,7 +84,7 @@ def return_arg_type(at_position: int) -> UntypedDecorator[P, T]:
     return decorator
 
 
-_replace_exceptions_deco_cache: Final[ReplaceExceptionsCache[P, T]] = {}
+_replace_exceptions_deco_cache: Final[ReplaceExceptionsCache[..., Any]] = {}
 # No need to hold so many unique instances in memory
 
 
