@@ -78,7 +78,6 @@ extras_require = {
         "hypothesis>=4.43.0",
         MYPY_REQUIREMENT,
         PYTEST_REQUIREMENT,
-        "pytest-codspeed>=2.0.0",
         "pytest-xdist>=2.4.0",
     ],
     "codspeed": [
