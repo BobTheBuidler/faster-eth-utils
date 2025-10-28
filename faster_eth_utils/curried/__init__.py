@@ -1,4 +1,5 @@
 from typing import (
+    TYPE_CHECKING,
     Any,
     Callable,
     Dict,
@@ -119,6 +120,10 @@ from faster_eth_utils.toolz import (
     curry,
 )
 
+if TYPE_CHECKING:
+    from _typeshed import SupportsBool
+
+
 TArg = TypeVar("TArg")
 TOther = TypeVar("TOther")
 TReturn = TypeVar("TReturn")
@@ -165,73 +170,64 @@ def apply_formatter_if(  # type: ignore
 @overload
 def apply_one_of_formatters(
     formatter_condition_pairs: Sequence[
-        Tuple[Callable[..., bool], Callable[..., TReturn]]
+        Tuple[Callable[[TArg], SupportsBool], Callable[[TArg], TReturn]]
     ],
-) -> Callable[[TValue], TReturn]:
-    ...
+) -> Callable[[TArg], TReturn]: ...
 
 
 @overload
 def apply_one_of_formatters(
     formatter_condition_pairs: Sequence[
-        Tuple[Callable[..., bool], Callable[..., TReturn]]
+        Tuple[Callable[[TArg], SupportsBool], Callable[[TArg], TReturn]]
     ],
-    value: TValue,
-) -> TReturn:
-    ...
+    value: TArg,
+) -> TReturn: ...
 
 
 # This is just a stub to appease mypy, it gets overwritten later
-def apply_one_of_formatters(  # type: ignore
+def apply_one_of_formatters(
     formatter_condition_pairs: Sequence[
-        Tuple[Callable[..., bool], Callable[..., TReturn]]
+        Tuple[Callable[[TArg], SupportsBool], Callable[[TArg], TReturn]]
     ],
-    value: Optional[TValue] = None,
-) -> TReturn:
-    ...
+    value: Optional[TArg] = None,
+) -> TReturn: ...
 
 
 @overload
 def hexstr_if_str(
     to_type: Callable[..., TReturn],
-) -> Callable[[Union[bytes, int, str]], TReturn]:
-    ...
+) -> Callable[[Union[bytes, int, str]], TReturn]: ...
 
 
 @overload
 def hexstr_if_str(
     to_type: Callable[..., TReturn], to_format: Union[bytes, int, str]
-) -> TReturn:
-    ...
+) -> TReturn: ...
 
 
 # This is just a stub to appease mypy, it gets overwritten later
 def hexstr_if_str(  # type: ignore
     to_type: Callable[..., TReturn], to_format: Optional[Union[bytes, int, str]] = None
-) -> TReturn:
-    ...
+) -> TReturn: ...
 
 
 @overload
 def text_if_str(
     to_type: Callable[..., TReturn],
-) -> Callable[[Union[bytes, int, str]], TReturn]:
-    ...
+) -> Callable[[Union[bytes, int, str]], TReturn]: ...
 
 
 @overload
 def text_if_str(
     to_type: Callable[..., TReturn], text_or_primitive: Union[bytes, int, str]
-) -> TReturn:
-    ...
+) -> TReturn: ...
 
 
 # This is just a stub to appease mypy, it gets overwritten later
 def text_if_str(  # type: ignore
     to_type: Callable[..., TReturn],
     text_or_primitive: Optional[Union[bytes, int, str]] = None,
-) -> TReturn:
-    ...
+) -> TReturn: ...
 
 
 @overload
@@ -253,8 +249,7 @@ def apply_formatters_to_dict(
     formatters: Dict[Any, Any],
     value: Optional[Union[Dict[Any, Any], CamelModel]] = None,
     unaliased: bool = False,
-) -> Dict[Any, Any]:
-    ...
+) -> Dict[Any, Any]: ...
 
 
 apply_formatter_at_index = curry(apply_formatter_at_index)

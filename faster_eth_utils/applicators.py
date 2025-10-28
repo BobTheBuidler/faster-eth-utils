@@ -1,4 +1,5 @@
 from typing import (
+    TYPE_CHECKING,
     Any,
     Callable,
     Dict,
@@ -21,9 +22,6 @@ from typing_extensions import (
 from .decorators import (
     return_arg_type,
 )
-from .functional import (
-    to_dict,
-)
 from .pydantic import (
     CamelModel,
 )
@@ -31,6 +29,9 @@ from .toolz import (
     compose,
     curry,
 )
+
+if TYPE_CHECKING:
+    from _typeshed import SupportsBool
 
 TArg = TypeVar("TArg")
 TReturn = TypeVar("TReturn")
@@ -41,7 +42,9 @@ Formatters = Callable[[List[Any]], List[Any]]
 
 @return_arg_type(2)
 def apply_formatter_at_index(
-    formatter: Callable[[TArg], TReturn], at_index: int, value: Sequence[Union[TArg, TOther]]
+    formatter: Callable[[TArg], TReturn],
+    at_index: int,
+    value: Sequence[Union[TArg, TOther]],
 ) -> Generator[Union[TOther, TReturn], None, None]:
     try:
         item = value[at_index]
@@ -100,13 +103,17 @@ def apply_formatters_to_sequence(
 
 @overload
 def apply_formatter_if(
-    condition: Callable[[TArg], TypeGuard[TOther]], formatter: Callable[[TOther], TReturn], value: TArg
+    condition: Callable[[TArg], TypeGuard[TOther]],
+    formatter: Callable[[TOther], TReturn],
+    value: TArg,
 ) -> Union[TArg, TReturn]: ...
+
 
 @overload
 def apply_formatter_if(
     condition: Callable[[TArg], bool], formatter: Callable[[TArg], TReturn], value: TArg
 ) -> Union[TArg, TReturn]: ...
+
 
 def apply_formatter_if(  # type: ignore [misc]
     condition: Union[Callable[[TArg], TypeGuard[TOther]], Callable[[TArg], bool]],
@@ -164,9 +171,11 @@ def apply_formatter_to_array(
 
 
 def apply_one_of_formatters(
-    formatter_condition_pairs: Tuple[Tuple[Callable[[TArg], Any], Callable[[TArg], Any]], ...],
-    value: Any,
-) -> Any:
+    formatter_condition_pairs: Tuple[
+        Tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]], ...
+    ],
+    value: TArg,
+) -> TReturn:
     for condition, formatter in formatter_condition_pairs:
         if condition(value):
             return formatter(value)
