@@ -14,31 +14,34 @@ from typing import (
     final,
 )
 
-from typing_extensions import (
-    Concatenate,
-    ParamSpec
-)
-
-from .types import (
-    is_text,
-)
-
-T = TypeVar("T")
-I = TypeVar("I", bound=object)
-# a TypeVar representing an instance that a method can bind to
+from typing_extensions import Concatenate, ParamSpec
 
 P = ParamSpec("P")
 
-        
+T = TypeVar("T")
+
+TInstance = TypeVar("TInstance", bound=object)
+"""A TypeVar representing an instance that a method can bind to."""
+
+
+ExcType = Type[BaseException]
+
+
 @final
-class combomethod(Generic[I, P, T]):
-    def __init__(self, method: Callable[Concatenate[Union[I, Type[I]], P], T]) -> None:
+class combomethod(Generic[TInstance, P, T]):
+    def __init__(
+        self, method: Callable[Concatenate[Union[TInstance, Type[TInstance]], P], T]
+    ) -> None:
         self.method: Final = method
 
     def __repr__(self) -> str:
         return f"combomethod({self.method})"
-    
-    def __get__(self, obj: Optional[I], objtype: Type[I]) -> Callable[P, T]:
+
+    def __get__(
+        self,
+        obj: Optional[TInstance],
+        objtype: Type[TInstance],
+    ) -> Callable[P, T]:
         @functools.wraps(self.method)
         def _wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
             if obj is not None:
@@ -49,14 +52,14 @@ class combomethod(Generic[I, P, T]):
         return _wrapper
 
 
-def return_arg_type(at_position: int) -> Callable[..., Callable[..., T]]:
+def return_arg_type(at_position: int) -> Callable[[Callable[P, T]], Callable[P, Any]]:
     """
     Wrap the return value with the result of `type(args[at_position])`.
     """
 
-    def decorator(to_wrap: Callable[..., Any]) -> Callable[..., T]:
+    def decorator(to_wrap: Callable[P, Any]) -> Callable[P, Any]:
         @functools.wraps(to_wrap)
-        def wrapper(*args: Any, **kwargs: Any) -> T:  # type: ignore
+        def wrapper(*args: P.args, **kwargs: P.kwargs) -> Any:
             result = to_wrap(*args, **kwargs)
             ReturnType = type(args[at_position])
             return ReturnType(result)  # type: ignore
@@ -67,16 +70,16 @@ def return_arg_type(at_position: int) -> Callable[..., Callable[..., T]]:
 
 
 def replace_exceptions(
-    old_to_new_exceptions: Dict[Type[BaseException], Type[BaseException]]
-) -> Callable[[Callable[..., T]], Callable[..., T]]:
+    old_to_new_exceptions: Dict[ExcType, ExcType],
+) -> Callable[[Callable[P, T]], Callable[P, T]]:
     """
     Replaces old exceptions with new exceptions to be raised in their place.
     """
-    old_exceptions = tuple(old_to_new_exceptions.keys())
+    old_exceptions = tuple(old_to_new_exceptions)
 
-    def decorator(to_wrap: Callable[..., T]) -> Callable[..., T]:
+    def decorator(to_wrap: Callable[P, T]) -> Callable[P, T]:
         @functools.wraps(to_wrap)
-        def wrapped(*args: Any, **kwargs: Any) -> T:
+        def wrapped(*args: P.args, **kwargs: P.kwargs) -> T:
             try:
                 return to_wrap(*args, **kwargs)
             except old_exceptions as err:
