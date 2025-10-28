@@ -8,6 +8,7 @@ from typing import (
     Final,
     Generic,
     Optional,
+    Tuple,
     Type,
     TypeVar,
     Union,
@@ -26,6 +27,11 @@ TInstance = TypeVar("TInstance", bound=object)
 
 ExcType = Type[BaseException]
 
+TypedDecorator = Callable[[Callable[P, T]], Callable[P, T]]
+UntypedDecorator = Callable[[Callable[P, T]], Callable[P, Any]]
+
+ReplaceExceptionsCacheKey = Tuple[Tuple[ExcType, ExcType], ...]
+ReplaceExceptionsCache = Dict[ReplaceExceptionsCacheKey, TypedDecorator[P, T]]
 
 @final
 class combomethod(Generic[TInstance, P, T]):
@@ -42,6 +48,7 @@ class combomethod(Generic[TInstance, P, T]):
         obj: Optional[TInstance],
         objtype: Type[TInstance],
     ) -> Callable[P, T]:
+        
         @functools.wraps(self.method)
         def _wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
             if obj is not None:
@@ -52,10 +59,16 @@ class combomethod(Generic[TInstance, P, T]):
         return _wrapper
 
 
-def return_arg_type(at_position: int) -> Callable[[Callable[P, T]], Callable[P, Any]]:
+_return_arg_type_deco_cache: Final[Dict[int, UntypedDecorator[..., Any]]] = {}
+# No need to hold so many unique instances in memory
+
+
+def return_arg_type(at_position: int) -> UntypedDecorator[P, T]:
     """
     Wrap the return value with the result of `type(args[at_position])`.
     """
+    if deco := _return_arg_type_deco_cache.get(at_position):
+        return deco
 
     def decorator(to_wrap: Callable[P, Any]) -> Callable[P, Any]:
         @functools.wraps(to_wrap)
@@ -66,15 +79,25 @@ def return_arg_type(at_position: int) -> Callable[[Callable[P, T]], Callable[P, 
 
         return wrapper
 
+    _return_arg_type_deco_cache[at_position] = decorator
+
     return decorator
 
 
+_replace_exceptions_deco_cache: Final[ReplaceExceptionsCache[P, T]] = {}
+# No need to hold so many unique instances in memory
+
+
 def replace_exceptions(
-    old_to_new_exceptions: Dict[ExcType, ExcType],
-) -> Callable[[Callable[P, T]], Callable[P, T]]:
+    old_to_new_exceptions: Dict[ExcType, ExcType]
+) -> TypedDecorator[P, T]:
     """
     Replaces old exceptions with new exceptions to be raised in their place.
     """
+    cache_key = tuple(old_to_new_exceptions.items())
+    if deco := _replace_exceptions_deco_cache.get(cache_key):
+        return deco
+    
     old_exceptions = tuple(old_to_new_exceptions)
 
     def decorator(to_wrap: Callable[P, T]) -> Callable[P, T]:
@@ -92,4 +115,6 @@ def replace_exceptions(
 
         return wrapped
 
+    _replace_exceptions_deco_cache[cache_key] = decorator
+    
     return decorator
