@@ -148,7 +148,7 @@ jobs:
 
       - name: Build sdist
         run: |
-          python setup.py sdist
+          python -m build sdist
 
       # ----------------------------------------------------
       # Download wheels built on each runner
