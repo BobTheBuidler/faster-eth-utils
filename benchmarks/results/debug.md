@@ -1,8 +1,8 @@
-#### [faster_eth_utils.debug](https://github.com/BobTheBuidler/faster-eth-utils/blob/pin-eth-typing/faster_eth_utils/debug.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/pin-eth-typing/benchmarks/test_debug_benchmarks.py)
+#### [faster_eth_utils.debug](https://github.com/BobTheBuidler/faster-eth-utils/blob/pin-eth-utils/faster_eth_utils/debug.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/pin-eth-utils/benchmarks/test_debug_benchmarks.py)
 
 | Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
 |----------|---------------|-------------|----------|-------------|----------|--------|
-| `get_environment_summary` | 0.29692374140001904 | 0.29484155000002377 | 0.70% | 0.71% | 1.01x | ✅ |
-| `pip_freeze` | 0.29650561600001313 | 0.2945866866000074 | 0.65% | 0.65% | 1.01x | ✅ |
-| `platform_info` | 3.2013958344290216e-06 | 3.315310731563582e-06 | -3.56% | -3.44% | 0.97x | ❌ |
-| `python_version` | 1.2333946443180375e-06 | 1.4243016765992862e-06 | -15.48% | -13.40% | 0.87x | ❌ |
+| `get_environment_summary` | 0.3133763830000021 | 0.30934375519999546 | 1.29% | 1.30% | 1.01x | ✅ |
+| `pip_freeze` | 0.3094191464000119 | 0.3135106112000017 | -1.32% | -1.31% | 0.99x | ❌ |
+| `platform_info` | 3.189852303584177e-06 | 3.3140298023978034e-06 | -3.89% | -3.75% | 0.96x | ❌ |
+| `python_version` | 1.2274639666398278e-06 | 1.4298404899073274e-06 | -16.49% | -14.15% | 0.86x | ❌ |
