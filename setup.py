@@ -102,6 +102,8 @@ setup(
     description=(
         """A fork of eth-utils: Common utility functions for python code that interacts with Ethereum, implemented in C"""
     ),
+    license="MIT",
+    license_files=["LICENSE"],
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="The Ethereum Foundation",
@@ -138,7 +140,6 @@ setup(
     package_data={"faster_eth_utils": ["py.typed"]},
     classifiers=[
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8",
