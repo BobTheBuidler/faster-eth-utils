@@ -98,12 +98,10 @@ with open("./README.md") as readme:
 setup(
     name="faster-eth-utils",
     # *IMPORTANT*: Don't manually change the version here. Use `make bump`, as described in readme
-    version="5.3.14",
+    version="5.3.15",
     description=(
         """A fork of eth-utils: Common utility functions for python code that interacts with Ethereum, implemented in C"""
     ),
-    license="MIT",
-    license_files=["LICENSE"],
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="The Ethereum Foundation",
@@ -133,6 +131,7 @@ setup(
     extras_require=extras_require,
     py_modules=["eth_utils"],
     license="MIT",
+    license_files=["LICENSE"],
     zip_safe=False,
     keywords="ethereum",
     packages=find_packages(exclude=["scripts", "scripts.*", "tests", "tests.*"]),
