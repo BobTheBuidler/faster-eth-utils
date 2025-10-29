@@ -119,7 +119,7 @@ setup(
     },
     include_package_data=True,
     install_requires=[
-        "cchecksum>=0.0.3",
+        "cchecksum==0.3.3",
         "eth-hash>=0.3.1",
         "eth-typing==5.2.1",
         "eth-utils>=5.2.0,<6",
