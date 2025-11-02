@@ -63,7 +63,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2]
+        shard: [1, 2, 3, 4, 5, 6]
     steps:
       - uses: actions/checkout@v5
 
@@ -95,7 +95,7 @@ jobs:
         uses: CodSpeedHQ/action@v4
         with:
           mode: instrumentation
-          run: pytest --codspeed -k "test_faster_" --test-group=${{ matrix.shard }} --test-group-count=2 benchmarks/
+          run: pytest --codspeed -k "test_faster_" --test-group=${{ matrix.shard }} --test-group-count=6 benchmarks/
 
   comparison-benchmark:
     name: Run Comparison Benchmarks
