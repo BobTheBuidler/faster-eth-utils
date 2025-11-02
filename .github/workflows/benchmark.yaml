@@ -49,13 +49,11 @@ jobs:
           hash-key: |
             pyproject.toml
             setup.py
-            tox.ini
             faster_eth_utils/**/*.py
           pip-cache-dependency-path: |
             pyproject.toml
             setup.py
             tox.ini
-          ccache: true
 
   codspeed-benchmark:
     needs: build-wheel
