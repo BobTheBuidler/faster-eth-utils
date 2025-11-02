@@ -63,7 +63,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        shard: [1, 2]
     steps:
       - uses: actions/checkout@v5
 
@@ -95,7 +95,7 @@ jobs:
         uses: CodSpeedHQ/action@v4
         with:
           mode: instrumentation
-          run: pytest --codspeed -k "test_faster_" --test-group=${{ matrix.shard }} --test-group-count=10 benchmarks/
+          run: pytest --codspeed -k "test_faster_" --test-group=${{ matrix.shard }} --test-group-count=2 benchmarks/
 
   comparison-benchmark:
     name: Run Comparison Benchmarks
@@ -122,7 +122,7 @@ jobs:
           path: .
 
       - name: Install built wheel and benchmark dependencies
-        run: pip install ./*.whl -r requirements.txt
+        run: pip install ./*.whl -r requirements-benchmark.txt
           
       - name: Remove Python files from test env
         run: |
