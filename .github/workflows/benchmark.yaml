@@ -43,7 +43,7 @@ jobs:
       - uses: actions/checkout@v5
       - name: Build wheel with mypycify
         id: mypycify
-        uses: BobTheBuidler/mypycify@master
+        uses: BobTheBuidler/mypycify@v0.0.1
         with:
           python-version: "3.14"
           hash-key: |
