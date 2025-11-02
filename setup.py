@@ -56,34 +56,31 @@ else:
 MYPY_REQUIREMENT = f"mypy=={'1.14.1' if sys.version_info < (3, 9) else '1.18.2'}"
 PYTEST_REQUIREMENT = "pytest>=7.0.0"
 
+
+def read_requirements(path):
+    with open(path) as f:
+        reqs = set()
+        for line in f:
+            if stripped := line.strip():
+                if not stripped.startswith("#"):
+                    if stripped.startswith("-r "):
+                        reqs.update(read_requirements(stripped[3:]))
+                    else:
+                        reqs.add(stripped)
+        return sorted(reqs)
+
+
 extras_require = {
-    "dev": [
-        "build>=0.9.0",
-        "bump_my_version>=0.19.0",
-        "eth-hash[pycryptodome]",
-        "ipython",
-        MYPY_REQUIREMENT,
-        "pre-commit>=3.4.0",
-        "tox>=4.0.0",
-        "twine",
-        "wheel",
-    ],
+    "dev": read_requirements("requirements-dev.txt"),
     "docs": [
         "sphinx>=6.0.0",
         "sphinx-autobuild>=2021.3.14",
         "sphinx_rtd_theme>=1.0.0",
         "towncrier>=24,<26",
     ],
-    "test": [
-        "hypothesis>=4.43.0",
-        MYPY_REQUIREMENT,
-        PYTEST_REQUIREMENT,
-        "pytest-xdist>=2.4.0",
-    ],
-    "codspeed": [
-        PYTEST_REQUIREMENT,
-        "pytest-codspeed>=4.2,<4.3",
-    ],
+    "test": read_requirements("requirements-test.txt"),
+    "codspeed": read_requirements("requirements-codspeed.txt"),
+    "benchmark": read_requirements("requirements-benchmark.txt"),
 }
 
 extras_require["dev"] = (

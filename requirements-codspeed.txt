@@ -1,0 +1,3 @@
+-r requirements-pytest.txt
+
+pytest-codspeed>=4.2,<4.3
