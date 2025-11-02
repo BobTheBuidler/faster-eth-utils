@@ -56,6 +56,20 @@ else:
 MYPY_REQUIREMENT = f"mypy=={'1.14.1' if sys.version_info < (3, 9) else '1.18.2'}"
 PYTEST_REQUIREMENT = "pytest>=7.0.0"
 
+
+def read_requirements(path):
+    with open(path) as f:
+        reqs = set()
+        for line in f:
+            if stripped := line.strip():
+                if not stripped.startswith("#"):
+                    if stripped.startswith("-r "):
+                        reqs.update(read_requirements(stripped[3:]))
+                    else:
+                        reqs.add(stripped)
+        return sorted(reqs)
+
+
 extras_require = {
     "dev": [
         "build>=0.9.0",
@@ -77,13 +91,11 @@ extras_require = {
     "test": [
         "hypothesis>=4.43.0",
         MYPY_REQUIREMENT,
-        PYTEST_REQUIREMENT,
+        "pytest>=7.0.0",
         "pytest-xdist>=2.4.0",
     ],
-    "codspeed": [
-        PYTEST_REQUIREMENT,
-        "pytest-codspeed>=4.2,<4.3",
-    ],
+    "codspeed": read_requirements("requirements-codspeed.txt"),
+    "benchmark": read_requirements("requirements-benchmark.txt"),
 }
 
 extras_require["dev"] = (
