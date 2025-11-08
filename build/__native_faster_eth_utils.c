@@ -27005,14 +27005,17 @@ PyObject *CPyDef_encoding___int_to_big_endian(CPyTagged cpy_r_value) {
     CPyTagged cpy_r_r7;
     char cpy_r_r8;
     CPyTagged cpy_r_r9;
-    PyObject *cpy_r_r10;
-    PyObject *cpy_r_r11;
-    PyObject *cpy_r_r12;
-    PyObject *cpy_r_r13;
-    PyObject **cpy_r_r15;
-    PyObject *cpy_r_r16;
-    PyObject *cpy_r_r17;
+    int64_t cpy_r_r10;
+    char cpy_r_r11;
+    int64_t cpy_r_r12;
+    int64_t cpy_r_r13;
+    CPyPtr cpy_r_r14;
+    void *cpy_r_r15;
+    int64_t cpy_r_r16;
+    char cpy_r_r17;
     PyObject *cpy_r_r18;
+    PyObject *cpy_r_r19;
+    PyObject *cpy_r_r20;
     cpy_r_r0 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'bit_length' */
     CPyTagged_INCREF(cpy_r_value);
     cpy_r_r1 = CPyTagged_StealAsObject(cpy_r_value);
@@ -27021,7 +27024,7 @@ PyObject *CPyDef_encoding___int_to_big_endian(CPyTagged cpy_r_value) {
     cpy_r_r4 = PyObject_VectorcallMethod(cpy_r_r0, cpy_r_r3, 9223372036854775809ULL, 0);
     if (unlikely(cpy_r_r4 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/encoding.py", "int_to_big_endian", DIFFCHECK_PLACEHOLDER, CPyStatic_encoding___globals);
-        goto CPyL10;
+        goto CPyL14;
     }
     CPy_DECREF(cpy_r_r1);
     if (likely(PyLong_Check(cpy_r_r4)))
@@ -27032,7 +27035,7 @@ PyObject *CPyDef_encoding___int_to_big_endian(CPyTagged cpy_r_value) {
     CPy_DECREF(cpy_r_r4);
     if (unlikely(cpy_r_r5 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/encoding.py", "int_to_big_endian", DIFFCHECK_PLACEHOLDER, CPyStatic_encoding___globals);
-        goto CPyL9;
+        goto CPyL13;
     }
     cpy_r_r6 = CPyTagged_Add(cpy_r_r5, 14);
     CPyTagged_DECREF(cpy_r_r5);
@@ -27040,49 +27043,58 @@ PyObject *CPyDef_encoding___int_to_big_endian(CPyTagged cpy_r_value) {
     CPyTagged_DECREF(cpy_r_r6);
     if (unlikely(cpy_r_r7 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/encoding.py", "int_to_big_endian", -1, CPyStatic_encoding___globals);
-        goto CPyL9;
+        goto CPyL13;
     }
     cpy_r_r8 = cpy_r_r7 != 0;
-    if (!cpy_r_r8) goto CPyL11;
+    if (!cpy_r_r8) goto CPyL15;
     cpy_r_r9 = cpy_r_r7;
     goto CPyL6;
 CPyL5: ;
     cpy_r_r9 = 2;
 CPyL6: ;
-    cpy_r_r10 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'big' */
-    cpy_r_r11 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'to_bytes' */
-    CPyTagged_INCREF(cpy_r_value);
-    cpy_r_r12 = CPyTagged_StealAsObject(cpy_r_value);
-    cpy_r_r13 = CPyTagged_StealAsObject(cpy_r_r9);
-    PyObject *cpy_r_r14[3] = {cpy_r_r12, cpy_r_r13, cpy_r_r10};
-    cpy_r_r15 = (PyObject **)&cpy_r_r14;
-    cpy_r_r16 = PyObject_VectorcallMethod(cpy_r_r11, cpy_r_r15, 9223372036854775811ULL, 0);
-    if (unlikely(cpy_r_r16 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/encoding.py", "int_to_big_endian", DIFFCHECK_PLACEHOLDER, CPyStatic_encoding___globals);
-        goto CPyL12;
-    }
-    CPy_DECREF(cpy_r_r12);
-    CPy_DECREF(cpy_r_r13);
-    if (likely(PyBytes_Check(cpy_r_r16) || PyByteArray_Check(cpy_r_r16)))
-        cpy_r_r17 = cpy_r_r16;
-    else {
-        CPy_TypeErrorTraceback("faster_eth_utils/encoding.py", "int_to_big_endian", 2, CPyStatic_encoding___globals, "bytes", cpy_r_r16);
-        goto CPyL9;
-    }
-    return cpy_r_r17;
+    cpy_r_r10 = cpy_r_r9 & 1;
+    cpy_r_r11 = cpy_r_r10 == 0;
+    if (!cpy_r_r11) goto CPyL8;
+    cpy_r_r12 = (Py_ssize_t)cpy_r_r9 >> 1;
+    CPyTagged_DECREF(cpy_r_r9);
+    cpy_r_r13 = cpy_r_r12;
+    goto CPyL11;
+CPyL8: ;
+    cpy_r_r14 = cpy_r_r9 ^ 1;
+    cpy_r_r15 = (void *)cpy_r_r14;
+    cpy_r_r16 = CPyLong_AsInt64(cpy_r_r15);
+    cpy_r_r17 = cpy_r_r16 == -113;
+    if (unlikely(cpy_r_r17)) goto CPyL10;
 CPyL9: ;
-    cpy_r_r18 = NULL;
-    return cpy_r_r18;
+    cpy_r_r13 = cpy_r_r16;
+    CPyTagged_DECREF(cpy_r_r9);
+    goto CPyL11;
 CPyL10: ;
-    CPy_DecRef(cpy_r_r1);
-    goto CPyL9;
+    cpy_r_r18 = PyErr_Occurred();
+    if (unlikely(cpy_r_r18 != NULL)) {
+        CPy_AddTraceback("faster_eth_utils/encoding.py", "int_to_big_endian", DIFFCHECK_PLACEHOLDER, CPyStatic_encoding___globals);
+        goto CPyL16;
+    } else
+        goto CPyL9;
 CPyL11: ;
+    cpy_r_r19 = CPyTagged_ToBigEndianBytes(cpy_r_value, cpy_r_r13, 0);
+    if (unlikely(cpy_r_r19 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/encoding.py", "int_to_big_endian", DIFFCHECK_PLACEHOLDER, CPyStatic_encoding___globals);
+        goto CPyL13;
+    }
+    return cpy_r_r19;
+CPyL13: ;
+    cpy_r_r20 = NULL;
+    return cpy_r_r20;
+CPyL14: ;
+    CPy_DecRef(cpy_r_r1);
+    goto CPyL13;
+CPyL15: ;
     CPyTagged_DECREF(cpy_r_r7);
     goto CPyL5;
-CPyL12: ;
-    CPy_DecRef(cpy_r_r12);
-    CPy_DecRef(cpy_r_r13);
-    goto CPyL9;
+CPyL16: ;
+    CPyTagged_DecRef(cpy_r_r9);
+    goto CPyL13;
 }
 
 PyObject *CPyPy_encoding___int_to_big_endian(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
