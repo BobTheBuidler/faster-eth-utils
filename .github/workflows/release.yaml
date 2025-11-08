@@ -5,6 +5,7 @@ on:
     branches:
       - master
     types: [published]
+  workflow_dispatch:
 
 jobs:
   build_wheels:
@@ -79,18 +80,28 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
-          python-version: "3.11"
+          python-version: "3.14"
+          cache: pip
+          cache-dependency-path: |
+            setup.py
+            pyproject.toml
 
       - name: Install cibuildwheel
         run: |
           python -m pip install --upgrade pip setuptools wheel cibuildwheel
+            
+      - name: Cache .mypy_cache
+        uses: actions/cache@v4
+        with:
+          path: .mypy_cache
+          key: mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
 
       - name: Build wheels
         env:
@@ -106,7 +117,7 @@ jobs:
           python -m cibuildwheel --output-dir wheelhouse
 
       - name: Upload wheels
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ matrix.artifact_name }}
           path: wheelhouse/*.whl
@@ -117,65 +128,74 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
-          python-version: "3.11"
+          python-version: "3.14"
+          cache: pip
+          cache-dependency-path: |
+            setup.py
+            pyproject.toml
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install setuptools wheel twine "mypy[mypyc]>=1.14.1,<1.16.1"
+          pip install setuptools wheel twine
 
+      - name: Drop build folder to prevent shadowing issues w/ the PyPA “build” module
+        run: rm -rf build
+      
+      - name: Install PyPA “build” module
+        run: pip install -U build
+      
       - name: Build sdist
-        run: |
-          python setup.py sdist
+        run: python -m build --sdist
 
       # ----------------------------------------------------
       # Download wheels built on each runner
       # ----------------------------------------------------
       - name: Download manylinux 64-bit wheels
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: "wheels-ubuntu-latest-manylinux-x64"
           path: wheelhouse/linux-many-x64
 
       - name: Download manylinux 32-bit wheels
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: "wheels-ubuntu-latest-manylinux-x86"
           path: wheelhouse/linux-many-x86
 
       - name: Download musllinux 64-bit wheels
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: "wheels-ubuntu-latest-musllinux-x64"
           path: wheelhouse/linux-musl-x64
 
       - name: Download musllinux 32-bit wheels
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: "wheels-ubuntu-latest-musllinux-x86"
           path: wheelhouse/linux-musl-x86
 
       - name: Download macOS wheels
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: "wheels-macos-latest"
           path: wheelhouse/macos
 
       - name: Download Windows 64-bit wheels
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: "wheels-windows-latest-x64"
           path: wheelhouse/windows-x64
 
       - name: Download Windows 32-bit wheels
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: "wheels-windows-latest-x86"
           path: wheelhouse/windows-x86
@@ -184,6 +204,7 @@ jobs:
       # Publish all built artifacts to PyPI
       # ----------------------------------------------------
       - name: Publish sdist and wheels to PyPI
+        if: ${{ github.event_name != 'workflow_dispatch' }}
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}

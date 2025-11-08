@@ -45,11 +45,11 @@ def is_boolean(value: Any) -> TypeGuard[bool]:
 
 
 def is_dict(obj: Any) -> TypeGuard[collections.abc.Mapping[Any, Any]]:
-    return isinstance(obj, Mapping)
+    return isinstance(obj, dict) or isinstance(obj, Mapping)
 
 
 def is_list_like(obj: Any) -> TypeGuard[collections.abc.Sequence[Any]]:
-    return not is_string(obj) and isinstance(obj, Sequence)
+    return isinstance(obj, (list, tuple)) or not is_string(obj) and isinstance(obj, Sequence)
 
 
 def is_list(obj: Any) -> TypeGuard[List[Any]]:
