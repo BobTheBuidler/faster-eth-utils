@@ -5,6 +5,18 @@ on:
     branches:
       - master
       - faster-4.1.1
+    paths-ignore:
+      - '.circleci/**'
+      - '.github/workflows/**'
+      - '!.github/workflows/compile.yaml'
+      - 'benchmarks/**'
+      - 'tests/**'
+      - 'tox.ini'
+      - 'README.md'
+      - 'requirements-benchmark.txt'
+      - 'requirements-codspeed.txt'
+      - 'requirements-pytest.txt'
+      - 'requirements-test.txt'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -15,22 +27,47 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           # Check out the PR branch
           ref: ${{ github.head_ref }}
 
-      # Python 3.12
-      - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v6
         with:
-          python-version: "3.12"
-      - name: Install Mypyc (3.12)
-        run: pip install mypy[mypyc]==1.18.1 .
-      - name: Run Mypyc (3.12)
+          python-version: "3.14"
+          cache: pip
+          cache-dependency-path: |
+            setup.py
+            pyproject.toml
+            
+      - name: Cache .mypy_cache
+        uses: actions/cache@v4
+        with:
+          path: .mypy_cache
+          key: mypy-cache-${{ runner.os }}-x64-${{ hashFiles('**/*.py', 'pyproject.toml') }}
+
+      - name: Delete existing build files
+        run: rm -rf build
+        
+      - name: Install Mypyc
         env:
           MYPYC_STRICT_DUNDER_TYPING: 1
-        run: make compile
+        run: pip install .
+          
+      - name: Normalize C files for diffchecking
+        # This makes it much easier to diffcheck changes in the C files
+        run: |
+          # Insert DIFFCHECK_PLACEHOLDER macro at the top if not present
+          for f in build/*.c; do
+            if ! grep -q 'DIFFCHECK_PLACEHOLDER' "$f"; then
+              sed -i '1i#ifndef DIFFCHECK_PLACEHOLDER\n#define DIFFCHECK_PLACEHOLDER 0\n#endif' "$f"
+            fi
+          done
+          # Replace line number in CPy_AddTraceback with macro
+          sed -i 's/\(CPy_AddTraceback([^,]*, *[^,]*, *\)[0-9]\+\(, *[^)]*)\)/\1DIFFCHECK_PLACEHOLDER\2/g' build/*.c
+          # Replace index in CPyStatics[...] with macro
+          sed -i 's/CPyStatics\[[0-9]\+\]/CPyStatics[DIFFCHECK_PLACEHOLDER]/g' build/*.c
 
       - name: Check for changes
         run: |

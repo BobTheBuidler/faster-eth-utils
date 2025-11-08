@@ -1,4 +1,5 @@
 import pytest
+import sys
 from typing import (
     List,
 )
@@ -7,7 +8,7 @@ from mypy import (
     api,
 )
 
-MYPY_ARGS = ["--ignore-missing-imports"]
+MYPY_ARGS = ["--ignore-missing-imports", "--disable-error-code=unused-ignore"]
 FIXTURE_DIR = "fixtures/mypy/"
 
 
@@ -30,6 +31,10 @@ def check_mypy_run(
 
 # The following tests all run code snippets through mypy that contain a
 # `reveal_type` statement, and then match the mypy output against our expectations
+@pytest.mark.skipif(
+    sys.platform.startswith("win"),
+    reason="This test's file path string matching doesn't work for Windows paths.",
+)
 @pytest.mark.parametrize(
     "fixture,message",
     (

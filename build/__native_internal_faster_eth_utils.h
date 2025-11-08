@@ -1,12 +1,12 @@
-#ifndef MYPYC_NATIVE_INTERNAL_99c07adba6ff961eaf3e_H
-#define MYPYC_NATIVE_INTERNAL_99c07adba6ff961eaf3e_H
+#ifndef MYPYC_NATIVE_INTERNAL_faster_eth_utils_H
+#define MYPYC_NATIVE_INTERNAL_faster_eth_utils_H
 #include <Python.h>
 #include <CPy.h>
-#include "__native_99c07adba6ff961eaf3e.h"
+#include "__native_faster_eth_utils.h"
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[601];
+extern PyObject *CPyStatics[619];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -40,11 +40,10 @@ extern CPyModule *CPyModule_faster_eth_utils___hexadecimal;
 extern CPyModule *CPyModule_faster_eth_utils___applicators__internal;
 extern CPyModule *CPyModule_faster_eth_utils___applicators;
 extern PyObject *CPyStatic_applicators___globals;
+extern CPyModule *CPyModule_sys;
 extern CPyModule *CPyModule_warnings;
 extern CPyModule *CPyModule_faster_eth_utils___decorators__internal;
 extern CPyModule *CPyModule_faster_eth_utils___decorators;
-extern CPyModule *CPyModule_faster_eth_utils___functional__internal;
-extern CPyModule *CPyModule_faster_eth_utils___functional;
 extern CPyModule *CPyModule_faster_eth_utils___pydantic;
 extern CPyModule *CPyModule_faster_eth_utils___toolz__internal;
 extern CPyModule *CPyModule_faster_eth_utils___toolz;
@@ -64,14 +63,15 @@ extern CPyModule *CPyModule_faster_eth_utils___debug;
 extern PyObject *CPyStatic_debug___globals;
 extern CPyModule *CPyModule_platform;
 extern CPyModule *CPyModule_subprocess;
-extern CPyModule *CPyModule_sys;
 extern PyObject *CPyStatic_decorators___globals;
 extern CPyModule *CPyModule_functools;
-extern CPyModule *CPyModule_os;
 extern PyObject *CPyStatic_encoding___globals;
 extern CPyModule *CPyModule_faster_eth_utils___exceptions__internal;
 extern CPyModule *CPyModule_faster_eth_utils___exceptions;
 extern PyObject *CPyStatic_exceptions___globals;
+extern CPyModule *CPyModule_eth_utils___exceptions;
+extern CPyModule *CPyModule_faster_eth_utils___functional__internal;
+extern CPyModule *CPyModule_faster_eth_utils___functional;
 extern PyObject *CPyStatic_functional___globals;
 extern PyObject *CPyStatic_hexadecimal___globals;
 extern CPyModule *CPyModule_binascii;
@@ -89,6 +89,7 @@ extern CPyModule *CPyModule_faster_eth_utils___network;
 extern PyObject *CPyStatic_network___globals;
 extern CPyModule *CPyModule_dataclasses;
 extern CPyModule *CPyModule_json;
+extern CPyModule *CPyModule_os;
 extern CPyModule *CPyModule_pathlib;
 extern CPyModule *CPyModule_faster_eth_utils___numeric__internal;
 extern CPyModule *CPyModule_faster_eth_utils___numeric;
@@ -101,6 +102,7 @@ extern CPyModule *CPyModule_toolz;
 extern PyObject *CPyStatic_types___globals;
 extern CPyModule *CPyModule_collections___abc;
 extern PyObject *CPyStatic_units___globals;
+extern PyObject *CPyStatic_abi_____ABI_TYPE_LITERALS;
 extern PyTypeObject *CPyType_abi___get_normalized_abi_inputs_env;
 extern PyObject *CPyDef_abi___get_normalized_abi_inputs_env(void);
 extern CPyThreadLocal faster_eth_utils___abi___get_normalized_abi_inputs_envObject *abi___get_normalized_abi_inputs_env_free_instance;
@@ -183,15 +185,21 @@ extern CPyThreadLocal faster_eth_utils___applicators___apply_formatter_at_index_
 extern PyTypeObject *CPyType_applicators___apply_formatters_to_sequence_gen;
 extern PyObject *CPyDef_applicators___apply_formatters_to_sequence_gen(void);
 extern CPyThreadLocal faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *applicators___apply_formatters_to_sequence_gen_free_instance;
-extern PyTypeObject *CPyType_applicators___apply_formatters_to_dict_gen;
-extern PyObject *CPyDef_applicators___apply_formatters_to_dict_gen(void);
-extern CPyThreadLocal faster_eth_utils___applicators___apply_formatters_to_dict_genObject *applicators___apply_formatters_to_dict_gen_free_instance;
+extern PyTypeObject *CPyType_applicators___apply_formatters_to_dict_env;
+extern PyObject *CPyDef_applicators___apply_formatters_to_dict_env(void);
+extern CPyThreadLocal faster_eth_utils___applicators___apply_formatters_to_dict_envObject *applicators___apply_formatters_to_dict_env_free_instance;
+extern PyTypeObject *CPyType_applicators___get_value_apply_formatters_to_dict_obj;
+extern PyObject *CPyDef_applicators___get_value_apply_formatters_to_dict_obj(void);
+extern CPyThreadLocal faster_eth_utils___applicators___get_value_apply_formatters_to_dict_objObject *applicators___get_value_apply_formatters_to_dict_obj_free_instance;
 extern PyTypeObject *CPyType_applicators___apply_formatter_to_array_gen;
 extern PyObject *CPyDef_applicators___apply_formatter_to_array_gen(void);
 extern CPyThreadLocal faster_eth_utils___applicators___apply_formatter_to_array_genObject *applicators___apply_formatter_to_array_gen_free_instance;
-extern PyTypeObject *CPyType_applicators___apply_key_map_gen;
-extern PyObject *CPyDef_applicators___apply_key_map_gen(void);
-extern CPyThreadLocal faster_eth_utils___applicators___apply_key_map_genObject *applicators___apply_key_map_gen_free_instance;
+extern PyTypeObject *CPyType_applicators___apply_key_map_env;
+extern PyObject *CPyDef_applicators___apply_key_map_env(void);
+extern CPyThreadLocal faster_eth_utils___applicators___apply_key_map_envObject *applicators___apply_key_map_env_free_instance;
+extern PyTypeObject *CPyType_applicators___get_key_apply_key_map_obj;
+extern PyObject *CPyDef_applicators___get_key_apply_key_map_obj(void);
+extern CPyThreadLocal faster_eth_utils___applicators___get_key_apply_key_map_objObject *applicators___get_key_apply_key_map_obj_free_instance;
 extern PyObject *CPyDef_applicators___apply_formatter_at_index_gen_____mypyc_generator_helper__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg, PyObject **cpy_r_stop_iter_ptr);
 extern PyObject *CPyDef_applicators___apply_formatter_at_index_gen_____next__(PyObject *cpy_r___mypyc_self__);
 extern PyObject *CPyPy_applicators___apply_formatter_at_index_gen_____next__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
@@ -222,17 +230,10 @@ extern PyObject *CPyDef_applicators___apply_formatters_to_sequence(PyObject *cpy
 extern PyObject *CPyPy_applicators___apply_formatters_to_sequence(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_applicators___apply_formatter_if(PyObject *cpy_r_condition, PyObject *cpy_r_formatter, PyObject *cpy_r_value);
 extern PyObject *CPyPy_applicators___apply_formatter_if(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_applicators___apply_formatters_to_dict_gen_____mypyc_generator_helper__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg, PyObject **cpy_r_stop_iter_ptr);
-extern PyObject *CPyDef_applicators___apply_formatters_to_dict_gen_____next__(PyObject *cpy_r___mypyc_self__);
-extern PyObject *CPyPy_applicators___apply_formatters_to_dict_gen_____next__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_applicators___apply_formatters_to_dict_gen___send(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);
-extern PyObject *CPyPy_applicators___apply_formatters_to_dict_gen___send(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_applicators___apply_formatters_to_dict_gen_____iter__(PyObject *cpy_r___mypyc_self__);
-extern PyObject *CPyPy_applicators___apply_formatters_to_dict_gen_____iter__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_applicators___apply_formatters_to_dict_gen___throw(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback);
-extern PyObject *CPyPy_applicators___apply_formatters_to_dict_gen___throw(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_applicators___apply_formatters_to_dict_gen___close(PyObject *cpy_r___mypyc_self__);
-extern PyObject *CPyPy_applicators___apply_formatters_to_dict_gen___close(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_applicators___get_value_apply_formatters_to_dict_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+extern PyObject *CPyPy_applicators___get_value_apply_formatters_to_dict_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_applicators___get_value_apply_formatters_to_dict_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_key, PyObject *cpy_r_val);
+extern PyObject *CPyPy_applicators___get_value_apply_formatters_to_dict_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_applicators___apply_formatters_to_dict(PyObject *cpy_r_formatters, PyObject *cpy_r_value, char cpy_r_unaliased);
 extern PyObject *CPyPy_applicators___apply_formatters_to_dict(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_applicators___apply_formatter_to_array_gen_____mypyc_generator_helper__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg, PyObject **cpy_r_stop_iter_ptr);
@@ -250,17 +251,10 @@ extern PyObject *CPyDef_applicators___apply_formatter_to_array(PyObject *cpy_r_f
 extern PyObject *CPyPy_applicators___apply_formatter_to_array(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_applicators___apply_one_of_formatters(PyObject *cpy_r_formatter_condition_pairs, PyObject *cpy_r_value);
 extern PyObject *CPyPy_applicators___apply_one_of_formatters(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_applicators___apply_key_map_gen_____mypyc_generator_helper__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg, PyObject **cpy_r_stop_iter_ptr);
-extern PyObject *CPyDef_applicators___apply_key_map_gen_____next__(PyObject *cpy_r___mypyc_self__);
-extern PyObject *CPyPy_applicators___apply_key_map_gen_____next__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_applicators___apply_key_map_gen___send(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);
-extern PyObject *CPyPy_applicators___apply_key_map_gen___send(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_applicators___apply_key_map_gen_____iter__(PyObject *cpy_r___mypyc_self__);
-extern PyObject *CPyPy_applicators___apply_key_map_gen_____iter__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_applicators___apply_key_map_gen___throw(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback);
-extern PyObject *CPyPy_applicators___apply_key_map_gen___throw(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_applicators___apply_key_map_gen___close(PyObject *cpy_r___mypyc_self__);
-extern PyObject *CPyPy_applicators___apply_key_map_gen___close(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_applicators___get_key_apply_key_map_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+extern PyObject *CPyPy_applicators___get_key_apply_key_map_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_applicators___get_key_apply_key_map_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_key);
+extern PyObject *CPyPy_applicators___get_key_apply_key_map_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_applicators___apply_key_map(PyObject *cpy_r_key_mappings, PyObject *cpy_r_value);
 extern PyObject *CPyPy_applicators___apply_key_map(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_applicators_____top_level__(void);
@@ -329,6 +323,8 @@ extern PyObject *CPyPy_debug___platform_info(PyObject *self, PyObject *const *ar
 extern PyObject *CPyDef_debug___get_environment_summary(void);
 extern PyObject *CPyPy_debug___get_environment_summary(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_debug_____top_level__(void);
+extern PyObject *CPyStatic_decorators____return_arg_type_deco_cache;
+extern PyObject *CPyStatic_decorators____replace_exceptions_deco_cache;
 extern PyTypeObject *CPyType_decorators___combomethod;
 extern PyObject *CPyDef_decorators___combomethod(PyObject *cpy_r_method);
 extern PyTypeObject *CPyType_decorators_____get___3_combomethod_env;
@@ -363,6 +359,8 @@ extern PyObject *CPyDef_decorators___wrapped_replace_exceptions_decorator_obj(vo
 extern CPyThreadLocal faster_eth_utils___decorators___wrapped_replace_exceptions_decorator_objObject *decorators___wrapped_replace_exceptions_decorator_obj_free_instance;
 extern char CPyDef_decorators___combomethod_____init__(PyObject *cpy_r_self, PyObject *cpy_r_method);
 extern PyObject *CPyPy_decorators___combomethod_____init__(PyObject *self, PyObject *args, PyObject *kw);
+extern PyObject *CPyDef_decorators___combomethod_____repr__(PyObject *cpy_r_self);
+extern PyObject *CPyPy_decorators___combomethod_____repr__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_decorators____wrapper___3_get___3_combomethod_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
 extern PyObject *CPyPy_decorators____wrapper___3_get___3_combomethod_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_decorators____wrapper___3_get___3_combomethod_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);

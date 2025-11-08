@@ -1,4 +1,6 @@
+import sys
 from typing import (
+    TYPE_CHECKING,
     Any,
     Callable,
     Dict,
@@ -10,6 +12,7 @@ from typing import (
     Union,
     overload,
 )
+from typing_extensions import TypeGuard
 
 from faster_eth_utils import (
     CamelModel,
@@ -118,41 +121,53 @@ from faster_eth_utils.toolz import (
     curry,
 )
 
+if TYPE_CHECKING:
+    if sys.version_info >= (3, 9):
+        from _typeshed import SupportsBool
+    # We have to sacrifice a little bit of specificity on dinosaur Python3.8
+    else:
+        SupportsBool = Any
+
+
+TArg = TypeVar("TArg")
+TOther = TypeVar("TOther")
 TReturn = TypeVar("TReturn")
 TValue = TypeVar("TValue")
 
 
 @overload
 def apply_formatter_if(
-    condition: Callable[..., bool],
-) -> Callable[[Callable[..., TReturn]], Callable[[TValue], Union[TReturn, TValue]]]:
-    pass
-
-
-@overload
-def apply_formatter_if(
-    condition: Callable[..., bool], formatter: Callable[..., TReturn]
-) -> Callable[[TValue], Union[TReturn, TValue]]:
-    pass
-
+    condition: Callable[[TArg], TypeGuard[TOther]],
+) -> Callable[[Callable[[TOther], TReturn]], Callable[[TArg], Union[TReturn, TArg]]]:
+    ...
 
 @overload
 def apply_formatter_if(
-    condition: Callable[..., bool], formatter: Callable[..., TReturn], value: TValue
-) -> Union[TReturn, TValue]:
-    pass
+    condition: Callable[[TArg], TypeGuard[TOther]], formatter: Callable[[TOther], TReturn]
+) -> Callable[[TArg], Union[TReturn, TArg]]:
+    ...
 
+@overload
+def apply_formatter_if(
+    condition: Callable[[TArg], TypeGuard[TOther]], formatter: Callable[[TOther], TReturn], value: TArg
+) -> Union[TReturn, TArg]:
+    ...
 
-# This is just a stub to appease mypy, it gets overwritten later
+@overload
+def apply_formatter_if(
+    condition: Callable[[TArg], bool], formatter: Callable[[TArg], TReturn], value: TArg
+) -> Union[TReturn, TArg]:
+    ...
+
 def apply_formatter_if(  # type: ignore
-    condition: Callable[..., bool],
-    formatter: Optional[Callable[..., TReturn]] = None,
-    value: Optional[TValue] = None,
+    condition: Union[Callable[[TArg], TypeGuard[TOther]], Callable[[TArg], bool]],
+    formatter: Optional[Union[Callable[[TOther], TReturn], Callable[[TArg], TReturn]]] = None,
+    value: Optional[TArg] = None,
 ) -> Union[
-    Callable[[Callable[..., TReturn]], Callable[[TValue], Union[TReturn, TValue]]],
-    Callable[[TValue], Union[TReturn, TValue]],
+    Callable[[Callable[[TOther], TReturn]], Callable[[TArg], Union[TReturn, TArg]]],
+    Callable[[TArg], Union[TReturn, TArg]],
     TReturn,
-    TValue,
+    TArg,
 ]:
     pass
 
@@ -160,96 +175,86 @@ def apply_formatter_if(  # type: ignore
 @overload
 def apply_one_of_formatters(
     formatter_condition_pairs: Sequence[
-        Tuple[Callable[..., bool], Callable[..., TReturn]]
+        Tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]]
     ],
-) -> Callable[[TValue], TReturn]:
-    ...
+) -> Callable[[TArg], TReturn]: ...
 
 
 @overload
 def apply_one_of_formatters(
     formatter_condition_pairs: Sequence[
-        Tuple[Callable[..., bool], Callable[..., TReturn]]
+        Tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]]
     ],
-    value: TValue,
-) -> TReturn:
-    ...
+    value: TArg,
+) -> TReturn: ...
 
 
 # This is just a stub to appease mypy, it gets overwritten later
-def apply_one_of_formatters(  # type: ignore
+def apply_one_of_formatters(
     formatter_condition_pairs: Sequence[
-        Tuple[Callable[..., bool], Callable[..., TReturn]]
+        Tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]]
     ],
-    value: Optional[TValue] = None,
-) -> TReturn:
-    ...
+    value: Optional[TArg] = None,
+) -> TReturn: ...
 
 
 @overload
 def hexstr_if_str(
     to_type: Callable[..., TReturn],
-) -> Callable[[Union[bytes, int, str]], TReturn]:
-    ...
+) -> Callable[[Union[bytes, int, str]], TReturn]: ...
 
 
 @overload
 def hexstr_if_str(
     to_type: Callable[..., TReturn], to_format: Union[bytes, int, str]
-) -> TReturn:
-    ...
+) -> TReturn: ...
 
 
 # This is just a stub to appease mypy, it gets overwritten later
 def hexstr_if_str(  # type: ignore
     to_type: Callable[..., TReturn], to_format: Optional[Union[bytes, int, str]] = None
-) -> TReturn:
-    ...
+) -> TReturn: ...
 
 
 @overload
 def text_if_str(
     to_type: Callable[..., TReturn],
-) -> Callable[[Union[bytes, int, str]], TReturn]:
-    ...
+) -> Callable[[Union[bytes, int, str]], TReturn]: ...
 
 
 @overload
 def text_if_str(
     to_type: Callable[..., TReturn], text_or_primitive: Union[bytes, int, str]
-) -> TReturn:
-    ...
+) -> TReturn: ...
 
 
 # This is just a stub to appease mypy, it gets overwritten later
 def text_if_str(  # type: ignore
     to_type: Callable[..., TReturn],
     text_or_primitive: Optional[Union[bytes, int, str]] = None,
-) -> TReturn:
-    ...
+) -> TReturn: ...
 
 
 @overload
 def apply_formatters_to_dict(
     formatters: Dict[Any, Any], unaliased: bool = False
-) -> Callable[[Dict[Any, Any]], TReturn]:
+) -> Callable[[Union[Dict[Any, Any], CamelModel]], Dict[Any, Any]]:
     ...
 
 
 @overload
 def apply_formatters_to_dict(
-    formatters: Dict[Any, Any], value: Union[Dict[Any, Any], CamelModel]
+    formatters: Dict[Any, Any], value: Union[Dict[Any, Any], CamelModel], unaliased: bool = False
 ) -> Dict[Any, Any]:
     ...
 
 
 # This is just a stub to appease mypy, it gets overwritten later
-def apply_formatters_to_dict(  # type: ignore
+def apply_formatters_to_dict(
     formatters: Dict[Any, Any],
     value: Optional[Union[Dict[Any, Any], CamelModel]] = None,
     unaliased: bool = False,
-) -> Dict[Any, Any]:
-    ...
+) -> Dict[Any, Any]: ...
 
 
 apply_formatter_at_index = curry(apply_formatter_at_index)
@@ -261,6 +266,7 @@ apply_key_map = curry(apply_key_map)
 apply_one_of_formatters = curry(non_curried_apply_one_of_formatters)  # noqa: F811
 filter_abi_by_name = curry(filter_abi_by_name)
 filter_abi_by_type = curry(filter_abi_by_type)
+flatten_return = curry(flatten_return)
 from_wei = curry(from_wei)
 from_wei_decimals = curry(from_wei_decimals)
 get_aligned_abi_inputs = curry(get_aligned_abi_inputs)
@@ -268,7 +274,9 @@ get_logger = curry(get_logger)
 get_normalized_abi_inputs = curry(get_normalized_abi_inputs)
 hexstr_if_str = curry(non_curried_hexstr_if_str)  # noqa: F811
 is_same_address = curry(is_same_address)
+sort_return = curry(sort_return)
 text_if_str = curry(non_curried_text_if_str)  # noqa: F811
+to_ordered_dict = curry(to_ordered_dict)
 to_wei = curry(to_wei)
 to_wei_decimals = curry(to_wei_decimals)
 clamp = curry(clamp)
@@ -286,6 +294,7 @@ del Sequence
 del TReturn
 del TValue
 del Tuple
+del TypeGuard
 del TypeVar
 del Union
 del curry

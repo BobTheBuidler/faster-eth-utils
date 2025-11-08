@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import sys
 from setuptools import (
     find_packages,
     setup,
@@ -6,8 +7,20 @@ from setuptools import (
 try:
     from mypyc.build import mypycify
 except ImportError:
+    skip_mypyc = True
+else:
+    skip_mypyc = any(
+        cmd in sys.argv
+        for cmd in ("sdist", "egg_info", "--name", "--version", "--help", "--help-commands")
+    )
+
+if skip_mypyc:
     ext_modules = []
 else:
+    mypycify_kwargs = {"strict_dunder_typing": True}
+    if sys.version_info >= (3, 9):
+        mypycify_kwargs["group_name"] = "faster_eth_utils"
+    
     ext_modules = mypycify(
         [
             "faster_eth_utils/abi.py",
@@ -33,40 +46,41 @@ else:
             "--install-types",
             "--disable-error-code=attr-defined",
             "--disable-error-code=comparison-overlap",
-            "--disable-error-code=typeddict-item",
             "--disable-error-code=no-any-return",
             "--disable-error-code=misc",
             "--disable-error-code=unused-ignore",
         ],
+        **mypycify_kwargs,
     )
 
-MYPY_REQUIREMENT = "mypy==1.17.1"
+MYPY_REQUIREMENT = f"mypy=={'1.14.1' if sys.version_info < (3, 9) else '1.18.2'}"
+PYTEST_REQUIREMENT = "pytest>=7.0.0"
+
+
+def read_requirements(path):
+    with open(path) as f:
+        reqs = set()
+        for line in f:
+            if stripped := line.strip():
+                if not stripped.startswith("#"):
+                    if stripped.startswith("-r "):
+                        reqs.update(read_requirements(stripped[3:]))
+                    else:
+                        reqs.add(stripped)
+        return sorted(reqs)
+
 
 extras_require = {
-    "dev": [
-        "build>=0.9.0",
-        "bump_my_version>=0.19.0",
-        "eth-hash[pycryptodome]",
-        "ipython",
-        MYPY_REQUIREMENT,
-        "pre-commit>=3.4.0",
-        "tox>=4.0.0",
-        "twine",
-        "wheel",
-    ],
+    "dev": read_requirements("requirements-dev.txt"),
     "docs": [
         "sphinx>=6.0.0",
         "sphinx-autobuild>=2021.3.14",
         "sphinx_rtd_theme>=1.0.0",
-        "towncrier>=24,<25",
+        "towncrier>=24,<26",
     ],
-    "test": [
-        "hypothesis>=4.43.0",
-        MYPY_REQUIREMENT,
-        "pytest>=7.0.0",
-        "pytest-codspeed>=2.0.0",
-        "pytest-xdist>=2.4.0",
-    ],
+    "test": read_requirements("requirements-test.txt"),
+    "codspeed": read_requirements("requirements-codspeed.txt"),
+    "benchmark": read_requirements("requirements-benchmark.txt"),
 }
 
 extras_require["dev"] = (
@@ -81,7 +95,7 @@ with open("./README.md") as readme:
 setup(
     name="faster-eth-utils",
     # *IMPORTANT*: Don't manually change the version here. Use `make bump`, as described in readme
-    version="5.3.6",
+    version="5.3.16",
     description=(
         """A fork of eth-utils: Common utility functions for python code that interacts with Ethereum, implemented in C"""
     ),
@@ -89,12 +103,23 @@ setup(
     long_description_content_type="text/markdown",
     author="The Ethereum Foundation",
     author_email="snakecharmers@ethereum.org",
-    url="https://github.com/BobTheBuidler/eth-utils",
+    url="https://github.com/BobTheBuidler/faster-eth-utils",
+    project_urls={
+        "Documentation": "https://eth-utils.readthedocs.io/en/stable/",
+        "Release Notes": "https://github.com/BobTheBuidler/faster-eth-utils/releases",
+        "Issues": "https://github.com/BobTheBuidler/faster-eth-utils/issues",
+        "Source - Precompiled (.py)": "https://github.com/BobTheBuidler/faster-eth-utils/tree/master/faster_eth_utils",
+        "Source - Compiled (.c)": "https://github.com/BobTheBuidler/faster-eth-utils/tree/master/build",
+        "Benchmarks": "https://github.com/BobTheBuidler/faster-eth-utils/tree/master/benchmarks",
+        "Benchmarks - Results": "https://github.com/BobTheBuidler/faster-eth-utils/tree/master/benchmarks/results",
+        "Original": "https://github.com/ethereum/eth-utils",
+    },
     include_package_data=True,
     install_requires=[
-        "cchecksum>=0.0.3",
+        "cchecksum==0.3.4",
         "eth-hash>=0.3.1",
-        "eth-typing>=5.0.0",
+        "eth-typing==5.2.1",
+        "eth-utils==5.3.1",
         "toolz>0.8.2;implementation_name=='pypy'",
         "cytoolz>=0.10.1;implementation_name=='cpython'",
         "pydantic>=2.0.0,<3",
@@ -103,6 +128,7 @@ setup(
     extras_require=extras_require,
     py_modules=["eth_utils"],
     license="MIT",
+    license_files=["LICENSE"],
     zip_safe=False,
     keywords="ethereum",
     packages=find_packages(exclude=["scripts", "scripts.*", "tests", "tests.*"]),
@@ -110,7 +136,6 @@ setup(
     package_data={"faster_eth_utils": ["py.typed"]},
     classifiers=[
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8",

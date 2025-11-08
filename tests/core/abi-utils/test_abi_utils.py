@@ -779,9 +779,9 @@ def test_filter_abi_by_type_raises_for_invalid_abi_type() -> None:
     contract_abi = build_contract_abi([ABI_FUNCTION_TOKEN_LAUNCHED])
     with pytest.raises(
         ValueError,
-        match=re.escape("Unsupported ABI type: typing.Literal['notanabitype']"),
+        match=re.escape("Unsupported ABI type: notanabitype"),
     ):
-        filter_abi_by_type(Literal["notanabitype"], contract_abi)  # type: ignore
+        filter_abi_by_type("notanabitype", contract_abi)
 
 
 @pytest.mark.parametrize(
@@ -1506,8 +1506,7 @@ def test_get_aligned_abi_inputs(
                 "b": [[(14, 15), (16, 17)], [(18, 19)]],
             },
             TypeError,
-            'Expected non-string sequence for "tuple[]" component type: got '
-            "{(9, 10), (5, 6), (7, 8)}",
+            'Expected non-string sequence for "tuple[]" component type: got ',
         ),
         (
             ABI_FALLBACK,

@@ -12,6 +12,7 @@ from typing import (
     TypeVar,
     Union,
     cast,
+    overload,
 )
 
 from .toolz import (
@@ -53,8 +54,7 @@ def setup_DEBUG2_logging() -> None:
     """
     if not hasattr(logging, "DEBUG2"):
         logging.addLevelName(DEBUG2_LEVEL_NUM, "DEBUG2")
-        logging.DEBUG2 = DEBUG2_LEVEL_NUM  # type: ignore
-
+        logging.DEBUG2 = DEBUG2_LEVEL_NUM  # type: ignore [attr-defined]
 
 @contextlib.contextmanager
 def _use_logger_class(logger_class: Type[logging.Logger]) -> Iterator[None]:
@@ -66,24 +66,26 @@ def _use_logger_class(logger_class: Type[logging.Logger]) -> Iterator[None]:
         logging.setLoggerClass(original_logger_class)
 
 
-def get_logger(name: str, logger_class: Union[Type[TLogger], None] = None) -> TLogger:
+@overload
+def get_logger(name: str, logger_class: Type[TLogger]) -> TLogger: ...
+@overload
+def get_logger(name: str, logger_class: None = None) -> logging.Logger: ...
+def get_logger(name: str, logger_class: Union[Type[TLogger], None] = None) -> Union[TLogger, logging.Logger]:
     if logger_class is None:
+        return logging.getLogger(name)
+
+    with _use_logger_class(logger_class):
+        # The logging module caches logger instances. The following code
+        # ensures that if there is a cached instance that we don't
+        # accidentally return the incorrect logger type because the logging
+        # module does not *update* the cached instance in the event that
+        # the global logging class changes.
+        manager = logging.Logger.manager
+        logger_dict = manager.loggerDict
+        cached_logger = logger_dict.get(name)
+        if cached_logger is not None and type(cached_logger) is not logger_class:
+            del logger_dict[name]
         return cast(TLogger, logging.getLogger(name))
-    else:
-        with _use_logger_class(logger_class):
-            # The logging module caches logger instances. The following code
-            # ensures that if there is a cached instance that we don't
-            # accidentally return the incorrect logger type because the logging
-            # module does not *update* the cached instance in the event that
-            # the global logging class changes.
-            #
-            # types ignored b/c mypy doesn't identify presence of
-            # manager on logging.Logger
-            manager = logging.Logger.manager
-            if name in manager.loggerDict:
-                if type(manager.loggerDict[name]) is not logger_class:
-                    del manager.loggerDict[name]
-            return cast(TLogger, logging.getLogger(name))
 
 
 def get_extended_debug_logger(name: str) -> ExtendedDebugLogger:
@@ -115,9 +117,8 @@ class HasLoggerMeta(type):
             return super().__new__(mcls, name, bases, namespace)
         if "__qualname__" not in namespace:
             raise AttributeError("Missing __qualname__")
-
-        with _use_logger_class(mcls.logger_class):
-            logger = logging.getLogger(namespace["__qualname__"])
+    
+        logger = get_logger(namespace["__qualname__"], mcls.logger_class)
 
         return super().__new__(mcls, name, bases, assoc(namespace, "logger", logger))
 
@@ -141,5 +142,5 @@ class HasLogger(metaclass=HasLoggerMeta):
 HasExtendedDebugLoggerMeta = HasLoggerMeta.replace_logger_class(ExtendedDebugLogger)
 
 
-class HasExtendedDebugLogger(metaclass=HasExtendedDebugLoggerMeta):  # type: ignore
+class HasExtendedDebugLogger(metaclass=HasExtendedDebugLoggerMeta):  # type: ignore [metaclass,misc]
     logger: ExtendedDebugLogger
