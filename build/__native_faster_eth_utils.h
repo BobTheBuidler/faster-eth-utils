@@ -48,6 +48,14 @@ typedef struct tuple_T4CIOO {
 } tuple_T4CIOO;
 #endif
 
+#ifndef MYPYC_DECLARED_tuple_T2II
+#define MYPYC_DECLARED_tuple_T2II
+typedef struct tuple_T2II {
+    CPyTagged f0;
+    CPyTagged f1;
+} tuple_T2II;
+#endif
+
 #ifndef MYPYC_DECLARED_tuple_T4OOOO
 #define MYPYC_DECLARED_tuple_T4OOOO
 typedef struct tuple_T4OOOO {
@@ -77,14 +85,6 @@ typedef struct tuple_T7T2IOT2IOT2IOT2IOT2IOT2IOT2IO {
     tuple_T2IO f5;
     tuple_T2IO f6;
 } tuple_T7T2IOT2IOT2IOT2IOT2IOT2IOT2IO;
-#endif
-
-#ifndef MYPYC_DECLARED_tuple_T2II
-#define MYPYC_DECLARED_tuple_T2II
-typedef struct tuple_T2II {
-    CPyTagged f0;
-    CPyTagged f1;
-} tuple_T2II;
 #endif
 
 #ifndef MYPYC_DECLARED_tuple_T5OOOOO
