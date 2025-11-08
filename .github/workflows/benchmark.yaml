@@ -9,6 +9,9 @@ on:
       - '.github/workflows/benchmark.yaml'
       - 'pyproject.toml'
       - 'setup.py'
+      - 'requirements-benchmark.txt'
+      - 'requirements-codspeed.txt'
+      - 'requirements-pytest.txt'
   push:
     branches: [main, master]
     paths:
@@ -17,6 +20,9 @@ on:
       - '.github/workflows/benchmark.yaml'
       - 'pyproject.toml'
       - 'setup.py'
+      - 'requirements-benchmark.txt'
+      - 'requirements-codspeed.txt'
+      - 'requirements-pytest.txt'
   workflow_dispatch:
     inputs:
       run-type:
