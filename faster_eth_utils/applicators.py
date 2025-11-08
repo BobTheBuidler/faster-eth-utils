@@ -1,3 +1,4 @@
+import sys
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -31,7 +32,11 @@ from .toolz import (
 )
 
 if TYPE_CHECKING:
-    from _typeshed import SupportsBool
+    if sys.version_info >= (3, 9):
+        from _typeshed import SupportsBool
+    # We have to sacrifice a little bit of specificity on dinosaur Python3.8
+    else:
+        SupportsBool = object
 
 TArg = TypeVar("TArg")
 TReturn = TypeVar("TReturn")
