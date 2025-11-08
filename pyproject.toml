@@ -1,9 +1,11 @@
+
 [build-system]
 requires = [
   "setuptools",
   "wheel",
   "mypy[mypyc]==1.14.1; python_version == '3.8'",
-  "mypy[mypyc]==1.18.2; python_version != '3.8'",
+  # For Python > 3.8, install mypy from a specific Git commit
+  "mypy[mypyc] @ git+https://github.com/python/mypy.git@d291fb1f450ddf9a0218a42a54efe42f0ed85bba#egg=mypy[mypyc] ; python_version != '3.8'",
   "cchecksum==0.3.4",
   "eth-hash==0.7.1",
   "eth-typing==5.2.1",
