@@ -10,6 +10,8 @@ on:
       - 'pyproject.toml'
       - 'setup.py'
       - 'requirements-benchmark.txt'
+      - 'requirements-codspeed.txt'
+      - 'requirements-pytest.txt'
   push:
     branches: [main, master]
     paths:
@@ -19,6 +21,8 @@ on:
       - 'pyproject.toml'
       - 'setup.py'
       - 'requirements-benchmark.txt'
+      - 'requirements-codspeed.txt'
+      - 'requirements-pytest.txt'
   workflow_dispatch:
     inputs:
       run-type:
