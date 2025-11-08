@@ -1,12 +1,12 @@
-#### [faster_eth_utils.decorators](https://github.com/BobTheBuidler/faster-eth-utils/blob/pin-eth-utils/faster_eth_utils/decorators.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/pin-eth-utils/benchmarks/test_decorators_benchmarks.py)
+#### [faster_eth_utils.decorators](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/cchecksum-0.x/faster_eth_utils/decorators.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/cchecksum-0.x/benchmarks/test_decorators_benchmarks.py)
 
 | Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
 |----------|---------------|-------------|----------|-------------|----------|--------|
-| `replace_exceptions[mapped-exception]` | 1.1666165703591812e-05 | 2.425101317215796e-05 | -107.87% | -51.89% | 0.48x | ❌ |
-| `replace_exceptions[no-exception]` | 1.5221919138241963e-06 | 1.3820477866312828e-06 | 9.21% | 10.14% | 1.10x | ✅ |
-| `replace_exceptions[unmapped-exception]` | 8.8243321412584e-06 | 1.4540020971697165e-05 | -64.77% | -39.31% | 0.61x | ❌ |
-| `return_arg_type[float-pos0]` | 2.3835354880676615e-06 | 2.3262271578213403e-06 | 2.40% | 2.46% | 1.02x | ✅ |
-| `return_arg_type[int-pos0]` | 2.3434456338654433e-06 | 2.104370237471759e-06 | 10.20% | 11.36% | 1.11x | ✅ |
-| `return_arg_type[int-pos1]` | 2.2716657093853392e-06 | 2.0410342102219817e-06 | 10.15% | 11.30% | 1.11x | ✅ |
-| `return_arg_type[str-pos0]` | 2.880107714382844e-06 | 2.7280939389974825e-06 | 5.28% | 5.57% | 1.06x | ✅ |
-| `return_arg_type[str-pos1]` | 2.8844958835053556e-06 | 2.7323148581059994e-06 | 5.28% | 5.57% | 1.06x | ✅ |
+| `replace_exceptions[mapped-exception]` | 1.175188521792837e-05 | 2.45178515811401e-05 | -108.63% | -52.07% | 0.48x | ❌ |
+| `replace_exceptions[no-exception]` | 1.5813399264061629e-06 | 1.441990965187845e-06 | 8.81% | 9.66% | 1.10x | ✅ |
+| `replace_exceptions[unmapped-exception]` | 8.649548168764886e-06 | 1.4790679979827327e-05 | -71.00% | -41.52% | 0.58x | ❌ |
+| `return_arg_type[float-pos0]` | 2.444595744672705e-06 | 2.151069749129778e-06 | 12.01% | 13.65% | 1.14x | ✅ |
+| `return_arg_type[int-pos0]` | 2.282833564817126e-06 | 2.0997571890997765e-06 | 8.02% | 8.72% | 1.09x | ✅ |
+| `return_arg_type[int-pos1]` | 2.2298775018130975e-06 | 2.0431217934809234e-06 | 8.38% | 9.14% | 1.09x | ✅ |
+| `return_arg_type[str-pos0]` | 2.8845276725226846e-06 | 2.7378220961043836e-06 | 5.09% | 5.36% | 1.05x | ✅ |
+| `return_arg_type[str-pos1]` | 2.8939614255020994e-06 | 2.718641488107414e-06 | 6.06% | 6.45% | 1.06x | ✅ |
