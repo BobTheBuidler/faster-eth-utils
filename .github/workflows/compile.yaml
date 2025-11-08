@@ -13,6 +13,10 @@ on:
       - 'tests/**'
       - 'tox.ini'
       - 'README.md'
+      - 'requirements-benchmark.txt'
+      - 'requirements-codspeed.txt'
+      - 'requirements-pytest.txt'
+      - 'requirements-test.txt'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
