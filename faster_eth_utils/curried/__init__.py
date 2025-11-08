@@ -126,7 +126,7 @@ if TYPE_CHECKING:
         from _typeshed import SupportsBool
     # We have to sacrifice a little bit of specificity on dinosaur Python3.8
     else:
-        SupportsBool = object
+        SupportsBool = Any
 
 
 TArg = TypeVar("TArg")
