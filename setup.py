@@ -23,6 +23,7 @@ else:
         mypycify_kwargs["group_name"] = "faster_eth_utils"
 
     mypyc_flags = [
+        "--strict",
         "--pretty",
         "--install-types",
         "--disable-error-code=attr-defined",
