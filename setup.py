@@ -19,6 +19,7 @@ if skip_mypyc:
 else:
     mypycify_kwargs = {"strict_dunder_typing": True}
     if sys.version_info >= (3, 9):
+        # mypy v1.14.1 does not support this kwarg
         mypycify_kwargs["group_name"] = "faster_eth_utils"
 
     mypyc_flags = [
