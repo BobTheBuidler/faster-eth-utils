@@ -39,9 +39,11 @@ class combomethod(Generic[TInstance, P, T]):
         objtype: Type[TInstance],
     ) -> Callable[P, T]:
 
-        @functools.wraps(self.method)
+        method = self.method
+        
+        @functools.wraps(method)
         def _wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
-            return self.method(objtype if obj is None else obj, *args, **kwargs)
+            return method(objtype if obj is None else obj, *args, **kwargs)
 
         return _wrapper
 
