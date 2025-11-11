@@ -1,4 +1,4 @@
 -r requirements-codspeed.txt
 
-pytest-benchmark==5.2.3
+pytest-benchmark>=5.2,<5.3
 eth-utils==5.3.1
