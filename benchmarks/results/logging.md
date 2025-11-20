@@ -1,7 +1,7 @@
-#### [faster_eth_utils.logging](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/cchecksum-0.x/faster_eth_utils/logging.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/cchecksum-0.x/benchmarks/test_logging_benchmarks.py)
+#### [faster_eth_utils.logging](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/bobthebuidler-mypycify-0.x/faster_eth_utils/logging.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/bobthebuidler-mypycify-0.x/benchmarks/test_logging_benchmarks.py)
 
 | Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
 |----------|---------------|-------------|----------|-------------|----------|--------|
-| `get_extended_debug_logger` | 0.00022274447077649096 | 0.00022594478629443893 | -1.44% | -1.42% | 0.99x | ❌ |
-| `get_logger` | 4.7767518407136905e-05 | 4.438813906825772e-05 | 7.07% | 7.61% | 1.08x | ✅ |
-| `setup_DEBUG2_logging` | 1.3138347688580109e-06 | 1.2254894823180104e-06 | 6.72% | 7.21% | 1.07x | ✅ |
+| `get_extended_debug_logger` | 0.00019678727276955672 | 0.00019728672282524282 | -0.25% | -0.25% | 1.00x | ❌ |
+| `get_logger` | 4.5643060807088257e-05 | 4.3198038075029703e-05 | 5.36% | 5.66% | 1.06x | ✅ |
+| `setup_DEBUG2_logging` | 1.17163681558846e-06 | 1.033062195353093e-06 | 11.83% | 13.41% | 1.13x | ✅ |
