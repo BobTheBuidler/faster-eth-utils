@@ -46,7 +46,7 @@ jobs:
     outputs:
       artifact-name: ${{ steps.mypycify.outputs.artifact-name }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Build wheel with mypycify
         id: mypycify
         uses: BobTheBuidler/mypycify@v0.2.2
@@ -71,7 +71,7 @@ jobs:
       matrix:
         shard: [1, 2, 3, 4, 5, 6]
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -109,7 +109,7 @@ jobs:
     needs: build-wheel
     if: ${{ github.event.inputs.run-type == 'both' || github.event.inputs.run-type == '' || github.event.inputs.run-type == 'comparison' }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       
       - name: Set up Python
         uses: actions/setup-python@v6
