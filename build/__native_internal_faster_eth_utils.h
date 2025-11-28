@@ -1,12 +1,12 @@
-#ifndef MYPYC_NATIVE_INTERNAL_faster_eth_utils_H
-#define MYPYC_NATIVE_INTERNAL_faster_eth_utils_H
+#ifndef MYPYC_LIBRT_INTERNAL_faster_eth_utils_H
+#define MYPYC_LIBRT_INTERNAL_faster_eth_utils_H
 #include <Python.h>
 #include <CPy.h>
 #include "__native_faster_eth_utils.h"
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[619];
+extern PyObject *CPyStatics[618];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
