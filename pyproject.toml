@@ -3,7 +3,7 @@ requires = [
   "setuptools",
   "wheel",
   "mypy[mypyc]==1.14.1; python_version == '3.8'",
-  "mypy[mypyc]==1.19.0; python_version != '3.8'",
+  "mypy[mypyc]==1.19.1; python_version != '3.8'",
   "cchecksum==0.3.7.dev0",
   "eth-hash==0.7.1",
   "eth-typing==5.2.1",
