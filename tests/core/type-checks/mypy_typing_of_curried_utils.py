@@ -1,7 +1,3 @@
-from typing import (
-    List,
-)
-
 from faster_eth_utils.curried import (  # noqa: F401
     ExtendedDebugLogger,
     HasExtendedDebugLogger,

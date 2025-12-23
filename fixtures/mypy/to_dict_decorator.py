@@ -1,8 +1,3 @@
-from typing import (
-    List,
-    Tuple,
-)
-
 from faster_eth_utils import (
     to_dict,
 )

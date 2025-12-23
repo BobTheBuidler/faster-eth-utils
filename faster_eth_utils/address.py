@@ -21,13 +21,8 @@ from .conversions import (
     hexstr_if_str,
     to_hex,
 )
-from .crypto import (
-    keccak,
-)
 from .hexadecimal import (
-    add_0x_prefix,
     decode_hex,
-    encode_hex,
     remove_0x_prefix,
 )
 from .types import (

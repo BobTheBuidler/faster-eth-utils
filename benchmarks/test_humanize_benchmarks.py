@@ -1,5 +1,6 @@
 # mypy: disable-error-code=misc
-from typing import Any, Callable, List
+from collections.abc import Callable
+from typing import Any
 
 import eth_utils
 import eth_utils.humanize

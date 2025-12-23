@@ -3,9 +3,7 @@ import numbers
 from typing import (
     Any,
     Final,
-    List,
     Literal,
-    Tuple,
     Union,
 )
 

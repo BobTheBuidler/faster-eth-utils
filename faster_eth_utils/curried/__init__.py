@@ -3,9 +3,7 @@ from typing import (
     TYPE_CHECKING,
     Any,
     Callable,
-    Dict,
     Optional,
-    Tuple,
     TypeVar,
     Union,
     overload,
@@ -283,13 +281,11 @@ clamp = curry(clamp)
 # `from eth_utils.curried import *`
 del Any
 del Callable
-del dict
 del Generator
 del Optional
 del Sequence
 del TReturn
 del TValue
-del tuple
 del TypeGuard
 del TypeVar
 del Union

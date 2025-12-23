@@ -14,7 +14,7 @@ Usage:
 import json
 import sys
 import re
-from typing import Any, Dict
+from typing import Any
 
 
 def get_group_name(test_name: str) -> str:

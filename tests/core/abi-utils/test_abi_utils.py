@@ -2,11 +2,8 @@ import pytest
 import re
 from typing import (
     Any,
-    Dict,
     Literal,
     NamedTuple,
-    Tuple,
-    Type,
     Union,
     cast,
 )

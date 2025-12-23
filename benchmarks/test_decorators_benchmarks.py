@@ -1,5 +1,5 @@
 # mypy: disable-error-code=misc
-from typing import Any, Callable, Dict, Tuple
+from typing import Any, Callable
 
 import eth_utils
 import eth_utils.decorators
