@@ -288,7 +288,6 @@ del Optional
 del Sequence
 del TReturn
 del TValue
-del tuple
 del TypeGuard
 del TypeVar
 del Union
