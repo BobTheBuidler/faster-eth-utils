@@ -13,7 +13,7 @@ import json
 import sys
 import re
 from collections import defaultdict
-from typing import Dict, Any
+from typing import Any
 
 
 def get_submodule(bench: dict) -> str:

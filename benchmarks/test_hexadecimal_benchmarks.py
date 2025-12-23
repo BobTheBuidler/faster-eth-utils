@@ -1,5 +1,5 @@
 # mypy: disable-error-code=misc
-from typing import Any, Callable, List
+from typing import Any, Callable
 
 import eth_utils
 import pytest

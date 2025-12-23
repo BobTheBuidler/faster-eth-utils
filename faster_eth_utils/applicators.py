@@ -1,11 +1,7 @@
-import sys
 from typing import (
     TYPE_CHECKING,
     Any,
     Callable,
-    Dict,
-    List,
-    Tuple,
     TypeVar,
     Union,
     cast,

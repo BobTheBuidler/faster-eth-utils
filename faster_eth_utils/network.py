@@ -9,7 +9,6 @@ from pathlib import (
 )
 from typing import (
     Final,
-    List,
 )
 
 from eth_typing import (

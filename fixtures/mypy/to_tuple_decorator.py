@@ -1,6 +1,3 @@
-from typing import (
-    List,
-)
 
 from faster_eth_utils import (
     to_tuple,

@@ -1,7 +1,6 @@
 from typing import (
     Any,
     Final,
-    Tuple,
     Union,
 )
 from collections.abc import Iterable, Iterator

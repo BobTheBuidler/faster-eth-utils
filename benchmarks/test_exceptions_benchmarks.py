@@ -1,5 +1,5 @@
 # mypy: disable-error-code=misc
-from typing import Any, Type
+from typing import Any
 
 import eth_utils
 import pytest

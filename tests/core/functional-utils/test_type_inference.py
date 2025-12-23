@@ -1,8 +1,5 @@
 import pytest
 import sys
-from typing import (
-    List,
-)
 
 from mypy import (
     api,
