@@ -1,6 +1,7 @@
 import collections
 import functools
 import itertools
+from collections.abc import Callable, Iterable, Mapping
 from typing import (  # noqa: F401
     Dict,
     List,
@@ -9,8 +10,6 @@ from typing import (  # noqa: F401
     TypeVar,
     Union,
 )
-from collections.abc import Callable
-from collections.abc import Iterable, Mapping
 
 from typing_extensions import ParamSpec
 
