@@ -1,16 +1,16 @@
 from typing import (
     TYPE_CHECKING,
     Any,
-    Callable,
     TypeVar,
     Union,
     cast,
     overload,
 )
+from collections.abc import Callable
 from collections.abc import Generator, Mapping, Sequence
 import warnings
 
-from typing_extensions import (
+from typing import (
     TypeGuard,
 )
 
@@ -40,8 +40,8 @@ Formatters = Callable[[list[Any]], list[Any]]
 def apply_formatter_at_index(
     formatter: Callable[[TArg], TReturn],
     at_index: int,
-    value: Sequence[Union[TArg, TOther]],
-) -> Generator[Union[TOther, TReturn], None, None]:
+    value: Sequence[TArg | TOther],
+) -> Generator[TOther | TReturn, None, None]:
     try:
         item = value[at_index]
     except IndexError:
@@ -102,20 +102,20 @@ def apply_formatter_if(
     condition: Callable[[TArg], TypeGuard[TOther]],
     formatter: Callable[[TOther], TReturn],
     value: TArg,
-) -> Union[TArg, TReturn]: ...
+) -> TArg | TReturn: ...
 
 
 @overload
 def apply_formatter_if(
     condition: Callable[[TArg], bool], formatter: Callable[[TArg], TReturn], value: TArg
-) -> Union[TArg, TReturn]: ...
+) -> TArg | TReturn: ...
 
 
 def apply_formatter_if(  # type: ignore [misc]
-    condition: Union[Callable[[TArg], TypeGuard[TOther]], Callable[[TArg], bool]],
-    formatter: Union[Callable[[TOther], TReturn], Callable[[TArg], TReturn]],
+    condition: Callable[[TArg], TypeGuard[TOther]] | Callable[[TArg], bool],
+    formatter: Callable[[TOther], TReturn] | Callable[[TArg], TReturn],
     value: TArg,
-) -> Union[TArg, TReturn]:
+) -> TArg | TReturn:
     if condition(value):
         return formatter(value)  # type: ignore [arg-type]
     else:
@@ -124,7 +124,7 @@ def apply_formatter_if(  # type: ignore [misc]
 
 def apply_formatters_to_dict(
     formatters: dict[Any, Any],
-    value: Union[dict[Any, Any], CamelModel],
+    value: dict[Any, Any] | CamelModel,
     unaliased: bool = False,
 ) -> dict[Any, Any]:
     """

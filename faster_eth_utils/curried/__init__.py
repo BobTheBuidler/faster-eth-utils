@@ -2,14 +2,14 @@ import sys
 from typing import (
     TYPE_CHECKING,
     Any,
-    Callable,
     Optional,
     TypeVar,
     Union,
     overload,
 )
+from collections.abc import Callable
 from collections.abc import Generator, Sequence
-from typing_extensions import TypeGuard
+from typing import TypeGuard
 
 from faster_eth_utils import (
     CamelModel,
@@ -132,37 +132,37 @@ TValue = TypeVar("TValue")
 @overload
 def apply_formatter_if(
     condition: Callable[[TArg], TypeGuard[TOther]],
-) -> Callable[[Callable[[TOther], TReturn]], Callable[[TArg], Union[TReturn, TArg]]]:
+) -> Callable[[Callable[[TOther], TReturn]], Callable[[TArg], TReturn | TArg]]:
     ...
 
 @overload
 def apply_formatter_if(
     condition: Callable[[TArg], TypeGuard[TOther]], formatter: Callable[[TOther], TReturn]
-) -> Callable[[TArg], Union[TReturn, TArg]]:
+) -> Callable[[TArg], TReturn | TArg]:
     ...
 
 @overload
 def apply_formatter_if(
     condition: Callable[[TArg], TypeGuard[TOther]], formatter: Callable[[TOther], TReturn], value: TArg
-) -> Union[TReturn, TArg]:
+) -> TReturn | TArg:
     ...
 
 @overload
 def apply_formatter_if(
     condition: Callable[[TArg], bool], formatter: Callable[[TArg], TReturn], value: TArg
-) -> Union[TReturn, TArg]:
+) -> TReturn | TArg:
     ...
 
 def apply_formatter_if(  # type: ignore
-    condition: Union[Callable[[TArg], TypeGuard[TOther]], Callable[[TArg], bool]],
-    formatter: Optional[Union[Callable[[TOther], TReturn], Callable[[TArg], TReturn]]] = None,
-    value: Optional[TArg] = None,
-) -> Union[
-    Callable[[Callable[[TOther], TReturn]], Callable[[TArg], Union[TReturn, TArg]]],
-    Callable[[TArg], Union[TReturn, TArg]],
-    TReturn,
-    TArg,
-]:
+    condition: Callable[[TArg], TypeGuard[TOther]] | Callable[[TArg], bool],
+    formatter: Callable[[TOther], TReturn] | Callable[[TArg], TReturn] | None = None,
+    value: TArg | None = None,
+) -> (
+    Callable[[Callable[[TOther], TReturn]], Callable[[TArg], TReturn | TArg]] |
+    Callable[[TArg], TReturn | TArg] |
+    TReturn |
+    TArg
+):
     pass
 
 
@@ -188,57 +188,57 @@ def apply_one_of_formatters(
     formatter_condition_pairs: Sequence[
         tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]]
     ],
-    value: Optional[TArg] = None,
+    value: TArg | None = None,
 ) -> TReturn: ...
 
 
 @overload
 def hexstr_if_str(
     to_type: Callable[..., TReturn],
-) -> Callable[[Union[bytes, int, str]], TReturn]: ...
+) -> Callable[[bytes | int | str], TReturn]: ...
 
 
 @overload
 def hexstr_if_str(
-    to_type: Callable[..., TReturn], to_format: Union[bytes, int, str]
+    to_type: Callable[..., TReturn], to_format: bytes | int | str
 ) -> TReturn: ...
 
 
 # This is just a stub to appease mypy, it gets overwritten later
 def hexstr_if_str(  # type: ignore
-    to_type: Callable[..., TReturn], to_format: Optional[Union[bytes, int, str]] = None
+    to_type: Callable[..., TReturn], to_format: bytes | int | str | None = None
 ) -> TReturn: ...
 
 
 @overload
 def text_if_str(
     to_type: Callable[..., TReturn],
-) -> Callable[[Union[bytes, int, str]], TReturn]: ...
+) -> Callable[[bytes | int | str], TReturn]: ...
 
 
 @overload
 def text_if_str(
-    to_type: Callable[..., TReturn], text_or_primitive: Union[bytes, int, str]
+    to_type: Callable[..., TReturn], text_or_primitive: bytes | int | str
 ) -> TReturn: ...
 
 
 # This is just a stub to appease mypy, it gets overwritten later
 def text_if_str(  # type: ignore
     to_type: Callable[..., TReturn],
-    text_or_primitive: Optional[Union[bytes, int, str]] = None,
+    text_or_primitive: bytes | int | str | None = None,
 ) -> TReturn: ...
 
 
 @overload
 def apply_formatters_to_dict(
     formatters: dict[Any, Any], unaliased: bool = False
-) -> Callable[[Union[dict[Any, Any], CamelModel]], dict[Any, Any]]:
+) -> Callable[[dict[Any, Any] | CamelModel], dict[Any, Any]]:
     ...
 
 
 @overload
 def apply_formatters_to_dict(
-    formatters: dict[Any, Any], value: Union[dict[Any, Any], CamelModel], unaliased: bool = False
+    formatters: dict[Any, Any], value: dict[Any, Any] | CamelModel, unaliased: bool = False
 ) -> dict[Any, Any]:
     ...
 
@@ -246,7 +246,7 @@ def apply_formatters_to_dict(
 # This is just a stub to appease mypy, it gets overwritten later
 def apply_formatters_to_dict(
     formatters: dict[Any, Any],
-    value: Optional[Union[dict[Any, Any], CamelModel]] = None,
+    value: dict[Any, Any] | CamelModel | None = None,
     unaliased: bool = False,
 ) -> dict[Any, Any]: ...
 

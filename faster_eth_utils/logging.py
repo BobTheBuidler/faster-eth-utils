@@ -67,7 +67,7 @@ def _use_logger_class(logger_class: type[logging.Logger]) -> Iterator[None]:
 def get_logger(name: str, logger_class: type[TLogger]) -> TLogger: ...
 @overload
 def get_logger(name: str, logger_class: None = None) -> logging.Logger: ...
-def get_logger(name: str, logger_class: Union[type[TLogger], None] = None) -> Union[TLogger, logging.Logger]:
+def get_logger(name: str, logger_class: type[TLogger] | None = None) -> TLogger | logging.Logger:
     if logger_class is None:
         return logging.getLogger(name)
 

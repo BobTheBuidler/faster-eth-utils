@@ -14,8 +14,8 @@ from .conversions import (
 
 
 def keccak(
-    primitive: Optional[Union[bytes, int, bool]] = None,
-    hexstr: Optional[HexStr] = None,
-    text: Optional[str] = None,
+    primitive: bytes | int | bool | None = None,
+    hexstr: HexStr | None = None,
+    text: str | None = None,
 ) -> bytes:
     return bytes(keccak_256(to_bytes(primitive, hexstr, text)))

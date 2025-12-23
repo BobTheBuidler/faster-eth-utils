@@ -12,7 +12,7 @@ from typing import (
 from eth_typing import (
     HexStr,
 )
-from typing_extensions import (
+from typing import (
     TypeGuard,
 )
 
@@ -33,7 +33,7 @@ def decode_hex(value: str) -> bytes:
 
 
 def encode_hex(value: AnyStr) -> HexStr:
-    ascii_bytes: Union[bytes, bytearray]
+    ascii_bytes: bytes | bytearray
     if isinstance(value, (bytes, bytearray)):
         ascii_bytes = value
     elif isinstance(value, str):

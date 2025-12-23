@@ -41,7 +41,7 @@ ABIType = Literal["function", "constructor", "fallback", "receive", "event", "er
 
 def _align_abi_input(
     arg_abi: ABIComponent, normalized_arg: Any
-) -> Union[Any, tuple[Any, ...]]:
+) -> Any | tuple[Any, ...]:
     """
     Aligns the values of any mapping at any level of nesting in ``normalized_arg``
     according to the layout of the corresponding abi spec.
@@ -89,7 +89,7 @@ def _align_abi_input(
     )
 
 
-def _get_tuple_type_str_and_dims(s: str) -> Optional[tuple[str, Optional[str]]]:
+def _get_tuple_type_str_and_dims(s: str) -> tuple[str, str | None] | None:
     """
     Takes a JSON ABI type string.  For tuple type strings, returns the separated
     prefix and array dimension parts.  For all other strings, returns ``None``.
@@ -118,7 +118,7 @@ def _raise_if_fallback_or_receive_abi(abi_element: ABIElement) -> None:
         )
 
 
-def collapse_if_tuple(abi: Union[ABIComponent, dict[str, Any], str]) -> str:
+def collapse_if_tuple(abi: ABIComponent | dict[str, Any] | str) -> str:
     """
     Extract argument types from a function or event ABI parameter.
 
@@ -338,9 +338,9 @@ def filter_abi_by_type(
 def filter_abi_by_type(
     abi_type: ABIType,
     contract_abi: ABI,
-) -> Union[
-    list[ABIFunction], list[ABIConstructor], list[ABIFallback], list[ABIReceive], list[ABIEvent], list[ABIError]
-]:
+) -> (
+    list[ABIFunction] | list[ABIConstructor] | list[ABIFallback] | list[ABIReceive] | list[ABIEvent] | list[ABIError]
+):
     """
     Return a list of each ``ABIElement`` that is of type ``abi_type``.
 
@@ -370,7 +370,7 @@ ABIEvent, ABIError]]`
     """
     if abi_type in ("function", "constructor", "fallback", "receive", "event", "error"):
         return [abi for abi in contract_abi if abi["type"] == abi_type]  # type: ignore [return-value]
-    abi_type_string: Optional[ABIType] = __ABI_TYPE_LITERALS.get(abi_type)  # type: ignore [call-overload]
+    abi_type_string: ABIType | None = __ABI_TYPE_LITERALS.get(abi_type)  # type: ignore [call-overload]
     if abi_type_string is None:
         raise ValueError(f"Unsupported ABI type: {abi_type}")
     return [abi for abi in contract_abi if abi["type"] == abi_type_string]  # type: ignore [return-value]    
@@ -534,7 +534,7 @@ def get_normalized_abi_inputs(
 
 def get_aligned_abi_inputs(
     abi_element: ABIElement,
-    normalized_args: Union[tuple[Any, ...], Mapping[Any, Any]],
+    normalized_args: tuple[Any, ...] | Mapping[Any, Any],
 ) -> tuple[tuple[str, ...], tuple[Any, ...]]:
     """
     Returns a pair of nested Tuples containing a list of types and a list of input
@@ -593,7 +593,7 @@ def get_aligned_abi_inputs(
     )
 
 
-def get_abi_input_names(abi_element: ABIElement) -> list[Optional[str]]:
+def get_abi_input_names(abi_element: ABIElement) -> list[str | None]:
     """
     Return names for each input from the function or event ABI.
 
@@ -665,7 +665,7 @@ def get_abi_input_types(abi_element: ABIElement) -> list[str]:
     ]
 
 
-def get_abi_output_names(abi_element: ABIElement) -> list[Optional[str]]:
+def get_abi_output_names(abi_element: ABIElement) -> list[str | None]:
     """
     Return names for each output from the ABI element.
 

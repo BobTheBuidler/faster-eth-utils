@@ -1,6 +1,7 @@
 # mypy: disable-error-code=misc
 # benchmarks/test_conversions_benchmarks.py
-from typing import Any, Callable
+from typing import Any
+from collections.abc import Callable
 
 import eth_utils
 import pytest

@@ -7,7 +7,7 @@ from typing import (
     Union,
 )
 
-from typing_extensions import (
+from typing import (
     TypeGuard,
 )
 
@@ -26,7 +26,7 @@ def is_integer(value: Any) -> TypeGuard[int]:
     return isinstance(value, int) and not isinstance(value, bool)
 
 
-def is_bytes(value: Any) -> TypeGuard[Union[bytes, bytearray]]:
+def is_bytes(value: Any) -> TypeGuard[bytes | bytearray]:
     return isinstance(value, bytes_types)
 
 
@@ -34,7 +34,7 @@ def is_text(value: Any) -> TypeGuard[str]:
     return isinstance(value, str)
 
 
-def is_string(value: Any) -> TypeGuard[Union[bytes, str, bytearray]]:
+def is_string(value: Any) -> TypeGuard[bytes | str | bytearray]:
     return isinstance(value, string_types)
 
 
