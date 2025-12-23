@@ -1,4 +1,3 @@
-
 from faster_eth_utils.curried import (  # noqa: F401
     ExtendedDebugLogger,
     HasExtendedDebugLogger,

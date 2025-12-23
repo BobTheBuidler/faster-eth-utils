@@ -1,4 +1,3 @@
-
 from faster_eth_utils import (
     to_ordered_dict,
 )
