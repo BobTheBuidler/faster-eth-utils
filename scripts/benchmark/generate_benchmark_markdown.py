@@ -10,7 +10,7 @@ def main():
     repo = os.environ.get("GITHUB_REPOSITORY", "unknown/unknown")
     branch = os.environ.get("GITHUB_HEAD_REF") or os.environ.get("GITHUB_REF", "main").replace("refs/heads/", "")
 
-    with open(diff_path, "r", encoding="utf-8") as f:
+    with open(diff_path, encoding="utf-8") as f:
         diff = json.load(f)
 
     for submodule, groupDiffs in diff.items():

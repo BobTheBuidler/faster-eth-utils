@@ -122,7 +122,7 @@ def test_faster_apply_formatter_at_index(
 @pytest.mark.parametrize("formatters", caf_cases, ids=caf_ids)
 def test_combine_argument_formatters(
     benchmark: BenchmarkFixture,
-    formatters: Tuple[Callable[[int], int], ...]
+    formatters: tuple[Callable[[int], int], ...]
 ) -> None:
     benchmark(_batch, 10, eth_utils.combine_argument_formatters, *formatters)
 
@@ -130,7 +130,7 @@ def test_combine_argument_formatters(
 @pytest.mark.parametrize("formatters", caf_cases, ids=caf_ids)
 def test_faster_combine_argument_formatters(
     benchmark: BenchmarkFixture,
-    formatters: Tuple[Callable[[int], int], ...]
+    formatters: tuple[Callable[[int], int], ...]
 ) -> None:
     benchmark(_batch, 10, faster_eth_utils.combine_argument_formatters, *formatters)
 
@@ -138,8 +138,8 @@ def test_faster_combine_argument_formatters(
 @pytest.mark.parametrize("formatters,sequence", afts_cases, ids=afts_ids)
 def test_apply_formatters_to_sequence(
     benchmark: BenchmarkFixture,
-    formatters: List[Callable[[int], int]],
-    sequence: List[int]
+    formatters: list[Callable[[int], int]],
+    sequence: list[int]
 ) -> None:
     benchmark(_batch, 10, eth_utils.apply_formatters_to_sequence, formatters, sequence)
 
@@ -147,8 +147,8 @@ def test_apply_formatters_to_sequence(
 @pytest.mark.parametrize("formatters,sequence", afts_cases, ids=afts_ids)
 def test_faster_apply_formatters_to_sequence(
     benchmark: BenchmarkFixture,
-    formatters: List[Callable[[int], int]],
-    sequence: List[int]
+    formatters: list[Callable[[int], int]],
+    sequence: list[int]
 ) -> None:
     benchmark(_batch, 10, faster_eth_utils.apply_formatters_to_sequence, formatters, sequence)
 
@@ -176,8 +176,8 @@ def test_faster_apply_formatter_if(
 @pytest.mark.parametrize("formatters,value", af2d_cases, ids=af2d_ids)
 def test_apply_formatters_to_dict(
     benchmark: BenchmarkFixture,
-    formatters: Dict[str, Callable[[int], int]],
-    value: Dict[str, int]
+    formatters: dict[str, Callable[[int], int]],
+    value: dict[str, int]
 ) -> None:
     benchmark(_batch, 10, eth_utils.apply_formatters_to_dict, formatters, value)
 
@@ -185,8 +185,8 @@ def test_apply_formatters_to_dict(
 @pytest.mark.parametrize("formatters,value", af2d_cases, ids=af2d_ids)
 def test_faster_apply_formatters_to_dict(
     benchmark: BenchmarkFixture,
-    formatters: Dict[str, Callable[[int], int]],
-    value: Dict[str, int]
+    formatters: dict[str, Callable[[int], int]],
+    value: dict[str, int]
 ) -> None:
     benchmark(_batch, 10, faster_eth_utils.apply_formatters_to_dict, formatters, value)
 
@@ -195,7 +195,7 @@ def test_faster_apply_formatters_to_dict(
 def test_apply_formatter_to_array(
     benchmark: BenchmarkFixture,
     formatter: Callable[[int], int],
-    value: List[int]
+    value: list[int]
 ) -> None:
     benchmark(_batch, 10, eth_utils.apply_formatter_to_array, formatter, value)
 
@@ -204,7 +204,7 @@ def test_apply_formatter_to_array(
 def test_faster_apply_formatter_to_array(
     benchmark: BenchmarkFixture,
     formatter: Callable[[int], int],
-    value: List[int]
+    value: list[int]
 ) -> None:
     benchmark(_batch, 10, faster_eth_utils.apply_formatter_to_array, formatter, value)
 
@@ -212,7 +212,7 @@ def test_faster_apply_formatter_to_array(
 @pytest.mark.parametrize("formatter_condition_pairs,value", aoof_cases, ids=aoof_ids)
 def test_apply_one_of_formatters(
     benchmark: BenchmarkFixture,
-    formatter_condition_pairs: Tuple[Tuple[Callable[[int], bool], Callable[[int], int]], ...],
+    formatter_condition_pairs: tuple[tuple[Callable[[int], bool], Callable[[int], int]], ...],
     value: int
 ) -> None:
     benchmark(_batch, 10, eth_utils.apply_one_of_formatters, formatter_condition_pairs, value)
@@ -221,7 +221,7 @@ def test_apply_one_of_formatters(
 @pytest.mark.parametrize("formatter_condition_pairs,value", aoof_cases, ids=aoof_ids)
 def test_faster_apply_one_of_formatters(
     benchmark: BenchmarkFixture,
-    formatter_condition_pairs: Tuple[Tuple[Callable[[int], bool], Callable[[int], int]], ...],
+    formatter_condition_pairs: tuple[tuple[Callable[[int], bool], Callable[[int], int]], ...],
     value: int
 ) -> None:
     benchmark(_batch, 10, faster_eth_utils.apply_one_of_formatters, formatter_condition_pairs, value)
@@ -230,8 +230,8 @@ def test_faster_apply_one_of_formatters(
 @pytest.mark.parametrize("key_map,value", akm_cases, ids=akm_ids)
 def test_apply_key_map(
     benchmark: BenchmarkFixture,
-    key_map: Dict[str, str],
-    value: Dict[str, int]
+    key_map: dict[str, str],
+    value: dict[str, int]
 ) -> None:
     benchmark(_batch, 10, eth_utils.apply_key_map, key_map, value)
 
@@ -239,7 +239,7 @@ def test_apply_key_map(
 @pytest.mark.parametrize("key_map,value", akm_cases, ids=akm_ids)
 def test_faster_apply_key_map(
     benchmark: BenchmarkFixture,
-    key_map: Dict[str, str],
-    value: Dict[str, int]
+    key_map: dict[str, str],
+    value: dict[str, int]
 ) -> None:
     benchmark(_batch, 10, faster_eth_utils.apply_key_map, key_map, value)

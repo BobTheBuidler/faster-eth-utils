@@ -28,7 +28,7 @@ def get_group_name(test_name: str) -> str:
     return test_name
 
 
-def compare_group(group_results: Dict[str, Any]) -> Dict[str, Any]:
+def compare_group(group_results: dict[str, Any]) -> dict[str, Any]:
     # Find reference and faster implementations in the group
     ref = None
     fast = None
@@ -73,7 +73,7 @@ def main() -> None:
     results_path = sys.argv[1]
     output_path = sys.argv[2] if len(sys.argv) > 2 else "benchmark_diff.json"
 
-    with open(results_path, "r") as f:
+    with open(results_path) as f:
         results = json.load(f)
 
     # results: {submodule: {group: {function_name: {...}}}}

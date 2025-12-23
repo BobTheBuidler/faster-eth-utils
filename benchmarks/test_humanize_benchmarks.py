@@ -179,12 +179,12 @@ def test_faster_is_ipfs_uri(benchmark: BenchmarkFixture, value: str) -> None:
 
 @pytest.mark.benchmark(group="humanize_integer_sequence")
 @pytest.mark.parametrize("value", humanize_integer_sequence_cases, ids=humanize_integer_sequence_ids)
-def test_humanize_integer_sequence(benchmark: BenchmarkFixture, value: List[int]) -> None:
+def test_humanize_integer_sequence(benchmark: BenchmarkFixture, value: list[int]) -> None:
     benchmark(_batch, 10, eth_utils.humanize_integer_sequence, value)
 
 @pytest.mark.benchmark(group="humanize_integer_sequence")
 @pytest.mark.parametrize("value", humanize_integer_sequence_cases, ids=humanize_integer_sequence_ids)
-def test_faster_humanize_integer_sequence(benchmark: BenchmarkFixture, value: List[int]) -> None:
+def test_faster_humanize_integer_sequence(benchmark: BenchmarkFixture, value: list[int]) -> None:
     benchmark(_batch, 10, faster_eth_utils.humanize_integer_sequence, value)
 
 @pytest.mark.benchmark(group="humanize_wei")

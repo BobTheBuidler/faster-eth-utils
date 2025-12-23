@@ -52,11 +52,11 @@ def is_list_like(obj: Any) -> TypeGuard[collections.abc.Sequence[Any]]:
     return isinstance(obj, (list, tuple)) or not is_string(obj) and isinstance(obj, Sequence)
 
 
-def is_list(obj: Any) -> TypeGuard[List[Any]]:
+def is_list(obj: Any) -> TypeGuard[list[Any]]:
     return isinstance(obj, list)
 
 
-def is_tuple(obj: Any) -> TypeGuard[Tuple[Any, ...]]:
+def is_tuple(obj: Any) -> TypeGuard[tuple[Any, ...]]:
     return isinstance(obj, tuple)
 
 

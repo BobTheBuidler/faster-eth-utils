@@ -17,7 +17,7 @@ def fixture_dir(val: str):
 
 
 def check_mypy_run(
-    cmd_line: List[str],
+    cmd_line: list[str],
     expected_out: str,
     expected_err: str = "",
     expected_returncode: int = 0,

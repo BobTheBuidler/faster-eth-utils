@@ -12,11 +12,11 @@ def _batch(i: int, fn: Callable[..., Any], *inputs: Any) -> None:
         fn(*inputs)
 
 # Typical-case address parameter lists
-hex_addresses_true: List[str] = [
+hex_addresses_true: list[str] = [
     "0x52908400098527886E0F7030069857D2E4169EE7",  # valid, checksummed
     "0xde709f2102306220921060314715629080e2fb77",  # valid, lower
 ]
-hex_addresses_false: List[str] = [
+hex_addresses_false: list[str] = [
     "0x123",  # too short
     "notanaddress",  # not hex
     "0xZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ",  # invalid hex
@@ -31,11 +31,11 @@ hex_addresses_ids = [
     "empty",
 ]
 
-binary_addresses_true: List[bytes] = [
+binary_addresses_true: list[bytes] = [
     bytes.fromhex("52908400098527886E0F7030069857D2E4169EE7"),
     bytes.fromhex("de709f2102306220921060314715629080e2fb77"),
 ]
-binary_addresses_false: List[bytes] = [
+binary_addresses_false: list[bytes] = [
     b"",
     b"\x00" * 19,  # too short
     b"\x00" * 21,  # too long
@@ -50,10 +50,10 @@ binary_addresses_ids = [
     "not-20-bytes",
 ]
 
-address_pairs_true: List[Tuple[str, str]] = [
+address_pairs_true: list[tuple[str, str]] = [
     ("0x52908400098527886E0F7030069857D2E4169EE7", "0x52908400098527886e0f7030069857d2e4169ee7"),
 ]
-address_pairs_false: List[Tuple[str, str]] = [
+address_pairs_false: list[tuple[str, str]] = [
     ("0x52908400098527886E0F7030069857D2E4169EE7", "0xde709f2102306220921060314715629080e2fb77"),
 ]
 address_pairs_ids = [

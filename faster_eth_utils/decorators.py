@@ -26,7 +26,7 @@ TInstance = TypeVar("TInstance", bound=object)
 @final
 class combomethod(Generic[TInstance, P, T]):
     def __init__(
-        self, method: Callable[Concatenate[Union[TInstance, Type[TInstance]], P], T]
+        self, method: Callable[Concatenate[Union[TInstance, type[TInstance]], P], T]
     ) -> None:
         self.method: Final = method
 
@@ -36,7 +36,7 @@ class combomethod(Generic[TInstance, P, T]):
     def __get__(
         self,
         obj: Optional[TInstance],
-        objtype: Type[TInstance],
+        objtype: type[TInstance],
     ) -> Callable[P, T]:
 
         @functools.wraps(self.method)
@@ -50,7 +50,7 @@ class combomethod(Generic[TInstance, P, T]):
 
 
 _return_arg_type_deco_cache: Final[
-    Dict[int, Callable[[Callable[P, T]], Callable[P, Any]]]
+    dict[int, Callable[[Callable[P, T]], Callable[P, Any]]]
 ] = {}
 # No need to hold so many unique instances in memory
 
@@ -76,10 +76,10 @@ def return_arg_type(at_position: int) -> Callable[[Callable[P, T]], Callable[P, 
     return decorator
 
 
-ExcType = Type[BaseException]
+ExcType = type[BaseException]
 
-ReplaceExceptionsCache = Dict[
-    Tuple[Tuple[ExcType, ExcType], ...],
+ReplaceExceptionsCache = dict[
+    tuple[tuple[ExcType, ExcType], ...],
     Callable[[Callable[P, T]], Callable[P, T]],
 ]
 
@@ -88,7 +88,7 @@ _replace_exceptions_deco_cache: Final[ReplaceExceptionsCache[..., Any]] = {}
 
 
 def replace_exceptions(
-    old_to_new_exceptions: Dict[ExcType, ExcType],
+    old_to_new_exceptions: dict[ExcType, ExcType],
 ) -> Callable[[Callable[P, T]], Callable[P, T]]:
     """
     Replaces old exceptions with new exceptions to be raised in their place.

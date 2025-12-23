@@ -8,7 +8,7 @@ from faster_eth_utils import (
 
 
 @to_list
-def return_value() -> Tuple[int, int]:
+def return_value() -> tuple[int, int]:
     return (1, 2)
 
 

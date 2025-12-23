@@ -28,10 +28,10 @@ ids = [
 
 @pytest.mark.benchmark(group="keccak")
 @pytest.mark.parametrize("kwargs", cases, ids=ids)
-def test_keccak(benchmark: BenchmarkFixture, kwargs: Dict[str, Any]) -> None:
+def test_keccak(benchmark: BenchmarkFixture, kwargs: dict[str, Any]) -> None:
     benchmark(_batch, 10, eth_utils.keccak, **kwargs)
 
 @pytest.mark.benchmark(group="keccak")
 @pytest.mark.parametrize("kwargs", cases, ids=ids)
-def test_faster_keccak(benchmark: BenchmarkFixture, kwargs: Dict[str, Any]) -> None:
+def test_faster_keccak(benchmark: BenchmarkFixture, kwargs: dict[str, Any]) -> None:
     benchmark(_batch, 10, faster_eth_utils.keccak, **kwargs)
