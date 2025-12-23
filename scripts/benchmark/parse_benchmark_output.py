@@ -37,7 +37,7 @@ def get_group_name(test_name: str) -> str:
     return test_name
 
 
-def parse_pytest_benchmark_json(data: dict) -> Dict[str, Dict[str, Dict[str, Any]]]:
+def parse_pytest_benchmark_json(data: dict) -> dict[str, dict[str, dict[str, Any]]]:
     """
     Parses pytest-benchmark's benchmark.json and extracts per-function timings,
     grouped by submodule and group name.
@@ -66,7 +66,7 @@ def main() -> None:
         sys.exit(1)
     infile = sys.argv[1]
     outfile = sys.argv[2] if len(sys.argv) > 2 else "benchmark_results.json"
-    with open(infile, "r") as f:
+    with open(infile) as f:
         data = json.load(f)
     results = parse_pytest_benchmark_json(data)
     with open(outfile, "w") as f:

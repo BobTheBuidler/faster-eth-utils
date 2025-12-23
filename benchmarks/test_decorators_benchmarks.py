@@ -42,7 +42,7 @@ def raise_type_error():
 def no_raise():
     return 42
 
-re_func_lookup: Dict[str, Callable[[], Any]] = {
+re_func_lookup: dict[str, Callable[[], Any]] = {
     "raise_value_error": raise_value_error,
     "raise_type_error": raise_type_error,
     "no_raise": no_raise,
@@ -63,7 +63,7 @@ re_ids = [
 def test_return_arg_type(
     benchmark: BenchmarkFixture,
     at_position: int,
-    args: Tuple[Any, ...]
+    args: tuple[Any, ...]
 ) -> None:
     def add(x: Any, y: Any) -> Any:
         return x + y
@@ -75,7 +75,7 @@ def test_return_arg_type(
 def test_faster_return_arg_type(
     benchmark: BenchmarkFixture,
     at_position: int,
-    args: Tuple[Any, ...]
+    args: tuple[Any, ...]
 ) -> None:
     def add(x: Any, y: Any) -> Any:
         return x + y

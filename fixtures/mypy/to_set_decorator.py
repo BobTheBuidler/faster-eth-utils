@@ -8,7 +8,7 @@ from faster_eth_utils import (
 
 
 @to_set
-def return_value() -> List[int]:
+def return_value() -> list[int]:
     return [1, 1, 2]
 
 

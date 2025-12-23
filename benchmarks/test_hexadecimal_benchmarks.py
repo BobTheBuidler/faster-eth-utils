@@ -11,7 +11,7 @@ def _batch(i: int, fn: Callable[..., Any], *inputs: Any) -> None:
     for _ in range(i):
         fn(*inputs)
 
-hex_strings: List[str] = [
+hex_strings: list[str] = [
     "0x68656c6c6f",
     "ab" * 32,
     "0x" + "ff" * 128,
@@ -24,7 +24,7 @@ hex_strings_ids = [
     "very-long-no-0x",
 ]
 
-encode_hex_cases: List[bytes] = [
+encode_hex_cases: list[bytes] = [
     b"helloworld",
     b"a" * 32,
     b"b" * 128,

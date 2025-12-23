@@ -7,7 +7,7 @@ from pytest_codspeed import BenchmarkFixture
 
 import faster_eth_utils
 
-def _batch(i: int, exc: Type[Exception], *inputs: Any) -> None:
+def _batch(i: int, exc: type[Exception], *inputs: Any) -> None:
     for _ in range(i):
         try:
             raise exc(*inputs)

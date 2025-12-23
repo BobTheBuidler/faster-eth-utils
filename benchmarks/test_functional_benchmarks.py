@@ -1,5 +1,6 @@
 # mypy: disable-error-code=misc
-from typing import Any, Callable, Iterable, List, Tuple, Dict
+from typing import Any, Callable, List, Tuple, Dict
+from collections.abc import Iterable
 
 import eth_utils
 import eth_utils.functional
@@ -102,7 +103,7 @@ def test_apply_to_return_value(
     benchmark: BenchmarkFixture,
     callback: Callable[[Any], Any],
     fn: Callable[..., Any],
-    args: Tuple[Any, ...]
+    args: tuple[Any, ...]
 ) -> None:
     decorated = eth_utils.apply_to_return_value(callback)(fn)
     benchmark(_batch, 10, decorated, *args)
@@ -113,55 +114,55 @@ def test_faster_apply_to_return_value(
     benchmark: BenchmarkFixture,
     callback: Callable[[Any], Any],
     fn: Callable[..., Any],
-    args: Tuple[Any, ...]
+    args: tuple[Any, ...]
 ) -> None:
     decorated = faster_eth_utils.apply_to_return_value(callback)(fn)
     benchmark(_batch, 10, decorated, *args)
 
 @pytest.mark.benchmark(group="to_tuple")
 @pytest.mark.parametrize("fn,args", to_tuple_cases, ids=item_count_ids)
-def test_to_tuple(benchmark: BenchmarkFixture, fn: Callable[..., Any], args: Tuple[Any, ...]) -> None:
+def test_to_tuple(benchmark: BenchmarkFixture, fn: Callable[..., Any], args: tuple[Any, ...]) -> None:
     decorated = eth_utils.to_tuple(fn)
     benchmark(_batch, 10, decorated, *args)
 
 @pytest.mark.benchmark(group="to_tuple")
 @pytest.mark.parametrize("fn,args", to_tuple_cases, ids=item_count_ids)
-def test_faster_to_tuple(benchmark: BenchmarkFixture, fn: Callable[..., Any], args: Tuple[Any, ...]) -> None:
+def test_faster_to_tuple(benchmark: BenchmarkFixture, fn: Callable[..., Any], args: tuple[Any, ...]) -> None:
     decorated = faster_eth_utils.to_tuple(fn)
     benchmark(_batch, 10, decorated, *args)
 
 @pytest.mark.benchmark(group="to_list")
 @pytest.mark.parametrize("fn,args", to_list_cases, ids=item_count_ids)
-def test_to_list(benchmark: BenchmarkFixture, fn: Callable[..., Any], args: Tuple[Any, ...]) -> None:
+def test_to_list(benchmark: BenchmarkFixture, fn: Callable[..., Any], args: tuple[Any, ...]) -> None:
     decorated = eth_utils.to_list(fn)
     benchmark(_batch, 10, decorated, *args)
 
 @pytest.mark.benchmark(group="to_list")
 @pytest.mark.parametrize("fn,args", to_list_cases, ids=item_count_ids)
-def test_faster_to_list(benchmark: BenchmarkFixture, fn: Callable[..., Any], args: Tuple[Any, ...]) -> None:
+def test_faster_to_list(benchmark: BenchmarkFixture, fn: Callable[..., Any], args: tuple[Any, ...]) -> None:
     decorated = faster_eth_utils.to_list(fn)
     benchmark(_batch, 10, decorated, *args)
 
 @pytest.mark.benchmark(group="to_set")
 @pytest.mark.parametrize("fn,args", to_set_cases, ids=item_count_ids)
-def test_to_set(benchmark: BenchmarkFixture, fn: Callable[..., Any], args: Tuple[Any, ...]) -> None:
+def test_to_set(benchmark: BenchmarkFixture, fn: Callable[..., Any], args: tuple[Any, ...]) -> None:
     decorated = eth_utils.to_set(fn)
     benchmark(_batch, 10, decorated, *args)
 
 @pytest.mark.benchmark(group="to_set")
 @pytest.mark.parametrize("fn,args", to_set_cases, ids=item_count_ids)
-def test_faster_to_set(benchmark: BenchmarkFixture, fn: Callable[..., Any], args: Tuple[Any, ...]) -> None:
+def test_faster_to_set(benchmark: BenchmarkFixture, fn: Callable[..., Any], args: tuple[Any, ...]) -> None:
     decorated = faster_eth_utils.to_set(fn)
     benchmark(_batch, 10, decorated, *args)
 
 @pytest.mark.benchmark(group="to_dict")
 @pytest.mark.parametrize("fn,args", to_dict_cases, ids=item_count_ids)
-def test_to_dict(benchmark: BenchmarkFixture, fn: Callable[..., Any], args: Tuple[Any, ...]) -> None:
+def test_to_dict(benchmark: BenchmarkFixture, fn: Callable[..., Any], args: tuple[Any, ...]) -> None:
     decorated = eth_utils.to_dict(fn)
     benchmark(_batch, 10, decorated, *args)
 
 @pytest.mark.benchmark(group="to_dict")
 @pytest.mark.parametrize("fn,args", to_dict_cases, ids=item_count_ids)
-def test_faster_to_dict(benchmark: BenchmarkFixture, fn: Callable[..., Any], args: Tuple[Any, ...]) -> None:
+def test_faster_to_dict(benchmark: BenchmarkFixture, fn: Callable[..., Any], args: tuple[Any, ...]) -> None:
     decorated = faster_eth_utils.to_dict(fn)
     benchmark(_batch, 10, decorated, *args)

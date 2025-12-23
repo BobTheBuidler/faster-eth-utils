@@ -1,11 +1,10 @@
 from typing import (
     Any,
     Final,
-    Iterable,
-    Iterator,
     Tuple,
     Union,
 )
+from collections.abc import Iterable, Iterator
 from urllib import (
     parse,
 )
@@ -53,8 +52,8 @@ UNITS: Final = (
 
 
 def _consume_leading_zero_units(
-    units_iter: Iterator[Tuple[int, str]]
-) -> Iterator[Tuple[int, str]]:
+    units_iter: Iterator[tuple[int, str]]
+) -> Iterator[tuple[int, str]]:
     for amount, unit in units_iter:
         if amount == 0:
             continue
@@ -65,7 +64,7 @@ def _consume_leading_zero_units(
     yield from units_iter
 
 
-def _humanize_seconds(seconds: int) -> Iterator[Tuple[int, str]]:
+def _humanize_seconds(seconds: int) -> Iterator[tuple[int, str]]:
     remainder = seconds
 
     for duration, unit in UNITS:
@@ -140,7 +139,7 @@ def _is_CIDv0_ipfs_hash(ipfs_hash: str) -> bool:
     return False
 
 
-def _find_breakpoints(values: Tuple[int, ...]) -> Iterator[int]:
+def _find_breakpoints(values: tuple[int, ...]) -> Iterator[int]:
     yield 0
     for index, (left, right) in enumerate(toolz.sliding_window(2, values), 1):
         if left + 1 == right:
@@ -150,7 +149,7 @@ def _find_breakpoints(values: Tuple[int, ...]) -> Iterator[int]:
     yield len(values)
 
 
-def _extract_integer_ranges(values: Tuple[int, ...]) -> Iterator[Tuple[int, int]]:
+def _extract_integer_ranges(values: tuple[int, ...]) -> Iterator[tuple[int, int]]:
     """
     Return a tuple of consecutive ranges of integers.
 
@@ -165,7 +164,7 @@ def _extract_integer_ranges(values: Tuple[int, ...]) -> Iterator[Tuple[int, int]
         yield chunk[0], chunk[-1]
 
 
-def _humanize_range(bounds: Tuple[int, int]) -> str:
+def _humanize_range(bounds: tuple[int, int]) -> str:
     left, right = bounds
     if left == right:
         return str(left)

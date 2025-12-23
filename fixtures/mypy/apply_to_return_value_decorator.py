@@ -7,7 +7,7 @@ from faster_eth_utils import (
 )
 
 
-def wrap_as_list(value: int) -> List[int]:
+def wrap_as_list(value: int) -> list[int]:
     return [value]
 
 

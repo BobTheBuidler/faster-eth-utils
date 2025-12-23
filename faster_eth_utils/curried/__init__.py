@@ -4,14 +4,13 @@ from typing import (
     Any,
     Callable,
     Dict,
-    Generator,
     Optional,
-    Sequence,
     Tuple,
     TypeVar,
     Union,
     overload,
 )
+from collections.abc import Generator, Sequence
 from typing_extensions import TypeGuard
 
 from faster_eth_utils import (
@@ -122,11 +121,8 @@ from faster_eth_utils.toolz import (
 )
 
 if TYPE_CHECKING:
-    if sys.version_info >= (3, 9):
-        from _typeshed import SupportsBool
+    from _typeshed import SupportsBool
     # We have to sacrifice a little bit of specificity on dinosaur Python3.8
-    else:
-        SupportsBool = Any
 
 
 TArg = TypeVar("TArg")
@@ -175,7 +171,7 @@ def apply_formatter_if(  # type: ignore
 @overload
 def apply_one_of_formatters(
     formatter_condition_pairs: Sequence[
-        Tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]]
+        tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]]
     ],
 ) -> Callable[[TArg], TReturn]: ...
 
@@ -183,7 +179,7 @@ def apply_one_of_formatters(
 @overload
 def apply_one_of_formatters(
     formatter_condition_pairs: Sequence[
-        Tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]]
+        tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]]
     ],
     value: TArg,
 ) -> TReturn: ...
@@ -192,7 +188,7 @@ def apply_one_of_formatters(
 # This is just a stub to appease mypy, it gets overwritten later
 def apply_one_of_formatters(
     formatter_condition_pairs: Sequence[
-        Tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]]
+        tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]]
     ],
     value: Optional[TArg] = None,
 ) -> TReturn: ...
@@ -237,24 +233,24 @@ def text_if_str(  # type: ignore
 
 @overload
 def apply_formatters_to_dict(
-    formatters: Dict[Any, Any], unaliased: bool = False
-) -> Callable[[Union[Dict[Any, Any], CamelModel]], Dict[Any, Any]]:
+    formatters: dict[Any, Any], unaliased: bool = False
+) -> Callable[[Union[dict[Any, Any], CamelModel]], dict[Any, Any]]:
     ...
 
 
 @overload
 def apply_formatters_to_dict(
-    formatters: Dict[Any, Any], value: Union[Dict[Any, Any], CamelModel], unaliased: bool = False
-) -> Dict[Any, Any]:
+    formatters: dict[Any, Any], value: Union[dict[Any, Any], CamelModel], unaliased: bool = False
+) -> dict[Any, Any]:
     ...
 
 
 # This is just a stub to appease mypy, it gets overwritten later
 def apply_formatters_to_dict(
-    formatters: Dict[Any, Any],
-    value: Optional[Union[Dict[Any, Any], CamelModel]] = None,
+    formatters: dict[Any, Any],
+    value: Optional[Union[dict[Any, Any], CamelModel]] = None,
     unaliased: bool = False,
-) -> Dict[Any, Any]: ...
+) -> dict[Any, Any]: ...
 
 
 apply_formatter_at_index = curry(apply_formatter_at_index)
@@ -287,13 +283,13 @@ clamp = curry(clamp)
 # `from eth_utils.curried import *`
 del Any
 del Callable
-del Dict
+del dict
 del Generator
 del Optional
 del Sequence
 del TReturn
 del TValue
-del Tuple
+del tuple
 del TypeGuard
 del TypeVar
 del Union

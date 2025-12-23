@@ -4,16 +4,14 @@ from typing import (
     Any,
     Callable,
     Dict,
-    Generator,
     List,
-    Mapping,
-    Sequence,
     Tuple,
     TypeVar,
     Union,
     cast,
     overload,
 )
+from collections.abc import Generator, Mapping, Sequence
 import warnings
 
 from typing_extensions import (
@@ -32,17 +30,14 @@ from .toolz import (
 )
 
 if TYPE_CHECKING:
-    if sys.version_info >= (3, 9):
-        from _typeshed import SupportsBool
+    from _typeshed import SupportsBool
     # We have to sacrifice a little bit of specificity on dinosaur Python3.8
-    else:
-        SupportsBool = Any
 
 TArg = TypeVar("TArg")
 TReturn = TypeVar("TReturn")
 TOther = TypeVar("TOther")
 
-Formatters = Callable[[List[Any]], List[Any]]
+Formatters = Callable[[list[Any]], list[Any]]
 
 
 @return_arg_type(2)
@@ -87,7 +82,7 @@ def combine_argument_formatters(*formatters: Callable[..., Any]) -> Formatters:
 
 @return_arg_type(1)
 def apply_formatters_to_sequence(
-    formatters: List[Callable[[Any], TReturn]], sequence: Sequence[Any]
+    formatters: list[Callable[[Any], TReturn]], sequence: Sequence[Any]
 ) -> Generator[TReturn, None, None]:
     num_formatters = len(formatters)
     num_items = len(sequence)
@@ -132,10 +127,10 @@ def apply_formatter_if(  # type: ignore [misc]
 
 
 def apply_formatters_to_dict(
-    formatters: Dict[Any, Any],
-    value: Union[Dict[Any, Any], CamelModel],
+    formatters: dict[Any, Any],
+    value: Union[dict[Any, Any], CamelModel],
     unaliased: bool = False,
-) -> Dict[Any, Any]:
+) -> dict[Any, Any]:
     """
     Apply formatters to a dictionary of values. If the value is a pydantic model,
     it will be serialized to a dictionary first, taking into account the
@@ -176,8 +171,8 @@ def apply_formatter_to_array(
 
 
 def apply_one_of_formatters(
-    formatter_condition_pairs: Tuple[
-        Tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]], ...
+    formatter_condition_pairs: tuple[
+        tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]], ...
     ],
     value: TArg,
 ) -> TReturn:
@@ -191,8 +186,8 @@ def apply_one_of_formatters(
 
 
 def apply_key_map(
-    key_mappings: Dict[Any, Any], value: Mapping[Any, Any]
-) -> Dict[Any, Any]:
+    key_mappings: dict[Any, Any], value: Mapping[Any, Any]
+) -> dict[Any, Any]:
     key_conflicts = (
         set(value.keys())
         .difference(key_mappings.keys())

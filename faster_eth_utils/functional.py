@@ -4,14 +4,13 @@ import itertools
 from typing import (  # noqa: F401
     Callable,
     Dict,
-    Iterable,
     List,
-    Mapping,
     Set,
     Tuple,
     TypeVar,
     Union,
 )
+from collections.abc import Iterable, Mapping
 
 from typing_extensions import ParamSpec
 
@@ -57,25 +56,25 @@ def apply_to_return_value(
 TVal = TypeVar("TVal")
 TKey = TypeVar("TKey")
 
-def to_tuple(fn: Callable[P, Iterable[TVal]]) -> Callable[P, Tuple[TVal, ...]]:
-    def to_tuple_wrap(*args: P.args, **kwargs: P.kwargs) -> Tuple[TVal, ...]:
+def to_tuple(fn: Callable[P, Iterable[TVal]]) -> Callable[P, tuple[TVal, ...]]:
+    def to_tuple_wrap(*args: P.args, **kwargs: P.kwargs) -> tuple[TVal, ...]:
         return tuple(fn(*args, **kwargs))
     return to_tuple_wrap
 
-def to_list(fn: Callable[P, Iterable[TVal]]) -> Callable[P, List[TVal]]:
-    def to_list_wrap(*args: P.args, **kwargs: P.kwargs) -> List[TVal]:
+def to_list(fn: Callable[P, Iterable[TVal]]) -> Callable[P, list[TVal]]:
+    def to_list_wrap(*args: P.args, **kwargs: P.kwargs) -> list[TVal]:
         return list(fn(*args, **kwargs))
     return to_list_wrap
 
-def to_set(fn: Callable[P, Iterable[TVal]]) -> Callable[P, Set[TVal]]:
-    def to_set_wrap(*args: P.args, **kwargs: P.kwargs) -> Set[TVal]:
+def to_set(fn: Callable[P, Iterable[TVal]]) -> Callable[P, set[TVal]]:
+    def to_set_wrap(*args: P.args, **kwargs: P.kwargs) -> set[TVal]:
         return set(fn(*args, **kwargs))
     return to_set_wrap
 
 def to_dict(
-    fn: Callable[P, Union[Mapping[TKey, TVal], Iterable[Tuple[TKey, TVal]]]]
-) -> Callable[P, Dict[TKey, TVal]]:
-    def to_dict_wrap(*args: P.args, **kwargs: P.kwargs) -> Dict[TKey, TVal]:
+    fn: Callable[P, Union[Mapping[TKey, TVal], Iterable[tuple[TKey, TVal]]]]
+) -> Callable[P, dict[TKey, TVal]]:
+    def to_dict_wrap(*args: P.args, **kwargs: P.kwargs) -> dict[TKey, TVal]:
         return dict(fn(*args, **kwargs))
     return to_dict_wrap
 
