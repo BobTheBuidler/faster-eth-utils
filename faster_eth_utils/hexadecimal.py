@@ -6,13 +6,11 @@ from typing import (
     Any,
     AnyStr,
     Final,
+    TypeGuard,
 )
 
 from eth_typing import (
     HexStr,
-)
-from typing import (
-    TypeGuard,
 )
 
 _HEX_REGEXP_MATCH: Final = re.compile("(0[xX])?[0-9a-fA-F]*").fullmatch
