@@ -1,15 +1,14 @@
 import sys
+from collections.abc import Callable, Generator, Sequence
 from typing import (
     TYPE_CHECKING,
     Any,
     Optional,
+    TypeGuard,
     TypeVar,
     Union,
     overload,
 )
-from collections.abc import Callable
-from collections.abc import Generator, Sequence
-from typing import TypeGuard
 
 from faster_eth_utils import (
     CamelModel,
