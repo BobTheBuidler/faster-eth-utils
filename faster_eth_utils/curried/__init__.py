@@ -283,7 +283,6 @@ clamp = curry(clamp)
 # `from eth_utils.curried import *`
 del Any
 del Callable
-del dict
 del Generator
 del Optional
 del Sequence
