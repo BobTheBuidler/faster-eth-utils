@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[621];
+extern PyObject *CPyStatics[617];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -41,7 +41,6 @@ extern CPyModule *CPyModule_faster_eth_utils___hexadecimal;
 extern CPyModule *CPyModule_faster_eth_utils___applicators__internal;
 extern CPyModule *CPyModule_faster_eth_utils___applicators;
 extern PyObject *CPyStatic_applicators___globals;
-extern CPyModule *CPyModule_sys;
 extern CPyModule *CPyModule_warnings;
 extern CPyModule *CPyModule_faster_eth_utils___decorators__internal;
 extern CPyModule *CPyModule_faster_eth_utils___decorators;
@@ -64,6 +63,7 @@ extern CPyModule *CPyModule_faster_eth_utils___debug;
 extern PyObject *CPyStatic_debug___globals;
 extern CPyModule *CPyModule_platform;
 extern CPyModule *CPyModule_subprocess;
+extern CPyModule *CPyModule_sys;
 extern PyObject *CPyStatic_decorators___globals;
 extern CPyModule *CPyModule_functools;
 extern PyObject *CPyStatic_encoding___globals;
