@@ -1,5 +1,6 @@
 # mypy: disable-error-code=misc
-from typing import Any, Callable, Union
+from typing import Any
+from collections.abc import Callable
 
 import eth_utils
 import pytest
@@ -84,12 +85,12 @@ def test_faster_from_wei(benchmark: BenchmarkFixture, number: int, unit: str) ->
 
 @pytest.mark.benchmark(group="to_wei")
 @pytest.mark.parametrize("number,unit", to_wei_cases, ids=to_wei_ids)
-def test_to_wei(benchmark: BenchmarkFixture, number: Union[int, float, str], unit: str) -> None:
+def test_to_wei(benchmark: BenchmarkFixture, number: int | float | str, unit: str) -> None:
     benchmark(_batch, 10, eth_utils.to_wei, number, unit)
 
 @pytest.mark.benchmark(group="to_wei")
 @pytest.mark.parametrize("number,unit", to_wei_cases, ids=to_wei_ids)
-def test_faster_to_wei(benchmark: BenchmarkFixture, number: Union[int, float, str], unit: str) -> None:
+def test_faster_to_wei(benchmark: BenchmarkFixture, number: int | float | str, unit: str) -> None:
     benchmark(_batch, 10, faster_eth_utils.to_wei, number, unit)
 
 @pytest.mark.benchmark(group="from_wei_decimals")
@@ -104,10 +105,10 @@ def test_faster_from_wei_decimals(benchmark: BenchmarkFixture, number: int, deci
 
 @pytest.mark.benchmark(group="to_wei_decimals")
 @pytest.mark.parametrize("number,decimals", to_wei_decimals_cases, ids=to_wei_decimals_ids)
-def test_to_wei_decimals(benchmark: BenchmarkFixture, number: Union[int, float, str], decimals: int) -> None:
+def test_to_wei_decimals(benchmark: BenchmarkFixture, number: int | float | str, decimals: int) -> None:
     benchmark(_batch, 10, eth_utils.to_wei_decimals, number, decimals)
 
 @pytest.mark.benchmark(group="to_wei_decimals")
 @pytest.mark.parametrize("number,decimals", to_wei_decimals_cases, ids=to_wei_decimals_ids)
-def test_faster_to_wei_decimals(benchmark: BenchmarkFixture, number: Union[int, float, str], decimals: int) -> None:
+def test_faster_to_wei_decimals(benchmark: BenchmarkFixture, number: int | float | str, decimals: int) -> None:
     benchmark(_batch, 10, faster_eth_utils.to_wei_decimals, number, decimals)

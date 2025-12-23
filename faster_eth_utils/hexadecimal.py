@@ -6,14 +6,11 @@ from typing import (
     Any,
     AnyStr,
     Final,
-    Union,
+    TypeGuard,
 )
 
 from eth_typing import (
     HexStr,
-)
-from typing_extensions import (
-    TypeGuard,
 )
 
 _HEX_REGEXP_MATCH: Final = re.compile("(0[xX])?[0-9a-fA-F]*").fullmatch
@@ -33,7 +30,7 @@ def decode_hex(value: str) -> bytes:
 
 
 def encode_hex(value: AnyStr) -> HexStr:
-    ascii_bytes: Union[bytes, bytearray]
+    ascii_bytes: bytes | bytearray
     if isinstance(value, (bytes, bytearray)):
         ascii_bytes = value
     elif isinstance(value, str):

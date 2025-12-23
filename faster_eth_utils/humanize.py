@@ -1,7 +1,6 @@
 from typing import (
     Any,
     Final,
-    Union,
 )
 from collections.abc import Iterable, Iterator
 from urllib import (
@@ -21,7 +20,7 @@ from faster_eth_utils.currency import (
 from . import toolz
 
 
-def humanize_seconds(seconds: Union[float, int]) -> str:
+def humanize_seconds(seconds: float | int) -> str:
     if int(seconds) == 0:
         return "0s"
 

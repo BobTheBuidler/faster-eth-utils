@@ -4,7 +4,6 @@ from typing import (
     Any,
     Literal,
     NamedTuple,
-    Union,
     cast,
 )
 from collections.abc import Mapping, Sequence
@@ -762,7 +761,7 @@ def test_filter_abi_by_type(
         "function", "event", "fallback", "receive", "constructor", "error"
     ],
     expected_element_abis: Sequence[
-        Union[ABIFunction, ABIConstructor, ABIFallback, ABIReceive, ABIEvent, ABIError]
+        ABIFunction | ABIConstructor | ABIFallback | ABIReceive | ABIEvent | ABIError
     ],
 ) -> None:
     contract_abi = build_contract_abi(abi_elements)
@@ -1128,7 +1127,7 @@ def test_event_signature_to_log_topic(event_signature: str, expected: HexStr) ->
     ),
 )
 def test_collapse_if_tuple(
-    abi_component: Union[ABIComponent, dict[str, Any], str],
+    abi_component: ABIComponent | dict[str, Any] | str,
     expected_type_signature: str,
 ) -> None:
     assert collapse_if_tuple(abi_component) == expected_type_signature
@@ -1157,7 +1156,7 @@ def test_collapse_if_tuple(
     ),
 )
 def test_collapse_if_tuple_raises_for_invalid_component(
-    abi_component: Union[ABIComponent, dict[str, Any], str],
+    abi_component: ABIComponent | dict[str, Any] | str,
     message: str,
 ) -> None:
     with pytest.raises(TypeError, match=re.escape(message)):
@@ -1471,7 +1470,7 @@ GET_ABI_INPUTS_OUTPUT = (
 )
 def test_get_aligned_abi_inputs(
     abi_element: ABIElement,
-    args: Union[tuple[Any, ...], Mapping[Any, Any]],
+    args: tuple[Any, ...] | Mapping[Any, Any],
     expected: tuple[tuple[str, ...], tuple[Any, ...]],
 ) -> None:
     assert get_aligned_abi_inputs(abi_element, args) == expected
@@ -1522,7 +1521,7 @@ def test_get_aligned_abi_inputs(
 )
 def test_get_aligned_abi_inputs_raises_type_error_for_incorrect_input_types(
     abi_element: ABIElement,
-    args: Union[tuple[Any, ...], Mapping[Any, Any]],
+    args: tuple[Any, ...] | Mapping[Any, Any],
     error_type: type[Exception],
     message: str,
 ) -> None:

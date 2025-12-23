@@ -1,8 +1,8 @@
 import collections
 import functools
 import itertools
+from collections.abc import Callable, Iterable, Mapping
 from typing import (  # noqa: F401
-    Callable,
     Dict,
     List,
     Set,
@@ -10,7 +10,6 @@ from typing import (  # noqa: F401
     TypeVar,
     Union,
 )
-from collections.abc import Iterable, Mapping
 
 from typing_extensions import ParamSpec
 
@@ -72,7 +71,7 @@ def to_set(fn: Callable[P, Iterable[TVal]]) -> Callable[P, set[TVal]]:
     return to_set_wrap
 
 def to_dict(
-    fn: Callable[P, Union[Mapping[TKey, TVal], Iterable[tuple[TKey, TVal]]]]
+    fn: Callable[P, Mapping[TKey, TVal] | Iterable[tuple[TKey, TVal]]]
 ) -> Callable[P, dict[TKey, TVal]]:
     def to_dict_wrap(*args: P.args, **kwargs: P.kwargs) -> dict[TKey, TVal]:
         return dict(fn(*args, **kwargs))

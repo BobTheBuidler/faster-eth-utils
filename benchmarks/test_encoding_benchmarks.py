@@ -1,5 +1,6 @@
 # mypy: disable-error-code=misc
-from typing import Any, Callable, Union
+from typing import Any
+from collections.abc import Callable
 
 import eth_utils
 import pytest
@@ -53,10 +54,10 @@ def test_faster_int_to_big_endian(benchmark: BenchmarkFixture, value: int) -> No
 
 @pytest.mark.benchmark(group="big_endian_to_int")
 @pytest.mark.parametrize("value", be_to_int_cases, ids=be_to_int_ids)
-def test_big_endian_to_int(benchmark: BenchmarkFixture, value: Union[bytes, str]) -> None:
+def test_big_endian_to_int(benchmark: BenchmarkFixture, value: bytes | str) -> None:
     benchmark(_batch, 10, eth_utils.big_endian_to_int, value)
 
 @pytest.mark.benchmark(group="big_endian_to_int")
 @pytest.mark.parametrize("value", be_to_int_cases, ids=be_to_int_ids)
-def test_faster_big_endian_to_int(benchmark: BenchmarkFixture, value: Union[bytes, str]) -> None:
+def test_faster_big_endian_to_int(benchmark: BenchmarkFixture, value: bytes | str) -> None:
     benchmark(_batch, 10, faster_eth_utils.big_endian_to_int, value)

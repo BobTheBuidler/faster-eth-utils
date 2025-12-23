@@ -1,16 +1,15 @@
 import functools
+from collections.abc import Callable
 from typing import (
     Any,
-    Callable,
+    Concatenate,
     Final,
     Generic,
-    Optional,
     TypeVar,
-    Union,
     final,
 )
 
-from typing_extensions import Concatenate, ParamSpec
+from typing_extensions import ParamSpec
 
 P = ParamSpec("P")
 
@@ -23,7 +22,7 @@ TInstance = TypeVar("TInstance", bound=object)
 @final
 class combomethod(Generic[TInstance, P, T]):
     def __init__(
-        self, method: Callable[Concatenate[Union[TInstance, type[TInstance]], P], T]
+        self, method: Callable[Concatenate[TInstance | type[TInstance], P], T]
     ) -> None:
         self.method: Final = method
 
@@ -32,7 +31,7 @@ class combomethod(Generic[TInstance, P, T]):
 
     def __get__(
         self,
-        obj: Optional[TInstance],
+        obj: TInstance | None,
         objtype: type[TInstance],
     ) -> Callable[P, T]:
 
