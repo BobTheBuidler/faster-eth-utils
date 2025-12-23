@@ -1,17 +1,14 @@
+from collections.abc import Callable, Generator, Mapping, Sequence
 from typing import (
     TYPE_CHECKING,
     Any,
+    TypeGuard,
     TypeVar,
     cast,
     overload,
 )
-from collections.abc import Callable
-from collections.abc import Generator, Mapping, Sequence
-import warnings
 
-from typing import (
-    TypeGuard,
-)
+import warnings
 
 from .decorators import (
     return_arg_type,
