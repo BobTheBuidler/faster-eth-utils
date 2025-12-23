@@ -4,7 +4,6 @@ from typing import (
     Any,
     Final,
     Literal,
-    Union,
 )
 
 from typing import (

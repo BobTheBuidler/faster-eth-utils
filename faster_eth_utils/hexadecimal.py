@@ -6,7 +6,6 @@ from typing import (
     Any,
     AnyStr,
     Final,
-    Union,
 )
 
 from eth_typing import (

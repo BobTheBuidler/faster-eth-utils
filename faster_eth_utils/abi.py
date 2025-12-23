@@ -8,8 +8,6 @@ from typing import (
     Any,
     Final,
     Literal,
-    Optional,
-    Union,
     cast,
     overload,
 )

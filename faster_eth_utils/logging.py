@@ -6,7 +6,6 @@ import logging
 from typing import (
     Any,
     TypeVar,
-    Union,
     cast,
     overload,
 )

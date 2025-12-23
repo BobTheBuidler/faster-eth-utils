@@ -4,7 +4,6 @@ from typing import (
     Any,
     Literal,
     NamedTuple,
-    Union,
     cast,
 )
 from collections.abc import Mapping, Sequence

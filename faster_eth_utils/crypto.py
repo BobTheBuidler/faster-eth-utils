@@ -1,7 +1,3 @@
-from typing import (
-    Optional,
-    Union,
-)
 
 from eth_hash.auto import (
     keccak as keccak_256,

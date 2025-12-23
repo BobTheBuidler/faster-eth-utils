@@ -3,9 +3,7 @@ from typing import (
     Any,
     Final,
     Generic,
-    Optional,
     TypeVar,
-    Union,
     final,
 )
 from collections.abc import Callable

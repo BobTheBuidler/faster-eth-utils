@@ -1,5 +1,5 @@
 # mypy: disable-error-code=misc
-from typing import Any, Union
+from typing import Any
 from collections.abc import Callable
 
 import eth_utils

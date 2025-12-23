@@ -2,7 +2,6 @@ import re
 from typing import (
     Any,
     Final,
-    Union,
 )
 
 import cchecksum

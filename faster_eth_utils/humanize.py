@@ -1,7 +1,6 @@
 from typing import (
     Any,
     Final,
-    Union,
 )
 from collections.abc import Iterable, Iterator
 from urllib import (
