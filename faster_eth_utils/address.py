@@ -2,6 +2,7 @@ import re
 from typing import (
     Any,
     Final,
+    TypeGuard,
 )
 
 import cchecksum
@@ -11,9 +12,6 @@ from eth_typing import (
     ChecksumAddress,
     HexAddress,
     HexStr,
-)
-from typing import (
-    TypeGuard,
 )
 
 from .conversions import (
