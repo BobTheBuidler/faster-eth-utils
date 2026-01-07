@@ -482,6 +482,7 @@ extern PyObject *CPyPy_functional___to_dict(PyObject *self, PyObject *const *arg
 extern char CPyDef_functional_____top_level__(void);
 extern PyObject *CPyStatic_hexadecimal___hexlify;
 extern PyObject *CPyStatic_hexadecimal___unhexlify;
+extern PyObject *CPyStatic_hexadecimal____HEX_DIGIT_TABLE;
 extern PyObject *CPyDef_hexadecimal___decode_hex(PyObject *cpy_r_value);
 extern PyObject *CPyPy_hexadecimal___decode_hex(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_hexadecimal___encode_hex(PyObject *cpy_r_value);
