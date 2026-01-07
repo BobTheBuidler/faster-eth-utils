@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[616];
+extern PyObject *CPyStatics[618];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -480,7 +480,6 @@ extern PyObject *CPyPy_functional___to_dict_wrap_to_dict_obj_____call__(PyObject
 extern PyObject *CPyDef_functional___to_dict(PyObject *cpy_r_fn);
 extern PyObject *CPyPy_functional___to_dict(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_functional_____top_level__(void);
-extern PyObject *CPyStatic_hexadecimal____HEX_REGEXP_MATCH;
 extern PyObject *CPyStatic_hexadecimal___hexlify;
 extern PyObject *CPyStatic_hexadecimal___unhexlify;
 extern PyObject *CPyDef_hexadecimal___decode_hex(PyObject *cpy_r_value);
@@ -493,6 +492,8 @@ extern PyObject *CPyDef_hexadecimal___remove_0x_prefix(PyObject *cpy_r_value);
 extern PyObject *CPyPy_hexadecimal___remove_0x_prefix(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_hexadecimal___add_0x_prefix(PyObject *cpy_r_value);
 extern PyObject *CPyPy_hexadecimal___add_0x_prefix(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef_hexadecimal___is_ascii(PyObject *cpy_r_string);
+extern PyObject *CPyPy_hexadecimal___is_ascii(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_hexadecimal___is_hexstr(PyObject *cpy_r_value);
 extern PyObject *CPyPy_hexadecimal___is_hexstr(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_hexadecimal___is_hex(PyObject *cpy_r_value);
