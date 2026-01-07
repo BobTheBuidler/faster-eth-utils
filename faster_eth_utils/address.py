@@ -52,8 +52,6 @@ def is_hex_address(value: Any) -> TypeGuard[HexAddress]:
     # 3) All characters must be ASCII hex digits.
     for char in value[start:]:
         code = ord(char)
-        if code >= 128:
-            return False
         if 48 <= code <= 57:
             continue
         elif 65 <= code <= 70:
