@@ -1,15 +1,20 @@
-import contextlib
+import logging
+from collections.abc import (
+    Iterator,
+)
+from contextlib import (
+    contextmanager,
+)
 from functools import (
     cached_property,
 )
-import logging
 from typing import (
     Any,
+    Final,
     TypeVar,
     cast,
     overload,
 )
-from collections.abc import Iterator
 
 from .toolz import (
     assoc,
@@ -18,6 +23,11 @@ from .toolz import (
 DEBUG2_LEVEL_NUM = 8
 
 TLogger = TypeVar("TLogger", bound=logging.Logger)
+
+Logger: Final = logging.Logger
+getLogger: Final = logging.getLogger
+getLoggerClass: Final = logging.getLoggerClass
+setLoggerClass: Final = logging.setLoggerClass
 
 
 class ExtendedDebugLogger(logging.Logger):
@@ -52,14 +62,14 @@ def setup_DEBUG2_logging() -> None:
         logging.addLevelName(DEBUG2_LEVEL_NUM, "DEBUG2")
         logging.DEBUG2 = DEBUG2_LEVEL_NUM  # type: ignore [attr-defined]
 
-@contextlib.contextmanager
+@contextmanager
 def _use_logger_class(logger_class: type[logging.Logger]) -> Iterator[None]:
-    original_logger_class = logging.getLoggerClass()
-    logging.setLoggerClass(logger_class)
+    original_logger_class = getLoggerClass()
+    setLoggerClass(logger_class)
     try:
         yield
     finally:
-        logging.setLoggerClass(original_logger_class)
+        setLoggerClass(original_logger_class)
 
 
 @overload
@@ -68,7 +78,7 @@ def get_logger(name: str, logger_class: type[TLogger]) -> TLogger: ...
 def get_logger(name: str, logger_class: None = None) -> logging.Logger: ...
 def get_logger(name: str, logger_class: type[TLogger] | None = None) -> TLogger | logging.Logger:
     if logger_class is None:
-        return logging.getLogger(name)
+        return getLogger(name)
 
     with _use_logger_class(logger_class):
         # The logging module caches logger instances. The following code
@@ -76,12 +86,12 @@ def get_logger(name: str, logger_class: type[TLogger] | None = None) -> TLogger 
         # accidentally return the incorrect logger type because the logging
         # module does not *update* the cached instance in the event that
         # the global logging class changes.
-        manager = logging.Logger.manager
+        manager = Logger.manager
         logger_dict = manager.loggerDict
         cached_logger = logger_dict.get(name)
         if cached_logger is not None and type(cached_logger) is not logger_class:
             del logger_dict[name]
-        return cast(TLogger, logging.getLogger(name))
+        return cast(TLogger, getLogger(name))
 
 
 def get_extended_debug_logger(name: str) -> ExtendedDebugLogger:
@@ -99,7 +109,7 @@ class HasLoggerMeta(type):
     to use when creating the associated logger for a given class.
     """
 
-    logger_class = logging.Logger
+    logger_class = Logger
 
     def __new__(
         mcls: type[THasLoggerMeta],
