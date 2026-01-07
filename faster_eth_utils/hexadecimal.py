@@ -1,7 +1,6 @@
 # String encodings and numeric representations
 
 import binascii
-import re
 from typing import (
     Any,
     AnyStr,
