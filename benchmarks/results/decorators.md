@@ -1,12 +1,12 @@
-#### [faster_eth_utils.decorators](https://github.com/BobTheBuidler/faster-eth-utils/blob/pyup/faster_eth_utils/decorators.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/pyup/benchmarks/test_decorators_benchmarks.py)
+#### [faster_eth_utils.decorators](https://github.com/BobTheBuidler/faster-eth-utils/blob/is_hex_address/faster_eth_utils/decorators.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/is_hex_address/benchmarks/test_decorators_benchmarks.py)
 
 | Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
 |----------|---------------|-------------|----------|-------------|----------|--------|
-| `replace_exceptions[mapped-exception]` | 1.1803120106493221e-05 | 2.2302293445610104e-05 | -88.95% | -47.08% | 0.53x | ❌ |
-| `replace_exceptions[no-exception]` | 1.4348526157658014e-06 | 1.3808307874897576e-06 | 3.76% | 3.91% | 1.04x | ✅ |
-| `replace_exceptions[unmapped-exception]` | 8.363215441286887e-06 | 1.3531358628879689e-05 | -61.80% | -38.19% | 0.62x | ❌ |
-| `return_arg_type[float-pos0]` | 2.3124487477743296e-06 | 2.0829561955976383e-06 | 9.92% | 11.02% | 1.11x | ✅ |
-| `return_arg_type[int-pos0]` | 2.2157739311838553e-06 | 2.0977655875964466e-06 | 5.33% | 5.63% | 1.06x | ✅ |
-| `return_arg_type[int-pos1]` | 2.102639275691632e-06 | 1.966309813129718e-06 | 6.48% | 6.93% | 1.07x | ✅ |
-| `return_arg_type[str-pos0]` | 2.869213622021679e-06 | 2.7192896965822177e-06 | 5.23% | 5.51% | 1.06x | ✅ |
-| `return_arg_type[str-pos1]` | 2.90002283348354e-06 | 2.7149522084163744e-06 | 6.38% | 6.82% | 1.07x | ✅ |
+| `replace_exceptions[mapped-exception]` | 1.2198290813940463e-05 | 2.5341010041220883e-05 | -107.74% | -51.86% | 0.48x | ❌ |
+| `replace_exceptions[no-exception]` | 1.6366416780816007e-06 | 1.4639144229686727e-06 | 10.55% | 11.80% | 1.12x | ✅ |
+| `replace_exceptions[unmapped-exception]` | 8.509160827063372e-06 | 1.4682364934224012e-05 | -72.55% | -42.05% | 0.58x | ❌ |
+| `return_arg_type[float-pos0]` | 2.4478511684592174e-06 | 2.2859947731651682e-06 | 6.61% | 7.08% | 1.07x | ✅ |
+| `return_arg_type[int-pos0]` | 2.3825237070061327e-06 | 2.2441102791584997e-06 | 5.81% | 6.17% | 1.06x | ✅ |
+| `return_arg_type[int-pos1]` | 2.2977809804495474e-06 | 2.1631901020580923e-06 | 5.86% | 6.22% | 1.06x | ✅ |
+| `return_arg_type[str-pos0]` | 3.102247909872643e-06 | 2.8454340688420996e-06 | 8.28% | 9.03% | 1.09x | ✅ |
+| `return_arg_type[str-pos1]` | 3.1880246810096044e-06 | 2.837210039098506e-06 | 11.00% | 12.36% | 1.12x | ✅ |
