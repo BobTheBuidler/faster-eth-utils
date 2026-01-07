@@ -13,11 +13,21 @@ from eth_typing import (
     HexStr,
 )
 
-_HEX_REGEXP_MATCH: Final = re.compile("(0[xX])?[0-9a-fA-F]*").fullmatch
 
 hexlify: Final = binascii.hexlify
 unhexlify: Final = binascii.unhexlify
 
+
+# Precomputed table for ASCII hex digit lookup (0-9, a-f, A-F)
+__TABLE = bytearray(128)
+for _val in range(ord("0"), ord("9") + 1):
+    __TABLE[_val] = 1
+for _val in range(ord("a"), ord("f") + 1):
+    __TABLE[_val] = 1
+for _val in range(ord("A"), ord("F") + 1):
+    __TABLE[_val] = 1
+_HEX_DIGIT_TABLE = bytes(__TABLE)
+del __TABLE
 
 
 def decode_hex(value: str) -> bytes:
@@ -52,21 +62,25 @@ def is_0x_prefixed(value: str) -> bool:
 
 
 def remove_0x_prefix(value: HexStr) -> HexStr:
-    if is_0x_prefixed(value):
-        return HexStr(value[2:])
-    return value
+    return HexStr(value[2:]) if is_0x_prefixed(value) else value
 
 
 def add_0x_prefix(value: HexStr) -> HexStr:
-    if is_0x_prefixed(value):
-        return value
-    return HexStr("0x" + value)
+    return value if is_0x_prefixed(value) else HexStr(f"0x{value}")
+
+
+def is_ascii(string: str) -> bool:
+    for char in string:
+        code = ord(char)
+        if code >= 128 or _HEX_DIGIT_TABLE[code] == 0:
+            return False
+    return True
 
 
 def is_hexstr(value: Any) -> TypeGuard[HexStr]:
     if not isinstance(value, str) or not value:
         return False
-    return _HEX_REGEXP_MATCH(value) is not None
+    return is_ascii(value[2:] if is_0x_prefixed(value) else value)
 
 
 def is_hex(value: Any) -> TypeGuard[HexStr]:
@@ -74,4 +88,4 @@ def is_hex(value: Any) -> TypeGuard[HexStr]:
         raise TypeError(f"is_hex requires text typed arguments. Got: {repr(value)}")
     if not value:
         return False
-    return _HEX_REGEXP_MATCH(value) is not None
+    return is_ascii(value[2:] if is_0x_prefixed(value) else value)
