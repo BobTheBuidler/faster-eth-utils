@@ -25,7 +25,7 @@ for _val in range(ord("a"), ord("f") + 1):
     __TABLE[_val] = 1
 for _val in range(ord("A"), ord("F") + 1):
     __TABLE[_val] = 1
-_HEX_DIGIT_TABLE = bytes(__TABLE)
+_HEX_DIGIT_TABLE: Final = bytes(__TABLE)
 del __TABLE
 
 
