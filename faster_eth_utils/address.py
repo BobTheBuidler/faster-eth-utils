@@ -27,6 +27,7 @@ from .types import (
     is_text,
 )
 
+# unused, kept for eth-utils compatability
 _HEX_ADDRESS_REGEXP: Final = re.compile("(0x)?[0-9a-f]{40}", re.IGNORECASE | re.ASCII)
 
 
@@ -41,31 +42,41 @@ def is_hex_address(value: Any) -> TypeGuard[HexAddress]:
     """
     Checks if the given string of text type is an address in hexadecimal encoded form.
     """
+    # 1) Only text types are eligible.
     if not is_text(value):
         return False
-    return _HEX_ADDRESS_REGEXP.fullmatch(value) is not None
+    # 2) Enforce 40 nybbles with optional 0x/0X prefix.
+    start = 2 if value.startswith(("0x", "0X")) else 0
+    if len(value) - start != 40:
+        return False
+    # 3) All characters must be ASCII hex digits.
+    for char in value[start:]:
+        code = ord(char)
+        if code >= 128:
+            return False
+        if 48 <= code <= 57:
+            continue
+        elif 65 <= code <= 70:
+            continue
+        elif 97 <= code <= 102:
+            continue
+        else:
+            return False
+    return True
 
 
 def is_binary_address(value: Any) -> TypeGuard[bytes]:
     """
     Checks if the given string is an address in raw bytes form.
     """
-    if not is_bytes(value):
-        return False
-    elif len(value) != 20:
-        return False
-    else:
-        return True
+    return is_bytes(value) and len(value) == 20
 
 
 def is_address(value: Any) -> bool:
     """
     Is the given string an address in any of the known formats?
     """
-    if is_hex_address(value) or is_binary_address(value):
-        return True
-
-    return False
+    return is_hex_address(value) or is_binary_address(value)
 
 
 def to_normalized_address(value: AnyAddress | str | bytes) -> HexAddress:
@@ -119,9 +130,7 @@ def is_same_address(
 
 
 def is_checksum_address(value: Any) -> TypeGuard[ChecksumAddress]:
-    if not is_hex_address(value):
-        return False
-    return value == to_checksum_address(value)
+    return is_hex_address(value) and value == to_checksum_address(value)
 
 
 def _is_checksum_formatted(value: Any) -> bool:
