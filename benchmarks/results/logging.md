@@ -1,7 +1,7 @@
-#### [faster_eth_utils.logging](https://github.com/BobTheBuidler/faster-eth-utils/blob/BobTheBuidler-patch-5/faster_eth_utils/logging.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/BobTheBuidler-patch-5/benchmarks/test_logging_benchmarks.py)
+#### [faster_eth_utils.logging](https://github.com/BobTheBuidler/faster-eth-utils/blob/codex/evaluate-functions-for-microoptimizations/faster_eth_utils/logging.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/codex/evaluate-functions-for-microoptimizations/benchmarks/test_logging_benchmarks.py)
 
 | Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
 |----------|---------------|-------------|----------|-------------|----------|--------|
-| `get_extended_debug_logger` | 0.000214030556246991 | 0.0002123492315385023 | 0.79% | 0.79% | 1.01x | ✅ |
-| `get_logger` | 4.8851164194921945e-05 | 4.5134828484563124e-05 | 7.61% | 8.23% | 1.08x | ✅ |
-| `setup_DEBUG2_logging` | 1.3761529827387279e-06 | 1.384161819759948e-06 | -0.58% | -0.58% | 0.99x | ❌ |
+| `get_extended_debug_logger` | 0.00021557683552628294 | 0.00021058104620224791 | 2.32% | 2.37% | 1.02x | ✅ |
+| `get_logger` | 4.970242646561608e-05 | 4.440838606525063e-05 | 10.65% | 11.92% | 1.12x | ✅ |
+| `setup_DEBUG2_logging` | 1.3588651912359538e-06 | 1.2614869111012403e-06 | 7.17% | 7.72% | 1.08x | ✅ |
