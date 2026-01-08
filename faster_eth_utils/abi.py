@@ -78,13 +78,13 @@ def _align_abi_input(
     # We can generate more optimized C code if we branch by arg type
     if isinstance(aligned_arg, tuple):
         # convert NamedTuple to regular tuple
-        return tuple(map(_align_abi_input, zip(sub_abis, aligned_arg)))
+        return tuple(map(_align_abi_input, zip(sub_abis, aligned_arg)))  # type: ignore [arg-type]
         
     elif type(aligned_arg) is list:
-        return list(map(_align_abi_input, zip(sub_abis, aligned_arg)))
+        return list(map(_align_abi_input, zip(sub_abis, aligned_arg)))  # type: ignore [arg-type]
         
     elif is_list_like(aligned_arg):
-        return type(aligned_arg)(map(_align_abi_input, zip(sub_abis, aligned_arg)))
+        return type(aligned_arg)(map(_align_abi_input, zip(sub_abis, aligned_arg)))  # type: ignore [arg-type, call-arg]
     
     raise TypeError(
         f'Expected non-string sequence for "{arg_abi.get("type")}" '
