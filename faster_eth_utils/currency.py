@@ -46,6 +46,7 @@ class denoms:
 
 MIN_WEI: Final = 0
 MAX_WEI: Final = 2**256 - 1
+DECIMAL_ZERO: Final = decimal.Decimal(0)
 
 _NumberType = Union[int, float, str, decimal.Decimal]
 
@@ -75,7 +76,7 @@ def _to_wei(number: _NumberType, unit_value: decimal.Decimal) -> int:
     else:
         raise TypeError("Unsupported type. Must be one of integer, float, or string")
 
-    if d_number == decimal.Decimal(0):
+    if d_number == DECIMAL_ZERO:
         return 0
 
     s_number = str(number)
