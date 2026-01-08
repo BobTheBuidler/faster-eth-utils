@@ -1,10 +1,10 @@
-from typing import (
-    Any,
-    Final,
-)
 from collections.abc import (
     Iterable,
     Iterator,
+)
+from typing import (
+    Any,
+    Final,
 )
 from urllib import (
     parse,
