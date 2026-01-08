@@ -75,6 +75,7 @@ def _align_abi_input(
     else:
         aligned_arg = normalized_arg
 
+    # We can generate more optimized C code if we branch by arg type
     if isinstance(aligned_arg, tuple):
         # convert NamedTuple to regular tuple
         return tuple(map(_align_abi_input, zip(sub_abis, aligned_arg)))
