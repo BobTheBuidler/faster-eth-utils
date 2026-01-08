@@ -1,9 +1,11 @@
-from collections import (
-    abc,
-)
 import copy
 import itertools
 import re
+from collections.abc import (
+    Iterable,
+    Mapping,
+    Sequence,
+)
 from typing import (
     Any,
     Final,
@@ -11,7 +13,6 @@ from typing import (
     cast,
     overload,
 )
-from collections.abc import Iterable, Mapping, Sequence
 
 from eth_typing import (
     ABI,
