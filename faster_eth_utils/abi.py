@@ -68,24 +68,25 @@ def _align_abi_input(
         sub_abis = itertools.repeat(new_abi)
 
     aligned_arg: Any
-    if isinstance(normalized_arg, abc.Mapping):
+    if isinstance(normalized_arg, Mapping):
         # normalized_arg is mapping.  Align values according to abi order.
         aligned_arg = tuple(normalized_arg[abi["name"]] for abi in sub_abis)
     else:
         aligned_arg = normalized_arg
 
-    if not is_list_like(aligned_arg):
-        raise TypeError(
-            f'Expected non-string sequence for "{arg_abi.get("type")}" '
-            f"component type: got {aligned_arg}"
-        )
-
-    # convert NamedTuple to regular tuple
-    typing = tuple if isinstance(aligned_arg, tuple) else type(aligned_arg)
-
-    return typing(  # type: ignore [call-arg]
-        _align_abi_input(sub_abi, sub_arg)
-        for sub_abi, sub_arg in zip(sub_abis, aligned_arg)
+    if isinstance(aligned_arg, tuple):
+        # convert NamedTuple to regular tuple
+        return tuple(map(_align_abi_input, zip(sub_abis, aligned_arg)))
+        
+    elif type(aligned_arg) is list:
+        return list(map(_align_abi_input, zip(sub_abis, aligned_arg)))
+        
+    elif is_list_like(aligned_arg):
+        return type(aligned_arg)(map(_align_abi_input, zip(sub_abis, aligned_arg)))
+    
+    raise TypeError(
+        f'Expected non-string sequence for "{arg_abi.get("type")}" '
+        f"component type: got {aligned_arg}"
     )
 
 
@@ -577,7 +578,7 @@ def get_aligned_abi_inputs(
     _raise_if_fallback_or_receive_abi(abi_element)
 
     abi_element_inputs = cast(Sequence[ABIComponent], abi_element.get("inputs", []))
-    if isinstance(normalized_args, abc.Mapping):
+    if isinstance(normalized_args, Mapping):
         # `args` is mapping.  Align values according to abi order.
         normalized_args = tuple(
             normalized_args[abi["name"]] for abi in abi_element_inputs
