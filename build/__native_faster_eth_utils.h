@@ -10,13 +10,6 @@ typedef struct tuple_T2OO {
 } tuple_T2OO;
 #endif
 
-#ifndef MYPYC_DECLARED_tuple_T0
-#define MYPYC_DECLARED_tuple_T0
-typedef struct tuple_T0 {
-    int empty_struct_error_flag;
-} tuple_T0;
-#endif
-
 #ifndef MYPYC_DECLARED_tuple_T6OOOOOO
 #define MYPYC_DECLARED_tuple_T6OOOOOO
 typedef struct tuple_T6OOOOOO {
@@ -85,6 +78,13 @@ typedef struct tuple_T2II {
     CPyTagged f0;
     CPyTagged f1;
 } tuple_T2II;
+#endif
+
+#ifndef MYPYC_DECLARED_tuple_T0
+#define MYPYC_DECLARED_tuple_T0
+typedef struct tuple_T0 {
+    int empty_struct_error_flag;
+} tuple_T0;
 #endif
 
 #ifndef MYPYC_DECLARED_tuple_T5OOOOO
