@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[617];
+extern PyObject *CPyStatics[618];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -298,6 +298,7 @@ extern CPyTagged CPyStatic_currency___denoms___grand;
 extern CPyTagged CPyStatic_currency___denoms___mether;
 extern CPyTagged CPyStatic_currency___denoms___gether;
 extern CPyTagged CPyStatic_currency___denoms___tether;
+extern PyObject *CPyStatic_currency___DECIMAL_ZERO;
 extern PyTypeObject *CPyType_currency___denoms;
 extern PyObject *CPyDef_currency___denoms(void);
 extern char CPyDef_currency___denoms_____mypyc_defaults_setup(PyObject *cpy_r___mypyc_self__);

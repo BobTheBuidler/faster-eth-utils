@@ -1989,7 +1989,7 @@ PyObject *CPyDef_abi___abi_to_signature(PyObject *cpy_r_abi_element) {
         CPy_AddTraceback("faster_eth_utils/abi.py", "abi_to_signature", DIFFCHECK_PLACEHOLDER, CPyStatic_abi___globals);
         goto CPyL19;
     }
-    cpy_r_r6 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* frozenset({'receive', 'fallback'}) */
+    cpy_r_r6 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* frozenset({'fallback', 'receive'}) */
     cpy_r_r7 = PySet_Contains(cpy_r_r6, cpy_r_r5);
     cpy_r_r8 = cpy_r_r7 >= 0;
     if (unlikely(!cpy_r_r8)) {
@@ -16790,6 +16790,8 @@ int CPyExec_faster_eth_utils___currency(PyObject *module)
     CPyStatic_currency___denoms___gether = CPY_INT_TAG;
     CPyTagged_XDECREF(CPyStatic_currency___denoms___tether);
     CPyStatic_currency___denoms___tether = CPY_INT_TAG;
+    CPy_XDECREF(CPyStatic_currency___DECIMAL_ZERO);
+    CPyStatic_currency___DECIMAL_ZERO = NULL;
     Py_CLEAR(CPyType_currency___denoms);
     return -1;
 }
@@ -18276,77 +18278,78 @@ CPyTagged CPyDef_currency____to_wei(PyObject *cpy_r_number, PyObject *cpy_r_unit
     PyObject **cpy_r_r35;
     PyObject *cpy_r_r36;
     PyObject *cpy_r_r37;
-    PyObject *cpy_r_r38;
+    char cpy_r_r38;
     PyObject *cpy_r_r39;
-    PyObject *cpy_r_r40;
-    PyObject **cpy_r_r42;
+    char cpy_r_r40;
+    PyObject *cpy_r_r41;
+    PyObject *cpy_r_r42;
     PyObject *cpy_r_r43;
-    PyObject *cpy_r_r44;
-    char cpy_r_r45;
-    PyObject *cpy_r_r46;
-    PyObject *cpy_r_r47;
-    PyObject *cpy_r_r48;
-    char cpy_r_r49;
+    char cpy_r_r44;
+    PyObject *cpy_r_r45;
+    int32_t cpy_r_r46;
+    char cpy_r_r47;
+    char cpy_r_r48;
+    PyObject *cpy_r_r49;
     PyObject *cpy_r_r50;
-    int32_t cpy_r_r51;
-    char cpy_r_r52;
-    char cpy_r_r53;
+    PyObject *cpy_r_r51;
+    PyObject *cpy_r_r52;
+    PyObject *cpy_r_r53;
     PyObject *cpy_r_r54;
     PyObject *cpy_r_r55;
     PyObject *cpy_r_r56;
     PyObject *cpy_r_r57;
-    PyObject *cpy_r_r58;
-    PyObject *cpy_r_r59;
+    PyObject **cpy_r_r59;
     PyObject *cpy_r_r60;
-    PyObject *cpy_r_r61;
-    PyObject *cpy_r_r62;
-    PyObject **cpy_r_r64;
+    char cpy_r_r61;
+    int64_t cpy_r_r62;
+    char cpy_r_r63;
+    CPyTagged cpy_r_r64;
     PyObject *cpy_r_r65;
-    char cpy_r_r66;
-    int64_t cpy_r_r67;
-    char cpy_r_r68;
-    CPyTagged cpy_r_r69;
-    PyObject *cpy_r_r70;
-    PyObject *cpy_r_r71;
-    PyObject **cpy_r_r73;
+    PyObject *cpy_r_r66;
+    PyObject **cpy_r_r68;
+    PyObject *cpy_r_r69;
+    CPyTagged cpy_r_r70;
+    CPyTagged cpy_r_r71;
+    CPyTagged cpy_r_r72;
+    PyObject *cpy_r_r73;
     PyObject *cpy_r_r74;
-    CPyTagged cpy_r_r75;
-    CPyTagged cpy_r_r76;
-    CPyTagged cpy_r_r77;
+    int32_t cpy_r_r75;
+    char cpy_r_r76;
+    PyObject *cpy_r_r77;
     PyObject *cpy_r_r78;
     PyObject *cpy_r_r79;
-    int32_t cpy_r_r80;
-    char cpy_r_r81;
+    PyObject **cpy_r_r81;
     PyObject *cpy_r_r82;
     PyObject *cpy_r_r83;
     PyObject *cpy_r_r84;
-    PyObject **cpy_r_r86;
+    PyObject *cpy_r_r85;
+    PyObject *cpy_r_r86;
     PyObject *cpy_r_r87;
-    PyObject *cpy_r_r88;
-    PyObject *cpy_r_r89;
+    tuple_T3OOO cpy_r_r88;
+    tuple_T3OOO cpy_r_r89;
     PyObject *cpy_r_r90;
     PyObject *cpy_r_r91;
     PyObject *cpy_r_r92;
-    tuple_T3OOO cpy_r_r93;
-    tuple_T3OOO cpy_r_r94;
+    PyObject **cpy_r_r94;
     PyObject *cpy_r_r95;
-    PyObject *cpy_r_r96;
-    PyObject *cpy_r_r97;
-    PyObject **cpy_r_r99;
-    PyObject *cpy_r_r100;
-    int32_t cpy_r_r101;
-    char cpy_r_r102;
-    char cpy_r_r103;
-    char cpy_r_r104;
-    tuple_T3OOO cpy_r_r105;
-    tuple_T3OOO cpy_r_r106;
-    tuple_T3OOO cpy_r_r107;
+    int32_t cpy_r_r96;
+    char cpy_r_r97;
+    char cpy_r_r98;
+    char cpy_r_r99;
+    tuple_T3OOO cpy_r_r100;
+    tuple_T3OOO cpy_r_r101;
+    tuple_T3OOO cpy_r_r102;
+    PyObject *cpy_r_r103;
+    PyObject **cpy_r_r105;
+    PyObject *cpy_r_r106;
+    char cpy_r_r107;
     PyObject *cpy_r_r108;
-    PyObject **cpy_r_r110;
+    char cpy_r_r109;
+    PyObject *cpy_r_r110;
     PyObject *cpy_r_r111;
-    char cpy_r_r112;
+    PyObject *cpy_r_r112;
     PyObject *cpy_r_r113;
-    char cpy_r_r114;
+    PyObject *cpy_r_r114;
     PyObject *cpy_r_r115;
     PyObject *cpy_r_r116;
     PyObject *cpy_r_r117;
@@ -18354,65 +18357,60 @@ CPyTagged CPyDef_currency____to_wei(PyObject *cpy_r_number, PyObject *cpy_r_unit
     PyObject *cpy_r_r119;
     PyObject *cpy_r_r120;
     PyObject *cpy_r_r121;
-    PyObject *cpy_r_r122;
-    PyObject *cpy_r_r123;
+    PyObject **cpy_r_r123;
     PyObject *cpy_r_r124;
-    PyObject *cpy_r_r125;
+    char cpy_r_r125;
     PyObject *cpy_r_r126;
-    PyObject **cpy_r_r128;
-    PyObject *cpy_r_r129;
-    char cpy_r_r130;
+    PyObject *cpy_r_r127;
+    int32_t cpy_r_r128;
+    char cpy_r_r129;
+    PyObject *cpy_r_r130;
     PyObject *cpy_r_r131;
     PyObject *cpy_r_r132;
-    int32_t cpy_r_r133;
-    char cpy_r_r134;
+    PyObject **cpy_r_r134;
     PyObject *cpy_r_r135;
     PyObject *cpy_r_r136;
     PyObject *cpy_r_r137;
-    PyObject **cpy_r_r139;
+    tuple_T3OOO cpy_r_r138;
+    tuple_T3OOO cpy_r_r139;
     PyObject *cpy_r_r140;
     PyObject *cpy_r_r141;
     PyObject *cpy_r_r142;
-    tuple_T3OOO cpy_r_r143;
-    tuple_T3OOO cpy_r_r144;
+    PyObject **cpy_r_r144;
     PyObject *cpy_r_r145;
-    PyObject *cpy_r_r146;
-    PyObject *cpy_r_r147;
-    PyObject **cpy_r_r149;
-    PyObject *cpy_r_r150;
-    int32_t cpy_r_r151;
-    char cpy_r_r152;
-    char cpy_r_r153;
-    char cpy_r_r154;
-    tuple_T3OOO cpy_r_r155;
-    tuple_T3OOO cpy_r_r156;
-    tuple_T3OOO cpy_r_r157;
+    int32_t cpy_r_r146;
+    char cpy_r_r147;
+    char cpy_r_r148;
+    char cpy_r_r149;
+    tuple_T3OOO cpy_r_r150;
+    tuple_T3OOO cpy_r_r151;
+    tuple_T3OOO cpy_r_r152;
+    PyObject *cpy_r_r153;
+    PyObject **cpy_r_r155;
+    PyObject *cpy_r_r156;
+    char cpy_r_r157;
     PyObject *cpy_r_r158;
-    PyObject **cpy_r_r160;
-    PyObject *cpy_r_r161;
-    char cpy_r_r162;
+    char cpy_r_r159;
+    PyObject *cpy_r_r160;
+    char cpy_r_r161;
+    CPyTagged cpy_r_r162;
     PyObject *cpy_r_r163;
     char cpy_r_r164;
     PyObject *cpy_r_r165;
     char cpy_r_r166;
-    CPyTagged cpy_r_r167;
+    PyObject *cpy_r_r167;
     PyObject *cpy_r_r168;
-    char cpy_r_r169;
+    PyObject *cpy_r_r169;
     PyObject *cpy_r_r170;
-    char cpy_r_r171;
-    PyObject *cpy_r_r172;
+    PyObject **cpy_r_r172;
     PyObject *cpy_r_r173;
     PyObject *cpy_r_r174;
-    PyObject *cpy_r_r175;
+    char cpy_r_r175;
     PyObject **cpy_r_r177;
     PyObject *cpy_r_r178;
-    PyObject *cpy_r_r179;
-    char cpy_r_r180;
-    PyObject **cpy_r_r182;
-    PyObject *cpy_r_r183;
-    char cpy_r_r184;
-    CPyTagged cpy_r_r185;
-    CPyTagged cpy_r_r186;
+    char cpy_r_r179;
+    CPyTagged cpy_r_r180;
+    CPyTagged cpy_r_r181;
     cpy_r_r0 = CPY_INT_TAG;
     cpy_r_multiplier = cpy_r_r0;
     cpy_r_r1 = NULL;
@@ -18420,13 +18418,13 @@ CPyTagged CPyDef_currency____to_wei(PyObject *cpy_r_number, PyObject *cpy_r_unit
     cpy_r_r2 = CPyDef_types___is_integer(cpy_r_number);
     if (unlikely(cpy_r_r2 == 2)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL132;
+        goto CPyL133;
     }
     if (cpy_r_r2) goto CPyL4;
     cpy_r_r3 = CPyDef_types___is_string(cpy_r_number);
     if (unlikely(cpy_r_r3 == 2)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL132;
+        goto CPyL133;
     }
     if (!cpy_r_r3) goto CPyL7;
 CPyL4: ;
@@ -18435,7 +18433,7 @@ CPyL4: ;
     cpy_r_r6 = CPyObject_GetAttr(cpy_r_r4, cpy_r_r5);
     if (unlikely(cpy_r_r6 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL132;
+        goto CPyL133;
     }
     PyObject *cpy_r_r7[1] = {cpy_r_number};
     cpy_r_r8 = (PyObject **)&cpy_r_r7;
@@ -18444,7 +18442,7 @@ CPyL4: ;
     CPy_DECREF(cpy_r_r6);
     if (unlikely(cpy_r_r10 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL132;
+        goto CPyL133;
     }
     cpy_r_d_number = cpy_r_r10;
     goto CPyL22;
@@ -18463,14 +18461,14 @@ CPyL9: ;
     CPy_DECREF(cpy_r_r14);
     if (unlikely(cpy_r_r15 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL132;
+        goto CPyL133;
     } else
         goto CPyL11;
 CPyL10: ;
     cpy_r_r16 = PyErr_Occurred();
     if (unlikely(cpy_r_r16 != NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL132;
+        goto CPyL133;
     } else
         goto CPyL9;
 CPyL11: ;
@@ -18479,7 +18477,7 @@ CPyL11: ;
     cpy_r_r19 = CPyObject_GetAttr(cpy_r_r17, cpy_r_r18);
     if (unlikely(cpy_r_r19 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL133;
+        goto CPyL134;
     }
     PyObject *cpy_r_r20[1] = {cpy_r_r15};
     cpy_r_r21 = (PyObject **)&cpy_r_r20;
@@ -18488,7 +18486,7 @@ CPyL11: ;
     CPy_DECREF(cpy_r_r19);
     if (unlikely(cpy_r_r23 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL133;
+        goto CPyL134;
     }
     CPy_DECREF(cpy_r_r15);
     cpy_r_d_number = cpy_r_r23;
@@ -18499,17 +18497,17 @@ CPyL14: ;
     cpy_r_r26 = CPyObject_GetAttr(cpy_r_r24, cpy_r_r25);
     if (unlikely(cpy_r_r26 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL132;
+        goto CPyL133;
     }
     cpy_r_r27 = PyObject_IsInstance(cpy_r_number, cpy_r_r26);
     CPy_DECREF(cpy_r_r26);
     cpy_r_r28 = cpy_r_r27 >= 0;
     if (unlikely(!cpy_r_r28)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL132;
+        goto CPyL133;
     }
     cpy_r_r29 = cpy_r_r27;
-    if (!cpy_r_r29) goto CPyL134;
+    if (!cpy_r_r29) goto CPyL135;
     CPy_INCREF(cpy_r_number);
     cpy_r_d_number = cpy_r_number;
     goto CPyL22;
@@ -18521,7 +18519,7 @@ CPyL18: ;
     cpy_r_r33 = CPyObject_GetAttr(cpy_r_r31, cpy_r_r32);
     if (unlikely(cpy_r_r33 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL131;
+        goto CPyL132;
     }
     PyObject *cpy_r_r34[1] = {cpy_r_r30};
     cpy_r_r35 = (PyObject **)&cpy_r_r34;
@@ -18529,523 +18527,552 @@ CPyL18: ;
     CPy_DECREF(cpy_r_r33);
     if (unlikely(cpy_r_r36 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL131;
+        goto CPyL132;
     }
     CPy_Raise(cpy_r_r36);
     CPy_DECREF(cpy_r_r36);
     if (unlikely(!0)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL131;
+        goto CPyL132;
     }
     CPy_Unreachable();
 CPyL22: ;
-    cpy_r_r37 = CPyModule_decimal;
-    cpy_r_r38 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Decimal' */
-    cpy_r_r39 = CPyObject_GetAttr(cpy_r_r37, cpy_r_r38);
-    if (unlikely(cpy_r_r39 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL135;
-    }
-    cpy_r_r40 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 0 */
-    PyObject *cpy_r_r41[1] = {cpy_r_r40};
-    cpy_r_r42 = (PyObject **)&cpy_r_r41;
-    cpy_r_r43 = PyObject_Vectorcall(cpy_r_r39, cpy_r_r42, 1, 0);
-    CPy_DECREF(cpy_r_r39);
-    if (unlikely(cpy_r_r43 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL135;
-    }
-    cpy_r_r44 = PyObject_RichCompare(cpy_r_d_number, cpy_r_r43, 2);
-    CPy_DECREF(cpy_r_r43);
-    if (unlikely(cpy_r_r44 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL135;
-    }
-    if (unlikely(!PyBool_Check(cpy_r_r44))) {
-        CPy_TypeError("bool", cpy_r_r44); cpy_r_r45 = 2;
-    } else
-        cpy_r_r45 = cpy_r_r44 == Py_True;
-    CPy_DECREF(cpy_r_r44);
-    if (unlikely(cpy_r_r45 == 2)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL135;
-    }
-    if (cpy_r_r45) {
+    cpy_r_r37 = CPyStatic_currency___DECIMAL_ZERO;
+    if (unlikely(cpy_r_r37 == NULL)) {
         goto CPyL136;
     } else
-        goto CPyL28;
-CPyL27: ;
-    return 0;
-CPyL28: ;
-    cpy_r_r46 = PyObject_Str(cpy_r_number);
-    if (unlikely(cpy_r_r46 == NULL)) {
+        goto CPyL25;
+CPyL23: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"DECIMAL_ZERO\" was not set");
+    cpy_r_r38 = 0;
+    if (unlikely(!cpy_r_r38)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL135;
+        goto CPyL132;
     }
-    cpy_r_r47 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 1 */
-    cpy_r_r48 = PyObject_RichCompare(cpy_r_d_number, cpy_r_r47, 0);
-    if (unlikely(cpy_r_r48 == NULL)) {
+    CPy_Unreachable();
+CPyL25: ;
+    cpy_r_r39 = PyObject_RichCompare(cpy_r_d_number, cpy_r_r37, 2);
+    if (unlikely(cpy_r_r39 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
         goto CPyL137;
     }
-    if (unlikely(!PyBool_Check(cpy_r_r48))) {
-        CPy_TypeError("bool", cpy_r_r48); cpy_r_r49 = 2;
+    if (unlikely(!PyBool_Check(cpy_r_r39))) {
+        CPy_TypeError("bool", cpy_r_r39); cpy_r_r40 = 2;
     } else
-        cpy_r_r49 = cpy_r_r48 == Py_True;
-    CPy_DECREF(cpy_r_r48);
-    if (unlikely(cpy_r_r49 == 2)) {
+        cpy_r_r40 = cpy_r_r39 == Py_True;
+    CPy_DECREF(cpy_r_r39);
+    if (unlikely(cpy_r_r40 == 2)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
         goto CPyL137;
     }
-    if (!cpy_r_r49) goto CPyL138;
-    cpy_r_r50 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.' */
-    cpy_r_r51 = PyUnicode_Contains(cpy_r_r46, cpy_r_r50);
-    cpy_r_r52 = cpy_r_r51 >= 0;
-    if (unlikely(!cpy_r_r52)) {
+    if (cpy_r_r40) {
+        goto CPyL138;
+    } else
+        goto CPyL29;
+CPyL28: ;
+    return 0;
+CPyL29: ;
+    cpy_r_r41 = PyObject_Str(cpy_r_number);
+    if (unlikely(cpy_r_r41 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
         goto CPyL137;
     }
-    cpy_r_r53 = cpy_r_r51;
-    if (!cpy_r_r53) goto CPyL138;
-    cpy_r_r54 = CPyStatic_currency___globals;
-    cpy_r_r55 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'localcontext' */
-    cpy_r_r56 = CPyDict_GetItem(cpy_r_r54, cpy_r_r55);
-    if (unlikely(cpy_r_r56 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL137;
-    }
-    cpy_r_r57 = PyObject_Vectorcall(cpy_r_r56, 0, 0, 0);
-    CPy_DECREF(cpy_r_r56);
-    if (unlikely(cpy_r_r57 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL137;
-    }
-    cpy_r_r58 = CPy_TYPE(cpy_r_r57);
-    cpy_r_r59 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__exit__' */
-    cpy_r_r60 = CPyObject_GetAttr(cpy_r_r58, cpy_r_r59);
-    if (unlikely(cpy_r_r60 == NULL)) {
+    cpy_r_r42 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 1 */
+    cpy_r_r43 = PyObject_RichCompare(cpy_r_d_number, cpy_r_r42, 0);
+    if (unlikely(cpy_r_r43 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
         goto CPyL139;
     }
-    cpy_r_r61 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__enter__' */
-    cpy_r_r62 = CPyObject_GetAttr(cpy_r_r58, cpy_r_r61);
-    CPy_DECREF(cpy_r_r58);
-    if (unlikely(cpy_r_r62 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL140;
-    }
-    PyObject *cpy_r_r63[1] = {cpy_r_r57};
-    cpy_r_r64 = (PyObject **)&cpy_r_r63;
-    cpy_r_r65 = PyObject_Vectorcall(cpy_r_r62, cpy_r_r64, 1, 0);
-    CPy_DECREF(cpy_r_r62);
-    if (unlikely(cpy_r_r65 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL140;
-    }
-    cpy_r_r66 = 1;
-    cpy_r_r67 = CPyStr_Size_size_t(cpy_r_r46);
-    cpy_r_r68 = cpy_r_r67 >= 0;
-    if (unlikely(!cpy_r_r68)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL141;
-    }
-    cpy_r_r69 = cpy_r_r67 << 1;
-    cpy_r_r70 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.' */
-    cpy_r_r71 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'index' */
-    PyObject *cpy_r_r72[2] = {cpy_r_r46, cpy_r_r70};
-    cpy_r_r73 = (PyObject **)&cpy_r_r72;
-    cpy_r_r74 = PyObject_VectorcallMethod(cpy_r_r71, cpy_r_r73, 9223372036854775810ULL, 0);
-    if (unlikely(cpy_r_r74 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL141;
-    }
-    CPy_DECREF(cpy_r_r46);
-    if (likely(PyLong_Check(cpy_r_r74)))
-        cpy_r_r75 = CPyTagged_FromObject(cpy_r_r74);
-    else {
-        CPy_TypeError("int", cpy_r_r74); cpy_r_r75 = CPY_INT_TAG;
-    }
-    CPy_DECREF(cpy_r_r74);
-    if (unlikely(cpy_r_r75 == CPY_INT_TAG)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL142;
+    if (unlikely(!PyBool_Check(cpy_r_r43))) {
+        CPy_TypeError("bool", cpy_r_r43); cpy_r_r44 = 2;
     } else
+        cpy_r_r44 = cpy_r_r43 == Py_True;
+    CPy_DECREF(cpy_r_r43);
+    if (unlikely(cpy_r_r44 == 2)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL139;
+    }
+    if (!cpy_r_r44) goto CPyL140;
+    cpy_r_r45 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.' */
+    cpy_r_r46 = PyUnicode_Contains(cpy_r_r41, cpy_r_r45);
+    cpy_r_r47 = cpy_r_r46 >= 0;
+    if (unlikely(!cpy_r_r47)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL139;
+    }
+    cpy_r_r48 = cpy_r_r46;
+    if (!cpy_r_r48) goto CPyL140;
+    cpy_r_r49 = CPyStatic_currency___globals;
+    cpy_r_r50 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'localcontext' */
+    cpy_r_r51 = CPyDict_GetItem(cpy_r_r49, cpy_r_r50);
+    if (unlikely(cpy_r_r51 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL139;
+    }
+    cpy_r_r52 = PyObject_Vectorcall(cpy_r_r51, 0, 0, 0);
+    CPy_DECREF(cpy_r_r51);
+    if (unlikely(cpy_r_r52 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL139;
+    }
+    cpy_r_r53 = CPy_TYPE(cpy_r_r52);
+    cpy_r_r54 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__exit__' */
+    cpy_r_r55 = CPyObject_GetAttr(cpy_r_r53, cpy_r_r54);
+    if (unlikely(cpy_r_r55 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL141;
+    }
+    cpy_r_r56 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__enter__' */
+    cpy_r_r57 = CPyObject_GetAttr(cpy_r_r53, cpy_r_r56);
+    CPy_DECREF(cpy_r_r53);
+    if (unlikely(cpy_r_r57 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL142;
+    }
+    PyObject *cpy_r_r58[1] = {cpy_r_r52};
+    cpy_r_r59 = (PyObject **)&cpy_r_r58;
+    cpy_r_r60 = PyObject_Vectorcall(cpy_r_r57, cpy_r_r59, 1, 0);
+    CPy_DECREF(cpy_r_r57);
+    if (unlikely(cpy_r_r60 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL142;
+    }
+    cpy_r_r61 = 1;
+    cpy_r_r62 = CPyStr_Size_size_t(cpy_r_r41);
+    cpy_r_r63 = cpy_r_r62 >= 0;
+    if (unlikely(!cpy_r_r63)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
         goto CPyL143;
-CPyL43: ;
-    cpy_r_r76 = CPyTagged_Subtract(cpy_r_r69, cpy_r_r75);
-    CPyTagged_DECREF(cpy_r_r75);
-    cpy_r_r77 = CPyTagged_Subtract(cpy_r_r76, 2);
-    CPyTagged_DECREF(cpy_r_r76);
-    cpy_r_multiplier = cpy_r_r77;
-    cpy_r_r78 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'prec' */
+    }
+    cpy_r_r64 = cpy_r_r62 << 1;
+    cpy_r_r65 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.' */
+    cpy_r_r66 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'index' */
+    PyObject *cpy_r_r67[2] = {cpy_r_r41, cpy_r_r65};
+    cpy_r_r68 = (PyObject **)&cpy_r_r67;
+    cpy_r_r69 = PyObject_VectorcallMethod(cpy_r_r66, cpy_r_r68, 9223372036854775810ULL, 0);
+    if (unlikely(cpy_r_r69 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL143;
+    }
+    CPy_DECREF(cpy_r_r41);
+    if (likely(PyLong_Check(cpy_r_r69)))
+        cpy_r_r70 = CPyTagged_FromObject(cpy_r_r69);
+    else {
+        CPy_TypeError("int", cpy_r_r69); cpy_r_r70 = CPY_INT_TAG;
+    }
+    CPy_DECREF(cpy_r_r69);
+    if (unlikely(cpy_r_r70 == CPY_INT_TAG)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL144;
+    } else
+        goto CPyL145;
+CPyL44: ;
+    cpy_r_r71 = CPyTagged_Subtract(cpy_r_r64, cpy_r_r70);
+    CPyTagged_DECREF(cpy_r_r70);
+    cpy_r_r72 = CPyTagged_Subtract(cpy_r_r71, 2);
+    CPyTagged_DECREF(cpy_r_r71);
+    cpy_r_multiplier = cpy_r_r72;
+    cpy_r_r73 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'prec' */
     CPyTagged_INCREF(cpy_r_multiplier);
-    cpy_r_r79 = CPyTagged_StealAsObject(cpy_r_multiplier);
-    cpy_r_r80 = PyObject_SetAttr(cpy_r_r65, cpy_r_r78, cpy_r_r79);
-    CPy_DECREF(cpy_r_r79);
-    cpy_r_r81 = cpy_r_r80 >= 0;
-    if (unlikely(!cpy_r_r81)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL142;
-    }
-    cpy_r_r82 = CPyModule_decimal;
-    cpy_r_r83 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Decimal' */
-    cpy_r_r84 = CPyObject_GetAttr(cpy_r_r82, cpy_r_r83);
-    if (unlikely(cpy_r_r84 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL142;
-    }
-    PyObject *cpy_r_r85[2] = {cpy_r_number, cpy_r_r65};
-    cpy_r_r86 = (PyObject **)&cpy_r_r85;
-    cpy_r_r87 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('value', 'context') */
-    cpy_r_r88 = PyObject_Vectorcall(cpy_r_r84, cpy_r_r86, 0, cpy_r_r87);
-    CPy_DECREF(cpy_r_r84);
-    if (unlikely(cpy_r_r88 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL142;
-    }
-    CPy_DECREF(cpy_r_r65);
-    cpy_r_r89 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 10 */
-    CPyTagged_INCREF(cpy_r_multiplier);
-    cpy_r_r90 = CPyTagged_StealAsObject(cpy_r_multiplier);
-    cpy_r_r91 = CPyNumber_Power(cpy_r_r89, cpy_r_r90);
-    CPy_DECREF(cpy_r_r90);
-    if (unlikely(cpy_r_r91 == NULL)) {
+    cpy_r_r74 = CPyTagged_StealAsObject(cpy_r_multiplier);
+    cpy_r_r75 = PyObject_SetAttr(cpy_r_r60, cpy_r_r73, cpy_r_r74);
+    CPy_DECREF(cpy_r_r74);
+    cpy_r_r76 = cpy_r_r75 >= 0;
+    if (unlikely(!cpy_r_r76)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
         goto CPyL144;
     }
-    cpy_r_r92 = PyNumber_Multiply(cpy_r_r88, cpy_r_r91);
-    CPy_DECREF(cpy_r_r88);
-    CPy_DECREF(cpy_r_r91);
-    if (unlikely(cpy_r_r92 == NULL)) {
+    cpy_r_r77 = CPyModule_decimal;
+    cpy_r_r78 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Decimal' */
+    cpy_r_r79 = CPyObject_GetAttr(cpy_r_r77, cpy_r_r78);
+    if (unlikely(cpy_r_r79 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL49;
-    } else
-        goto CPyL145;
-CPyL48: ;
-    cpy_r_d_number = cpy_r_r92;
-    goto CPyL57;
-CPyL49: ;
-    cpy_r_r93 = CPy_CatchError();
-    cpy_r_r66 = 0;
-    cpy_r_r94 = CPy_GetExcInfo();
-    cpy_r_r95 = cpy_r_r94.f0;
-    CPy_INCREF(cpy_r_r95);
-    cpy_r_r96 = cpy_r_r94.f1;
-    CPy_INCREF(cpy_r_r96);
-    cpy_r_r97 = cpy_r_r94.f2;
-    CPy_INCREF(cpy_r_r97);
-    CPy_DecRef(cpy_r_r94.f0);
-    CPy_DecRef(cpy_r_r94.f1);
-    CPy_DecRef(cpy_r_r94.f2);
-    PyObject *cpy_r_r98[4] = {cpy_r_r57, cpy_r_r95, cpy_r_r96, cpy_r_r97};
-    cpy_r_r99 = (PyObject **)&cpy_r_r98;
-    cpy_r_r100 = PyObject_Vectorcall(cpy_r_r60, cpy_r_r99, 4, 0);
-    if (unlikely(cpy_r_r100 == NULL)) {
+        goto CPyL144;
+    }
+    PyObject *cpy_r_r80[2] = {cpy_r_number, cpy_r_r60};
+    cpy_r_r81 = (PyObject **)&cpy_r_r80;
+    cpy_r_r82 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('value', 'context') */
+    cpy_r_r83 = PyObject_Vectorcall(cpy_r_r79, cpy_r_r81, 0, cpy_r_r82);
+    CPy_DECREF(cpy_r_r79);
+    if (unlikely(cpy_r_r83 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL144;
+    }
+    CPy_DECREF(cpy_r_r60);
+    cpy_r_r84 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 10 */
+    CPyTagged_INCREF(cpy_r_multiplier);
+    cpy_r_r85 = CPyTagged_StealAsObject(cpy_r_multiplier);
+    cpy_r_r86 = CPyNumber_Power(cpy_r_r84, cpy_r_r85);
+    CPy_DECREF(cpy_r_r85);
+    if (unlikely(cpy_r_r86 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
         goto CPyL146;
     }
-    CPy_DecRef(cpy_r_r95);
-    CPy_DecRef(cpy_r_r96);
-    CPy_DecRef(cpy_r_r97);
-    cpy_r_r101 = PyObject_IsTrue(cpy_r_r100);
-    CPy_DecRef(cpy_r_r100);
-    cpy_r_r102 = cpy_r_r101 >= 0;
-    if (unlikely(!cpy_r_r102)) {
+    cpy_r_r87 = PyNumber_Multiply(cpy_r_r83, cpy_r_r86);
+    CPy_DECREF(cpy_r_r83);
+    CPy_DECREF(cpy_r_r86);
+    if (unlikely(cpy_r_r87 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL55;
-    }
-    cpy_r_r103 = cpy_r_r101;
-    if (cpy_r_r103) goto CPyL54;
-    CPy_Reraise();
-    if (!0) {
-        goto CPyL55;
+        goto CPyL50;
     } else
         goto CPyL147;
-CPyL53: ;
-    CPy_Unreachable();
-CPyL54: ;
-    CPy_RestoreExcInfo(cpy_r_r93);
-    CPy_DecRef(cpy_r_r93.f0);
-    CPy_DecRef(cpy_r_r93.f1);
-    CPy_DecRef(cpy_r_r93.f2);
-    goto CPyL57;
-CPyL55: ;
-    CPy_RestoreExcInfo(cpy_r_r93);
-    CPy_DecRef(cpy_r_r93.f0);
-    CPy_DecRef(cpy_r_r93.f1);
-    CPy_DecRef(cpy_r_r93.f2);
-    cpy_r_r104 = CPy_KeepPropagating();
-    if (!cpy_r_r104) {
-        goto CPyL58;
-    } else
-        goto CPyL148;
-CPyL56: ;
-    CPy_Unreachable();
-CPyL57: ;
-    tuple_T3OOO __tmp88 = { NULL, NULL, NULL };
-    cpy_r_r105 = __tmp88;
-    cpy_r_r106 = cpy_r_r105;
-    goto CPyL59;
-CPyL58: ;
-    cpy_r_r107 = CPy_CatchError();
-    cpy_r_r106 = cpy_r_r107;
-CPyL59: ;
-    if (!cpy_r_r66) goto CPyL149;
-    cpy_r_r108 = (PyObject *)&_Py_NoneStruct;
-    PyObject *cpy_r_r109[4] = {cpy_r_r57, cpy_r_r108, cpy_r_r108, cpy_r_r108};
-    cpy_r_r110 = (PyObject **)&cpy_r_r109;
-    cpy_r_r111 = PyObject_Vectorcall(cpy_r_r60, cpy_r_r110, 4, 0);
-    CPy_DECREF(cpy_r_r60);
-    if (unlikely(cpy_r_r111 == NULL)) {
+CPyL49: ;
+    cpy_r_d_number = cpy_r_r87;
+    goto CPyL58;
+CPyL50: ;
+    cpy_r_r88 = CPy_CatchError();
+    cpy_r_r61 = 0;
+    cpy_r_r89 = CPy_GetExcInfo();
+    cpy_r_r90 = cpy_r_r89.f0;
+    CPy_INCREF(cpy_r_r90);
+    cpy_r_r91 = cpy_r_r89.f1;
+    CPy_INCREF(cpy_r_r91);
+    cpy_r_r92 = cpy_r_r89.f2;
+    CPy_INCREF(cpy_r_r92);
+    CPy_DecRef(cpy_r_r89.f0);
+    CPy_DecRef(cpy_r_r89.f1);
+    CPy_DecRef(cpy_r_r89.f2);
+    PyObject *cpy_r_r93[4] = {cpy_r_r52, cpy_r_r90, cpy_r_r91, cpy_r_r92};
+    cpy_r_r94 = (PyObject **)&cpy_r_r93;
+    cpy_r_r95 = PyObject_Vectorcall(cpy_r_r55, cpy_r_r94, 4, 0);
+    if (unlikely(cpy_r_r95 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL150;
-    } else
-        goto CPyL151;
-CPyL61: ;
-    CPy_DECREF(cpy_r_r57);
-CPyL62: ;
-    if (cpy_r_r106.f0 == NULL) {
-        goto CPyL69;
-    } else
-        goto CPyL152;
-CPyL63: ;
+        goto CPyL148;
+    }
+    CPy_DecRef(cpy_r_r90);
+    CPy_DecRef(cpy_r_r91);
+    CPy_DecRef(cpy_r_r92);
+    cpy_r_r96 = PyObject_IsTrue(cpy_r_r95);
+    CPy_DecRef(cpy_r_r95);
+    cpy_r_r97 = cpy_r_r96 >= 0;
+    if (unlikely(!cpy_r_r97)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL56;
+    }
+    cpy_r_r98 = cpy_r_r96;
+    if (cpy_r_r98) goto CPyL55;
     CPy_Reraise();
     if (!0) {
-        goto CPyL65;
+        goto CPyL56;
+    } else
+        goto CPyL149;
+CPyL54: ;
+    CPy_Unreachable();
+CPyL55: ;
+    CPy_RestoreExcInfo(cpy_r_r88);
+    CPy_DecRef(cpy_r_r88.f0);
+    CPy_DecRef(cpy_r_r88.f1);
+    CPy_DecRef(cpy_r_r88.f2);
+    goto CPyL58;
+CPyL56: ;
+    CPy_RestoreExcInfo(cpy_r_r88);
+    CPy_DecRef(cpy_r_r88.f0);
+    CPy_DecRef(cpy_r_r88.f1);
+    CPy_DecRef(cpy_r_r88.f2);
+    cpy_r_r99 = CPy_KeepPropagating();
+    if (!cpy_r_r99) {
+        goto CPyL59;
+    } else
+        goto CPyL150;
+CPyL57: ;
+    CPy_Unreachable();
+CPyL58: ;
+    tuple_T3OOO __tmp88 = { NULL, NULL, NULL };
+    cpy_r_r100 = __tmp88;
+    cpy_r_r101 = cpy_r_r100;
+    goto CPyL60;
+CPyL59: ;
+    cpy_r_r102 = CPy_CatchError();
+    cpy_r_r101 = cpy_r_r102;
+CPyL60: ;
+    if (!cpy_r_r61) goto CPyL151;
+    cpy_r_r103 = (PyObject *)&_Py_NoneStruct;
+    PyObject *cpy_r_r104[4] = {cpy_r_r52, cpy_r_r103, cpy_r_r103, cpy_r_r103};
+    cpy_r_r105 = (PyObject **)&cpy_r_r104;
+    cpy_r_r106 = PyObject_Vectorcall(cpy_r_r55, cpy_r_r105, 4, 0);
+    CPy_DECREF(cpy_r_r55);
+    if (unlikely(cpy_r_r106 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL152;
     } else
         goto CPyL153;
-CPyL64: ;
-    CPy_Unreachable();
-CPyL65: ;
-    if (cpy_r_r106.f0 == NULL) goto CPyL67;
-    CPy_RestoreExcInfo(cpy_r_r106);
-    CPy_XDECREF(cpy_r_r106.f0);
-    CPy_XDECREF(cpy_r_r106.f1);
-    CPy_XDECREF(cpy_r_r106.f2);
-CPyL67: ;
-    cpy_r_r112 = CPy_KeepPropagating();
-    if (!cpy_r_r112) goto CPyL131;
-    CPy_Unreachable();
-CPyL69: ;
-    cpy_r_r113 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 10 */
-    if (cpy_r_multiplier == CPY_INT_TAG) {
-        goto CPyL154;
+CPyL62: ;
+    CPy_DECREF(cpy_r_r52);
+CPyL63: ;
+    if (cpy_r_r101.f0 == NULL) {
+        goto CPyL70;
     } else
-        goto CPyL72;
+        goto CPyL154;
+CPyL64: ;
+    CPy_Reraise();
+    if (!0) {
+        goto CPyL66;
+    } else
+        goto CPyL155;
+CPyL65: ;
+    CPy_Unreachable();
+CPyL66: ;
+    if (cpy_r_r101.f0 == NULL) goto CPyL68;
+    CPy_RestoreExcInfo(cpy_r_r101);
+    CPy_XDECREF(cpy_r_r101.f0);
+    CPy_XDECREF(cpy_r_r101.f1);
+    CPy_XDECREF(cpy_r_r101.f2);
+CPyL68: ;
+    cpy_r_r107 = CPy_KeepPropagating();
+    if (!cpy_r_r107) goto CPyL132;
+    CPy_Unreachable();
 CPyL70: ;
+    cpy_r_r108 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 10 */
+    if (cpy_r_multiplier == CPY_INT_TAG) {
+        goto CPyL156;
+    } else
+        goto CPyL73;
+CPyL71: ;
     PyErr_SetString(PyExc_UnboundLocalError, "local variable \"multiplier\" referenced before assignment");
-    cpy_r_r114 = 0;
-    if (unlikely(!cpy_r_r114)) {
+    cpy_r_r109 = 0;
+    if (unlikely(!cpy_r_r109)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", -1, CPyStatic_currency___globals);
-        goto CPyL131;
+        goto CPyL132;
     }
     CPy_Unreachable();
-CPyL72: ;
-    cpy_r_r115 = CPyTagged_StealAsObject(cpy_r_multiplier);
-    cpy_r_r116 = CPyNumber_Power(cpy_r_r113, cpy_r_r115);
-    CPy_DECREF(cpy_r_r115);
-    if (unlikely(cpy_r_r116 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL155;
-    }
-    cpy_r_r117 = PyNumber_InPlaceTrueDivide(cpy_r_unit_value, cpy_r_r116);
-    CPy_DECREF(cpy_r_r116);
-    if (unlikely(cpy_r_r117 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL155;
-    }
-    cpy_r_unit_value = cpy_r_r117;
-CPyL75: ;
-    cpy_r_r118 = CPyStatic_currency___globals;
-    cpy_r_r119 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'localcontext' */
-    cpy_r_r120 = CPyDict_GetItem(cpy_r_r118, cpy_r_r119);
-    if (unlikely(cpy_r_r120 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL156;
-    }
-    cpy_r_r121 = PyObject_Vectorcall(cpy_r_r120, 0, 0, 0);
-    CPy_DECREF(cpy_r_r120);
-    if (unlikely(cpy_r_r121 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL156;
-    }
-    cpy_r_r122 = CPy_TYPE(cpy_r_r121);
-    cpy_r_r123 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__exit__' */
-    cpy_r_r124 = CPyObject_GetAttr(cpy_r_r122, cpy_r_r123);
-    if (unlikely(cpy_r_r124 == NULL)) {
+CPyL73: ;
+    cpy_r_r110 = CPyTagged_StealAsObject(cpy_r_multiplier);
+    cpy_r_r111 = CPyNumber_Power(cpy_r_r108, cpy_r_r110);
+    CPy_DECREF(cpy_r_r110);
+    if (unlikely(cpy_r_r111 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
         goto CPyL157;
     }
-    cpy_r_r125 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__enter__' */
-    cpy_r_r126 = CPyObject_GetAttr(cpy_r_r122, cpy_r_r125);
-    CPy_DECREF(cpy_r_r122);
-    if (unlikely(cpy_r_r126 == NULL)) {
+    cpy_r_r112 = PyNumber_InPlaceTrueDivide(cpy_r_unit_value, cpy_r_r111);
+    CPy_DECREF(cpy_r_r111);
+    if (unlikely(cpy_r_r112 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL157;
+    }
+    cpy_r_unit_value = cpy_r_r112;
+CPyL76: ;
+    cpy_r_r113 = CPyStatic_currency___globals;
+    cpy_r_r114 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'localcontext' */
+    cpy_r_r115 = CPyDict_GetItem(cpy_r_r113, cpy_r_r114);
+    if (unlikely(cpy_r_r115 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
         goto CPyL158;
     }
-    PyObject *cpy_r_r127[1] = {cpy_r_r121};
-    cpy_r_r128 = (PyObject **)&cpy_r_r127;
-    cpy_r_r129 = PyObject_Vectorcall(cpy_r_r126, cpy_r_r128, 1, 0);
-    CPy_DECREF(cpy_r_r126);
-    if (unlikely(cpy_r_r129 == NULL)) {
+    cpy_r_r116 = PyObject_Vectorcall(cpy_r_r115, 0, 0, 0);
+    CPy_DECREF(cpy_r_r115);
+    if (unlikely(cpy_r_r116 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
         goto CPyL158;
     }
-    cpy_r_r130 = 1;
-    cpy_r_r131 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'prec' */
-    cpy_r_r132 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 999 */
-    cpy_r_r133 = PyObject_SetAttr(cpy_r_r129, cpy_r_r131, cpy_r_r132);
-    cpy_r_r134 = cpy_r_r133 >= 0;
-    if (unlikely(!cpy_r_r134)) {
+    cpy_r_r117 = CPy_TYPE(cpy_r_r116);
+    cpy_r_r118 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__exit__' */
+    cpy_r_r119 = CPyObject_GetAttr(cpy_r_r117, cpy_r_r118);
+    if (unlikely(cpy_r_r119 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
         goto CPyL159;
     }
-    cpy_r_r135 = CPyModule_decimal;
-    cpy_r_r136 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Decimal' */
-    cpy_r_r137 = CPyObject_GetAttr(cpy_r_r135, cpy_r_r136);
-    if (unlikely(cpy_r_r137 == NULL)) {
+    cpy_r_r120 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__enter__' */
+    cpy_r_r121 = CPyObject_GetAttr(cpy_r_r117, cpy_r_r120);
+    CPy_DECREF(cpy_r_r117);
+    if (unlikely(cpy_r_r121 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL159;
-    }
-    PyObject *cpy_r_r138[2] = {cpy_r_d_number, cpy_r_r129};
-    cpy_r_r139 = (PyObject **)&cpy_r_r138;
-    cpy_r_r140 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('value', 'context') */
-    cpy_r_r141 = PyObject_Vectorcall(cpy_r_r137, cpy_r_r139, 0, cpy_r_r140);
-    CPy_DECREF(cpy_r_r137);
-    if (unlikely(cpy_r_r141 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL159;
-    }
-    CPy_DECREF(cpy_r_d_number);
-    CPy_DECREF(cpy_r_r129);
-    cpy_r_r142 = PyNumber_Multiply(cpy_r_r141, cpy_r_unit_value);
-    CPy_DECREF(cpy_r_r141);
-    CPy_DECREF(cpy_r_unit_value);
-    if (unlikely(cpy_r_r142 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL86;
-    } else
         goto CPyL160;
-CPyL85: ;
-    cpy_r_result_value = cpy_r_r142;
-    goto CPyL94;
-CPyL86: ;
-    cpy_r_r143 = CPy_CatchError();
-    cpy_r_r130 = 0;
-    cpy_r_r144 = CPy_GetExcInfo();
-    cpy_r_r145 = cpy_r_r144.f0;
-    CPy_INCREF(cpy_r_r145);
-    cpy_r_r146 = cpy_r_r144.f1;
-    CPy_INCREF(cpy_r_r146);
-    cpy_r_r147 = cpy_r_r144.f2;
-    CPy_INCREF(cpy_r_r147);
-    CPy_DecRef(cpy_r_r144.f0);
-    CPy_DecRef(cpy_r_r144.f1);
-    CPy_DecRef(cpy_r_r144.f2);
-    PyObject *cpy_r_r148[4] = {cpy_r_r121, cpy_r_r145, cpy_r_r146, cpy_r_r147};
-    cpy_r_r149 = (PyObject **)&cpy_r_r148;
-    cpy_r_r150 = PyObject_Vectorcall(cpy_r_r124, cpy_r_r149, 4, 0);
-    if (unlikely(cpy_r_r150 == NULL)) {
+    }
+    PyObject *cpy_r_r122[1] = {cpy_r_r116};
+    cpy_r_r123 = (PyObject **)&cpy_r_r122;
+    cpy_r_r124 = PyObject_Vectorcall(cpy_r_r121, cpy_r_r123, 1, 0);
+    CPy_DECREF(cpy_r_r121);
+    if (unlikely(cpy_r_r124 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL160;
+    }
+    cpy_r_r125 = 1;
+    cpy_r_r126 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'prec' */
+    cpy_r_r127 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 999 */
+    cpy_r_r128 = PyObject_SetAttr(cpy_r_r124, cpy_r_r126, cpy_r_r127);
+    cpy_r_r129 = cpy_r_r128 >= 0;
+    if (unlikely(!cpy_r_r129)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
         goto CPyL161;
     }
-    CPy_DecRef(cpy_r_r145);
-    CPy_DecRef(cpy_r_r146);
-    CPy_DecRef(cpy_r_r147);
-    cpy_r_r151 = PyObject_IsTrue(cpy_r_r150);
-    CPy_DecRef(cpy_r_r150);
-    cpy_r_r152 = cpy_r_r151 >= 0;
-    if (unlikely(!cpy_r_r152)) {
+    cpy_r_r130 = CPyModule_decimal;
+    cpy_r_r131 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Decimal' */
+    cpy_r_r132 = CPyObject_GetAttr(cpy_r_r130, cpy_r_r131);
+    if (unlikely(cpy_r_r132 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL92;
+        goto CPyL161;
     }
-    cpy_r_r153 = cpy_r_r151;
-    if (cpy_r_r153) goto CPyL91;
-    CPy_Reraise();
-    if (!0) {
-        goto CPyL92;
+    PyObject *cpy_r_r133[2] = {cpy_r_d_number, cpy_r_r124};
+    cpy_r_r134 = (PyObject **)&cpy_r_r133;
+    cpy_r_r135 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('value', 'context') */
+    cpy_r_r136 = PyObject_Vectorcall(cpy_r_r132, cpy_r_r134, 0, cpy_r_r135);
+    CPy_DECREF(cpy_r_r132);
+    if (unlikely(cpy_r_r136 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL161;
+    }
+    CPy_DECREF(cpy_r_d_number);
+    CPy_DECREF(cpy_r_r124);
+    cpy_r_r137 = PyNumber_Multiply(cpy_r_r136, cpy_r_unit_value);
+    CPy_DECREF(cpy_r_r136);
+    CPy_DECREF(cpy_r_unit_value);
+    if (unlikely(cpy_r_r137 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL87;
     } else
         goto CPyL162;
-CPyL90: ;
-    CPy_Unreachable();
-CPyL91: ;
-    CPy_RestoreExcInfo(cpy_r_r143);
-    CPy_DecRef(cpy_r_r143.f0);
-    CPy_DecRef(cpy_r_r143.f1);
-    CPy_DecRef(cpy_r_r143.f2);
-    goto CPyL94;
-CPyL92: ;
-    CPy_RestoreExcInfo(cpy_r_r143);
-    CPy_DecRef(cpy_r_r143.f0);
-    CPy_DecRef(cpy_r_r143.f1);
-    CPy_DecRef(cpy_r_r143.f2);
-    cpy_r_r154 = CPy_KeepPropagating();
-    if (!cpy_r_r154) {
-        goto CPyL95;
-    } else
-        goto CPyL163;
-CPyL93: ;
-    CPy_Unreachable();
-CPyL94: ;
-    tuple_T3OOO __tmp89 = { NULL, NULL, NULL };
-    cpy_r_r155 = __tmp89;
-    cpy_r_r156 = cpy_r_r155;
-    goto CPyL96;
-CPyL95: ;
-    cpy_r_r157 = CPy_CatchError();
-    cpy_r_r156 = cpy_r_r157;
-CPyL96: ;
-    if (!cpy_r_r130) goto CPyL164;
-    cpy_r_r158 = (PyObject *)&_Py_NoneStruct;
-    PyObject *cpy_r_r159[4] = {cpy_r_r121, cpy_r_r158, cpy_r_r158, cpy_r_r158};
-    cpy_r_r160 = (PyObject **)&cpy_r_r159;
-    cpy_r_r161 = PyObject_Vectorcall(cpy_r_r124, cpy_r_r160, 4, 0);
-    CPy_DECREF(cpy_r_r124);
-    if (unlikely(cpy_r_r161 == NULL)) {
+CPyL86: ;
+    cpy_r_result_value = cpy_r_r137;
+    goto CPyL95;
+CPyL87: ;
+    cpy_r_r138 = CPy_CatchError();
+    cpy_r_r125 = 0;
+    cpy_r_r139 = CPy_GetExcInfo();
+    cpy_r_r140 = cpy_r_r139.f0;
+    CPy_INCREF(cpy_r_r140);
+    cpy_r_r141 = cpy_r_r139.f1;
+    CPy_INCREF(cpy_r_r141);
+    cpy_r_r142 = cpy_r_r139.f2;
+    CPy_INCREF(cpy_r_r142);
+    CPy_DecRef(cpy_r_r139.f0);
+    CPy_DecRef(cpy_r_r139.f1);
+    CPy_DecRef(cpy_r_r139.f2);
+    PyObject *cpy_r_r143[4] = {cpy_r_r116, cpy_r_r140, cpy_r_r141, cpy_r_r142};
+    cpy_r_r144 = (PyObject **)&cpy_r_r143;
+    cpy_r_r145 = PyObject_Vectorcall(cpy_r_r119, cpy_r_r144, 4, 0);
+    if (unlikely(cpy_r_r145 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL165;
-    } else
-        goto CPyL166;
-CPyL98: ;
-    CPy_DECREF(cpy_r_r121);
-CPyL99: ;
-    if (cpy_r_r156.f0 == NULL) {
-        goto CPyL106;
-    } else
-        goto CPyL167;
-CPyL100: ;
+        goto CPyL163;
+    }
+    CPy_DecRef(cpy_r_r140);
+    CPy_DecRef(cpy_r_r141);
+    CPy_DecRef(cpy_r_r142);
+    cpy_r_r146 = PyObject_IsTrue(cpy_r_r145);
+    CPy_DecRef(cpy_r_r145);
+    cpy_r_r147 = cpy_r_r146 >= 0;
+    if (unlikely(!cpy_r_r147)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL93;
+    }
+    cpy_r_r148 = cpy_r_r146;
+    if (cpy_r_r148) goto CPyL92;
     CPy_Reraise();
     if (!0) {
-        goto CPyL102;
+        goto CPyL93;
+    } else
+        goto CPyL164;
+CPyL91: ;
+    CPy_Unreachable();
+CPyL92: ;
+    CPy_RestoreExcInfo(cpy_r_r138);
+    CPy_DecRef(cpy_r_r138.f0);
+    CPy_DecRef(cpy_r_r138.f1);
+    CPy_DecRef(cpy_r_r138.f2);
+    goto CPyL95;
+CPyL93: ;
+    CPy_RestoreExcInfo(cpy_r_r138);
+    CPy_DecRef(cpy_r_r138.f0);
+    CPy_DecRef(cpy_r_r138.f1);
+    CPy_DecRef(cpy_r_r138.f2);
+    cpy_r_r149 = CPy_KeepPropagating();
+    if (!cpy_r_r149) {
+        goto CPyL96;
+    } else
+        goto CPyL165;
+CPyL94: ;
+    CPy_Unreachable();
+CPyL95: ;
+    tuple_T3OOO __tmp89 = { NULL, NULL, NULL };
+    cpy_r_r150 = __tmp89;
+    cpy_r_r151 = cpy_r_r150;
+    goto CPyL97;
+CPyL96: ;
+    cpy_r_r152 = CPy_CatchError();
+    cpy_r_r151 = cpy_r_r152;
+CPyL97: ;
+    if (!cpy_r_r125) goto CPyL166;
+    cpy_r_r153 = (PyObject *)&_Py_NoneStruct;
+    PyObject *cpy_r_r154[4] = {cpy_r_r116, cpy_r_r153, cpy_r_r153, cpy_r_r153};
+    cpy_r_r155 = (PyObject **)&cpy_r_r154;
+    cpy_r_r156 = PyObject_Vectorcall(cpy_r_r119, cpy_r_r155, 4, 0);
+    CPy_DECREF(cpy_r_r119);
+    if (unlikely(cpy_r_r156 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL167;
     } else
         goto CPyL168;
+CPyL99: ;
+    CPy_DECREF(cpy_r_r116);
+CPyL100: ;
+    if (cpy_r_r151.f0 == NULL) {
+        goto CPyL107;
+    } else
+        goto CPyL169;
 CPyL101: ;
-    CPy_Unreachable();
+    CPy_Reraise();
+    if (!0) {
+        goto CPyL103;
+    } else
+        goto CPyL170;
 CPyL102: ;
-    if (cpy_r_r156.f0 == NULL) goto CPyL104;
-    CPy_RestoreExcInfo(cpy_r_r156);
-    CPy_XDECREF(cpy_r_r156.f0);
-    CPy_XDECREF(cpy_r_r156.f1);
-    CPy_XDECREF(cpy_r_r156.f2);
-CPyL104: ;
-    cpy_r_r162 = CPy_KeepPropagating();
-    if (!cpy_r_r162) goto CPyL131;
     CPy_Unreachable();
-CPyL106: ;
-    cpy_r_r163 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 0 */
-    if (cpy_r_result_value != NULL) goto CPyL109;
+CPyL103: ;
+    if (cpy_r_r151.f0 == NULL) goto CPyL105;
+    CPy_RestoreExcInfo(cpy_r_r151);
+    CPy_XDECREF(cpy_r_r151.f0);
+    CPy_XDECREF(cpy_r_r151.f1);
+    CPy_XDECREF(cpy_r_r151.f2);
+CPyL105: ;
+    cpy_r_r157 = CPy_KeepPropagating();
+    if (!cpy_r_r157) goto CPyL132;
+    CPy_Unreachable();
+CPyL107: ;
+    cpy_r_r158 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 0 */
+    if (cpy_r_result_value != NULL) goto CPyL110;
+    PyErr_SetString(PyExc_UnboundLocalError, "local variable \"result_value\" referenced before assignment");
+    cpy_r_r159 = 0;
+    if (unlikely(!cpy_r_r159)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL132;
+    }
+    CPy_Unreachable();
+CPyL110: ;
+    cpy_r_r160 = PyObject_RichCompare(cpy_r_result_value, cpy_r_r158, 0);
+    if (unlikely(cpy_r_r160 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL171;
+    }
+    if (unlikely(!PyBool_Check(cpy_r_r160))) {
+        CPy_TypeError("bool", cpy_r_r160); cpy_r_r161 = 2;
+    } else
+        cpy_r_r161 = cpy_r_r160 == Py_True;
+    CPy_DECREF(cpy_r_r160);
+    if (unlikely(cpy_r_r161 == 2)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL171;
+    }
+    if (cpy_r_r161) goto CPyL172;
+    cpy_r_r162 = (CPyTagged)CPyStatics[DIFFCHECK_PLACEHOLDER] | 1; /* 115792089237316195423570985008687907853269984665640564039457584007913129639935 */
+    CPyTagged_INCREF(cpy_r_r162);
+    cpy_r_r163 = CPyTagged_StealAsObject(cpy_r_r162);
+    if (cpy_r_result_value == NULL) {
+        goto CPyL173;
+    } else
+        goto CPyL116;
+CPyL114: ;
     PyErr_SetString(PyExc_UnboundLocalError, "local variable \"result_value\" referenced before assignment");
     cpy_r_r164 = 0;
     if (unlikely(!cpy_r_r164)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL131;
+        goto CPyL132;
     }
     CPy_Unreachable();
-CPyL109: ;
-    cpy_r_r165 = PyObject_RichCompare(cpy_r_result_value, cpy_r_r163, 0);
+CPyL116: ;
+    cpy_r_r165 = PyObject_RichCompare(cpy_r_result_value, cpy_r_r163, 4);
+    CPy_DECREF(cpy_r_r163);
     if (unlikely(cpy_r_r165 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL169;
+        goto CPyL171;
     }
     if (unlikely(!PyBool_Check(cpy_r_r165))) {
         CPy_TypeError("bool", cpy_r_r165); cpy_r_r166 = 2;
@@ -19054,309 +19081,282 @@ CPyL109: ;
     CPy_DECREF(cpy_r_r165);
     if (unlikely(cpy_r_r166 == 2)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL169;
-    }
-    if (cpy_r_r166) goto CPyL170;
-    cpy_r_r167 = (CPyTagged)CPyStatics[DIFFCHECK_PLACEHOLDER] | 1; /* 115792089237316195423570985008687907853269984665640564039457584007913129639935 */
-    CPyTagged_INCREF(cpy_r_r167);
-    cpy_r_r168 = CPyTagged_StealAsObject(cpy_r_r167);
-    if (cpy_r_result_value == NULL) {
         goto CPyL171;
-    } else
-        goto CPyL115;
-CPyL113: ;
-    PyErr_SetString(PyExc_UnboundLocalError, "local variable \"result_value\" referenced before assignment");
-    cpy_r_r169 = 0;
-    if (unlikely(!cpy_r_r169)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL131;
     }
-    CPy_Unreachable();
-CPyL115: ;
-    cpy_r_r170 = PyObject_RichCompare(cpy_r_result_value, cpy_r_r168, 4);
-    CPy_DECREF(cpy_r_r168);
-    if (unlikely(cpy_r_r170 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL169;
-    }
-    if (unlikely(!PyBool_Check(cpy_r_r170))) {
-        CPy_TypeError("bool", cpy_r_r170); cpy_r_r171 = 2;
-    } else
-        cpy_r_r171 = cpy_r_r170 == Py_True;
-    CPy_DECREF(cpy_r_r170);
-    if (unlikely(cpy_r_r171 == 2)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL169;
-    }
-    if (cpy_r_r171) {
-        goto CPyL170;
-    } else
-        goto CPyL122;
-CPyL118: ;
-    cpy_r_r172 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Resulting wei value must be between 0 and 2**256 - 1' */
-    cpy_r_r173 = CPyModule_builtins;
-    cpy_r_r174 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ValueError' */
-    cpy_r_r175 = CPyObject_GetAttr(cpy_r_r173, cpy_r_r174);
-    if (unlikely(cpy_r_r175 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL131;
-    }
-    PyObject *cpy_r_r176[1] = {cpy_r_r172};
-    cpy_r_r177 = (PyObject **)&cpy_r_r176;
-    cpy_r_r178 = PyObject_Vectorcall(cpy_r_r175, cpy_r_r177, 1, 0);
-    CPy_DECREF(cpy_r_r175);
-    if (unlikely(cpy_r_r178 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL131;
-    }
-    CPy_Raise(cpy_r_r178);
-    CPy_DECREF(cpy_r_r178);
-    if (unlikely(!0)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL131;
-    }
-    CPy_Unreachable();
-CPyL122: ;
-    cpy_r_r179 = (PyObject *)&PyLong_Type;
-    if (cpy_r_result_value != NULL) goto CPyL125;
-    PyErr_SetString(PyExc_UnboundLocalError, "local variable \"result_value\" referenced before assignment");
-    cpy_r_r180 = 0;
-    if (unlikely(!cpy_r_r180)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", -1, CPyStatic_currency___globals);
-        goto CPyL131;
-    }
-    CPy_Unreachable();
-CPyL125: ;
-    PyObject *cpy_r_r181[1] = {cpy_r_result_value};
-    cpy_r_r182 = (PyObject **)&cpy_r_r181;
-    cpy_r_r183 = PyObject_Vectorcall(cpy_r_r179, cpy_r_r182, 1, 0);
-    if (unlikely(cpy_r_r183 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL169;
-    }
-    if (cpy_r_result_value == NULL) {
+    if (cpy_r_r166) {
         goto CPyL172;
     } else
-        goto CPyL129;
-CPyL127: ;
-    PyErr_SetString(PyExc_UnboundLocalError, "local variable \"result_value\" referenced before assignment");
-    cpy_r_r184 = 0;
-    if (unlikely(!cpy_r_r184)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", -1, CPyStatic_currency___globals);
-        goto CPyL131;
+        goto CPyL123;
+CPyL119: ;
+    cpy_r_r167 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Resulting wei value must be between 0 and 2**256 - 1' */
+    cpy_r_r168 = CPyModule_builtins;
+    cpy_r_r169 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ValueError' */
+    cpy_r_r170 = CPyObject_GetAttr(cpy_r_r168, cpy_r_r169);
+    if (unlikely(cpy_r_r170 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL132;
+    }
+    PyObject *cpy_r_r171[1] = {cpy_r_r167};
+    cpy_r_r172 = (PyObject **)&cpy_r_r171;
+    cpy_r_r173 = PyObject_Vectorcall(cpy_r_r170, cpy_r_r172, 1, 0);
+    CPy_DECREF(cpy_r_r170);
+    if (unlikely(cpy_r_r173 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL132;
+    }
+    CPy_Raise(cpy_r_r173);
+    CPy_DECREF(cpy_r_r173);
+    if (unlikely(!0)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL132;
     }
     CPy_Unreachable();
-CPyL129: ;
-    CPy_XDECREF(cpy_r_result_value);
-    if (likely(PyLong_Check(cpy_r_r183)))
-        cpy_r_r185 = CPyTagged_FromObject(cpy_r_r183);
-    else {
-        CPy_TypeError("int", cpy_r_r183); cpy_r_r185 = CPY_INT_TAG;
+CPyL123: ;
+    cpy_r_r174 = (PyObject *)&PyLong_Type;
+    if (cpy_r_result_value != NULL) goto CPyL126;
+    PyErr_SetString(PyExc_UnboundLocalError, "local variable \"result_value\" referenced before assignment");
+    cpy_r_r175 = 0;
+    if (unlikely(!cpy_r_r175)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", -1, CPyStatic_currency___globals);
+        goto CPyL132;
     }
-    CPy_DECREF(cpy_r_r183);
-    if (unlikely(cpy_r_r185 == CPY_INT_TAG)) {
+    CPy_Unreachable();
+CPyL126: ;
+    PyObject *cpy_r_r176[1] = {cpy_r_result_value};
+    cpy_r_r177 = (PyObject **)&cpy_r_r176;
+    cpy_r_r178 = PyObject_Vectorcall(cpy_r_r174, cpy_r_r177, 1, 0);
+    if (unlikely(cpy_r_r178 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL131;
+        goto CPyL171;
     }
-    return cpy_r_r185;
-CPyL131: ;
-    cpy_r_r186 = CPY_INT_TAG;
-    return cpy_r_r186;
+    if (cpy_r_result_value == NULL) {
+        goto CPyL174;
+    } else
+        goto CPyL130;
+CPyL128: ;
+    PyErr_SetString(PyExc_UnboundLocalError, "local variable \"result_value\" referenced before assignment");
+    cpy_r_r179 = 0;
+    if (unlikely(!cpy_r_r179)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", -1, CPyStatic_currency___globals);
+        goto CPyL132;
+    }
+    CPy_Unreachable();
+CPyL130: ;
+    CPy_XDECREF(cpy_r_result_value);
+    if (likely(PyLong_Check(cpy_r_r178)))
+        cpy_r_r180 = CPyTagged_FromObject(cpy_r_r178);
+    else {
+        CPy_TypeError("int", cpy_r_r178); cpy_r_r180 = CPY_INT_TAG;
+    }
+    CPy_DECREF(cpy_r_r178);
+    if (unlikely(cpy_r_r180 == CPY_INT_TAG)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "_to_wei", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL132;
+    }
+    return cpy_r_r180;
 CPyL132: ;
-    CPyTagged_XDecRef(cpy_r_multiplier);
-    CPy_XDecRef(cpy_r_result_value);
-    goto CPyL131;
+    cpy_r_r181 = CPY_INT_TAG;
+    return cpy_r_r181;
 CPyL133: ;
     CPyTagged_XDecRef(cpy_r_multiplier);
     CPy_XDecRef(cpy_r_result_value);
-    CPy_DecRef(cpy_r_r15);
-    goto CPyL131;
+    goto CPyL132;
 CPyL134: ;
+    CPyTagged_XDecRef(cpy_r_multiplier);
+    CPy_XDecRef(cpy_r_result_value);
+    CPy_DecRef(cpy_r_r15);
+    goto CPyL132;
+CPyL135: ;
     CPyTagged_XDECREF(cpy_r_multiplier);
     CPy_XDECREF(cpy_r_result_value);
     goto CPyL18;
-CPyL135: ;
+CPyL136: ;
     CPyTagged_XDecRef(cpy_r_multiplier);
     CPy_XDecRef(cpy_r_result_value);
     CPy_DecRef(cpy_r_d_number);
-    goto CPyL131;
-CPyL136: ;
-    CPyTagged_XDECREF(cpy_r_multiplier);
-    CPy_XDECREF(cpy_r_result_value);
-    CPy_DECREF(cpy_r_d_number);
-    goto CPyL27;
+    goto CPyL23;
 CPyL137: ;
     CPyTagged_XDecRef(cpy_r_multiplier);
     CPy_XDecRef(cpy_r_result_value);
     CPy_DecRef(cpy_r_d_number);
-    CPy_DecRef(cpy_r_r46);
-    goto CPyL131;
+    goto CPyL132;
 CPyL138: ;
     CPyTagged_XDECREF(cpy_r_multiplier);
-    CPy_DECREF(cpy_r_r46);
-    CPy_INCREF(cpy_r_unit_value);
-    goto CPyL75;
+    CPy_XDECREF(cpy_r_result_value);
+    CPy_DECREF(cpy_r_d_number);
+    goto CPyL28;
 CPyL139: ;
     CPyTagged_XDecRef(cpy_r_multiplier);
     CPy_XDecRef(cpy_r_result_value);
     CPy_DecRef(cpy_r_d_number);
-    CPy_DecRef(cpy_r_r46);
-    CPy_DecRef(cpy_r_r57);
-    CPy_DecRef(cpy_r_r58);
-    goto CPyL131;
+    CPy_DecRef(cpy_r_r41);
+    goto CPyL132;
 CPyL140: ;
-    CPyTagged_XDecRef(cpy_r_multiplier);
-    CPy_XDecRef(cpy_r_result_value);
-    CPy_DecRef(cpy_r_d_number);
-    CPy_DecRef(cpy_r_r46);
-    CPy_DecRef(cpy_r_r57);
-    CPy_DecRef(cpy_r_r60);
-    goto CPyL131;
-CPyL141: ;
-    CPy_DecRef(cpy_r_r46);
-    CPy_DecRef(cpy_r_r65);
-    goto CPyL49;
-CPyL142: ;
-    CPy_DecRef(cpy_r_r65);
-    goto CPyL49;
-CPyL143: ;
     CPyTagged_XDECREF(cpy_r_multiplier);
-    goto CPyL43;
+    CPy_DECREF(cpy_r_r41);
+    CPy_INCREF(cpy_r_unit_value);
+    goto CPyL76;
+CPyL141: ;
+    CPyTagged_XDecRef(cpy_r_multiplier);
+    CPy_XDecRef(cpy_r_result_value);
+    CPy_DecRef(cpy_r_d_number);
+    CPy_DecRef(cpy_r_r41);
+    CPy_DecRef(cpy_r_r52);
+    CPy_DecRef(cpy_r_r53);
+    goto CPyL132;
+CPyL142: ;
+    CPyTagged_XDecRef(cpy_r_multiplier);
+    CPy_XDecRef(cpy_r_result_value);
+    CPy_DecRef(cpy_r_d_number);
+    CPy_DecRef(cpy_r_r41);
+    CPy_DecRef(cpy_r_r52);
+    CPy_DecRef(cpy_r_r55);
+    goto CPyL132;
+CPyL143: ;
+    CPy_DecRef(cpy_r_r41);
+    CPy_DecRef(cpy_r_r60);
+    goto CPyL50;
 CPyL144: ;
-    CPy_DecRef(cpy_r_r88);
-    goto CPyL49;
+    CPy_DecRef(cpy_r_r60);
+    goto CPyL50;
 CPyL145: ;
-    CPy_DECREF(cpy_r_d_number);
-    goto CPyL48;
+    CPyTagged_XDECREF(cpy_r_multiplier);
+    goto CPyL44;
 CPyL146: ;
-    CPy_DecRef(cpy_r_r95);
-    CPy_DecRef(cpy_r_r96);
-    CPy_DecRef(cpy_r_r97);
-    goto CPyL55;
+    CPy_DecRef(cpy_r_r83);
+    goto CPyL50;
 CPyL147: ;
-    CPyTagged_XDecRef(cpy_r_multiplier);
-    CPy_XDecRef(cpy_r_result_value);
-    CPy_DecRef(cpy_r_d_number);
-    CPy_DecRef(cpy_r_r57);
-    CPy_DecRef(cpy_r_r60);
-    CPy_DecRef(cpy_r_r93.f0);
-    CPy_DecRef(cpy_r_r93.f1);
-    CPy_DecRef(cpy_r_r93.f2);
-    goto CPyL53;
+    CPy_DECREF(cpy_r_d_number);
+    goto CPyL49;
 CPyL148: ;
-    CPyTagged_XDecRef(cpy_r_multiplier);
-    CPy_XDecRef(cpy_r_result_value);
-    CPy_DecRef(cpy_r_d_number);
-    CPy_DecRef(cpy_r_r57);
-    CPy_DecRef(cpy_r_r60);
+    CPy_DecRef(cpy_r_r90);
+    CPy_DecRef(cpy_r_r91);
+    CPy_DecRef(cpy_r_r92);
     goto CPyL56;
 CPyL149: ;
-    CPy_DECREF(cpy_r_r57);
-    CPy_DECREF(cpy_r_r60);
-    goto CPyL62;
+    CPyTagged_XDecRef(cpy_r_multiplier);
+    CPy_XDecRef(cpy_r_result_value);
+    CPy_DecRef(cpy_r_d_number);
+    CPy_DecRef(cpy_r_r52);
+    CPy_DecRef(cpy_r_r55);
+    CPy_DecRef(cpy_r_r88.f0);
+    CPy_DecRef(cpy_r_r88.f1);
+    CPy_DecRef(cpy_r_r88.f2);
+    goto CPyL54;
 CPyL150: ;
     CPyTagged_XDecRef(cpy_r_multiplier);
     CPy_XDecRef(cpy_r_result_value);
     CPy_DecRef(cpy_r_d_number);
-    CPy_DecRef(cpy_r_r57);
-    goto CPyL65;
+    CPy_DecRef(cpy_r_r52);
+    CPy_DecRef(cpy_r_r55);
+    goto CPyL57;
 CPyL151: ;
-    CPy_DECREF(cpy_r_r111);
-    goto CPyL61;
+    CPy_DECREF(cpy_r_r52);
+    CPy_DECREF(cpy_r_r55);
+    goto CPyL63;
 CPyL152: ;
+    CPyTagged_XDecRef(cpy_r_multiplier);
+    CPy_XDecRef(cpy_r_result_value);
+    CPy_DecRef(cpy_r_d_number);
+    CPy_DecRef(cpy_r_r52);
+    goto CPyL66;
+CPyL153: ;
+    CPy_DECREF(cpy_r_r106);
+    goto CPyL62;
+CPyL154: ;
     CPyTagged_XDECREF(cpy_r_multiplier);
     CPy_XDECREF(cpy_r_result_value);
     CPy_DECREF(cpy_r_d_number);
-    goto CPyL63;
-CPyL153: ;
-    CPy_XDECREF(cpy_r_r106.f0);
-    CPy_XDECREF(cpy_r_r106.f1);
-    CPy_XDECREF(cpy_r_r106.f2);
     goto CPyL64;
-CPyL154: ;
+CPyL155: ;
+    CPy_XDECREF(cpy_r_r101.f0);
+    CPy_XDECREF(cpy_r_r101.f1);
+    CPy_XDECREF(cpy_r_r101.f2);
+    goto CPyL65;
+CPyL156: ;
     CPy_XDECREF(cpy_r_result_value);
     CPy_DECREF(cpy_r_d_number);
-    goto CPyL70;
-CPyL155: ;
-    CPy_XDecRef(cpy_r_result_value);
-    CPy_DecRef(cpy_r_d_number);
-    goto CPyL131;
-CPyL156: ;
-    CPy_DecRef(cpy_r_unit_value);
-    CPy_XDecRef(cpy_r_result_value);
-    CPy_DecRef(cpy_r_d_number);
-    goto CPyL131;
+    goto CPyL71;
 CPyL157: ;
-    CPy_DecRef(cpy_r_unit_value);
     CPy_XDecRef(cpy_r_result_value);
     CPy_DecRef(cpy_r_d_number);
-    CPy_DecRef(cpy_r_r121);
-    CPy_DecRef(cpy_r_r122);
-    goto CPyL131;
+    goto CPyL132;
 CPyL158: ;
     CPy_DecRef(cpy_r_unit_value);
     CPy_XDecRef(cpy_r_result_value);
     CPy_DecRef(cpy_r_d_number);
-    CPy_DecRef(cpy_r_r121);
-    CPy_DecRef(cpy_r_r124);
-    goto CPyL131;
+    goto CPyL132;
 CPyL159: ;
     CPy_DecRef(cpy_r_unit_value);
+    CPy_XDecRef(cpy_r_result_value);
     CPy_DecRef(cpy_r_d_number);
-    CPy_DecRef(cpy_r_r129);
-    goto CPyL86;
+    CPy_DecRef(cpy_r_r116);
+    CPy_DecRef(cpy_r_r117);
+    goto CPyL132;
 CPyL160: ;
-    CPy_XDECREF(cpy_r_result_value);
-    goto CPyL85;
+    CPy_DecRef(cpy_r_unit_value);
+    CPy_XDecRef(cpy_r_result_value);
+    CPy_DecRef(cpy_r_d_number);
+    CPy_DecRef(cpy_r_r116);
+    CPy_DecRef(cpy_r_r119);
+    goto CPyL132;
 CPyL161: ;
-    CPy_DecRef(cpy_r_r145);
-    CPy_DecRef(cpy_r_r146);
-    CPy_DecRef(cpy_r_r147);
-    goto CPyL92;
+    CPy_DecRef(cpy_r_unit_value);
+    CPy_DecRef(cpy_r_d_number);
+    CPy_DecRef(cpy_r_r124);
+    goto CPyL87;
 CPyL162: ;
-    CPy_XDecRef(cpy_r_result_value);
-    CPy_DecRef(cpy_r_r121);
-    CPy_DecRef(cpy_r_r124);
-    CPy_DecRef(cpy_r_r143.f0);
-    CPy_DecRef(cpy_r_r143.f1);
-    CPy_DecRef(cpy_r_r143.f2);
-    goto CPyL90;
+    CPy_XDECREF(cpy_r_result_value);
+    goto CPyL86;
 CPyL163: ;
-    CPy_XDecRef(cpy_r_result_value);
-    CPy_DecRef(cpy_r_r121);
-    CPy_DecRef(cpy_r_r124);
+    CPy_DecRef(cpy_r_r140);
+    CPy_DecRef(cpy_r_r141);
+    CPy_DecRef(cpy_r_r142);
     goto CPyL93;
 CPyL164: ;
-    CPy_DECREF(cpy_r_r121);
-    CPy_DECREF(cpy_r_r124);
-    goto CPyL99;
+    CPy_XDecRef(cpy_r_result_value);
+    CPy_DecRef(cpy_r_r116);
+    CPy_DecRef(cpy_r_r119);
+    CPy_DecRef(cpy_r_r138.f0);
+    CPy_DecRef(cpy_r_r138.f1);
+    CPy_DecRef(cpy_r_r138.f2);
+    goto CPyL91;
 CPyL165: ;
     CPy_XDecRef(cpy_r_result_value);
-    CPy_DecRef(cpy_r_r121);
-    goto CPyL102;
+    CPy_DecRef(cpy_r_r116);
+    CPy_DecRef(cpy_r_r119);
+    goto CPyL94;
 CPyL166: ;
-    CPy_DECREF(cpy_r_r161);
-    goto CPyL98;
-CPyL167: ;
-    CPy_XDECREF(cpy_r_result_value);
+    CPy_DECREF(cpy_r_r116);
+    CPy_DECREF(cpy_r_r119);
     goto CPyL100;
-CPyL168: ;
-    CPy_XDECREF(cpy_r_r156.f0);
-    CPy_XDECREF(cpy_r_r156.f1);
-    CPy_XDECREF(cpy_r_r156.f2);
-    goto CPyL101;
-CPyL169: ;
+CPyL167: ;
     CPy_XDecRef(cpy_r_result_value);
-    goto CPyL131;
-CPyL170: ;
+    CPy_DecRef(cpy_r_r116);
+    goto CPyL103;
+CPyL168: ;
+    CPy_DECREF(cpy_r_r156);
+    goto CPyL99;
+CPyL169: ;
     CPy_XDECREF(cpy_r_result_value);
-    goto CPyL118;
+    goto CPyL101;
+CPyL170: ;
+    CPy_XDECREF(cpy_r_r151.f0);
+    CPy_XDECREF(cpy_r_r151.f1);
+    CPy_XDECREF(cpy_r_r151.f2);
+    goto CPyL102;
 CPyL171: ;
-    CPy_DECREF(cpy_r_r168);
-    goto CPyL113;
+    CPy_XDecRef(cpy_r_result_value);
+    goto CPyL132;
 CPyL172: ;
-    CPy_DECREF(cpy_r_r183);
-    goto CPyL127;
+    CPy_XDECREF(cpy_r_result_value);
+    goto CPyL119;
+CPyL173: ;
+    CPy_DECREF(cpy_r_r163);
+    goto CPyL114;
+CPyL174: ;
+    CPy_DECREF(cpy_r_r178);
+    goto CPyL128;
 }
 
 PyObject *CPyPy_currency____to_wei(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
@@ -19452,7 +19452,7 @@ PyObject *CPyDef_currency___from_wei(CPyTagged cpy_r_number, PyObject *cpy_r_uni
     if (likely(PyUnicode_Check(cpy_r_r3)))
         cpy_r_r4 = cpy_r_r3;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "from_wei", 104, CPyStatic_currency___globals, "str", cpy_r_r3);
+        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "from_wei", 105, CPyStatic_currency___globals, "str", cpy_r_r3);
         goto CPyL22;
     }
     cpy_r_r5 = CPyStatic_currency___globals;
@@ -19465,7 +19465,7 @@ PyObject *CPyDef_currency___from_wei(CPyTagged cpy_r_number, PyObject *cpy_r_uni
     if (likely(PyDict_Check(cpy_r_r7)))
         cpy_r_r8 = cpy_r_r7;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "from_wei", 104, CPyStatic_currency___globals, "dict", cpy_r_r7);
+        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "from_wei", 105, CPyStatic_currency___globals, "dict", cpy_r_r7);
         goto CPyL23;
     }
     cpy_r_r9 = PyDict_Contains(cpy_r_r8, cpy_r_r4);
@@ -19491,7 +19491,7 @@ PyObject *CPyDef_currency___from_wei(CPyTagged cpy_r_number, PyObject *cpy_r_uni
     if (likely(PyDict_Check(cpy_r_r17)))
         cpy_r_r18 = cpy_r_r17;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "from_wei", 105, CPyStatic_currency___globals, "dict", cpy_r_r17);
+        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "from_wei", 106, CPyStatic_currency___globals, "dict", cpy_r_r17);
         goto CPyL22;
     }
     cpy_r_r19 = CPyDict_KeysView(cpy_r_r18);
@@ -19546,7 +19546,7 @@ CPyL15: ;
     if (likely(PyDict_Check(cpy_r_r30)))
         cpy_r_r31 = cpy_r_r30;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "from_wei", 107, CPyStatic_currency___globals, "dict", cpy_r_r30);
+        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "from_wei", 108, CPyStatic_currency___globals, "dict", cpy_r_r30);
         goto CPyL22;
     }
     cpy_r_r32 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'lower' */
@@ -19560,7 +19560,7 @@ CPyL15: ;
     if (likely(PyUnicode_Check(cpy_r_r35)))
         cpy_r_r36 = cpy_r_r35;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "from_wei", 107, CPyStatic_currency___globals, "str", cpy_r_r35);
+        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "from_wei", 108, CPyStatic_currency___globals, "str", cpy_r_r35);
         goto CPyL25;
     }
     cpy_r_r37 = CPyDict_GetItem(cpy_r_r31, cpy_r_r36);
@@ -19668,7 +19668,7 @@ CPyTagged CPyDef_currency___to_wei(PyObject *cpy_r_number, PyObject *cpy_r_unit)
     if (likely(PyUnicode_Check(cpy_r_r3)))
         cpy_r_r4 = cpy_r_r3;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "to_wei", 116, CPyStatic_currency___globals, "str", cpy_r_r3);
+        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "to_wei", 117, CPyStatic_currency___globals, "str", cpy_r_r3);
         goto CPyL22;
     }
     cpy_r_r5 = CPyStatic_currency___globals;
@@ -19681,7 +19681,7 @@ CPyTagged CPyDef_currency___to_wei(PyObject *cpy_r_number, PyObject *cpy_r_unit)
     if (likely(PyDict_Check(cpy_r_r7)))
         cpy_r_r8 = cpy_r_r7;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "to_wei", 116, CPyStatic_currency___globals, "dict", cpy_r_r7);
+        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "to_wei", 117, CPyStatic_currency___globals, "dict", cpy_r_r7);
         goto CPyL23;
     }
     cpy_r_r9 = PyDict_Contains(cpy_r_r8, cpy_r_r4);
@@ -19707,7 +19707,7 @@ CPyTagged CPyDef_currency___to_wei(PyObject *cpy_r_number, PyObject *cpy_r_unit)
     if (likely(PyDict_Check(cpy_r_r17)))
         cpy_r_r18 = cpy_r_r17;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "to_wei", 117, CPyStatic_currency___globals, "dict", cpy_r_r17);
+        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "to_wei", 118, CPyStatic_currency___globals, "dict", cpy_r_r17);
         goto CPyL22;
     }
     cpy_r_r19 = CPyDict_KeysView(cpy_r_r18);
@@ -19762,7 +19762,7 @@ CPyL15: ;
     if (likely(PyDict_Check(cpy_r_r30)))
         cpy_r_r31 = cpy_r_r30;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "to_wei", 119, CPyStatic_currency___globals, "dict", cpy_r_r30);
+        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "to_wei", 120, CPyStatic_currency___globals, "dict", cpy_r_r30);
         goto CPyL22;
     }
     cpy_r_r32 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'lower' */
@@ -19776,7 +19776,7 @@ CPyL15: ;
     if (likely(PyUnicode_Check(cpy_r_r35)))
         cpy_r_r36 = cpy_r_r35;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "to_wei", 119, CPyStatic_currency___globals, "str", cpy_r_r35);
+        CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "to_wei", 120, CPyStatic_currency___globals, "str", cpy_r_r35);
         goto CPyL25;
     }
     cpy_r_r37 = CPyDict_GetItem(cpy_r_r31, cpy_r_r36);
@@ -20515,19 +20515,29 @@ char CPyDef_currency_____top_level__(void) {
     PyObject *cpy_r_r447;
     PyObject *cpy_r_r448;
     PyObject *cpy_r_r449;
-    PyObject *cpy_r_r450;
-    PyObject *cpy_r_r451;
+    PyObject **cpy_r_r451;
     PyObject *cpy_r_r452;
     PyObject *cpy_r_r453;
     PyObject *cpy_r_r454;
-    tuple_T4OOOO cpy_r_r455;
-    PyObject *cpy_r_r456;
+    int32_t cpy_r_r455;
+    char cpy_r_r456;
     PyObject *cpy_r_r457;
     PyObject *cpy_r_r458;
     PyObject *cpy_r_r459;
-    int32_t cpy_r_r460;
-    char cpy_r_r461;
-    char cpy_r_r462;
+    PyObject *cpy_r_r460;
+    PyObject *cpy_r_r461;
+    PyObject *cpy_r_r462;
+    PyObject *cpy_r_r463;
+    PyObject *cpy_r_r464;
+    PyObject *cpy_r_r465;
+    tuple_T4OOOO cpy_r_r466;
+    PyObject *cpy_r_r467;
+    PyObject *cpy_r_r468;
+    PyObject *cpy_r_r469;
+    PyObject *cpy_r_r470;
+    int32_t cpy_r_r471;
+    char cpy_r_r472;
+    char cpy_r_r473;
     cpy_r_r0 = CPyModule_builtins;
     cpy_r_r1 = (PyObject *)&_Py_NoneStruct;
     cpy_r_r2 = cpy_r_r0 != cpy_r_r1;
@@ -20536,7 +20546,7 @@ char CPyDef_currency_____top_level__(void) {
     cpy_r_r4 = PyImport_Import(cpy_r_r3);
     if (unlikely(cpy_r_r4 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", -1, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     CPyModule_builtins = cpy_r_r4;
     CPy_INCREF(CPyModule_builtins);
@@ -20552,14 +20562,14 @@ CPyL3: ;
     cpy_r_r12 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils/currency.py' */
     cpy_r_r13 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '<module>' */
     cpy_r_r14 = CPyImport_ImportMany(cpy_r_r10, cpy_r_r7, cpy_r_r11, cpy_r_r12, cpy_r_r13, cpy_r_r9);
-    if (!cpy_r_r14) goto CPyL158;
+    if (!cpy_r_r14) goto CPyL161;
     cpy_r_r15 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('localcontext',) */
     cpy_r_r16 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'decimal' */
     cpy_r_r17 = CPyStatic_currency___globals;
     cpy_r_r18 = CPyImport_ImportFromMany(cpy_r_r16, cpy_r_r15, cpy_r_r15, cpy_r_r17);
     if (unlikely(cpy_r_r18 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     CPyModule_decimal = cpy_r_r18;
     CPy_INCREF(CPyModule_decimal);
@@ -20570,7 +20580,7 @@ CPyL3: ;
     cpy_r_r22 = CPyImport_ImportFromMany(cpy_r_r20, cpy_r_r19, cpy_r_r19, cpy_r_r21);
     if (unlikely(cpy_r_r22 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     CPyModule_typing = cpy_r_r22;
     CPy_INCREF(CPyModule_typing);
@@ -20581,7 +20591,7 @@ CPyL3: ;
     cpy_r_r26 = CPyImport_ImportFromMany(cpy_r_r24, cpy_r_r23, cpy_r_r23, cpy_r_r25);
     if (unlikely(cpy_r_r26 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     CPyModule_faster_eth_utils___types = cpy_r_r26;
     CPy_INCREF(CPyModule_faster_eth_utils___types);
@@ -20592,7 +20602,7 @@ CPyL3: ;
     cpy_r_r30 = CPyImport_ImportFromMany(cpy_r_r28, cpy_r_r27, cpy_r_r27, cpy_r_r29);
     if (unlikely(cpy_r_r30 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     CPyModule_faster_eth_utils___units = cpy_r_r30;
     CPy_INCREF(CPyModule_faster_eth_utils___units);
@@ -20603,12 +20613,12 @@ CPyL3: ;
     cpy_r_r34 = CPyType_FromTemplate(cpy_r_r33, cpy_r_r31, cpy_r_r32);
     if (unlikely(cpy_r_r34 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r35 = CPyDef_currency___denoms_trait_vtable_setup();
     if (unlikely(cpy_r_r35 == 2)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", -1, CPyStatic_currency___globals);
-        goto CPyL159;
+        goto CPyL162;
     }
     cpy_r_r36 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__mypyc_attrs__' */
     cpy_r_r37 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'wei' */
@@ -20637,14 +20647,14 @@ CPyL3: ;
     cpy_r_r60 = PyTuple_Pack(23, cpy_r_r37, cpy_r_r38, cpy_r_r39, cpy_r_r40, cpy_r_r41, cpy_r_r42, cpy_r_r43, cpy_r_r44, cpy_r_r45, cpy_r_r46, cpy_r_r47, cpy_r_r48, cpy_r_r49, cpy_r_r50, cpy_r_r51, cpy_r_r52, cpy_r_r53, cpy_r_r54, cpy_r_r55, cpy_r_r56, cpy_r_r57, cpy_r_r58, cpy_r_r59);
     if (unlikely(cpy_r_r60 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL159;
+        goto CPyL162;
     }
     cpy_r_r61 = PyObject_SetAttr(cpy_r_r34, cpy_r_r36, cpy_r_r60);
     CPy_DECREF(cpy_r_r60);
     cpy_r_r62 = cpy_r_r61 >= 0;
     if (unlikely(!cpy_r_r62)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL159;
+        goto CPyL162;
     }
     CPyType_currency___denoms = (PyTypeObject *)cpy_r_r34;
     CPy_INCREF(CPyType_currency___denoms);
@@ -20655,7 +20665,7 @@ CPyL3: ;
     cpy_r_r66 = cpy_r_r65 >= 0;
     if (unlikely(!cpy_r_r66)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r67 = (PyObject *)CPyType_currency___denoms;
     cpy_r_r68 = CPyStatic_currency___globals;
@@ -20663,20 +20673,20 @@ CPyL3: ;
     cpy_r_r70 = CPyDict_GetItem(cpy_r_r68, cpy_r_r69);
     if (unlikely(cpy_r_r70 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r70)))
         cpy_r_r71 = cpy_r_r70;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 22, CPyStatic_currency___globals, "dict", cpy_r_r70);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r72 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'wei' */
     cpy_r_r73 = CPyDict_GetItem(cpy_r_r71, cpy_r_r72);
     CPy_DECREF(cpy_r_r71);
     if (unlikely(cpy_r_r73 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r74 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r75[1] = {cpy_r_r73};
@@ -20684,7 +20694,7 @@ CPyL3: ;
     cpy_r_r77 = PyObject_Vectorcall(cpy_r_r74, cpy_r_r76, 1, 0);
     if (unlikely(cpy_r_r77 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL160;
+        goto CPyL163;
     }
     CPy_DECREF(cpy_r_r73);
     if (likely(PyLong_Check(cpy_r_r77)))
@@ -20695,7 +20705,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r77);
     if (unlikely(cpy_r_r78 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r79 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'wei' */
     CPyTagged_INCREF(cpy_r_r78);
@@ -20705,7 +20715,7 @@ CPyL3: ;
     cpy_r_r82 = cpy_r_r81 >= 0;
     if (unlikely(!cpy_r_r82)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL161;
+        goto CPyL164;
     }
     CPyStatic_currency___denoms___wei = cpy_r_r78;
     CPyTagged_INCREF(CPyStatic_currency___denoms___wei);
@@ -20716,20 +20726,20 @@ CPyL3: ;
     cpy_r_r86 = CPyDict_GetItem(cpy_r_r84, cpy_r_r85);
     if (unlikely(cpy_r_r86 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r86)))
         cpy_r_r87 = cpy_r_r86;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 23, CPyStatic_currency___globals, "dict", cpy_r_r86);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r88 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'kwei' */
     cpy_r_r89 = CPyDict_GetItem(cpy_r_r87, cpy_r_r88);
     CPy_DECREF(cpy_r_r87);
     if (unlikely(cpy_r_r89 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r90 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r91[1] = {cpy_r_r89};
@@ -20737,7 +20747,7 @@ CPyL3: ;
     cpy_r_r93 = PyObject_Vectorcall(cpy_r_r90, cpy_r_r92, 1, 0);
     if (unlikely(cpy_r_r93 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL162;
+        goto CPyL165;
     }
     CPy_DECREF(cpy_r_r89);
     if (likely(PyLong_Check(cpy_r_r93)))
@@ -20748,7 +20758,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r93);
     if (unlikely(cpy_r_r94 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r95 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'kwei' */
     CPyTagged_INCREF(cpy_r_r94);
@@ -20758,7 +20768,7 @@ CPyL3: ;
     cpy_r_r98 = cpy_r_r97 >= 0;
     if (unlikely(!cpy_r_r98)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL163;
+        goto CPyL166;
     }
     CPyStatic_currency___denoms___kwei = cpy_r_r94;
     CPyTagged_INCREF(CPyStatic_currency___denoms___kwei);
@@ -20769,20 +20779,20 @@ CPyL3: ;
     cpy_r_r102 = CPyDict_GetItem(cpy_r_r100, cpy_r_r101);
     if (unlikely(cpy_r_r102 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r102)))
         cpy_r_r103 = cpy_r_r102;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 24, CPyStatic_currency___globals, "dict", cpy_r_r102);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r104 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'babbage' */
     cpy_r_r105 = CPyDict_GetItem(cpy_r_r103, cpy_r_r104);
     CPy_DECREF(cpy_r_r103);
     if (unlikely(cpy_r_r105 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r106 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r107[1] = {cpy_r_r105};
@@ -20790,7 +20800,7 @@ CPyL3: ;
     cpy_r_r109 = PyObject_Vectorcall(cpy_r_r106, cpy_r_r108, 1, 0);
     if (unlikely(cpy_r_r109 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL164;
+        goto CPyL167;
     }
     CPy_DECREF(cpy_r_r105);
     if (likely(PyLong_Check(cpy_r_r109)))
@@ -20801,7 +20811,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r109);
     if (unlikely(cpy_r_r110 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r111 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'babbage' */
     CPyTagged_INCREF(cpy_r_r110);
@@ -20811,7 +20821,7 @@ CPyL3: ;
     cpy_r_r114 = cpy_r_r113 >= 0;
     if (unlikely(!cpy_r_r114)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL165;
+        goto CPyL168;
     }
     CPyStatic_currency___denoms___babbage = cpy_r_r110;
     CPyTagged_INCREF(CPyStatic_currency___denoms___babbage);
@@ -20822,20 +20832,20 @@ CPyL3: ;
     cpy_r_r118 = CPyDict_GetItem(cpy_r_r116, cpy_r_r117);
     if (unlikely(cpy_r_r118 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r118)))
         cpy_r_r119 = cpy_r_r118;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 25, CPyStatic_currency___globals, "dict", cpy_r_r118);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r120 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'femtoether' */
     cpy_r_r121 = CPyDict_GetItem(cpy_r_r119, cpy_r_r120);
     CPy_DECREF(cpy_r_r119);
     if (unlikely(cpy_r_r121 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r122 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r123[1] = {cpy_r_r121};
@@ -20843,7 +20853,7 @@ CPyL3: ;
     cpy_r_r125 = PyObject_Vectorcall(cpy_r_r122, cpy_r_r124, 1, 0);
     if (unlikely(cpy_r_r125 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL166;
+        goto CPyL169;
     }
     CPy_DECREF(cpy_r_r121);
     if (likely(PyLong_Check(cpy_r_r125)))
@@ -20854,7 +20864,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r125);
     if (unlikely(cpy_r_r126 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r127 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'femtoether' */
     CPyTagged_INCREF(cpy_r_r126);
@@ -20864,7 +20874,7 @@ CPyL3: ;
     cpy_r_r130 = cpy_r_r129 >= 0;
     if (unlikely(!cpy_r_r130)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL167;
+        goto CPyL170;
     }
     CPyStatic_currency___denoms___femtoether = cpy_r_r126;
     CPyTagged_INCREF(CPyStatic_currency___denoms___femtoether);
@@ -20875,20 +20885,20 @@ CPyL3: ;
     cpy_r_r134 = CPyDict_GetItem(cpy_r_r132, cpy_r_r133);
     if (unlikely(cpy_r_r134 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r134)))
         cpy_r_r135 = cpy_r_r134;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 26, CPyStatic_currency___globals, "dict", cpy_r_r134);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r136 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'mwei' */
     cpy_r_r137 = CPyDict_GetItem(cpy_r_r135, cpy_r_r136);
     CPy_DECREF(cpy_r_r135);
     if (unlikely(cpy_r_r137 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r138 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r139[1] = {cpy_r_r137};
@@ -20896,7 +20906,7 @@ CPyL3: ;
     cpy_r_r141 = PyObject_Vectorcall(cpy_r_r138, cpy_r_r140, 1, 0);
     if (unlikely(cpy_r_r141 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL168;
+        goto CPyL171;
     }
     CPy_DECREF(cpy_r_r137);
     if (likely(PyLong_Check(cpy_r_r141)))
@@ -20907,7 +20917,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r141);
     if (unlikely(cpy_r_r142 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r143 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'mwei' */
     CPyTagged_INCREF(cpy_r_r142);
@@ -20917,7 +20927,7 @@ CPyL3: ;
     cpy_r_r146 = cpy_r_r145 >= 0;
     if (unlikely(!cpy_r_r146)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL169;
+        goto CPyL172;
     }
     CPyStatic_currency___denoms___mwei = cpy_r_r142;
     CPyTagged_INCREF(CPyStatic_currency___denoms___mwei);
@@ -20928,20 +20938,20 @@ CPyL3: ;
     cpy_r_r150 = CPyDict_GetItem(cpy_r_r148, cpy_r_r149);
     if (unlikely(cpy_r_r150 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r150)))
         cpy_r_r151 = cpy_r_r150;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 27, CPyStatic_currency___globals, "dict", cpy_r_r150);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r152 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'lovelace' */
     cpy_r_r153 = CPyDict_GetItem(cpy_r_r151, cpy_r_r152);
     CPy_DECREF(cpy_r_r151);
     if (unlikely(cpy_r_r153 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r154 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r155[1] = {cpy_r_r153};
@@ -20949,7 +20959,7 @@ CPyL3: ;
     cpy_r_r157 = PyObject_Vectorcall(cpy_r_r154, cpy_r_r156, 1, 0);
     if (unlikely(cpy_r_r157 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL170;
+        goto CPyL173;
     }
     CPy_DECREF(cpy_r_r153);
     if (likely(PyLong_Check(cpy_r_r157)))
@@ -20960,7 +20970,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r157);
     if (unlikely(cpy_r_r158 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r159 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'lovelace' */
     CPyTagged_INCREF(cpy_r_r158);
@@ -20970,7 +20980,7 @@ CPyL3: ;
     cpy_r_r162 = cpy_r_r161 >= 0;
     if (unlikely(!cpy_r_r162)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL171;
+        goto CPyL174;
     }
     CPyStatic_currency___denoms___lovelace = cpy_r_r158;
     CPyTagged_INCREF(CPyStatic_currency___denoms___lovelace);
@@ -20981,20 +20991,20 @@ CPyL3: ;
     cpy_r_r166 = CPyDict_GetItem(cpy_r_r164, cpy_r_r165);
     if (unlikely(cpy_r_r166 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r166)))
         cpy_r_r167 = cpy_r_r166;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 28, CPyStatic_currency___globals, "dict", cpy_r_r166);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r168 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'picoether' */
     cpy_r_r169 = CPyDict_GetItem(cpy_r_r167, cpy_r_r168);
     CPy_DECREF(cpy_r_r167);
     if (unlikely(cpy_r_r169 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r170 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r171[1] = {cpy_r_r169};
@@ -21002,7 +21012,7 @@ CPyL3: ;
     cpy_r_r173 = PyObject_Vectorcall(cpy_r_r170, cpy_r_r172, 1, 0);
     if (unlikely(cpy_r_r173 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL172;
+        goto CPyL175;
     }
     CPy_DECREF(cpy_r_r169);
     if (likely(PyLong_Check(cpy_r_r173)))
@@ -21013,7 +21023,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r173);
     if (unlikely(cpy_r_r174 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r175 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'picoether' */
     CPyTagged_INCREF(cpy_r_r174);
@@ -21023,7 +21033,7 @@ CPyL3: ;
     cpy_r_r178 = cpy_r_r177 >= 0;
     if (unlikely(!cpy_r_r178)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL173;
+        goto CPyL176;
     }
     CPyStatic_currency___denoms___picoether = cpy_r_r174;
     CPyTagged_INCREF(CPyStatic_currency___denoms___picoether);
@@ -21034,20 +21044,20 @@ CPyL3: ;
     cpy_r_r182 = CPyDict_GetItem(cpy_r_r180, cpy_r_r181);
     if (unlikely(cpy_r_r182 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r182)))
         cpy_r_r183 = cpy_r_r182;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 29, CPyStatic_currency___globals, "dict", cpy_r_r182);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r184 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'gwei' */
     cpy_r_r185 = CPyDict_GetItem(cpy_r_r183, cpy_r_r184);
     CPy_DECREF(cpy_r_r183);
     if (unlikely(cpy_r_r185 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r186 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r187[1] = {cpy_r_r185};
@@ -21055,7 +21065,7 @@ CPyL3: ;
     cpy_r_r189 = PyObject_Vectorcall(cpy_r_r186, cpy_r_r188, 1, 0);
     if (unlikely(cpy_r_r189 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL174;
+        goto CPyL177;
     }
     CPy_DECREF(cpy_r_r185);
     if (likely(PyLong_Check(cpy_r_r189)))
@@ -21066,7 +21076,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r189);
     if (unlikely(cpy_r_r190 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r191 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'gwei' */
     CPyTagged_INCREF(cpy_r_r190);
@@ -21076,7 +21086,7 @@ CPyL3: ;
     cpy_r_r194 = cpy_r_r193 >= 0;
     if (unlikely(!cpy_r_r194)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL175;
+        goto CPyL178;
     }
     CPyStatic_currency___denoms___gwei = cpy_r_r190;
     CPyTagged_INCREF(CPyStatic_currency___denoms___gwei);
@@ -21087,20 +21097,20 @@ CPyL3: ;
     cpy_r_r198 = CPyDict_GetItem(cpy_r_r196, cpy_r_r197);
     if (unlikely(cpy_r_r198 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r198)))
         cpy_r_r199 = cpy_r_r198;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 30, CPyStatic_currency___globals, "dict", cpy_r_r198);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r200 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'shannon' */
     cpy_r_r201 = CPyDict_GetItem(cpy_r_r199, cpy_r_r200);
     CPy_DECREF(cpy_r_r199);
     if (unlikely(cpy_r_r201 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r202 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r203[1] = {cpy_r_r201};
@@ -21108,7 +21118,7 @@ CPyL3: ;
     cpy_r_r205 = PyObject_Vectorcall(cpy_r_r202, cpy_r_r204, 1, 0);
     if (unlikely(cpy_r_r205 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL176;
+        goto CPyL179;
     }
     CPy_DECREF(cpy_r_r201);
     if (likely(PyLong_Check(cpy_r_r205)))
@@ -21119,7 +21129,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r205);
     if (unlikely(cpy_r_r206 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r207 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'shannon' */
     CPyTagged_INCREF(cpy_r_r206);
@@ -21129,7 +21139,7 @@ CPyL3: ;
     cpy_r_r210 = cpy_r_r209 >= 0;
     if (unlikely(!cpy_r_r210)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL177;
+        goto CPyL180;
     }
     CPyStatic_currency___denoms___shannon = cpy_r_r206;
     CPyTagged_INCREF(CPyStatic_currency___denoms___shannon);
@@ -21140,20 +21150,20 @@ CPyL3: ;
     cpy_r_r214 = CPyDict_GetItem(cpy_r_r212, cpy_r_r213);
     if (unlikely(cpy_r_r214 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r214)))
         cpy_r_r215 = cpy_r_r214;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 31, CPyStatic_currency___globals, "dict", cpy_r_r214);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r216 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'nanoether' */
     cpy_r_r217 = CPyDict_GetItem(cpy_r_r215, cpy_r_r216);
     CPy_DECREF(cpy_r_r215);
     if (unlikely(cpy_r_r217 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r218 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r219[1] = {cpy_r_r217};
@@ -21161,7 +21171,7 @@ CPyL3: ;
     cpy_r_r221 = PyObject_Vectorcall(cpy_r_r218, cpy_r_r220, 1, 0);
     if (unlikely(cpy_r_r221 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL178;
+        goto CPyL181;
     }
     CPy_DECREF(cpy_r_r217);
     if (likely(PyLong_Check(cpy_r_r221)))
@@ -21172,7 +21182,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r221);
     if (unlikely(cpy_r_r222 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r223 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'nanoether' */
     CPyTagged_INCREF(cpy_r_r222);
@@ -21182,7 +21192,7 @@ CPyL3: ;
     cpy_r_r226 = cpy_r_r225 >= 0;
     if (unlikely(!cpy_r_r226)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL179;
+        goto CPyL182;
     }
     CPyStatic_currency___denoms___nanoether = cpy_r_r222;
     CPyTagged_INCREF(CPyStatic_currency___denoms___nanoether);
@@ -21193,20 +21203,20 @@ CPyL3: ;
     cpy_r_r230 = CPyDict_GetItem(cpy_r_r228, cpy_r_r229);
     if (unlikely(cpy_r_r230 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r230)))
         cpy_r_r231 = cpy_r_r230;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 32, CPyStatic_currency___globals, "dict", cpy_r_r230);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r232 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'nano' */
     cpy_r_r233 = CPyDict_GetItem(cpy_r_r231, cpy_r_r232);
     CPy_DECREF(cpy_r_r231);
     if (unlikely(cpy_r_r233 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r234 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r235[1] = {cpy_r_r233};
@@ -21214,7 +21224,7 @@ CPyL3: ;
     cpy_r_r237 = PyObject_Vectorcall(cpy_r_r234, cpy_r_r236, 1, 0);
     if (unlikely(cpy_r_r237 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL180;
+        goto CPyL183;
     }
     CPy_DECREF(cpy_r_r233);
     if (likely(PyLong_Check(cpy_r_r237)))
@@ -21225,7 +21235,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r237);
     if (unlikely(cpy_r_r238 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r239 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'nano' */
     CPyTagged_INCREF(cpy_r_r238);
@@ -21235,7 +21245,7 @@ CPyL3: ;
     cpy_r_r242 = cpy_r_r241 >= 0;
     if (unlikely(!cpy_r_r242)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL181;
+        goto CPyL184;
     }
     CPyStatic_currency___denoms___nano = cpy_r_r238;
     CPyTagged_INCREF(CPyStatic_currency___denoms___nano);
@@ -21246,20 +21256,20 @@ CPyL3: ;
     cpy_r_r246 = CPyDict_GetItem(cpy_r_r244, cpy_r_r245);
     if (unlikely(cpy_r_r246 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r246)))
         cpy_r_r247 = cpy_r_r246;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 33, CPyStatic_currency___globals, "dict", cpy_r_r246);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r248 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'szabo' */
     cpy_r_r249 = CPyDict_GetItem(cpy_r_r247, cpy_r_r248);
     CPy_DECREF(cpy_r_r247);
     if (unlikely(cpy_r_r249 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r250 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r251[1] = {cpy_r_r249};
@@ -21267,7 +21277,7 @@ CPyL3: ;
     cpy_r_r253 = PyObject_Vectorcall(cpy_r_r250, cpy_r_r252, 1, 0);
     if (unlikely(cpy_r_r253 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL182;
+        goto CPyL185;
     }
     CPy_DECREF(cpy_r_r249);
     if (likely(PyLong_Check(cpy_r_r253)))
@@ -21278,7 +21288,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r253);
     if (unlikely(cpy_r_r254 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r255 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'szabo' */
     CPyTagged_INCREF(cpy_r_r254);
@@ -21288,7 +21298,7 @@ CPyL3: ;
     cpy_r_r258 = cpy_r_r257 >= 0;
     if (unlikely(!cpy_r_r258)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL183;
+        goto CPyL186;
     }
     CPyStatic_currency___denoms___szabo = cpy_r_r254;
     CPyTagged_INCREF(CPyStatic_currency___denoms___szabo);
@@ -21299,20 +21309,20 @@ CPyL3: ;
     cpy_r_r262 = CPyDict_GetItem(cpy_r_r260, cpy_r_r261);
     if (unlikely(cpy_r_r262 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r262)))
         cpy_r_r263 = cpy_r_r262;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 34, CPyStatic_currency___globals, "dict", cpy_r_r262);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r264 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'microether' */
     cpy_r_r265 = CPyDict_GetItem(cpy_r_r263, cpy_r_r264);
     CPy_DECREF(cpy_r_r263);
     if (unlikely(cpy_r_r265 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r266 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r267[1] = {cpy_r_r265};
@@ -21320,7 +21330,7 @@ CPyL3: ;
     cpy_r_r269 = PyObject_Vectorcall(cpy_r_r266, cpy_r_r268, 1, 0);
     if (unlikely(cpy_r_r269 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL184;
+        goto CPyL187;
     }
     CPy_DECREF(cpy_r_r265);
     if (likely(PyLong_Check(cpy_r_r269)))
@@ -21331,7 +21341,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r269);
     if (unlikely(cpy_r_r270 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r271 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'microether' */
     CPyTagged_INCREF(cpy_r_r270);
@@ -21341,7 +21351,7 @@ CPyL3: ;
     cpy_r_r274 = cpy_r_r273 >= 0;
     if (unlikely(!cpy_r_r274)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL185;
+        goto CPyL188;
     }
     CPyStatic_currency___denoms___microether = cpy_r_r270;
     CPyTagged_INCREF(CPyStatic_currency___denoms___microether);
@@ -21352,20 +21362,20 @@ CPyL3: ;
     cpy_r_r278 = CPyDict_GetItem(cpy_r_r276, cpy_r_r277);
     if (unlikely(cpy_r_r278 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r278)))
         cpy_r_r279 = cpy_r_r278;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 35, CPyStatic_currency___globals, "dict", cpy_r_r278);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r280 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'micro' */
     cpy_r_r281 = CPyDict_GetItem(cpy_r_r279, cpy_r_r280);
     CPy_DECREF(cpy_r_r279);
     if (unlikely(cpy_r_r281 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r282 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r283[1] = {cpy_r_r281};
@@ -21373,7 +21383,7 @@ CPyL3: ;
     cpy_r_r285 = PyObject_Vectorcall(cpy_r_r282, cpy_r_r284, 1, 0);
     if (unlikely(cpy_r_r285 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL186;
+        goto CPyL189;
     }
     CPy_DECREF(cpy_r_r281);
     if (likely(PyLong_Check(cpy_r_r285)))
@@ -21384,7 +21394,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r285);
     if (unlikely(cpy_r_r286 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r287 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'micro' */
     CPyTagged_INCREF(cpy_r_r286);
@@ -21394,7 +21404,7 @@ CPyL3: ;
     cpy_r_r290 = cpy_r_r289 >= 0;
     if (unlikely(!cpy_r_r290)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL187;
+        goto CPyL190;
     }
     CPyStatic_currency___denoms___micro = cpy_r_r286;
     CPyTagged_INCREF(CPyStatic_currency___denoms___micro);
@@ -21405,20 +21415,20 @@ CPyL3: ;
     cpy_r_r294 = CPyDict_GetItem(cpy_r_r292, cpy_r_r293);
     if (unlikely(cpy_r_r294 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r294)))
         cpy_r_r295 = cpy_r_r294;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 36, CPyStatic_currency___globals, "dict", cpy_r_r294);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r296 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'finney' */
     cpy_r_r297 = CPyDict_GetItem(cpy_r_r295, cpy_r_r296);
     CPy_DECREF(cpy_r_r295);
     if (unlikely(cpy_r_r297 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r298 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r299[1] = {cpy_r_r297};
@@ -21426,7 +21436,7 @@ CPyL3: ;
     cpy_r_r301 = PyObject_Vectorcall(cpy_r_r298, cpy_r_r300, 1, 0);
     if (unlikely(cpy_r_r301 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL188;
+        goto CPyL191;
     }
     CPy_DECREF(cpy_r_r297);
     if (likely(PyLong_Check(cpy_r_r301)))
@@ -21437,7 +21447,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r301);
     if (unlikely(cpy_r_r302 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r303 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'finney' */
     CPyTagged_INCREF(cpy_r_r302);
@@ -21447,7 +21457,7 @@ CPyL3: ;
     cpy_r_r306 = cpy_r_r305 >= 0;
     if (unlikely(!cpy_r_r306)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL189;
+        goto CPyL192;
     }
     CPyStatic_currency___denoms___finney = cpy_r_r302;
     CPyTagged_INCREF(CPyStatic_currency___denoms___finney);
@@ -21458,20 +21468,20 @@ CPyL3: ;
     cpy_r_r310 = CPyDict_GetItem(cpy_r_r308, cpy_r_r309);
     if (unlikely(cpy_r_r310 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r310)))
         cpy_r_r311 = cpy_r_r310;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 37, CPyStatic_currency___globals, "dict", cpy_r_r310);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r312 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'milliether' */
     cpy_r_r313 = CPyDict_GetItem(cpy_r_r311, cpy_r_r312);
     CPy_DECREF(cpy_r_r311);
     if (unlikely(cpy_r_r313 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r314 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r315[1] = {cpy_r_r313};
@@ -21479,7 +21489,7 @@ CPyL3: ;
     cpy_r_r317 = PyObject_Vectorcall(cpy_r_r314, cpy_r_r316, 1, 0);
     if (unlikely(cpy_r_r317 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL190;
+        goto CPyL193;
     }
     CPy_DECREF(cpy_r_r313);
     if (likely(PyLong_Check(cpy_r_r317)))
@@ -21490,7 +21500,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r317);
     if (unlikely(cpy_r_r318 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r319 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'milliether' */
     CPyTagged_INCREF(cpy_r_r318);
@@ -21500,7 +21510,7 @@ CPyL3: ;
     cpy_r_r322 = cpy_r_r321 >= 0;
     if (unlikely(!cpy_r_r322)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL191;
+        goto CPyL194;
     }
     CPyStatic_currency___denoms___milliether = cpy_r_r318;
     CPyTagged_INCREF(CPyStatic_currency___denoms___milliether);
@@ -21511,20 +21521,20 @@ CPyL3: ;
     cpy_r_r326 = CPyDict_GetItem(cpy_r_r324, cpy_r_r325);
     if (unlikely(cpy_r_r326 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r326)))
         cpy_r_r327 = cpy_r_r326;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 38, CPyStatic_currency___globals, "dict", cpy_r_r326);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r328 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'milli' */
     cpy_r_r329 = CPyDict_GetItem(cpy_r_r327, cpy_r_r328);
     CPy_DECREF(cpy_r_r327);
     if (unlikely(cpy_r_r329 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r330 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r331[1] = {cpy_r_r329};
@@ -21532,7 +21542,7 @@ CPyL3: ;
     cpy_r_r333 = PyObject_Vectorcall(cpy_r_r330, cpy_r_r332, 1, 0);
     if (unlikely(cpy_r_r333 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL192;
+        goto CPyL195;
     }
     CPy_DECREF(cpy_r_r329);
     if (likely(PyLong_Check(cpy_r_r333)))
@@ -21543,7 +21553,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r333);
     if (unlikely(cpy_r_r334 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r335 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'milli' */
     CPyTagged_INCREF(cpy_r_r334);
@@ -21553,7 +21563,7 @@ CPyL3: ;
     cpy_r_r338 = cpy_r_r337 >= 0;
     if (unlikely(!cpy_r_r338)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL193;
+        goto CPyL196;
     }
     CPyStatic_currency___denoms___milli = cpy_r_r334;
     CPyTagged_INCREF(CPyStatic_currency___denoms___milli);
@@ -21564,20 +21574,20 @@ CPyL3: ;
     cpy_r_r342 = CPyDict_GetItem(cpy_r_r340, cpy_r_r341);
     if (unlikely(cpy_r_r342 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r342)))
         cpy_r_r343 = cpy_r_r342;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 39, CPyStatic_currency___globals, "dict", cpy_r_r342);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r344 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ether' */
     cpy_r_r345 = CPyDict_GetItem(cpy_r_r343, cpy_r_r344);
     CPy_DECREF(cpy_r_r343);
     if (unlikely(cpy_r_r345 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r346 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r347[1] = {cpy_r_r345};
@@ -21585,7 +21595,7 @@ CPyL3: ;
     cpy_r_r349 = PyObject_Vectorcall(cpy_r_r346, cpy_r_r348, 1, 0);
     if (unlikely(cpy_r_r349 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL194;
+        goto CPyL197;
     }
     CPy_DECREF(cpy_r_r345);
     if (likely(PyLong_Check(cpy_r_r349)))
@@ -21596,7 +21606,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r349);
     if (unlikely(cpy_r_r350 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r351 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ether' */
     CPyTagged_INCREF(cpy_r_r350);
@@ -21606,7 +21616,7 @@ CPyL3: ;
     cpy_r_r354 = cpy_r_r353 >= 0;
     if (unlikely(!cpy_r_r354)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL195;
+        goto CPyL198;
     }
     CPyStatic_currency___denoms___ether = cpy_r_r350;
     CPyTagged_INCREF(CPyStatic_currency___denoms___ether);
@@ -21617,20 +21627,20 @@ CPyL3: ;
     cpy_r_r358 = CPyDict_GetItem(cpy_r_r356, cpy_r_r357);
     if (unlikely(cpy_r_r358 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r358)))
         cpy_r_r359 = cpy_r_r358;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 40, CPyStatic_currency___globals, "dict", cpy_r_r358);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r360 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'kether' */
     cpy_r_r361 = CPyDict_GetItem(cpy_r_r359, cpy_r_r360);
     CPy_DECREF(cpy_r_r359);
     if (unlikely(cpy_r_r361 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r362 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r363[1] = {cpy_r_r361};
@@ -21638,7 +21648,7 @@ CPyL3: ;
     cpy_r_r365 = PyObject_Vectorcall(cpy_r_r362, cpy_r_r364, 1, 0);
     if (unlikely(cpy_r_r365 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL196;
+        goto CPyL199;
     }
     CPy_DECREF(cpy_r_r361);
     if (likely(PyLong_Check(cpy_r_r365)))
@@ -21649,7 +21659,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r365);
     if (unlikely(cpy_r_r366 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r367 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'kether' */
     CPyTagged_INCREF(cpy_r_r366);
@@ -21659,7 +21669,7 @@ CPyL3: ;
     cpy_r_r370 = cpy_r_r369 >= 0;
     if (unlikely(!cpy_r_r370)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL197;
+        goto CPyL200;
     }
     CPyStatic_currency___denoms___kether = cpy_r_r366;
     CPyTagged_INCREF(CPyStatic_currency___denoms___kether);
@@ -21670,20 +21680,20 @@ CPyL3: ;
     cpy_r_r374 = CPyDict_GetItem(cpy_r_r372, cpy_r_r373);
     if (unlikely(cpy_r_r374 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r374)))
         cpy_r_r375 = cpy_r_r374;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 41, CPyStatic_currency___globals, "dict", cpy_r_r374);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r376 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'grand' */
     cpy_r_r377 = CPyDict_GetItem(cpy_r_r375, cpy_r_r376);
     CPy_DECREF(cpy_r_r375);
     if (unlikely(cpy_r_r377 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r378 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r379[1] = {cpy_r_r377};
@@ -21691,7 +21701,7 @@ CPyL3: ;
     cpy_r_r381 = PyObject_Vectorcall(cpy_r_r378, cpy_r_r380, 1, 0);
     if (unlikely(cpy_r_r381 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL198;
+        goto CPyL201;
     }
     CPy_DECREF(cpy_r_r377);
     if (likely(PyLong_Check(cpy_r_r381)))
@@ -21702,7 +21712,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r381);
     if (unlikely(cpy_r_r382 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r383 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'grand' */
     CPyTagged_INCREF(cpy_r_r382);
@@ -21712,7 +21722,7 @@ CPyL3: ;
     cpy_r_r386 = cpy_r_r385 >= 0;
     if (unlikely(!cpy_r_r386)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL199;
+        goto CPyL202;
     }
     CPyStatic_currency___denoms___grand = cpy_r_r382;
     CPyTagged_INCREF(CPyStatic_currency___denoms___grand);
@@ -21723,20 +21733,20 @@ CPyL3: ;
     cpy_r_r390 = CPyDict_GetItem(cpy_r_r388, cpy_r_r389);
     if (unlikely(cpy_r_r390 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r390)))
         cpy_r_r391 = cpy_r_r390;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 42, CPyStatic_currency___globals, "dict", cpy_r_r390);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r392 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'mether' */
     cpy_r_r393 = CPyDict_GetItem(cpy_r_r391, cpy_r_r392);
     CPy_DECREF(cpy_r_r391);
     if (unlikely(cpy_r_r393 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r394 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r395[1] = {cpy_r_r393};
@@ -21744,7 +21754,7 @@ CPyL3: ;
     cpy_r_r397 = PyObject_Vectorcall(cpy_r_r394, cpy_r_r396, 1, 0);
     if (unlikely(cpy_r_r397 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL200;
+        goto CPyL203;
     }
     CPy_DECREF(cpy_r_r393);
     if (likely(PyLong_Check(cpy_r_r397)))
@@ -21755,7 +21765,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r397);
     if (unlikely(cpy_r_r398 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r399 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'mether' */
     CPyTagged_INCREF(cpy_r_r398);
@@ -21765,7 +21775,7 @@ CPyL3: ;
     cpy_r_r402 = cpy_r_r401 >= 0;
     if (unlikely(!cpy_r_r402)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL201;
+        goto CPyL204;
     }
     CPyStatic_currency___denoms___mether = cpy_r_r398;
     CPyTagged_INCREF(CPyStatic_currency___denoms___mether);
@@ -21776,20 +21786,20 @@ CPyL3: ;
     cpy_r_r406 = CPyDict_GetItem(cpy_r_r404, cpy_r_r405);
     if (unlikely(cpy_r_r406 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r406)))
         cpy_r_r407 = cpy_r_r406;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 43, CPyStatic_currency___globals, "dict", cpy_r_r406);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r408 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'gether' */
     cpy_r_r409 = CPyDict_GetItem(cpy_r_r407, cpy_r_r408);
     CPy_DECREF(cpy_r_r407);
     if (unlikely(cpy_r_r409 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r410 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r411[1] = {cpy_r_r409};
@@ -21797,7 +21807,7 @@ CPyL3: ;
     cpy_r_r413 = PyObject_Vectorcall(cpy_r_r410, cpy_r_r412, 1, 0);
     if (unlikely(cpy_r_r413 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL202;
+        goto CPyL205;
     }
     CPy_DECREF(cpy_r_r409);
     if (likely(PyLong_Check(cpy_r_r413)))
@@ -21808,7 +21818,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r413);
     if (unlikely(cpy_r_r414 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r415 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'gether' */
     CPyTagged_INCREF(cpy_r_r414);
@@ -21818,7 +21828,7 @@ CPyL3: ;
     cpy_r_r418 = cpy_r_r417 >= 0;
     if (unlikely(!cpy_r_r418)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL203;
+        goto CPyL206;
     }
     CPyStatic_currency___denoms___gether = cpy_r_r414;
     CPyTagged_INCREF(CPyStatic_currency___denoms___gether);
@@ -21829,20 +21839,20 @@ CPyL3: ;
     cpy_r_r422 = CPyDict_GetItem(cpy_r_r420, cpy_r_r421);
     if (unlikely(cpy_r_r422 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     if (likely(PyDict_Check(cpy_r_r422)))
         cpy_r_r423 = cpy_r_r422;
     else {
         CPy_TypeErrorTraceback("faster_eth_utils/currency.py", "<module>", 44, CPyStatic_currency___globals, "dict", cpy_r_r422);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r424 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'tether' */
     cpy_r_r425 = CPyDict_GetItem(cpy_r_r423, cpy_r_r424);
     CPy_DECREF(cpy_r_r423);
     if (unlikely(cpy_r_r425 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r426 = (PyObject *)&PyLong_Type;
     PyObject *cpy_r_r427[1] = {cpy_r_r425};
@@ -21850,7 +21860,7 @@ CPyL3: ;
     cpy_r_r429 = PyObject_Vectorcall(cpy_r_r426, cpy_r_r428, 1, 0);
     if (unlikely(cpy_r_r429 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL204;
+        goto CPyL207;
     }
     CPy_DECREF(cpy_r_r425);
     if (likely(PyLong_Check(cpy_r_r429)))
@@ -21861,7 +21871,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r429);
     if (unlikely(cpy_r_r430 == CPY_INT_TAG)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r431 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'tether' */
     CPyTagged_INCREF(cpy_r_r430);
@@ -21871,7 +21881,7 @@ CPyL3: ;
     cpy_r_r434 = cpy_r_r433 >= 0;
     if (unlikely(!cpy_r_r434)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL205;
+        goto CPyL208;
     }
     CPyStatic_currency___denoms___tether = cpy_r_r430;
     CPyTagged_INCREF(CPyStatic_currency___denoms___tether);
@@ -21883,7 +21893,7 @@ CPyL3: ;
     cpy_r_r439 = cpy_r_r438 >= 0;
     if (unlikely(!cpy_r_r439)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
     cpy_r_r440 = (CPyTagged)CPyStatics[DIFFCHECK_PLACEHOLDER] | 1; /* 115792089237316195423570985008687907853269984665640564039457584007913129639935 */
     cpy_r_r441 = CPyStatic_currency___globals;
@@ -21895,207 +21905,234 @@ CPyL3: ;
     cpy_r_r445 = cpy_r_r444 >= 0;
     if (unlikely(!cpy_r_r445)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
-    cpy_r_r446 = CPyStatic_currency___globals;
-    cpy_r_r447 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Union' */
-    cpy_r_r448 = CPyDict_GetItem(cpy_r_r446, cpy_r_r447);
+    cpy_r_r446 = CPyModule_decimal;
+    cpy_r_r447 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Decimal' */
+    cpy_r_r448 = CPyObject_GetAttr(cpy_r_r446, cpy_r_r447);
     if (unlikely(cpy_r_r448 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
-    cpy_r_r449 = (PyObject *)&PyLong_Type;
-    cpy_r_r450 = (PyObject *)&PyFloat_Type;
-    cpy_r_r451 = (PyObject *)&PyUnicode_Type;
-    cpy_r_r452 = CPyModule_decimal;
-    cpy_r_r453 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Decimal' */
-    cpy_r_r454 = CPyObject_GetAttr(cpy_r_r452, cpy_r_r453);
-    if (unlikely(cpy_r_r454 == NULL)) {
-        CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL206;
-    }
-    CPy_INCREF(cpy_r_r449);
-    CPy_INCREF(cpy_r_r450);
-    CPy_INCREF(cpy_r_r451);
-    cpy_r_r455.f0 = cpy_r_r449;
-    cpy_r_r455.f1 = cpy_r_r450;
-    cpy_r_r455.f2 = cpy_r_r451;
-    cpy_r_r455.f3 = cpy_r_r454;
-    cpy_r_r456 = PyTuple_New(4);
-    if (unlikely(cpy_r_r456 == NULL))
-        CPyError_OutOfMemory();
-    PyObject *__tmp93 = cpy_r_r455.f0;
-    PyTuple_SET_ITEM(cpy_r_r456, 0, __tmp93);
-    PyObject *__tmp94 = cpy_r_r455.f1;
-    PyTuple_SET_ITEM(cpy_r_r456, 1, __tmp94);
-    PyObject *__tmp95 = cpy_r_r455.f2;
-    PyTuple_SET_ITEM(cpy_r_r456, 2, __tmp95);
-    PyObject *__tmp96 = cpy_r_r455.f3;
-    PyTuple_SET_ITEM(cpy_r_r456, 3, __tmp96);
-    cpy_r_r457 = PyObject_GetItem(cpy_r_r448, cpy_r_r456);
+    cpy_r_r449 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 0 */
+    PyObject *cpy_r_r450[1] = {cpy_r_r449};
+    cpy_r_r451 = (PyObject **)&cpy_r_r450;
+    cpy_r_r452 = PyObject_Vectorcall(cpy_r_r448, cpy_r_r451, 1, 0);
     CPy_DECREF(cpy_r_r448);
-    CPy_DECREF(cpy_r_r456);
-    if (unlikely(cpy_r_r457 == NULL)) {
+    if (unlikely(cpy_r_r452 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
     }
-    cpy_r_r458 = CPyStatic_currency___globals;
-    cpy_r_r459 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_NumberType' */
-    cpy_r_r460 = CPyDict_SetItem(cpy_r_r458, cpy_r_r459, cpy_r_r457);
-    CPy_DECREF(cpy_r_r457);
-    cpy_r_r461 = cpy_r_r460 >= 0;
-    if (unlikely(!cpy_r_r461)) {
+    CPyStatic_currency___DECIMAL_ZERO = cpy_r_r452;
+    CPy_INCREF(CPyStatic_currency___DECIMAL_ZERO);
+    cpy_r_r453 = CPyStatic_currency___globals;
+    cpy_r_r454 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'DECIMAL_ZERO' */
+    cpy_r_r455 = CPyDict_SetItem(cpy_r_r453, cpy_r_r454, cpy_r_r452);
+    CPy_DECREF(cpy_r_r452);
+    cpy_r_r456 = cpy_r_r455 >= 0;
+    if (unlikely(!cpy_r_r456)) {
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
-        goto CPyL158;
+        goto CPyL161;
+    }
+    cpy_r_r457 = CPyStatic_currency___globals;
+    cpy_r_r458 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Union' */
+    cpy_r_r459 = CPyDict_GetItem(cpy_r_r457, cpy_r_r458);
+    if (unlikely(cpy_r_r459 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL161;
+    }
+    cpy_r_r460 = (PyObject *)&PyLong_Type;
+    cpy_r_r461 = (PyObject *)&PyFloat_Type;
+    cpy_r_r462 = (PyObject *)&PyUnicode_Type;
+    cpy_r_r463 = CPyModule_decimal;
+    cpy_r_r464 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Decimal' */
+    cpy_r_r465 = CPyObject_GetAttr(cpy_r_r463, cpy_r_r464);
+    if (unlikely(cpy_r_r465 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL209;
+    }
+    CPy_INCREF(cpy_r_r460);
+    CPy_INCREF(cpy_r_r461);
+    CPy_INCREF(cpy_r_r462);
+    cpy_r_r466.f0 = cpy_r_r460;
+    cpy_r_r466.f1 = cpy_r_r461;
+    cpy_r_r466.f2 = cpy_r_r462;
+    cpy_r_r466.f3 = cpy_r_r465;
+    cpy_r_r467 = PyTuple_New(4);
+    if (unlikely(cpy_r_r467 == NULL))
+        CPyError_OutOfMemory();
+    PyObject *__tmp93 = cpy_r_r466.f0;
+    PyTuple_SET_ITEM(cpy_r_r467, 0, __tmp93);
+    PyObject *__tmp94 = cpy_r_r466.f1;
+    PyTuple_SET_ITEM(cpy_r_r467, 1, __tmp94);
+    PyObject *__tmp95 = cpy_r_r466.f2;
+    PyTuple_SET_ITEM(cpy_r_r467, 2, __tmp95);
+    PyObject *__tmp96 = cpy_r_r466.f3;
+    PyTuple_SET_ITEM(cpy_r_r467, 3, __tmp96);
+    cpy_r_r468 = PyObject_GetItem(cpy_r_r459, cpy_r_r467);
+    CPy_DECREF(cpy_r_r459);
+    CPy_DECREF(cpy_r_r467);
+    if (unlikely(cpy_r_r468 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL161;
+    }
+    cpy_r_r469 = CPyStatic_currency___globals;
+    cpy_r_r470 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_NumberType' */
+    cpy_r_r471 = CPyDict_SetItem(cpy_r_r469, cpy_r_r470, cpy_r_r468);
+    CPy_DECREF(cpy_r_r468);
+    cpy_r_r472 = cpy_r_r471 >= 0;
+    if (unlikely(!cpy_r_r472)) {
+        CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
+        goto CPyL161;
     }
     return 1;
-CPyL158: ;
-    cpy_r_r462 = 2;
-    return cpy_r_r462;
-CPyL159: ;
-    CPy_DecRef(cpy_r_r34);
-    goto CPyL158;
-CPyL160: ;
-    CPy_DecRef(cpy_r_r73);
-    goto CPyL158;
 CPyL161: ;
-    CPyTagged_DecRef(cpy_r_r78);
-    goto CPyL158;
+    cpy_r_r473 = 2;
+    return cpy_r_r473;
 CPyL162: ;
-    CPy_DecRef(cpy_r_r89);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r34);
+    goto CPyL161;
 CPyL163: ;
-    CPyTagged_DecRef(cpy_r_r94);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r73);
+    goto CPyL161;
 CPyL164: ;
-    CPy_DecRef(cpy_r_r105);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r78);
+    goto CPyL161;
 CPyL165: ;
-    CPyTagged_DecRef(cpy_r_r110);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r89);
+    goto CPyL161;
 CPyL166: ;
-    CPy_DecRef(cpy_r_r121);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r94);
+    goto CPyL161;
 CPyL167: ;
-    CPyTagged_DecRef(cpy_r_r126);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r105);
+    goto CPyL161;
 CPyL168: ;
-    CPy_DecRef(cpy_r_r137);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r110);
+    goto CPyL161;
 CPyL169: ;
-    CPyTagged_DecRef(cpy_r_r142);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r121);
+    goto CPyL161;
 CPyL170: ;
-    CPy_DecRef(cpy_r_r153);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r126);
+    goto CPyL161;
 CPyL171: ;
-    CPyTagged_DecRef(cpy_r_r158);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r137);
+    goto CPyL161;
 CPyL172: ;
-    CPy_DecRef(cpy_r_r169);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r142);
+    goto CPyL161;
 CPyL173: ;
-    CPyTagged_DecRef(cpy_r_r174);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r153);
+    goto CPyL161;
 CPyL174: ;
-    CPy_DecRef(cpy_r_r185);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r158);
+    goto CPyL161;
 CPyL175: ;
-    CPyTagged_DecRef(cpy_r_r190);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r169);
+    goto CPyL161;
 CPyL176: ;
-    CPy_DecRef(cpy_r_r201);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r174);
+    goto CPyL161;
 CPyL177: ;
-    CPyTagged_DecRef(cpy_r_r206);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r185);
+    goto CPyL161;
 CPyL178: ;
-    CPy_DecRef(cpy_r_r217);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r190);
+    goto CPyL161;
 CPyL179: ;
-    CPyTagged_DecRef(cpy_r_r222);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r201);
+    goto CPyL161;
 CPyL180: ;
-    CPy_DecRef(cpy_r_r233);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r206);
+    goto CPyL161;
 CPyL181: ;
-    CPyTagged_DecRef(cpy_r_r238);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r217);
+    goto CPyL161;
 CPyL182: ;
-    CPy_DecRef(cpy_r_r249);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r222);
+    goto CPyL161;
 CPyL183: ;
-    CPyTagged_DecRef(cpy_r_r254);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r233);
+    goto CPyL161;
 CPyL184: ;
-    CPy_DecRef(cpy_r_r265);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r238);
+    goto CPyL161;
 CPyL185: ;
-    CPyTagged_DecRef(cpy_r_r270);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r249);
+    goto CPyL161;
 CPyL186: ;
-    CPy_DecRef(cpy_r_r281);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r254);
+    goto CPyL161;
 CPyL187: ;
-    CPyTagged_DecRef(cpy_r_r286);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r265);
+    goto CPyL161;
 CPyL188: ;
-    CPy_DecRef(cpy_r_r297);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r270);
+    goto CPyL161;
 CPyL189: ;
-    CPyTagged_DecRef(cpy_r_r302);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r281);
+    goto CPyL161;
 CPyL190: ;
-    CPy_DecRef(cpy_r_r313);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r286);
+    goto CPyL161;
 CPyL191: ;
-    CPyTagged_DecRef(cpy_r_r318);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r297);
+    goto CPyL161;
 CPyL192: ;
-    CPy_DecRef(cpy_r_r329);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r302);
+    goto CPyL161;
 CPyL193: ;
-    CPyTagged_DecRef(cpy_r_r334);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r313);
+    goto CPyL161;
 CPyL194: ;
-    CPy_DecRef(cpy_r_r345);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r318);
+    goto CPyL161;
 CPyL195: ;
-    CPyTagged_DecRef(cpy_r_r350);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r329);
+    goto CPyL161;
 CPyL196: ;
-    CPy_DecRef(cpy_r_r361);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r334);
+    goto CPyL161;
 CPyL197: ;
-    CPyTagged_DecRef(cpy_r_r366);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r345);
+    goto CPyL161;
 CPyL198: ;
-    CPy_DecRef(cpy_r_r377);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r350);
+    goto CPyL161;
 CPyL199: ;
-    CPyTagged_DecRef(cpy_r_r382);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r361);
+    goto CPyL161;
 CPyL200: ;
-    CPy_DecRef(cpy_r_r393);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r366);
+    goto CPyL161;
 CPyL201: ;
-    CPyTagged_DecRef(cpy_r_r398);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r377);
+    goto CPyL161;
 CPyL202: ;
-    CPy_DecRef(cpy_r_r409);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r382);
+    goto CPyL161;
 CPyL203: ;
-    CPyTagged_DecRef(cpy_r_r414);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r393);
+    goto CPyL161;
 CPyL204: ;
-    CPy_DecRef(cpy_r_r425);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r398);
+    goto CPyL161;
 CPyL205: ;
-    CPyTagged_DecRef(cpy_r_r430);
-    goto CPyL158;
+    CPy_DecRef(cpy_r_r409);
+    goto CPyL161;
 CPyL206: ;
-    CPy_DecRef(cpy_r_r448);
-    goto CPyL158;
+    CPyTagged_DecRef(cpy_r_r414);
+    goto CPyL161;
+CPyL207: ;
+    CPy_DecRef(cpy_r_r425);
+    goto CPyL161;
+CPyL208: ;
+    CPyTagged_DecRef(cpy_r_r430);
+    goto CPyL161;
+CPyL209: ;
+    CPy_DecRef(cpy_r_r459);
+    goto CPyL161;
 }
 static PyMethodDef debugmodule_methods[] = {
     {"pip_freeze", (PyCFunction)CPyPy_debug___pip_freeze, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("pip_freeze()\n--\n\n") /* docstring */},
@@ -49682,7 +49719,7 @@ const char * const CPyLit_Str[] = {
     "\0014Resulting wei value must be between 0 and 2**256 - 1",
     "\004\035Unknown unit. Must be one of \001/\adecimal\034faster_eth_utils/currency.py",
     "\004\005final\nis_integer\026faster_eth_utils.units\031faster_eth_utils.currency",
-    "\005\017__mypyc_attrs__\006denoms\aMIN_WEI\aMAX_WEI\v_NumberType",
+    "\006\017__mypyc_attrs__\006denoms\aMIN_WEI\aMAX_WEI\fDECIMAL_ZERO\v_NumberType",
     "\005\024python -m pip freeze\004PIPE\003run\006stdout\035python -m pip freeze result:\n",
     "\006\020Python version:\n\aversion\022Operating System: \bplatform\002\n\n\nsubprocess",
     "\006\003sys\031faster_eth_utils/debug.py\fcombomethod(\006method\005wraps\b_wrapper",
@@ -49745,26 +49782,26 @@ const double CPyLit_Float[] = {0};
 const double CPyLit_Complex[] = {0};
 const int CPyLit_Tuple[] = {
     97, 2, 11, 38, 1, 57, 3, 7, 7, 7, 3, 60, 60, 60, 3, 61, 61, 61, 3,
-    521, 522, 523, 3, 64, 10, 65, 5, 67, 68, 69, 70, 71, 9, 73, 74, 75,
-    76, 77, 78, 79, 80, 81, 1, 83, 1, 85, 1, 523, 3, 67, 68, 104, 3, 105,
-    105, 105, 1, 532, 5, 106, 107, 108, 109, 110, 2, 111, 93, 2, 113, 114,
+    522, 523, 524, 3, 64, 10, 65, 5, 67, 68, 69, 70, 71, 9, 73, 74, 75,
+    76, 77, 78, 79, 80, 81, 1, 83, 1, 85, 1, 524, 3, 67, 68, 104, 3, 105,
+    105, 105, 1, 533, 5, 106, 107, 108, 109, 110, 2, 111, 93, 2, 113, 114,
     2, 116, 117, 1, 131, 1, 143, 4, 149, 150, 10, 65, 6, 151, 67, 104,
-    152, 70, 71, 3, 153, 153, 153, 1, 542, 1, 155, 1, 141, 2, 158, 159, 1,
+    152, 70, 71, 3, 153, 153, 153, 1, 543, 1, 155, 1, 141, 2, 158, 159, 1,
     181, 1, 183, 2, 152, 184, 1, 149, 2, 110, 185, 2, 186, 187, 5, 189,
     113, 190, 191, 114, 1, 192, 1, 195, 1, 110, 1, 197, 2, 228, 229, 1,
-    228, 3, 235, 235, 235, 1, 560, 1, 223, 3, 68, 184, 237, 2, 238, 192,
-    1, 198, 1, 249, 3, 254, 254, 254, 3, 256, 256, 256, 3, 257, 257, 257,
-    3, 567, 568, 569, 3, 266, 266, 266, 1, 571, 6, 67, 268, 68, 269, 152,
-    237, 1, 270, 1, 275, 3, 285, 286, 286, 1, 576, 3, 291, 291, 291, 3,
-    578, 571, 522, 3, 149, 64, 10, 6, 293, 294, 295, 296, 152, 184, 1,
-    158, 1, 297, 3, 317, 317, 317, 2, 584, 523, 4, 67, 319, 68, 104, 2,
-    67, 68, 2, 64, 338, 1, 327, 2, 340, 341, 2, 242, 342, 1, 343, 1, 362,
-    1, 67, 1, 374, 1, 385, 3, 387, 387, 387, 3, 388, 388, 388, 3, 597,
-    598, 569, 1, 390, 1, 68, 1, 378, 1, 288, 2, 403, 404, 3, 406, 406,
-    406, 2, 560, 605, 3, 67, 152, 184, 3, 413, 413, 413, 1, 608, 3, 343,
-    343, 343, 1, 610, 3, 66, 291, 291, 2, 612, 605, 3, 67, 68, 69, 1, 104
+    228, 3, 235, 235, 235, 1, 561, 1, 223, 3, 68, 184, 237, 2, 238, 192,
+    1, 198, 1, 250, 3, 255, 255, 255, 3, 257, 257, 257, 3, 258, 258, 258,
+    3, 568, 569, 570, 3, 267, 267, 267, 1, 572, 6, 67, 269, 68, 270, 152,
+    237, 1, 271, 1, 276, 3, 286, 287, 287, 1, 577, 3, 292, 292, 292, 3,
+    579, 572, 523, 3, 149, 64, 10, 6, 294, 295, 296, 297, 152, 184, 1,
+    158, 1, 298, 3, 318, 318, 318, 2, 585, 524, 4, 67, 320, 68, 104, 2,
+    67, 68, 2, 64, 339, 1, 328, 2, 341, 342, 2, 242, 343, 1, 344, 1, 363,
+    1, 67, 1, 375, 1, 386, 3, 388, 388, 388, 3, 389, 389, 389, 3, 598,
+    599, 570, 1, 391, 1, 68, 1, 379, 1, 289, 2, 404, 405, 3, 407, 407,
+    407, 2, 561, 606, 3, 67, 152, 184, 3, 414, 414, 414, 1, 609, 3, 344,
+    344, 344, 1, 611, 3, 66, 292, 292, 2, 613, 606, 3, 67, 68, 69, 1, 104
 };
-const int CPyLit_FrozenSet[] = {1, 2, 26, 25};
+const int CPyLit_FrozenSet[] = {1, 2, 25, 26};
 CPyModule *CPyModule_faster_eth_utils___abi__internal = NULL;
 CPyModule *CPyModule_faster_eth_utils___abi;
 PyObject *CPyStatic_abi___globals;
@@ -50049,6 +50086,7 @@ CPyTagged CPyStatic_currency___denoms___grand = CPY_INT_TAG;
 CPyTagged CPyStatic_currency___denoms___mether = CPY_INT_TAG;
 CPyTagged CPyStatic_currency___denoms___gether = CPY_INT_TAG;
 CPyTagged CPyStatic_currency___denoms___tether = CPY_INT_TAG;
+PyObject *CPyStatic_currency___DECIMAL_ZERO = NULL;
 PyTypeObject *CPyType_currency___denoms;
 PyObject *CPyDef_currency___denoms(void);
 char CPyDef_currency___denoms_____mypyc_defaults_setup(PyObject *cpy_r___mypyc_self__);
