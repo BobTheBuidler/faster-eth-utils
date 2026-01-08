@@ -102,10 +102,11 @@ def from_wei(number: int, unit: str) -> int | decimal.Decimal:
     """
     Takes a number of wei and converts it to any other ether unit.
     """
-    if unit.lower() not in units:
+    unit_key = unit.lower()
+    if unit_key not in units:
         raise ValueError(f"Unknown unit. Must be one of {'/'.join(units.keys())}")
 
-    unit_value = units[unit.lower()]
+    unit_value = units[unit_key]
 
     return _from_wei(number, unit_value)
 
@@ -114,10 +115,11 @@ def to_wei(number: _NumberType, unit: str) -> int:
     """
     Takes a number of a unit and converts it to wei.
     """
-    if unit.lower() not in units:
+    unit_key = unit.lower()
+    if unit_key not in units:
         raise ValueError(f"Unknown unit. Must be one of {'/'.join(units.keys())}")
 
-    unit_value = units[unit.lower()]
+    unit_value = units[unit_key]
 
     return _to_wei(number, unit_value)
 
