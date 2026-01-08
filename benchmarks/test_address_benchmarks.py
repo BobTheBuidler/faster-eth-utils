@@ -52,12 +52,14 @@ binary_addresses_ids = [
 ]
 
 address_pairs_true: list[tuple[str, str]] = [
+    ("0x52908400098527886E0F7030069857D2E4169EE7", "0x52908400098527886E0F7030069857D2E4169EE7"),
     ("0x52908400098527886E0F7030069857D2E4169EE7", "0x52908400098527886e0f7030069857d2e4169ee7"),
 ]
 address_pairs_false: list[tuple[str, str]] = [
     ("0x52908400098527886E0F7030069857D2E4169EE7", "0xde709f2102306220921060314715629080e2fb77"),
 ]
 address_pairs_ids = [
+    "exact-match",
     "same-address",
     "different-address",
 ]
