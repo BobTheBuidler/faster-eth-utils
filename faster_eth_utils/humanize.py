@@ -1,8 +1,11 @@
+from collections.abc import (
+    Iterable,
+    Iterator,
+)
 from typing import (
     Any,
     Final,
 )
-from collections.abc import Iterable, Iterator
 from urllib import (
     parse,
 )
@@ -21,12 +24,13 @@ from . import toolz
 
 
 def humanize_seconds(seconds: float | int) -> str:
-    if int(seconds) == 0:
+    seconds_int = int(seconds)
+    if seconds_int == 0:
         return "0s"
 
-    unit_values = _consume_leading_zero_units(_humanize_seconds(int(seconds)))
+    unit_values = _consume_leading_zero_units(_humanize_seconds(seconds_int))
 
-    return "".join((f"{amount}{unit}" for amount, unit in toolz.take(3, unit_values)))
+    return "".join(f"{amount}{unit}" for amount, unit in toolz.take(3, unit_values))
 
 
 SECOND: Final = 1
@@ -194,5 +198,4 @@ def humanize_wei(number: int) -> str:
     else:
         unit = "wei"
     amount = from_wei(number, unit)
-    x = f"{str(amount)} {unit}"
-    return x
+    return f"{str(amount)} {unit}"
