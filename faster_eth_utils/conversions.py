@@ -146,8 +146,7 @@ def to_text(
     elif isinstance(primitive, memoryview):
         return bytes(primitive).decode("utf-8")
     elif isinstance(primitive, int):
-        byte_encoding = int_to_big_endian(primitive)
-        return to_text(byte_encoding)
+        return int_to_big_endian(primitive).decode("utf-8")
     raise TypeError("Expected an int, bytes, bytearray or hexstr.")
 
 
