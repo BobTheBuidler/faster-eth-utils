@@ -1,5 +1,5 @@
-#### [faster_eth_utils.exceptions](https://github.com/BobTheBuidler/faster-eth-utils/blob/codex/add-decimal_zero-constant-and-refactor-check/faster_eth_utils/exceptions.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/codex/add-decimal_zero-constant-and-refactor-check/benchmarks/test_exceptions_benchmarks.py)
+#### [faster_eth_utils.exceptions](https://github.com/BobTheBuidler/faster-eth-utils/blob/codex/diagnose-test-failures-in-pr/faster_eth_utils/exceptions.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/codex/diagnose-test-failures-in-pr/benchmarks/test_exceptions_benchmarks.py)
 
 | Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
 |----------|---------------|-------------|----------|-------------|----------|--------|
-| `validation_error` | 1.9659459403227932e-05 | 2.010746452562591e-05 | -2.28% | -2.23% | 0.98x | ❌ |
+| `validation_error` | 1.9836617497696094e-05 | 1.9809909138686655e-05 | 0.13% | 0.13% | 1.00x | ✅ |
