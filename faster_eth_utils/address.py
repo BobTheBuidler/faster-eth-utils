@@ -114,6 +114,8 @@ def is_same_address(
     """
     if not is_address(left) or not is_address(right):
         raise ValueError("Both values must be valid addresses")
+    if left == right:
+        return True
     return to_normalized_address(left) == to_normalized_address(right)
 
 
