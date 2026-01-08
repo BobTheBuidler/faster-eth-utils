@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[616];
+extern PyObject *CPyStatics[617];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -18,12 +18,11 @@ extern CPyModule *CPyModule_faster_eth_utils___abi__internal;
 extern CPyModule *CPyModule_faster_eth_utils___abi;
 extern PyObject *CPyStatic_abi___globals;
 extern CPyModule *CPyModule_builtins;
-extern CPyModule *CPyModule_collections;
 extern CPyModule *CPyModule_copy;
 extern CPyModule *CPyModule_itertools;
 extern CPyModule *CPyModule_re;
-extern CPyModule *CPyModule_typing;
 extern CPyModule *CPyModule_collections___abc;
+extern CPyModule *CPyModule_typing;
 extern CPyModule *CPyModule_eth_typing;
 extern CPyModule *CPyModule_faster_eth_utils___types__internal;
 extern CPyModule *CPyModule_faster_eth_utils___types;
@@ -74,6 +73,7 @@ extern CPyModule *CPyModule_eth_utils___exceptions;
 extern CPyModule *CPyModule_faster_eth_utils___functional__internal;
 extern CPyModule *CPyModule_faster_eth_utils___functional;
 extern PyObject *CPyStatic_functional___globals;
+extern CPyModule *CPyModule_collections;
 extern PyObject *CPyStatic_hexadecimal___globals;
 extern CPyModule *CPyModule_binascii;
 extern CPyModule *CPyModule_faster_eth_utils___humanize__internal;
@@ -102,6 +102,7 @@ extern CPyModule *CPyModule_cytoolz;
 extern CPyModule *CPyModule_toolz;
 extern PyObject *CPyStatic_types___globals;
 extern PyObject *CPyStatic_units___globals;
+extern PyObject *CPyStatic_abi____TUPLE_TYPE_STR_RE;
 extern PyObject *CPyStatic_abi_____ABI_TYPE_LITERALS;
 extern PyTypeObject *CPyType_abi___get_normalized_abi_inputs_env;
 extern PyObject *CPyDef_abi___get_normalized_abi_inputs_env(void);

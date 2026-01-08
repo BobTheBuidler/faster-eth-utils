@@ -1,9 +1,11 @@
-from collections import (
-    abc,
-)
 import copy
 import itertools
 import re
+from collections.abc import (
+    Iterable,
+    Mapping,
+    Sequence,
+)
 from typing import (
     Any,
     Final,
@@ -11,7 +13,6 @@ from typing import (
     cast,
     overload,
 )
-from collections.abc import Iterable, Mapping, Sequence
 
 from eth_typing import (
     ABI,
@@ -35,6 +36,8 @@ from .crypto import (
 
 
 ABIType = Literal["function", "constructor", "fallback", "receive", "event", "error"]
+
+_TUPLE_TYPE_STR_RE: Final = re.compile("^(tuple)((\\[([1-9]\\d*\\b)?])*)??$")
 
 
 def _align_abi_input(
@@ -66,24 +69,26 @@ def _align_abi_input(
         sub_abis = itertools.repeat(new_abi)
 
     aligned_arg: Any
-    if isinstance(normalized_arg, abc.Mapping):
+    if isinstance(normalized_arg, Mapping):
         # normalized_arg is mapping.  Align values according to abi order.
         aligned_arg = tuple(normalized_arg[abi["name"]] for abi in sub_abis)
     else:
         aligned_arg = normalized_arg
 
-    if not is_list_like(aligned_arg):
-        raise TypeError(
-            f'Expected non-string sequence for "{arg_abi.get("type")}" '
-            f"component type: got {aligned_arg}"
-        )
-
-    # convert NamedTuple to regular tuple
-    typing = tuple if isinstance(aligned_arg, tuple) else type(aligned_arg)
-
-    return typing(  # type: ignore [call-arg]
-        _align_abi_input(sub_abi, sub_arg)
-        for sub_abi, sub_arg in zip(sub_abis, aligned_arg)
+    # We can generate more optimized C code if we branch by arg type
+    if isinstance(aligned_arg, tuple):
+        # convert NamedTuple to regular tuple
+        return tuple(map(_align_abi_input, zip(sub_abis, aligned_arg)))  # type: ignore [arg-type]
+        
+    elif type(aligned_arg) is list:
+        return list(map(_align_abi_input, zip(sub_abis, aligned_arg)))  # type: ignore [arg-type]
+        
+    elif is_list_like(aligned_arg):
+        return type(aligned_arg)(map(_align_abi_input, zip(sub_abis, aligned_arg)))  # type: ignore [arg-type, call-arg]
+    
+    raise TypeError(
+        f'Expected non-string sequence for "{arg_abi.get("type")}" '
+        f"component type: got {aligned_arg}"
     )
 
 
@@ -92,8 +97,7 @@ def _get_tuple_type_str_and_dims(s: str) -> tuple[str, str | None] | None:
     Takes a JSON ABI type string.  For tuple type strings, returns the separated
     prefix and array dimension parts.  For all other strings, returns ``None``.
     """
-    tuple_type_str_re = "^(tuple)((\\[([1-9]\\d*\b)?])*)??$"
-    match = re.compile(tuple_type_str_re).match(s)
+    match = _TUPLE_TYPE_STR_RE.match(s)
 
     return None if match is None else (match[1], match[2])
 
@@ -576,7 +580,7 @@ def get_aligned_abi_inputs(
     _raise_if_fallback_or_receive_abi(abi_element)
 
     abi_element_inputs = cast(Sequence[ABIComponent], abi_element.get("inputs", []))
-    if isinstance(normalized_args, abc.Mapping):
+    if isinstance(normalized_args, Mapping):
         # `args` is mapping.  Align values according to abi order.
         normalized_args = tuple(
             normalized_args[abi["name"]] for abi in abi_element_inputs

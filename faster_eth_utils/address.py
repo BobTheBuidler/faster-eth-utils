@@ -116,8 +116,7 @@ def is_same_address(
         raise ValueError("Both values must be valid addresses")
     if left == right:
         return True
-    else:
-        return to_normalized_address(left) == to_normalized_address(right)
+    return to_normalized_address(left) == to_normalized_address(right)
 
 
 def is_checksum_address(value: Any) -> TypeGuard[ChecksumAddress]:
