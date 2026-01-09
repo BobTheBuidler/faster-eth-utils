@@ -1,4 +1,5 @@
 import copy
+import itertools
 import re
 from collections.abc import (
     Iterable,
@@ -44,7 +45,6 @@ ABIType = Literal["function", "constructor", "fallback", "receive", "event", "er
 _TUPLE_TYPE_STR_RE: Final = re.compile("^(tuple)((\\[([1-9]\\d*\\b)?])*)??$")
 
 _chain: Final = itertools.chain
-_repeat: Final = itertools.repeat
 
 
 class _repeat(Generic[T]):
