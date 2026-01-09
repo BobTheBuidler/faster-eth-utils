@@ -15,8 +15,8 @@ from eth_typing import (
     ChainId,
 )
 
-from faster_eth_utils import (
-    ValidationError,  # type: ignore[attr-defined]
+from faster_eth_utils.exceptions import (
+    ValidationError,
 )
 
 
