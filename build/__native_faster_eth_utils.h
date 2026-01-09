@@ -109,13 +109,16 @@ typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
     PyObject *___mypyc_self__;
-    PyObject *_sorted_arg_names;
+    PyObject *_arg_positions;
     PyObject *_abi_element;
     PyObject *_args;
     PyObject *_kwargs;
     PyObject *_function_inputs;
     PyObject *_kwarg_names;
     PyObject *_arg_abi;
+    PyObject *_sorted_arg_names;
+    CPyTagged _index;
+    PyObject *_name;
     PyObject *_args_as_kwargs;
     PyObject *_duplicate_args;
     PyObject *_unknown_args;
