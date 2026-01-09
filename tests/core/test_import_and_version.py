@@ -29,7 +29,7 @@ def test_compiled_c_sources_exist_for_submodules():
         "types",
         "units",
     ]
-    repo_root = Path(__file__).resolve().parents[3]
+    repo_root = Path(__file__).resolve().parents[2]
     build_dir = repo_root / "build" / "faster_eth_utils"
 
     assert build_dir.is_dir(), (
