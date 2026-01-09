@@ -1,5 +1,4 @@
 import copy
-import itertools
 import re
 from collections.abc import (
     Iterable,
@@ -9,7 +8,10 @@ from collections.abc import (
 from typing import (
     Any,
     Final,
+    Generic,
     Literal,
+    Self,
+    TypeVar,
     cast,
     overload,
 )
@@ -35,9 +37,30 @@ from .crypto import (
 )
 
 
+T = TypeVar("T")
+
 ABIType = Literal["function", "constructor", "fallback", "receive", "event", "error"]
 
 _TUPLE_TYPE_STR_RE: Final = re.compile("^(tuple)((\\[([1-9]\\d*\\b)?])*)??$")
+
+
+class _repeat(Generic[T]):
+
+    def __init__(self, value: T, times: int | None = None) -> None:
+        self._value: Final[T] = value
+        self._times: Final[int | None] = times
+        self._index = 0
+
+    def __iter__(self) -> Self:
+        return self
+
+    def __next__(self) -> T:
+        if self._times is None:
+            return self._value
+        if self._index >= self._times:
+            raise StopIteration
+        self._index += 1
+        return self._value
 
 
 def _align_abi_input(
@@ -66,7 +89,7 @@ def _align_abi_input(
         new_abi = copy.copy(arg_abi)
         new_abi["type"] = tuple_prefix + "[]" * (num_dims - 1)
 
-        sub_abis = itertools.repeat(new_abi)
+        sub_abis = _repeat(new_abi)
 
     aligned_arg: Any
     if isinstance(normalized_arg, Mapping):
@@ -78,14 +101,14 @@ def _align_abi_input(
     # We can generate more optimized C code if we branch by arg type
     if isinstance(aligned_arg, tuple):
         # convert NamedTuple to regular tuple
-        return tuple(map(_align_abi_input, sub_abis, aligned_arg))  # type: ignore [arg-type]
+        return tuple(map(_align_abi_input, sub_abis, aligned_arg))
 
     elif type(aligned_arg) is list:
-        return list(map(_align_abi_input, sub_abis, aligned_arg))  # type: ignore [arg-type]
+        return list(map(_align_abi_input, sub_abis, aligned_arg))
 
     elif is_list_like(aligned_arg):
         return type(aligned_arg)(map(_align_abi_input, sub_abis, aligned_arg))  # type: ignore [call-arg]
-    
+
     raise TypeError(
         f'Expected non-string sequence for "{arg_abi.get("type")}" '
         f"component type: got {aligned_arg}"
