@@ -16,7 +16,7 @@ from eth_typing import (
 )
 
 from faster_eth_utils import (
-    ValidationError,
+    ValidationError,  # type: ignore[attr-defined]
 )
 
 
