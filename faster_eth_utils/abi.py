@@ -11,7 +11,6 @@ from typing import (
     Final,
     Generic,
     Literal,
-    Self,
     TypeVar,
     cast,
     overload,
@@ -27,6 +26,9 @@ from eth_typing import (
     ABIFallback,
     ABIFunction,
     ABIReceive,
+)
+from typing_extensions import (
+    Self,
 )
 
 from faster_eth_utils.types import (
