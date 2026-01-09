@@ -120,7 +120,7 @@ def to_bytes(
         return to_bytes(hexstr=to_hex(primitive))
     elif hexstr is not None:
         if len(hexstr) % 2:
-            hexstr = "0x0" + remove_0x_prefix(hexstr)  # type: ignore [assignment]
+            hexstr = HexStr(f"0x0{remove_0x_prefix(hexstr)}")
         return decode_hex(hexstr)
     elif text is not None:
         return text.encode("utf-8")

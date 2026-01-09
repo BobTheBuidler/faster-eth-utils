@@ -15,7 +15,7 @@ from eth_typing import (
     ChainId,
 )
 
-from faster_eth_utils import (
+from faster_eth_utils.exceptions import (
     ValidationError,
 )
 

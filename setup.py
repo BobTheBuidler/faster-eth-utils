@@ -17,6 +17,12 @@ else:
 if skip_mypyc:
     ext_modules = []
 else:
+    mypyc_flags = ["--pretty", "--strict"]
+    if sys.version_info < (3, 9):
+        # We only enable these on the lowest supported Python version
+        mypyc_flags.append("--disable-error-code=redundant-cast")
+        mypyc_flags.append("--disable-error-code=unused-ignore")
+    
     ext_modules = mypycify(
         [
             "faster_eth_utils/abi.py",
@@ -38,13 +44,7 @@ else:
             "faster_eth_utils/toolz.py",
             "faster_eth_utils/types.py",
             "faster_eth_utils/units.py",
-            "--pretty",
-            "--install-types",
-            "--disable-error-code=attr-defined",
-            "--disable-error-code=comparison-overlap",
-            "--disable-error-code=no-any-return",
-            "--disable-error-code=misc",
-            "--disable-error-code=unused-ignore",
+            *mypyc_flags,
         ],
         group_name="faster_eth_utils",
         strict_dunder_typing=True,
