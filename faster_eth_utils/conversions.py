@@ -49,7 +49,7 @@ def to_hex(
         return HexStr("0x1") if primitive else HexStr("0x0")
 
     if isinstance(primitive, (bytes, bytearray)):
-        return encode_hex(primitive)  # type: ignore[type-var]
+        return encode_hex(primitive)
 
     if isinstance(primitive, memoryview):
         return encode_hex(bytes(primitive))
@@ -91,7 +91,7 @@ def to_int(
     elif text is not None:
         return int(text)
     elif isinstance(primitive, (bytes, bytearray)):
-        return big_endian_to_int(primitive)  # type: ignore[arg-type]
+        return big_endian_to_int(primitive)
     elif isinstance(primitive, memoryview):
         return big_endian_to_int(bytes(primitive))
     elif isinstance(primitive, str):
@@ -120,7 +120,7 @@ def to_bytes(
         return to_bytes(hexstr=to_hex(primitive))
     elif hexstr is not None:
         if len(hexstr) % 2:
-            hexstr = "0x0" + remove_0x_prefix(hexstr)  # type: ignore [assignment]
+            hexstr = HexStr(f"0x0{remove_0x_prefix(hexstr)}")
         return decode_hex(hexstr)
     elif text is not None:
         return text.encode("utf-8")
