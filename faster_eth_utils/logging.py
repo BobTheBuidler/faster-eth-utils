@@ -8,6 +8,9 @@ from contextlib import (
 from functools import (
     cached_property,
 )
+from mypy_extensions import (
+    mypyc_attr,
+)
 from typing import (
     Any,
     Final,
@@ -101,6 +104,7 @@ def get_extended_debug_logger(name: str) -> ExtendedDebugLogger:
 THasLoggerMeta = TypeVar("THasLoggerMeta", bound="HasLoggerMeta")
 
 
+@mypyc_attr(native_class=False)
 class HasLoggerMeta(type):
     """
     Assigns a logger instance to a class, derived from the import path and name.
