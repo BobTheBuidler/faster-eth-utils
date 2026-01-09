@@ -522,16 +522,11 @@ def get_normalized_abi_inputs(
 
     # Sort args according to their position in the ABI and unzip them from their
     # names
-    sorted_args = tuple(
-        zip(
-            *sorted(
-                itertools.chain(kwargs.items(), args_as_kwargs.items()),
-                key=lambda kv: sorted_arg_names.index(kv[0]),
-            )
-        )
+    sorted_items = sorted(
+        itertools.chain(kwargs.items(), args_as_kwargs.items()),
+        key=lambda kv: sorted_arg_names.index(kv[0]),
     )
-
-    return tuple(sorted_args[1]) if sorted_args else ()
+    return tuple(val for _, val in sorted_items)
 
 
 def get_aligned_abi_inputs(
