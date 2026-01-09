@@ -4,7 +4,6 @@ import binascii
 import re
 from typing import (
     Any,
-    AnyStr,
     Final,
     TypeGuard,
 )
@@ -29,7 +28,7 @@ def decode_hex(value: str) -> bytes:
     return unhexlify(ascii_hex)
 
 
-def encode_hex(value: AnyStr) -> HexStr:
+def encode_hex(value: str | bytes | bytearray) -> HexStr:
     ascii_bytes: bytes | bytearray
     if isinstance(value, (bytes, bytearray)):
         ascii_bytes = value
