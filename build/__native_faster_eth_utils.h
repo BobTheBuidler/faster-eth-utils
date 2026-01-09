@@ -256,10 +256,12 @@ typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
     PyObject *___mypyc_self__;
+    PyObject *_bound_arg;
+    PyObject *_method;
+    PyObject *__wrapper;
     PyObject *_self;
     PyObject *_obj;
     PyObject *_objtype;
-    PyObject *__wrapper;
 } faster_eth_utils___decorators_____get___3_combomethod_envObject;
 
 typedef struct {
