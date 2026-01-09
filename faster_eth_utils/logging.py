@@ -125,7 +125,7 @@ class HasLoggerMeta(type):
     def __new__(
         mcls: type[THasLoggerMeta],
         name: str,
-        bases: tuple[type[Any]],
+        bases: tuple[type[Any], ...],
         namespace: dict[str, Any],
     ) -> THasLoggerMeta:
         if "logger" in namespace:
