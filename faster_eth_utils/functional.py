@@ -1,9 +1,10 @@
 import collections
-import functools
 import itertools
 from collections.abc import Callable, Iterable, Mapping
+from functools import wraps
 from typing import (  # noqa: F401
     Dict,
+    Final,
     List,
     Set,
     Tuple,
@@ -19,6 +20,10 @@ from .toolz import (
 
 P = ParamSpec("P")
 T = TypeVar("T")
+
+_OrderedDict: Final = collections.OrderedDict
+
+_chain_from_iterable: Final = itertools.chain.from_iterable
 
 
 def identity(value: T) -> T:
@@ -45,7 +50,7 @@ def apply_to_return_value(
     callback: Callable[[T], TCb]
 ) -> Callable[[Callable[P, T]], Callable[P, TCb]]:
     def outer(fn: Callable[P, T]) -> Callable[P, TCb]:
-        @functools.wraps(fn)
+        @wraps(fn)
         def inner(*args: P.args, **kwargs: P.kwargs) -> TCb:
             return callback(fn(*args, **kwargs))
         return inner
@@ -78,10 +83,10 @@ def to_dict(
     return to_dict_wrap
 
 to_ordered_dict = apply_to_return_value(  # type: ignore [assignment]
-    collections.OrderedDict
+    _OrderedDict
 )  # type: Callable[[Callable[P, Union[Mapping[TKey, TVal], Iterable[Tuple[TKey, TVal]]]]], Callable[P, collections.OrderedDict[TKey, TVal]]]  # noqa: E501
 sort_return = _compose(to_tuple, apply_to_return_value(sorted))
 flatten_return = _compose(
-    to_tuple, apply_to_return_value(itertools.chain.from_iterable)
+    to_tuple, apply_to_return_value(_chain_from_iterable)
 )
 reversed_return = _compose(to_tuple, apply_to_return_value(reversed), to_tuple)
