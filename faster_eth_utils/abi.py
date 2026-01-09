@@ -39,6 +39,9 @@ ABIType = Literal["function", "constructor", "fallback", "receive", "event", "er
 
 _TUPLE_TYPE_STR_RE: Final = re.compile("^(tuple)((\\[([1-9]\\d*\\b)?])*)??$")
 
+_chain: Final = itertools.chain
+_repeat: Final = itertools.repeat
+
 
 def _align_abi_input(
     arg_abi: ABIComponent, normalized_arg: Any
@@ -66,7 +69,7 @@ def _align_abi_input(
         new_abi = copy.copy(arg_abi)
         new_abi["type"] = tuple_prefix + "[]" * (num_dims - 1)
 
-        sub_abis = itertools.repeat(new_abi)
+        sub_abis = _repeat(new_abi)
 
     aligned_arg: Any
     if isinstance(normalized_arg, Mapping):
@@ -524,7 +527,7 @@ def get_normalized_abi_inputs(
     # Sort args according to their position in the ABI and unzip them from their
     # names
     sorted_items = sorted(
-        itertools.chain(kwargs.items(), args_as_kwargs.items()),
+        _chain(kwargs.items(), args_as_kwargs.items()),
         key=lambda kv: arg_positions[kv[0]],
     )
     return tuple(val for _, val in sorted_items)
