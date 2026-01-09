@@ -148,5 +148,5 @@ class HasLogger(metaclass=HasLoggerMeta):
 HasExtendedDebugLoggerMeta = HasLoggerMeta.replace_logger_class(ExtendedDebugLogger)
 
 
-class HasExtendedDebugLogger(metaclass=HasExtendedDebugLoggerMeta):  # type: ignore [metaclass,misc]
+class HasExtendedDebugLogger(metaclass=HasExtendedDebugLoggerMeta):  # type: ignore [misc]
     logger: ExtendedDebugLogger

@@ -79,7 +79,7 @@ class CamelModel(BaseModel):
     )
 
     @classmethod
-    def model_json_schema(  # type: ignore [override]
+    def model_json_schema(
         cls,
         by_alias: bool = True,
         ref_template: str = DEFAULT_REF_TEMPLATE,
