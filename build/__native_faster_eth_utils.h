@@ -108,6 +108,14 @@ typedef struct tuple_T1O {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
+    PyObject *__value;
+    PyObject *__times;
+    CPyTagged __index;
+} faster_eth_utils___abi____repeatObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
     PyObject *___mypyc_self__;
     PyObject *_arg_positions;
     PyObject *_abi_element;
