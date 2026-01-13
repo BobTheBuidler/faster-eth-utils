@@ -18,7 +18,7 @@ if skip_mypyc:
     ext_modules = []
 else:
     mypyc_flags = ["--pretty", "--strict"]
-    if sys.version_info < (3, 9):
+    if sys.version_info < (3, 11):
         # We only enable these on the lowest supported Python version
         mypyc_flags.append("--disable-error-code=redundant-cast")
         mypyc_flags.append("--disable-error-code=unused-ignore")
@@ -121,7 +121,7 @@ setup(
         "cytoolz>=0.10.1;implementation_name=='cpython'",
         "pydantic>=2.0.0,<3",
     ],
-    python_requires=">=3.8, <4",
+    python_requires=">=3.10, <4",
     extras_require=extras_require,
     py_modules=["eth_utils"],
     license="MIT",
@@ -135,12 +135,11 @@ setup(
         "Intended Audience :: Developers",
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
         "Programming Language :: Python :: Implementation :: CPython",
     ],
 )
