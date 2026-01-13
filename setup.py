@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 import sys
 from typing import List
-from setuptools import (
-    find_packages,
-    setup,
-)
+
+from setuptools import Extension, find_packages, setup
+
 try:
     from mypyc.build import mypycify
 except ImportError:
@@ -15,9 +14,9 @@ else:
         for cmd in ("sdist", "egg_info", "--name", "--version", "--help", "--help-commands")
     )
 
-if skip_mypyc:
-    ext_modules = []
-else:
+ext_modules: List[Extension] = []
+
+if not skip_mypyc:
     mypyc_flags = ["--pretty", "--strict"]
     if sys.version_info < (3, 9):
         # We only enable these on the lowest supported Python version
