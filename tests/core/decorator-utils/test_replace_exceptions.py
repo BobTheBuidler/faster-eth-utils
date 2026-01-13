@@ -1,3 +1,5 @@
+from typing import Callable, Mapping, Type
+
 import pytest
 
 from faster_eth_utils import (
@@ -5,10 +7,15 @@ from faster_eth_utils import (
 )
 
 
+ExceptionMap = Mapping[Type[BaseException], Type[BaseException]]
+
+
 @pytest.fixture()
-def mock_function_with_exception(old_to_new):
+def mock_function_with_exception(
+    old_to_new: ExceptionMap,
+) -> Callable[[ExceptionMap], None]:
     @replace_exceptions(old_to_new)
-    def function_with_exception(x):
+    def function_with_exception(x: ExceptionMap) -> None:
         raise TypeError("Boom!")
 
     return function_with_exception
@@ -22,6 +29,10 @@ def mock_function_with_exception(old_to_new):
         ({ValueError: AttributeError, TypeError: NameError}, NameError),
     ),
 )
-def test_decorator_replaces_exceptions(mock_function_with_exception, old_to_new, new):
+def test_decorator_replaces_exceptions(
+    mock_function_with_exception: Callable[[ExceptionMap], None],
+    old_to_new: ExceptionMap,
+    new: Type[BaseException],
+) -> None:
     with pytest.raises(new, match="Boom!"):
         mock_function_with_exception(old_to_new)
