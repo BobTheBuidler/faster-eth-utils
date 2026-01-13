@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import sys
+from typing import List
 from setuptools import (
     find_packages,
     setup,
@@ -54,7 +55,7 @@ MYPY_REQUIREMENT = "mypy==1.18.2"
 PYTEST_REQUIREMENT = "pytest>=7.0.0"
 
 
-def read_requirements(path: str) -> list[str]:
+def read_requirements(path: str) -> List[str]:
     with open(path) as f:
         reqs = set()
         for line in f:
