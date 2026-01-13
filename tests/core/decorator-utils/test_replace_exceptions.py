@@ -1,4 +1,5 @@
-from typing import Callable, Mapping, Type
+from typing import Type
+from collections.abc import Callable, Mapping
 
 import pytest
 
@@ -7,7 +8,7 @@ from faster_eth_utils import (
 )
 
 
-ExceptionMap = Mapping[Type[BaseException], Type[BaseException]]
+ExceptionMap = Mapping[type[BaseException], type[BaseException]]
 
 
 @pytest.fixture()
@@ -32,7 +33,7 @@ def mock_function_with_exception(
 def test_decorator_replaces_exceptions(
     mock_function_with_exception: Callable[[ExceptionMap], None],
     old_to_new: ExceptionMap,
-    new: Type[BaseException],
+    new: type[BaseException],
 ) -> None:
     with pytest.raises(new, match="Boom!"):
         mock_function_with_exception(old_to_new)
