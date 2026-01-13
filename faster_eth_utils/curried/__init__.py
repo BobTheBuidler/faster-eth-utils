@@ -183,12 +183,12 @@ def apply_one_of_formatters(
 
 
 # This is just a stub to appease mypy, it gets overwritten later
-def apply_one_of_formatters(
+def apply_one_of_formatters(  # type: ignore[empty-body]
     formatter_condition_pairs: Sequence[
         tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]]
     ],
     value: TArg | None = None,
-) -> TReturn: ...
+) -> Callable[[TArg], TReturn] | TReturn: ...
 
 
 @overload
