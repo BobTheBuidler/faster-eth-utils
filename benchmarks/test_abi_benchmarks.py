@@ -1,9 +1,10 @@
 # mypy: disable-error-code=misc
-from typing import Any
+from typing import Any, cast
 from collections.abc import Callable
 
 import eth_utils
 import pytest
+from eth_typing import ABIFunction
 from pytest_codspeed import BenchmarkFixture
 
 import faster_eth_utils
@@ -58,8 +59,8 @@ abi_elements_ids = [
 ]
 
 # Multiple function ABI dicts for function-only tests
-function_only_elements = [
-    {
+function_only_elements: list[ABIFunction] = [
+    cast(ABIFunction, {
         "type": "function",
         "name": "transfer",
         "inputs": [
@@ -67,8 +68,8 @@ function_only_elements = [
             {"name": "value", "type": "uint256"},
         ],
         "outputs": [{"name": "success", "type": "bool"}],
-    },
-    {
+    }),
+    cast(ABIFunction, {
         "type": "function",
         "name": "approve",
         "inputs": [
@@ -76,8 +77,8 @@ function_only_elements = [
             {"name": "value", "type": "uint256"},
         ],
         "outputs": [{"name": "success", "type": "bool"}],
-    },
-    {
+    }),
+    cast(ABIFunction, {
         "type": "function",
         "name": "mint",
         "inputs": [
@@ -85,7 +86,7 @@ function_only_elements = [
             {"name": "amount", "type": "uint256"},
         ],
         "outputs": [{"name": "success", "type": "bool"}],
-    },
+    }),
 ]
 function_only_ids = [
     "transfer",
@@ -214,23 +215,23 @@ def test_faster_get_all_event_abis(benchmark: BenchmarkFixture, abi: list[dict[s
 
 @pytest.mark.benchmark(group="get_normalized_abi_inputs")
 @pytest.mark.parametrize("abi_element", function_only_elements, ids=function_only_ids)
-def test_get_normalized_abi_inputs(benchmark: BenchmarkFixture, abi_element: dict[str, Any]) -> None:
+def test_get_normalized_abi_inputs(benchmark: BenchmarkFixture, abi_element: ABIFunction) -> None:
     benchmark(_batch, 100, eth_utils.get_normalized_abi_inputs, abi_element, 10, 10)
 
 @pytest.mark.benchmark(group="get_normalized_abi_inputs")
 @pytest.mark.parametrize("abi_element", function_only_elements, ids=function_only_ids)
-def test_faster_get_normalized_abi_inputs(benchmark: BenchmarkFixture, abi_element: dict[str, Any]) -> None:
+def test_faster_get_normalized_abi_inputs(benchmark: BenchmarkFixture, abi_element: ABIFunction) -> None:
     benchmark(_batch, 100, faster_eth_utils.get_normalized_abi_inputs, abi_element, 10, 10)
 
 @pytest.mark.benchmark(group="get_aligned_abi_inputs")
 @pytest.mark.parametrize("abi_element", function_only_elements, ids=function_only_ids)
-def test_get_aligned_abi_inputs(benchmark: BenchmarkFixture, abi_element: dict[str, Any]) -> None:
+def test_get_aligned_abi_inputs(benchmark: BenchmarkFixture, abi_element: ABIFunction) -> None:
     normalized_inputs = faster_eth_utils.get_normalized_abi_inputs(abi_element, 10, 10)
     benchmark(_batch, 100, eth_utils.get_aligned_abi_inputs, abi_element, normalized_inputs)
 
 @pytest.mark.benchmark(group="get_aligned_abi_inputs")
 @pytest.mark.parametrize("abi_element", function_only_elements, ids=function_only_ids)
-def test_faster_get_aligned_abi_inputs(benchmark: BenchmarkFixture, abi_element: dict[str, Any]) -> None:
+def test_faster_get_aligned_abi_inputs(benchmark: BenchmarkFixture, abi_element: ABIFunction) -> None:
     normalized_inputs = faster_eth_utils.get_normalized_abi_inputs(abi_element, 10, 10)
     benchmark(_batch, 100, faster_eth_utils.get_aligned_abi_inputs, abi_element, normalized_inputs)
 
