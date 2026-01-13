@@ -1,4 +1,3 @@
-from typing import Type
 from collections.abc import Callable, Mapping
 
 import pytest
