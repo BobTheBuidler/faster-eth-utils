@@ -18,7 +18,7 @@ if skip_mypyc:
     ext_modules = []
 else:
     mypyc_flags = ["--pretty", "--strict"]
-    if sys.version_info < (3, 9):
+    if sys.version_info < (3, 11):
         # We only enable these on the lowest supported Python version
         mypyc_flags.append("--disable-error-code=redundant-cast")
         mypyc_flags.append("--disable-error-code=unused-ignore")
@@ -139,6 +139,7 @@ setup(
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
         "Programming Language :: Python :: Implementation :: CPython",
     ],
 )
