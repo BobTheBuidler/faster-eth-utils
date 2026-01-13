@@ -39,6 +39,8 @@ if not skip_mypyc:
             "faster_eth_utils/units.py",
             "--pretty",
             "--strict",
+            "--disable-error-code=unused-ignore",
+            "--disable-error-code=redundant-cast",
         ],
         group_name="faster_eth_utils",
         strict_dunder_typing=True,
