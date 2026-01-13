@@ -16,12 +16,6 @@ else:
 ext_modules: list[Extension] = []
 
 if not skip_mypyc:
-    mypyc_flags = ["--pretty", "--strict"]
-    if sys.version_info < (3, 11):
-        # We only enable these on the lowest supported Python version
-        mypyc_flags.append("--disable-error-code=redundant-cast")
-        mypyc_flags.append("--disable-error-code=unused-ignore")
-    
     ext_modules = mypycify(
         [
             "faster_eth_utils/abi.py",
@@ -43,7 +37,10 @@ if not skip_mypyc:
             "faster_eth_utils/toolz.py",
             "faster_eth_utils/types.py",
             "faster_eth_utils/units.py",
-            *mypyc_flags,
+            "--pretty",
+            "--strict",
+            "--disable-error-code=unused-ignore",
+            "--disable-error-code=redundant-cast",
         ],
         group_name="faster_eth_utils",
         strict_dunder_typing=True,
@@ -91,7 +88,7 @@ with open("./README.md") as readme:
 setup(
     name="faster-eth-utils",
     # *IMPORTANT*: Don't manually change the version here. Use `make bump`, as described in readme
-    version="5.3.20",
+    version="5.3.21",
     description=(
         """A faster fork of eth-utils: Common utility functions for python code that interacts with Ethereum. Implemented in C"""
     ),
@@ -112,7 +109,7 @@ setup(
     },
     include_package_data=True,
     install_requires=[
-        "cchecksum==0.3.8.dev0",
+        "cchecksum==0.3.9",
         "eth-hash>=0.3.1",
         "eth-typing==5.2.1",
         "eth-utils==5.3.1",
