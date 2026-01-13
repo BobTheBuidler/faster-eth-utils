@@ -14,7 +14,7 @@ else:
         for cmd in ("sdist", "egg_info", "--name", "--version", "--help", "--help-commands")
     )
 
-ext_modules: List[Extension] = []
+ext_modules: list[Extension] = []
 
 if not skip_mypyc:
     mypyc_flags = ["--pretty", "--strict"]
@@ -54,7 +54,7 @@ MYPY_REQUIREMENT = "mypy==1.18.2"
 PYTEST_REQUIREMENT = "pytest>=7.0.0"
 
 
-def read_requirements(path: str) -> List[str]:
+def read_requirements(path: str) -> list[str]:
     with open(path) as f:
         reqs = set()
         for line in f:
