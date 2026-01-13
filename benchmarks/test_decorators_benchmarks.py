@@ -1,5 +1,5 @@
 # mypy: disable-error-code=misc
-from typing import Any
+from typing import Any, NoReturn
 from collections.abc import Callable
 
 import eth_utils
@@ -34,13 +34,13 @@ rat_ids = [
     "float-pos0",
 ]
 
-def raise_value_error():
+def raise_value_error() -> NoReturn:
     raise ValueError("fail")
 
-def raise_type_error():
+def raise_type_error() -> NoReturn:
     raise TypeError("fail")
 
-def no_raise():
+def no_raise() -> int:
     return 42
 
 re_func_lookup: dict[str, Callable[[], Any]] = {
