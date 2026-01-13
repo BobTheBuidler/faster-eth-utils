@@ -2,9 +2,8 @@
 requires = [
   "setuptools",
   "wheel",
-  "mypy[mypyc]==1.14.1; python_version == '3.8'",
-  "mypy[mypyc]==1.19.1; python_version != '3.8'",
-  "cchecksum==0.3.8.dev0",
+  "mypy[mypyc]==1.19.1",
+  "cchecksum==0.3.9",
   "eth-hash==0.7.1",
   "eth-typing==5.2.1",
   # puccinialin (installed with eth-utils) is unable to install for
