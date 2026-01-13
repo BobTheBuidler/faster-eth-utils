@@ -5,7 +5,7 @@ does not require any change to your existing exception handlers. They will conti
 
 import eth_utils.exceptions
 
-class ValidationError(eth_utils.exceptions.ValidationError):
+class ValidationError(eth_utils.exceptions.ValidationError):  # type: ignore[misc]
     """
     Raised when something does not pass a validation check.
     """
