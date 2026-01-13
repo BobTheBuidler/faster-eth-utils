@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 import sys
-from setuptools import (
-    find_packages,
-    setup,
-)
+
+from setuptools import Extension, find_packages, setup
+
 try:
     from mypyc.build import mypycify
 except ImportError:
@@ -14,9 +13,9 @@ else:
         for cmd in ("sdist", "egg_info", "--name", "--version", "--help", "--help-commands")
     )
 
-if skip_mypyc:
-    ext_modules = []
-else:
+ext_modules: list[Extension] = []
+
+if not skip_mypyc:
     mypyc_flags = ["--pretty", "--strict"]
     if sys.version_info < (3, 11):
         # We only enable these on the lowest supported Python version
@@ -54,7 +53,7 @@ MYPY_REQUIREMENT = "mypy==1.18.2"
 PYTEST_REQUIREMENT = "pytest>=7.0.0"
 
 
-def read_requirements(path):
+def read_requirements(path: str) -> list[str]:
     with open(path) as f:
         reqs = set()
         for line in f:
