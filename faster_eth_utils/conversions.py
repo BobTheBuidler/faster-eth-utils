@@ -117,7 +117,7 @@ def to_bytes(
     elif isinstance(primitive, bytes):
         return primitive
     elif isinstance(primitive, int):
-        return to_bytes(hexstr=to_hex(primitive))
+        return int_to_big_endian(primitive)
     elif hexstr is not None:
         if len(hexstr) % 2:
             hexstr = HexStr(f"0x0{remove_0x_prefix(hexstr)}")
