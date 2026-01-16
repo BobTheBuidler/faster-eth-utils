@@ -95,6 +95,7 @@ logs
 
 ## General
 .idea/*
+.worktrees
 .idea_modules/*
 
 ## File-based project format:
