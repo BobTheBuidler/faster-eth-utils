@@ -1,20 +1,17 @@
 from collections import (
     abc,
 )
+from collections.abc import (
+    Iterable,
+    Mapping,
+    Sequence,
+)
 import copy
 import itertools
 import re
 from typing import (
     Any,
-    Dict,
-    Iterable,
-    List,
     Literal,
-    Mapping,
-    Optional,
-    Sequence,
-    Tuple,
-    Union,
     cast,
     overload,
 )
@@ -42,7 +39,7 @@ from .crypto import (
 
 def _align_abi_input(
     arg_abi: ABIComponent, normalized_arg: Any
-) -> Union[Any, Tuple[Any, ...]]:
+) -> Any | tuple[Any, ...]:
     """
     Aligns the values of any mapping at any level of nesting in ``normalized_arg``
     according to the layout of the corresponding abi spec.
@@ -89,7 +86,7 @@ def _align_abi_input(
     )
 
 
-def _get_tuple_type_str_and_dims(s: str) -> Optional[Tuple[str, Optional[str]]]:
+def _get_tuple_type_str_and_dims(s: str) -> tuple[str, str | None] | None:
     """
     Takes a JSON ABI type string.  For tuple type strings, returns the separated
     prefix and array dimension parts.  For all other strings, returns ``None``.
@@ -124,7 +121,7 @@ def _raise_if_fallback_or_receive_abi(abi_element: ABIElement) -> None:
         )
 
 
-def collapse_if_tuple(abi: Union[ABIComponent, Dict[str, Any], str]) -> str:
+def collapse_if_tuple(abi: ABIComponent | dict[str, Any] | str) -> str:
     """
     Extract argument types from a function or event ABI parameter.
 
@@ -345,7 +342,7 @@ def filter_abi_by_type(
     ],
     contract_abi: ABI,
 ) -> Sequence[
-    Union[ABIFunction, ABIConstructor, ABIFallback, ABIReceive, ABIEvent, ABIError]
+    ABIFunction | ABIConstructor | ABIFallback | ABIReceive | ABIEvent | ABIError
 ]:
     """
     Return a list of each ``ABIElement`` that is of type ``abi_type``.
@@ -374,17 +371,17 @@ ABIEvent, ABIError]]`
         [{'type': 'function', 'name': 'myFunction', 'inputs': [], 'outputs': []}, \
 {'type': 'function', 'name': 'myFunction2', 'inputs': [], 'outputs': []}]
     """
-    if abi_type == Literal["function"] or abi_type == "function":
+    if abi_type == "function":
         return [abi for abi in contract_abi if abi["type"] == "function"]
-    elif abi_type == Literal["constructor"] or abi_type == "constructor":
+    elif abi_type == "constructor":
         return [abi for abi in contract_abi if abi["type"] == "constructor"]
-    elif abi_type == Literal["fallback"] or abi_type == "fallback":
+    elif abi_type == "fallback":
         return [abi for abi in contract_abi if abi["type"] == "fallback"]
-    elif abi_type == Literal["receive"] or abi_type == "receive":
+    elif abi_type == "receive":
         return [abi for abi in contract_abi if abi["type"] == "receive"]
-    elif abi_type == Literal["event"] or abi_type == "event":
+    elif abi_type == "event":
         return [abi for abi in contract_abi if abi["type"] == "event"]
-    elif abi_type == Literal["error"] or abi_type == "error":
+    elif abi_type == "error":
         return [abi for abi in contract_abi if abi["type"] == "error"]
     else:
         raise ValueError(f"Unsupported ABI type: {abi_type}")
@@ -439,9 +436,9 @@ def get_all_event_abis(contract_abi: ABI) -> Sequence[ABIEvent]:
 
 def get_normalized_abi_inputs(
     abi_element: ABIElement,
-    *args: Optional[Sequence[Any]],
-    **kwargs: Optional[Dict[str, Any]],
-) -> Tuple[Any, ...]:
+    *args: Sequence[Any] | None,
+    **kwargs: dict[str, Any] | None,
+) -> tuple[Any, ...]:
     r"""
     Flattens positional args (``args``) and keyword args (``kwargs``) into a Tuple and
     uses the ``abi_element`` for validation.
@@ -505,7 +502,7 @@ def get_normalized_abi_inputs(
 
     # If no keyword args were given, we don't need to align them
     if not kwargs:
-        return cast(Tuple[Any, ...], args)
+        return cast(tuple[Any, ...], args)
 
     kwarg_names = set(kwargs.keys())
     sorted_arg_names = tuple(arg_abi["name"] for arg_abi in function_inputs)
@@ -553,8 +550,8 @@ def get_normalized_abi_inputs(
 
 def get_aligned_abi_inputs(
     abi_element: ABIElement,
-    normalized_args: Union[Tuple[Any, ...], Mapping[Any, Any]],
-) -> Tuple[Tuple[str, ...], Tuple[Any, ...]]:
+    normalized_args: tuple[Any, ...] | Mapping[Any, Any],
+) -> tuple[tuple[str, ...], tuple[Any, ...]]:
     """
     Returns a pair of nested Tuples containing a list of types and a list of input
     values sorted by the order specified by the ``abi``.
@@ -597,64 +594,34 @@ def get_aligned_abi_inputs(
     _raise_if_fallback_or_receive_abi(abi_element)
 
     abi_element_inputs = cast(Sequence[ABIComponent], abi_element.get("inputs", []))
-    if isinstance(normalized_args, abc.Mapping):
-        # `args` is mapping.  Align values according to abi order.
-        normalized_args = tuple(
-            normalized_args[abi["name"]] for abi in abi_element_inputs
+
+    if not is_list_like(normalized_args):
+        raise TypeError(
+            f"Expected non-string sequence for '{abi_element.get('type')}'"
+            f" component type: got {normalized_args}"
         )
 
-    return (
-        tuple(collapse_if_tuple(abi) for abi in abi_element_inputs),
-        type(normalized_args)(
-            _align_abi_input(abi, arg)
-            for abi, arg in zip(abi_element_inputs, normalized_args)
-        ),
-    )
+    normalized_args_as_tuple = tuple(normalized_args)
+
+    # If the provided inputs are a mapping, we need to align them by name
+    if isinstance(normalized_args, abc.Mapping):
+        aligned_args = tuple(
+            normalized_args_as_tuple[abi_input["name"]]
+            for abi_input in abi_element_inputs
+        )
+    else:
+        aligned_args = normalized_args_as_tuple
+
+    return (tuple(get_abi_input_types(abi_element)), aligned_args)
 
 
-def get_abi_input_names(abi_element: ABIElement) -> List[Optional[str]]:
+def get_abi_input_types(abi_element: ABIElement) -> list[str]:
     """
-    Return names for each input from the function or event ABI.
+    Return types for each input from the function ABI.
 
     :param abi_element: ABI element.
     :type abi_element: `ABIElement`
-    :return: Names for each input in the function or event ABI.
-    :rtype: `List[Optional[str]]`
-
-    .. doctest::
-
-        >>> from eth_utils import get_abi_input_names
-        >>> abi = {
-        ...   'constant': False,
-        ...   'inputs': [
-        ...     {
-        ...       'name': 's',
-        ...       'type': 'uint256'
-        ...     }
-        ...   ],
-        ...   'name': 'f',
-        ...   'outputs': [],
-        ...   'payable': False,
-        ...   'stateMutability': 'nonpayable',
-        ...   'type': 'function'
-        ... }
-        >>> get_abi_input_names(abi)
-        ['s']
-    """
-    _raise_if_fallback_or_receive_abi(abi_element)
-    return [
-        arg.get("name", None)
-        for arg in cast(Sequence[ABIComponent], abi_element.get("inputs", []))
-    ]
-
-
-def get_abi_input_types(abi_element: ABIElement) -> List[str]:
-    """
-    Return types for each input from the function or event ABI.
-
-    :param abi_element: ABI element.
-    :type abi_element: `ABIElement`
-    :return: Types for each input in the function or event ABI.
+    :return: Types for each function input in the function ABI.
     :rtype: `List[str]`
 
     .. doctest::
@@ -684,14 +651,50 @@ def get_abi_input_types(abi_element: ABIElement) -> List[str]:
     ]
 
 
-def get_abi_output_names(abi_element: ABIElement) -> List[Optional[str]]:
+def get_abi_input_names(abi_element: ABIElement) -> list[str | None]:
     """
-    Return names for each output from the ABI element.
+    Return names for each input from the function ABI.
+
+    :param abi_element: ABI element.
+    :type abi_element: `ABIElement`
+    :return: Names for each function input in the function ABI.
+    :rtype: `List[str | None]`
+
+    .. doctest::
+
+        >>> from eth_utils import get_abi_input_names
+        >>> abi = {
+        ...   'constant': False,
+        ...   'inputs': [
+        ...     {
+        ...       'name': 's',
+        ...       'type': 'uint256'
+        ...     }
+        ...   ],
+        ...   'name': 'f',
+        ...   'outputs': [],
+        ...   'payable': False,
+        ...   'stateMutability': 'nonpayable',
+        ...   'type': 'function'
+        ... }
+        >>> get_abi_input_names(abi)
+        ['s']
+    """
+    _raise_if_fallback_or_receive_abi(abi_element)
+    return [
+        arg.get("name", None)
+        for arg in cast(Sequence[ABIComponent], abi_element.get("inputs", []))
+    ]
+
+
+def get_abi_output_names(abi_element: ABIElement) -> list[str | None]:
+    """
+    Return names for each output from the function ABI.
 
     :param abi_element: ABI element.
     :type abi_element: `ABIElement`
     :return: Names for each function output in the function ABI.
-    :rtype: `List[Optional[str]]`
+    :rtype: `List[str | None]`
 
     .. doctest::
 
@@ -729,7 +732,7 @@ def get_abi_output_names(abi_element: ABIElement) -> List[Optional[str]]:
     ]
 
 
-def get_abi_output_types(abi_element: ABIElement) -> List[str]:
+def get_abi_output_types(abi_element: ABIElement) -> list[str]:
     """
     Return types for each output from the function ABI.
 
