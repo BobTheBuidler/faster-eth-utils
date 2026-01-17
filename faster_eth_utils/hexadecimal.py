@@ -42,11 +42,10 @@ def encode_hex(value: str | bytes | bytearray) -> HexStr:
 
 
 def is_0x_prefixed(value: str) -> bool:
-    # this check is not needed in the compiled version
-    # if not isinstance(value, str):
-    #     raise TypeError(
-    #         f"is_0x_prefixed requires text typed arguments. Got: {repr(value)}"
-    #     )
+    if not isinstance(value, str):
+        raise TypeError(
+            f"is_0x_prefixed requires text typed arguments. Got: {repr(value)}"
+        )
     return value.startswith(("0x", "0X"))
 
 
