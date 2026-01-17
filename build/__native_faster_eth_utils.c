@@ -32312,35 +32312,124 @@ fail: ;
 }
 
 char CPyDef_hexadecimal___is_0x_prefixed(PyObject *cpy_r_value) {
-    PyObject *cpy_r_r0;
+    char cpy_r_r0;
     PyObject *cpy_r_r1;
-    tuple_T2OO cpy_r_r2;
+    PyObject *cpy_r_r2;
     PyObject *cpy_r_r3;
-    char cpy_r_r4;
-    char cpy_r_r5;
-    cpy_r_r0 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '0x' */
-    cpy_r_r1 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '0X' */
-    CPy_INCREF(cpy_r_r0);
-    CPy_INCREF(cpy_r_r1);
-    cpy_r_r2.f0 = cpy_r_r0;
-    cpy_r_r2.f1 = cpy_r_r1;
-    cpy_r_r3 = PyTuple_New(2);
-    if (unlikely(cpy_r_r3 == NULL))
-        CPyError_OutOfMemory();
-    PyObject *__tmp123 = cpy_r_r2.f0;
-    PyTuple_SET_ITEM(cpy_r_r3, 0, __tmp123);
-    PyObject *__tmp124 = cpy_r_r2.f1;
-    PyTuple_SET_ITEM(cpy_r_r3, 1, __tmp124);
-    cpy_r_r4 = CPyStr_Startswith(cpy_r_value, cpy_r_r3);
-    CPy_DECREF(cpy_r_r3);
-    if (unlikely(cpy_r_r4 == 2)) {
+    PyObject *cpy_r_r4;
+    PyObject *cpy_r_r5;
+    PyObject *cpy_r_r6;
+    PyObject **cpy_r_r8;
+    PyObject *cpy_r_r9;
+    PyObject *cpy_r_r10;
+    CPyPtr cpy_r_r11;
+    CPyPtr cpy_r_r12;
+    CPyPtr cpy_r_r13;
+    PyObject *cpy_r_r14;
+    PyObject *cpy_r_r15;
+    PyObject *cpy_r_r16;
+    PyObject *cpy_r_r17;
+    PyObject **cpy_r_r19;
+    PyObject *cpy_r_r20;
+    PyObject *cpy_r_r21;
+    PyObject *cpy_r_r22;
+    tuple_T2OO cpy_r_r23;
+    PyObject *cpy_r_r24;
+    char cpy_r_r25;
+    char cpy_r_r26;
+    cpy_r_r0 = PyUnicode_Check(cpy_r_value);
+    if (cpy_r_r0) goto CPyL9;
+    cpy_r_r1 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '' */
+    cpy_r_r2 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'is_0x_prefixed requires text typed arguments. Got: ' */
+    cpy_r_r3 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '{:{}}' */
+    cpy_r_r4 = PyObject_Repr(cpy_r_value);
+    if (unlikely(cpy_r_r4 == NULL)) {
         CPy_AddTraceback("faster_eth_utils/hexadecimal.py", "is_0x_prefixed", DIFFCHECK_PLACEHOLDER, CPyStatic_hexadecimal___globals);
-        goto CPyL2;
+        goto CPyL11;
     }
-    return cpy_r_r4;
-CPyL2: ;
-    cpy_r_r5 = 2;
-    return cpy_r_r5;
+    cpy_r_r5 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '' */
+    cpy_r_r6 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'format' */
+    PyObject *cpy_r_r7[3] = {cpy_r_r3, cpy_r_r4, cpy_r_r5};
+    cpy_r_r8 = (PyObject **)&cpy_r_r7;
+    cpy_r_r9 = PyObject_VectorcallMethod(cpy_r_r6, cpy_r_r8, 9223372036854775811ULL, 0);
+    if (unlikely(cpy_r_r9 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/hexadecimal.py", "is_0x_prefixed", DIFFCHECK_PLACEHOLDER, CPyStatic_hexadecimal___globals);
+        goto CPyL12;
+    }
+    CPy_DECREF(cpy_r_r4);
+    cpy_r_r10 = PyList_New(2);
+    if (unlikely(cpy_r_r10 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/hexadecimal.py", "is_0x_prefixed", DIFFCHECK_PLACEHOLDER, CPyStatic_hexadecimal___globals);
+        goto CPyL13;
+    }
+    cpy_r_r11 = (CPyPtr)&((PyListObject *)cpy_r_r10)->ob_item;
+    cpy_r_r12 = *(CPyPtr *)cpy_r_r11;
+    CPy_INCREF(cpy_r_r2);
+    *(PyObject * *)cpy_r_r12 = cpy_r_r2;
+    cpy_r_r13 = cpy_r_r12 + 8;
+    *(PyObject * *)cpy_r_r13 = cpy_r_r9;
+    cpy_r_r14 = PyUnicode_Join(cpy_r_r1, cpy_r_r10);
+    CPy_DECREF_NO_IMM(cpy_r_r10);
+    if (unlikely(cpy_r_r14 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/hexadecimal.py", "is_0x_prefixed", DIFFCHECK_PLACEHOLDER, CPyStatic_hexadecimal___globals);
+        goto CPyL11;
+    }
+    cpy_r_r15 = CPyModule_builtins;
+    cpy_r_r16 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TypeError' */
+    cpy_r_r17 = CPyObject_GetAttr(cpy_r_r15, cpy_r_r16);
+    if (unlikely(cpy_r_r17 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/hexadecimal.py", "is_0x_prefixed", DIFFCHECK_PLACEHOLDER, CPyStatic_hexadecimal___globals);
+        goto CPyL14;
+    }
+    PyObject *cpy_r_r18[1] = {cpy_r_r14};
+    cpy_r_r19 = (PyObject **)&cpy_r_r18;
+    cpy_r_r20 = PyObject_Vectorcall(cpy_r_r17, cpy_r_r19, 1, 0);
+    CPy_DECREF(cpy_r_r17);
+    if (unlikely(cpy_r_r20 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/hexadecimal.py", "is_0x_prefixed", DIFFCHECK_PLACEHOLDER, CPyStatic_hexadecimal___globals);
+        goto CPyL14;
+    }
+    CPy_DECREF(cpy_r_r14);
+    CPy_Raise(cpy_r_r20);
+    CPy_DECREF(cpy_r_r20);
+    if (unlikely(!0)) {
+        CPy_AddTraceback("faster_eth_utils/hexadecimal.py", "is_0x_prefixed", DIFFCHECK_PLACEHOLDER, CPyStatic_hexadecimal___globals);
+        goto CPyL11;
+    }
+    CPy_Unreachable();
+CPyL9: ;
+    cpy_r_r21 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '0x' */
+    cpy_r_r22 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '0X' */
+    CPy_INCREF(cpy_r_r21);
+    CPy_INCREF(cpy_r_r22);
+    cpy_r_r23.f0 = cpy_r_r21;
+    cpy_r_r23.f1 = cpy_r_r22;
+    cpy_r_r24 = PyTuple_New(2);
+    if (unlikely(cpy_r_r24 == NULL))
+        CPyError_OutOfMemory();
+    PyObject *__tmp123 = cpy_r_r23.f0;
+    PyTuple_SET_ITEM(cpy_r_r24, 0, __tmp123);
+    PyObject *__tmp124 = cpy_r_r23.f1;
+    PyTuple_SET_ITEM(cpy_r_r24, 1, __tmp124);
+    cpy_r_r25 = CPyStr_Startswith(cpy_r_value, cpy_r_r24);
+    CPy_DECREF(cpy_r_r24);
+    if (unlikely(cpy_r_r25 == 2)) {
+        CPy_AddTraceback("faster_eth_utils/hexadecimal.py", "is_0x_prefixed", DIFFCHECK_PLACEHOLDER, CPyStatic_hexadecimal___globals);
+        goto CPyL11;
+    }
+    return cpy_r_r25;
+CPyL11: ;
+    cpy_r_r26 = 2;
+    return cpy_r_r26;
+CPyL12: ;
+    CPy_DecRef(cpy_r_r4);
+    goto CPyL11;
+CPyL13: ;
+    CPy_DecRef(cpy_r_r9);
+    goto CPyL11;
+CPyL14: ;
+    CPy_DecRef(cpy_r_r14);
+    goto CPyL11;
 }
 
 PyObject *CPyPy_hexadecimal___is_0x_prefixed(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
@@ -32388,7 +32477,7 @@ PyObject *CPyDef_hexadecimal___remove_0x_prefix(PyObject *cpy_r_value) {
     if (likely(PyUnicode_Check(cpy_r_r1)))
         cpy_r_r2 = cpy_r_r1;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/hexadecimal.py", "remove_0x_prefix", 55, CPyStatic_hexadecimal___globals, "str", cpy_r_r1);
+        CPy_TypeErrorTraceback("faster_eth_utils/hexadecimal.py", "remove_0x_prefix", 54, CPyStatic_hexadecimal___globals, "str", cpy_r_r1);
         goto CPyL6;
     }
     return cpy_r_r2;
@@ -32486,7 +32575,7 @@ char CPyDef_hexadecimal___is_hexstr(PyObject *cpy_r_value) {
     if (likely(PyUnicode_Check(cpy_r_value)))
         cpy_r_r1 = cpy_r_value;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/hexadecimal.py", "is_hexstr", 66, CPyStatic_hexadecimal___globals, "str", cpy_r_value);
+        CPy_TypeErrorTraceback("faster_eth_utils/hexadecimal.py", "is_hexstr", 65, CPyStatic_hexadecimal___globals, "str", cpy_r_value);
         goto CPyL10;
     }
     cpy_r_r2 = CPyStr_IsTrue(cpy_r_r1);
@@ -32499,7 +32588,7 @@ CPyL4: ;
     if (likely(PyUnicode_Check(cpy_r_value)))
         cpy_r_r3 = cpy_r_value;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/hexadecimal.py", "is_hexstr", 68, CPyStatic_hexadecimal___globals, "str", cpy_r_value);
+        CPy_TypeErrorTraceback("faster_eth_utils/hexadecimal.py", "is_hexstr", 67, CPyStatic_hexadecimal___globals, "str", cpy_r_value);
         goto CPyL10;
     }
     cpy_r_r4 = CPyStatic_hexadecimal____HEX_REGEXP_MATCH;
@@ -32621,7 +32710,7 @@ CPyL7: ;
     if (likely(PyUnicode_Check(cpy_r_value)))
         cpy_r_r10 = cpy_r_value;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/hexadecimal.py", "is_hex", 74, CPyStatic_hexadecimal___globals, "str", cpy_r_value);
+        CPy_TypeErrorTraceback("faster_eth_utils/hexadecimal.py", "is_hex", 73, CPyStatic_hexadecimal___globals, "str", cpy_r_value);
         goto CPyL16;
     }
     cpy_r_r11 = CPyStr_IsTrue(cpy_r_r10);
@@ -32633,7 +32722,7 @@ CPyL10: ;
     if (likely(PyUnicode_Check(cpy_r_value)))
         cpy_r_r12 = cpy_r_value;
     else {
-        CPy_TypeErrorTraceback("faster_eth_utils/hexadecimal.py", "is_hex", 76, CPyStatic_hexadecimal___globals, "str", cpy_r_value);
+        CPy_TypeErrorTraceback("faster_eth_utils/hexadecimal.py", "is_hex", 75, CPyStatic_hexadecimal___globals, "str", cpy_r_value);
         goto CPyL16;
     }
     cpy_r_r13 = CPyStatic_hexadecimal____HEX_REGEXP_MATCH;
@@ -50282,7 +50371,8 @@ const char * const CPyLit_Str[] = {
     "\b\005TGOut\005TFOut\003TCb\004TVal\004TKey\vOrderedDict\017to_ordered_dict\bto_tuple",
     "\005\vsort_return\rfrom_iterable\016flatten_return\breversed\017reversed_return",
     "\001 Value must be an instance of str",
-    "\003+Value must be an instance of str or unicode\0020x\0020X",
+    "\001+Value must be an instance of str or unicode",
+    "\0033is_0x_prefixed requires text typed arguments. Got: \0020x\0020X",
     "\002+is_hex requires text typed arguments. Got: \bbinascii",
     "\002\037faster_eth_utils/hexadecimal.py\024(0[xX])\?[0-9a-fA-F]*",
     "\a\021_HEX_REGEXP_MATCH\ahexlify\b_hexlify\tunhexlify\n_unhexlify\0020s\002..",
@@ -50330,24 +50420,24 @@ const double CPyLit_Float[] = {0};
 const double CPyLit_Complex[] = {0};
 const int CPyLit_Tuple[] = {
     97, 2, 11, 37, 1, 55, 3, 8, 8, 8, 3, 58, 58, 58, 3, 59, 59, 59, 3,
-    529, 530, 531, 3, 62, 10, 63, 7, 65, 66, 67, 68, 69, 70, 71, 9, 73,
-    74, 75, 76, 77, 78, 79, 80, 81, 1, 83, 1, 85, 1, 87, 1, 531, 3, 65,
-    66, 116, 3, 117, 117, 117, 1, 541, 5, 118, 119, 120, 121, 122, 2, 123,
+    530, 531, 532, 3, 62, 10, 63, 7, 65, 66, 67, 68, 69, 70, 71, 9, 73,
+    74, 75, 76, 77, 78, 79, 80, 81, 1, 83, 1, 85, 1, 87, 1, 532, 3, 65,
+    66, 116, 3, 117, 117, 117, 1, 542, 5, 118, 119, 120, 121, 122, 2, 123,
     105, 2, 125, 126, 2, 128, 129, 1, 142, 1, 154, 4, 160, 161, 10, 63, 6,
-    162, 65, 116, 69, 70, 71, 3, 163, 163, 163, 1, 551, 1, 165, 1, 152, 2,
+    162, 65, 116, 69, 70, 71, 3, 163, 163, 163, 1, 552, 1, 165, 1, 152, 2,
     168, 169, 1, 191, 1, 193, 2, 69, 194, 1, 160, 2, 122, 195, 2, 196,
     197, 5, 199, 125, 200, 201, 126, 1, 202, 1, 204, 1, 122, 1, 206, 2,
-    237, 238, 1, 237, 3, 245, 245, 245, 1, 569, 1, 232, 3, 66, 194, 247,
+    237, 238, 1, 237, 3, 245, 245, 245, 1, 570, 1, 232, 3, 66, 194, 247,
     2, 248, 202, 1, 207, 1, 259, 3, 264, 264, 264, 3, 266, 266, 266, 3,
-    267, 267, 267, 3, 576, 577, 578, 3, 275, 275, 275, 1, 580, 6, 65, 277,
-    66, 67, 69, 247, 1, 278, 1, 282, 3, 292, 293, 293, 1, 585, 3, 298,
-    298, 298, 3, 587, 580, 530, 3, 160, 62, 10, 6, 300, 301, 302, 303, 69,
-    194, 1, 168, 1, 304, 3, 324, 324, 324, 2, 593, 531, 2, 62, 346, 2, 65,
-    66, 1, 335, 2, 348, 349, 2, 251, 350, 1, 351, 1, 370, 1, 65, 1, 382,
-    1, 393, 3, 395, 395, 395, 3, 396, 396, 396, 3, 605, 606, 578, 1, 398,
-    1, 66, 1, 386, 1, 295, 2, 411, 412, 3, 414, 414, 414, 2, 569, 613, 3,
-    65, 69, 194, 3, 421, 421, 421, 1, 616, 3, 351, 351, 351, 1, 618, 3,
-    64, 298, 298, 2, 620, 613, 3, 65, 66, 68, 1, 116
+    267, 267, 267, 3, 577, 578, 579, 3, 275, 275, 275, 1, 581, 6, 65, 277,
+    66, 67, 69, 247, 1, 278, 1, 282, 3, 292, 293, 293, 1, 586, 3, 298,
+    298, 298, 3, 588, 581, 531, 3, 160, 62, 10, 6, 300, 301, 302, 303, 69,
+    194, 1, 168, 1, 304, 3, 325, 325, 325, 2, 594, 532, 2, 62, 347, 2, 65,
+    66, 1, 336, 2, 349, 350, 2, 251, 351, 1, 352, 1, 371, 1, 65, 1, 383,
+    1, 394, 3, 396, 396, 396, 3, 397, 397, 397, 3, 606, 607, 579, 1, 399,
+    1, 66, 1, 387, 1, 295, 2, 412, 413, 3, 415, 415, 415, 2, 570, 614, 3,
+    65, 69, 194, 3, 422, 422, 422, 1, 617, 3, 352, 352, 352, 1, 619, 3,
+    64, 298, 298, 2, 621, 614, 3, 65, 66, 68, 1, 116
 };
 const int CPyLit_FrozenSet[] = {1, 2, 24, 25};
 CPyModule *CPyModule_faster_eth_utils___abi__internal = NULL;
