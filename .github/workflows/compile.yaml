@@ -16,7 +16,7 @@ on:
       - 'requirements-codspeed.txt'
       - 'requirements-pytest.txt'
       - 'requirements-test.txt'
-      - '**/*.md'
+      - '**.md'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
