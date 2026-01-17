@@ -14,7 +14,6 @@ from eth_typing import (
 
 _HEX_REGEXP_MATCH: Final = re.compile("(0[xX])?[0-9a-fA-F]*").fullmatch
 
-_hexlify: Final = binascii.hexlify
 _unhexlify: Final = binascii.unhexlify
 
 
@@ -28,17 +27,15 @@ def decode_hex(value: str) -> bytes:
     return _unhexlify(ascii_hex)
 
 
-def encode_hex(value: str | bytes | bytearray) -> HexStr:
-    ascii_bytes: bytes | bytearray
-    if isinstance(value, (bytes, bytearray)):
-        ascii_bytes = value
-    elif isinstance(value, str):
-        ascii_bytes = value.encode("ascii")
+def encode_hex(value: str | bytes | bytearray | memoryview) -> HexStr:
+    if isinstance(value, str):
+        encoded = value.encode("ascii").hex()
+    elif isinstance(value, (bytes, bytearray, memoryview)):
+        encoded = value.hex()
     else:
         raise TypeError("Value must be an instance of str or unicode")
 
-    binary_hex = _hexlify(ascii_bytes)
-    return add_0x_prefix(HexStr(binary_hex.decode("ascii")))
+    return add_0x_prefix(HexStr(encoded))
 
 
 def is_0x_prefixed(value: str) -> bool:

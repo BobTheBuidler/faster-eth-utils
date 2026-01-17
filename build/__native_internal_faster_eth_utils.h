@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[625];
+extern PyObject *CPyStatics[623];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -492,7 +492,6 @@ extern PyObject *CPyDef_functional___to_dict(PyObject *cpy_r_fn);
 extern PyObject *CPyPy_functional___to_dict(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_functional_____top_level__(void);
 extern PyObject *CPyStatic_hexadecimal____HEX_REGEXP_MATCH;
-extern PyObject *CPyStatic_hexadecimal____hexlify;
 extern PyObject *CPyStatic_hexadecimal____unhexlify;
 extern PyObject *CPyDef_hexadecimal___decode_hex(PyObject *cpy_r_value);
 extern PyObject *CPyPy_hexadecimal___decode_hex(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
