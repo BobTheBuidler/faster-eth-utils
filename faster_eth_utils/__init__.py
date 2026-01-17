@@ -254,7 +254,7 @@ _LAZY_IMPORTS = {
 __all__ = ["__version__", *_LAZY_IMPORTS]
 
 
-def __getattr__(name: str):
+def __getattr__(name: str) -> object:
     module_name = _LAZY_IMPORTS.get(name)
     if module_name is None:
         raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
@@ -264,5 +264,5 @@ def __getattr__(name: str):
     return value
 
 
-def __dir__():
+def __dir__() -> list[str]:
     return sorted({*globals(), *_LAZY_IMPORTS})
