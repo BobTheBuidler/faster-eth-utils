@@ -12,11 +12,11 @@ on:
       - 'benchmarks/**'
       - 'tests/**'
       - 'tox.ini'
-      - 'README.md'
       - 'requirements-benchmark.txt'
       - 'requirements-codspeed.txt'
       - 'requirements-pytest.txt'
       - 'requirements-test.txt'
+      - '**/*.md'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
