@@ -56,14 +56,21 @@ def test_curried_namespace():
         else:
             return nargs == 1 and enhanced_has_keywords(value)
 
+    always_curry = {"flatten_return", "sort_return", "to_ordered_dict"}
+
     def curry_namespace(ns):
         return {
-            name: curry(f) if should_curry(f) else f
+            name: curry(f) if name in always_curry or should_curry(f) else f
             for name, f in ns.items()
             if "__" not in name
         }
 
-    all_auto_curried = curry_namespace(vars(faster_eth_utils))
+    export_names = getattr(faster_eth_utils, "__all__", None)
+    if export_names is None:
+        export_names = vars(faster_eth_utils).keys()
+    export_names = [name for name in export_names if "__" not in name]
+    namespace = {name: getattr(faster_eth_utils, name) for name in export_names}
+    all_auto_curried = curry_namespace(namespace)
 
     inferred_namespace = valfilter(callable, all_auto_curried)
     curried_namespace = valfilter(callable, faster_eth_utils.curried.__dict__)
