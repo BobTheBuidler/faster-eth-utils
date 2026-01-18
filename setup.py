@@ -88,7 +88,7 @@ with open("./README.md") as readme:
 setup(
     name="faster-eth-utils",
     # *IMPORTANT*: Don't manually change the version here. Use `make bump`, as described in readme
-    version="5.3.21",
+    version="5.3.22",
     description=(
         """A faster fork of eth-utils: Common utility functions for python code that interacts with Ethereum. Implemented in C"""
     ),
