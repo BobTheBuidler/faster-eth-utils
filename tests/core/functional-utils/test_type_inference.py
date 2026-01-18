@@ -5,11 +5,7 @@ from mypy import (
     api,
 )
 
-MYPY_ARGS = [
-    "--ignore-missing-imports",
-    "--disable-error-code=unused-ignore",
-    "--disable-error-code=redundant-cast",
-]
+MYPY_ARGS = ["--ignore-missing-imports", "--disable-error-code=unused-ignore"]
 FIXTURE_DIR = "fixtures/mypy/"
 
 
