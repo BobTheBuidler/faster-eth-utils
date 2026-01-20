@@ -37,7 +37,6 @@ if not skip_mypyc:
         "faster_eth_utils/toolz.py",
         "faster_eth_utils/types.py",
         "faster_eth_utils/units.py",
-        "--pretty",
         "--strict",
         "--disable-error-code=unused-ignore",
         "--disable-error-code=redundant-cast",
@@ -46,7 +45,7 @@ if not skip_mypyc:
     if sys.platform.startswith("linux") and platform.architecture()[0] == "32bit":
         # 32-bit Linux release runners miss the pydantic build-time dependency,
         # so mypyc needs this relaxation to avoid failing type checks there.
-        mypyc_targets.append("--enable-error-code=no-any-return")
+        mypyc_targets.append("--disable-error-code=no-any-return")
 
     ext_modules = mypycify(
         mypyc_targets,
