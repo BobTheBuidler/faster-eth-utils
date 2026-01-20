@@ -1,9 +1,9 @@
-#### [faster_eth_utils.crypto](https://github.com/BobTheBuidler/faster-eth-utils/blob/fix/mypy-redundant-cast-type-inference/faster_eth_utils/crypto.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/fix/mypy-redundant-cast-type-inference/benchmarks/test_crypto_benchmarks.py)
+#### [faster_eth_utils.crypto](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/bobthebuidler-mypycify-0.x/faster_eth_utils/crypto.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/bobthebuidler-mypycify-0.x/benchmarks/test_crypto_benchmarks.py)
 
 | Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
 |----------|---------------|-------------|----------|-------------|----------|--------|
-| `keccak[bool]` | 3.1202925808057574e-05 | 1.6642356105728805e-05 | 46.66% | 87.49% | 1.87x | ✅ |
-| `keccak[bytes]` | 3.323705801699364e-05 | 1.8903091063686748e-05 | 43.13% | 75.83% | 1.76x | ✅ |
-| `keccak[hexstr]` | 4.1072040849143054e-05 | 2.1059672281597392e-05 | 48.73% | 95.03% | 1.95x | ✅ |
-| `keccak[int]` | 9.54439961796129e-05 | 2.043787549866636e-05 | 78.59% | 367.00% | 4.67x | ✅ |
-| `keccak[text]` | 3.5658399542883604e-05 | 1.9401420591012355e-05 | 45.59% | 83.79% | 1.84x | ✅ |
+| `keccak[bool]` | 3.103032195660445e-05 | 1.6916491644294133e-05 | 45.48% | 83.43% | 1.83x | ✅ |
+| `keccak[bytes]` | 3.281458331038795e-05 | 1.8982073148599966e-05 | 42.15% | 72.87% | 1.73x | ✅ |
+| `keccak[hexstr]` | 4.1026710112274975e-05 | 2.090297220766985e-05 | 49.05% | 96.27% | 1.96x | ✅ |
+| `keccak[int]` | 9.296991563902297e-05 | 2.050831154649286e-05 | 77.94% | 353.33% | 4.53x | ✅ |
+| `keccak[text]` | 3.525561586749904e-05 | 1.9615130613452648e-05 | 44.36% | 79.74% | 1.80x | ✅ |
