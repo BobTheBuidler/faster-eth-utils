@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import sys
+import platform
 
 from setuptools import Extension, find_packages, setup
 
@@ -16,32 +17,38 @@ else:
 ext_modules: list[Extension] = []
 
 if not skip_mypyc:
+    mypyc_targets = [
+        "faster_eth_utils/abi.py",
+        "faster_eth_utils/address.py",
+        "faster_eth_utils/applicators.py",
+        "faster_eth_utils/conversions.py",
+        "faster_eth_utils/crypto.py",
+        "faster_eth_utils/currency.py",
+        "faster_eth_utils/debug.py",
+        "faster_eth_utils/decorators.py",
+        "faster_eth_utils/encoding.py",
+        "faster_eth_utils/exceptions.py",
+        "faster_eth_utils/functional.py",
+        "faster_eth_utils/hexadecimal.py",
+        "faster_eth_utils/humanize.py",
+        "faster_eth_utils/module_loading.py",
+        "faster_eth_utils/network.py",
+        "faster_eth_utils/numeric.py",
+        "faster_eth_utils/toolz.py",
+        "faster_eth_utils/types.py",
+        "faster_eth_utils/units.py",
+        "--strict",
+        "--disable-error-code=unused-ignore",
+        "--disable-error-code=redundant-cast",
+    ]
+
+    if sys.platform.startswith("linux") and platform.architecture()[0] == "32bit":
+        # 32-bit Linux release runners miss the pydantic build-time dependency,
+        # so mypyc needs this relaxation to avoid failing type checks there.
+        mypyc_targets.append("--disable-error-code=no-any-return")
+
     ext_modules = mypycify(
-        [
-            "faster_eth_utils/abi.py",
-            "faster_eth_utils/address.py",
-            "faster_eth_utils/applicators.py",
-            "faster_eth_utils/conversions.py",
-            "faster_eth_utils/crypto.py",
-            "faster_eth_utils/currency.py",
-            "faster_eth_utils/debug.py",
-            "faster_eth_utils/decorators.py",
-            "faster_eth_utils/encoding.py",
-            "faster_eth_utils/exceptions.py",
-            "faster_eth_utils/functional.py",
-            "faster_eth_utils/hexadecimal.py",
-            "faster_eth_utils/humanize.py",
-            "faster_eth_utils/module_loading.py",
-            "faster_eth_utils/network.py",
-            "faster_eth_utils/numeric.py",
-            "faster_eth_utils/toolz.py",
-            "faster_eth_utils/types.py",
-            "faster_eth_utils/units.py",
-            "--pretty",
-            "--strict",
-            "--disable-error-code=unused-ignore",
-            "--disable-error-code=redundant-cast",
-        ],
+        mypyc_targets,
         group_name="faster_eth_utils",
         strict_dunder_typing=True,
     )
