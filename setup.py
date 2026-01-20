@@ -54,7 +54,7 @@ if not skip_mypyc:
         strict_dunder_typing=True,
     )
 
-MYPY_REQUIREMENT = "mypy==1.18.2"
+MYPY_REQUIREMENT = "mypy==1.19.1"
 PYTEST_REQUIREMENT = "pytest>=7.0.0"
 
 
@@ -96,7 +96,7 @@ with open("./README.md") as readme:
 setup(
     name="faster-eth-utils",
     # *IMPORTANT*: Don't manually change the version here. Use `make bump`, as described in readme
-    version="5.3.21",
+    version="5.3.23",
     description=(
         """A faster fork of eth-utils: Common utility functions for python code that interacts with Ethereum. Implemented in C"""
     ),
@@ -117,7 +117,7 @@ setup(
     },
     include_package_data=True,
     install_requires=[
-        "cchecksum==0.3.9",
+        "cchecksum==0.3.10",
         "eth-hash>=0.3.1",
         "eth-typing==5.2.1",
         "eth-utils==5.3.1",
