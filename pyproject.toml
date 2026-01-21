@@ -3,7 +3,7 @@ requires = [
   "setuptools",
   "wheel",
   "mypy[mypyc]==1.19.1",
-  "cchecksum==0.3.10",
+  "cchecksum==0.4.0",
   "eth-hash==0.7.1",
   "eth-typing==5.2.1",
   # puccinialin (installed with eth-utils) is unable to install for
