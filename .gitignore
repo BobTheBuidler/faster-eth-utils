@@ -1,17 +1,13 @@
 *.py[cod]
 
 # C extensions
-*.o
 *.so
 
 # Packages
 *.egg
 *.egg-info
 dist
-build/**/*.py
-build/**/*.typed
-build/**/*.json
-build/ops.txt
+build
 .build
 eggs
 .eggs
@@ -95,7 +91,6 @@ logs
 
 ## General
 .idea/*
-.worktrees/
 .idea_modules/*
 
 ## File-based project format:
@@ -116,3 +111,4 @@ crashlytics-build.properties
 fabric.properties
 
 # END JetBrains section
+.worktrees/
