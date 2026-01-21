@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 import platform
+from typing import Final
 
 from setuptools import Extension, find_packages, setup
 
@@ -13,6 +14,9 @@ else:
         cmd in sys.argv
         for cmd in ("sdist", "egg_info", "--name", "--version", "--help", "--help-commands")
     )
+
+VERSION: Final = "5.3.24"
+DESCRIPTION: Final = "A faster fork of eth-utils: Common utility functions for python code that interacts with Ethereum. Implemented in C."
 
 ext_modules: list[Extension] = []
 
@@ -95,10 +99,8 @@ with open("./README.md") as readme:
 setup(
     name="faster-eth-utils",
     # *IMPORTANT*: Don't manually change the version here. Use `make bump`, as described in readme
-    version="5.3.23",
-    description=(
-        """A faster fork of eth-utils: Common utility functions for python code that interacts with Ethereum. Implemented in C"""
-    ),
+    version=VERSION,
+    description=DESCRIPTION,
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="The Ethereum Foundation",
