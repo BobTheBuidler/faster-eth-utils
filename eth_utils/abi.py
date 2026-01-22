@@ -594,34 +594,64 @@ def get_aligned_abi_inputs(
     _raise_if_fallback_or_receive_abi(abi_element)
 
     abi_element_inputs = cast(Sequence[ABIComponent], abi_element.get("inputs", []))
-
-    if not is_list_like(normalized_args):
-        raise TypeError(
-            f"Expected non-string sequence for '{abi_element.get('type')}'"
-            f" component type: got {normalized_args}"
-        )
-
-    normalized_args_as_tuple = tuple(normalized_args)
-
-    # If the provided inputs are a mapping, we need to align them by name
     if isinstance(normalized_args, abc.Mapping):
-        aligned_args = tuple(
-            normalized_args_as_tuple[abi_input["name"]]
-            for abi_input in abi_element_inputs
+        # `args` is mapping.  Align values according to abi order.
+        normalized_args = tuple(
+            normalized_args[abi["name"]] for abi in abi_element_inputs
         )
-    else:
-        aligned_args = normalized_args_as_tuple
 
-    return (tuple(get_abi_input_types(abi_element)), aligned_args)
+    return (
+        tuple(collapse_if_tuple(abi) for abi in abi_element_inputs),
+        type(normalized_args)(
+            _align_abi_input(abi, arg)
+            for abi, arg in zip(abi_element_inputs, normalized_args)
+        ),
+    )
+
+
+def get_abi_input_names(abi_element: ABIElement) -> list[str | None]:
+    """
+    Return names for each input from the function or event ABI.
+
+    :param abi_element: ABI element.
+    :type abi_element: `ABIElement`
+    :return: Names for each input in the function or event ABI.
+    :rtype: `List[Optional[str]]`
+
+    .. doctest::
+
+        >>> from eth_utils import get_abi_input_names
+        >>> abi = {
+        ...   'constant': False,
+        ...   'inputs': [
+        ...     {
+        ...       'name': 's',
+        ...       'type': 'uint256'
+        ...     }
+        ...   ],
+        ...   'name': 'f',
+        ...   'outputs': [],
+        ...   'payable': False,
+        ...   'stateMutability': 'nonpayable',
+        ...   'type': 'function'
+        ... }
+        >>> get_abi_input_names(abi)
+        ['s']
+    """
+    _raise_if_fallback_or_receive_abi(abi_element)
+    return [
+        arg.get("name", None)
+        for arg in cast(Sequence[ABIComponent], abi_element.get("inputs", []))
+    ]
 
 
 def get_abi_input_types(abi_element: ABIElement) -> list[str]:
     """
-    Return types for each input from the function ABI.
+    Return types for each input from the function or event ABI.
 
     :param abi_element: ABI element.
     :type abi_element: `ABIElement`
-    :return: Types for each function input in the function ABI.
+    :return: Types for each input in the function or event ABI.
     :rtype: `List[str]`
 
     .. doctest::
@@ -651,50 +681,14 @@ def get_abi_input_types(abi_element: ABIElement) -> list[str]:
     ]
 
 
-def get_abi_input_names(abi_element: ABIElement) -> list[str | None]:
-    """
-    Return names for each input from the function ABI.
-
-    :param abi_element: ABI element.
-    :type abi_element: `ABIElement`
-    :return: Names for each function input in the function ABI.
-    :rtype: `List[str | None]`
-
-    .. doctest::
-
-        >>> from eth_utils import get_abi_input_names
-        >>> abi = {
-        ...   'constant': False,
-        ...   'inputs': [
-        ...     {
-        ...       'name': 's',
-        ...       'type': 'uint256'
-        ...     }
-        ...   ],
-        ...   'name': 'f',
-        ...   'outputs': [],
-        ...   'payable': False,
-        ...   'stateMutability': 'nonpayable',
-        ...   'type': 'function'
-        ... }
-        >>> get_abi_input_names(abi)
-        ['s']
-    """
-    _raise_if_fallback_or_receive_abi(abi_element)
-    return [
-        arg.get("name", None)
-        for arg in cast(Sequence[ABIComponent], abi_element.get("inputs", []))
-    ]
-
-
 def get_abi_output_names(abi_element: ABIElement) -> list[str | None]:
     """
-    Return names for each output from the function ABI.
+    Return names for each output from the ABI element.
 
     :param abi_element: ABI element.
     :type abi_element: `ABIElement`
     :return: Names for each function output in the function ABI.
-    :rtype: `List[str | None]`
+    :rtype: `List[Optional[str]]`
 
     .. doctest::
 
