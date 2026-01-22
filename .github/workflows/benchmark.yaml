@@ -99,9 +99,11 @@ jobs:
 
       - name: Run CodSpeed
         uses: CodSpeedHQ/action@v4
+        env:
+          PYTEST_ADDOPTS: "-c benchmarks/pytest-codspeed.ini --test-group=${{ matrix.shard }}"
         with:
           mode: instrumentation
-          run: pytest --codspeed -k "test_faster_" --test-group=${{ matrix.shard }} --test-group-count=6 benchmarks/
+          run: pytest
 
   comparison-benchmark:
     name: Run Comparison Benchmarks
@@ -135,7 +137,9 @@ jobs:
           rm -r faster_eth_utils
           
       - name: Run Pytest Benchmark & Save Output
-        run: pytest --benchmark-only --benchmark-json=benchmark.json benchmarks/
+        env:
+          PYTEST_ADDOPTS: "-c benchmarks/pytest-benchmark.ini"
+        run: pytest
         
       - name: Upload Pytest Benchmark Results
         uses: actions/upload-artifact@v6
