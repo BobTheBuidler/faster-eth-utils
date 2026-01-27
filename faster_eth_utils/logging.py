@@ -124,15 +124,10 @@ class HasLoggerMeta(type):
         bases: tuple[type[Any], ...],
         namespace: dict[str, Any],
     ) -> THasLoggerMeta:
-        if issubclass(mcls, ABCMeta):
-            new_class = ABCMeta.__new__
-        else:
-            new_class = type.__new__
-
         if "logger" in namespace:
             # If a logger was explicitly declared we shouldn't do anything to
             # replace it.
-            return new_class(mcls, name, bases, namespace)
+            return super().__new__(mcls, name, bases, namespace)
         if "__qualname__" not in namespace:
             raise AttributeError("Missing __qualname__")
 
@@ -140,7 +135,7 @@ class HasLoggerMeta(type):
 
         modified_namespace = namespace.copy()
         modified_namespace["logger"] = logger
-        return new_class(mcls, name, bases, modified_namespace)
+        return super().__new__(mcls, name, bases, modified_namespace)
 
     @classmethod
     def replace_logger_class(
