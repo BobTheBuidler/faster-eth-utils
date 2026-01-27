@@ -1,7 +1,4 @@
 import logging
-from abc import (
-    ABCMeta,
-)
 from collections.abc import (
     Iterator,
 )
