@@ -1,4 +1,7 @@
 import logging
+from abc import (
+    ABCMeta,
+)
 from collections.abc import (
     Iterator,
 )
@@ -8,12 +11,20 @@ from contextlib import (
 from functools import (
     cached_property,
 )
+from mypy_extensions import (
+    mypyc_attr,
+)
 from typing import (
     Any,
     Final,
     TypeVar,
     cast,
+    final,
     overload,
+)
+
+from .toolz import (
+    assoc,
 )
 
 DEBUG2_LEVEL_NUM: Final = 8
@@ -26,6 +37,7 @@ getLoggerClass: Final = logging.getLoggerClass
 setLoggerClass: Final = logging.setLoggerClass
 
 
+@final
 class ExtendedDebugLogger(logging.Logger):
     """
     Logging class that can be used for lower level debug logging.
@@ -57,6 +69,7 @@ def setup_DEBUG2_logging() -> None:
     if not hasattr(logging, "DEBUG2"):
         logging.addLevelName(DEBUG2_LEVEL_NUM, "DEBUG2")
         logging.DEBUG2 = DEBUG2_LEVEL_NUM  # type: ignore [attr-defined]
+
 
 @contextmanager
 def _use_logger_class(logger_class: type[logging.Logger]) -> Iterator[None]:
@@ -97,6 +110,7 @@ def get_extended_debug_logger(name: str) -> ExtendedDebugLogger:
 THasLoggerMeta = TypeVar("THasLoggerMeta", bound="HasLoggerMeta")
 
 
+@mypyc_attr(native_class=False)
 class HasLoggerMeta(type):
     """
     Assigns a logger instance to a class, derived from the import path and name.
@@ -110,21 +124,24 @@ class HasLoggerMeta(type):
     def __new__(
         mcls: type[THasLoggerMeta],
         name: str,
-        bases: tuple[type[Any]],
+        bases: tuple[type[Any], ...],
         namespace: dict[str, Any],
     ) -> THasLoggerMeta:
+        if issubclass(mcls, ABCMeta):
+            new_class = ABCMeta.__new__
+        else:
+            new_class = type.__new__
+
         if "logger" in namespace:
             # If a logger was explicitly declared we shouldn't do anything to
             # replace it.
-            return super().__new__(mcls, name, bases, namespace)
+            return new_class(mcls, name, bases, namespace)
         if "__qualname__" not in namespace:
             raise AttributeError("Missing __qualname__")
-    
+
         logger = get_logger(namespace["__qualname__"], mcls.logger_class)
 
-        modified_namespace = namespace.copy()
-        modified_namespace["logger"] = logger
-        return super().__new__(mcls, name, bases, modified_namespace)
+        return new_class(mcls, name, bases, assoc(namespace, "logger", logger))
 
     @classmethod
     def replace_logger_class(
@@ -139,6 +156,7 @@ class HasLoggerMeta(type):
         return type(mcls.__name__, (mcls, other), {})
 
 
+@final
 class HasLogger(metaclass=HasLoggerMeta):
     logger: logging.Logger
 
@@ -146,5 +164,6 @@ class HasLogger(metaclass=HasLoggerMeta):
 HasExtendedDebugLoggerMeta = HasLoggerMeta.replace_logger_class(ExtendedDebugLogger)
 
 
-class HasExtendedDebugLogger(metaclass=HasExtendedDebugLoggerMeta):  # type: ignore[metaclass]
+@final
+class HasExtendedDebugLogger(metaclass=HasExtendedDebugLoggerMeta):  # type: ignore [metaclass,misc]
     logger: ExtendedDebugLogger
