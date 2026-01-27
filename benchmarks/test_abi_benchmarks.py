@@ -147,7 +147,7 @@ def test_abi_to_signature(benchmark: BenchmarkFixture, abi_element: dict[str, An
 @pytest.mark.benchmark(group="abi_to_signature")
 @pytest.mark.parametrize("abi_element", abi_elements, ids=abi_elements_ids)
 def test_faster_abi_to_signature(benchmark: BenchmarkFixture, abi_element: dict[str, Any]) -> None:
-    benchmark(_batch, 100, faster_eth_utils.abi_to_signature, abi_element)
+    benchmark(_batch, 1000, faster_eth_utils.abi_to_signature, abi_element)
 
 @pytest.mark.benchmark(group="collapse_if_tuple")
 @pytest.mark.parametrize("abi_element", abi_elements, ids=abi_elements_ids)
