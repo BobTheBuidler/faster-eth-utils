@@ -141,7 +141,9 @@ class HasLoggerMeta(type):
 
         logger = get_logger(namespace["__qualname__"], mcls.logger_class)
 
-        return new_class(mcls, name, bases, assoc(namespace, "logger", logger))
+        modified_namespace = namespace.copy()
+        modified_namespace["logger"] = logger
+        return new_class(mcls, name, bases, modified_namespace)
 
     @classmethod
     def replace_logger_class(
