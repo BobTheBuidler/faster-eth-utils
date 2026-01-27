@@ -38572,6 +38572,4374 @@ CPyL22: ;
     cpy_r_r106 = 2;
     return cpy_r_r106;
 }
+
+PyObject *CPyDef_logging_____mypyc__ExtendedDebugLogger_setup(PyObject *cpy_r_type);
+PyObject *CPyDef_logging___ExtendedDebugLogger(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+
+static PyObject *
+logging___ExtendedDebugLogger_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+{
+    if (type != CPyType_logging___ExtendedDebugLogger) {
+        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+        return NULL;
+    }
+    PyObject *self = CPyDef_logging_____mypyc__ExtendedDebugLogger_setup((PyObject*)type);
+    if (self == NULL)
+        return NULL;
+    return self;
+}
+
+static int
+logging___ExtendedDebugLogger_traverse(faster_eth_utils___logging___ExtendedDebugLoggerObject *self, visitproc visit, void *arg)
+{
+    PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+    return 0;
+}
+
+static int
+logging___ExtendedDebugLogger_clear(faster_eth_utils___logging___ExtendedDebugLoggerObject *self)
+{
+    PyObject_ClearManagedDict((PyObject *)self);
+    return 0;
+}
+
+static void
+logging___ExtendedDebugLogger_dealloc(faster_eth_utils___logging___ExtendedDebugLoggerObject *self)
+{
+    PyObject_GC_UnTrack(self);
+    CPy_TRASHCAN_BEGIN(self, logging___ExtendedDebugLogger_dealloc)
+    logging___ExtendedDebugLogger_clear(self);
+    Py_TYPE(self)->tp_free((PyObject *)self);
+    CPy_TRASHCAN_END(self)
+    done: ;
+}
+
+static CPyVTableItem logging___ExtendedDebugLogger_vtable[3];
+static bool
+CPyDef_logging___ExtendedDebugLogger_trait_vtable_setup(void)
+{
+    CPyVTableItem logging___ExtendedDebugLogger_vtable_scratch[] = {
+        (CPyVTableItem)CPyDef_logging___ExtendedDebugLogger___show_debug2,
+        (CPyVTableItem)CPyDef_logging___ExtendedDebugLogger___debug2,
+        (CPyVTableItem)CPyDef_logging___ExtendedDebugLogger_____reduce__,
+    };
+    memcpy(logging___ExtendedDebugLogger_vtable, logging___ExtendedDebugLogger_vtable_scratch, sizeof(logging___ExtendedDebugLogger_vtable));
+    return 1;
+}
+
+static PyObject *
+logging___ExtendedDebugLogger_get_show_debug2(faster_eth_utils___logging___ExtendedDebugLoggerObject *self, void *closure);
+
+static PyGetSetDef logging___ExtendedDebugLogger_getseters[] = {
+    {"show_debug2",
+     (getter)logging___ExtendedDebugLogger_get_show_debug2,
+    NULL, NULL, NULL},
+    {"__dict__", PyObject_GenericGetDict, PyObject_GenericSetDict},
+    {NULL}  /* Sentinel */
+};
+
+static PyMethodDef logging___ExtendedDebugLogger_methods[] = {
+    {"__internal_mypyc_setup", (PyCFunction)CPyDef_logging_____mypyc__ExtendedDebugLogger_setup, METH_O, NULL},
+    {"debug2",
+     (PyCFunction)CPyPy_logging___ExtendedDebugLogger___debug2,
+     METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("debug2($self, message, *args, **kwargs)\n--\n\n")},
+    {"__reduce__",
+     (PyCFunction)CPyPy_logging___ExtendedDebugLogger_____reduce__,
+     METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("__reduce__($self)\n--\n\n")},
+    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
+    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
+    {NULL}  /* Sentinel */
+};
+
+static PyTypeObject CPyType_logging___ExtendedDebugLogger_template_ = {
+    PyVarObject_HEAD_INIT(NULL, 0)
+    .tp_name = "ExtendedDebugLogger",
+    .tp_new = logging___ExtendedDebugLogger_new,
+    .tp_dealloc = (destructor)logging___ExtendedDebugLogger_dealloc,
+    .tp_traverse = (traverseproc)logging___ExtendedDebugLogger_traverse,
+    .tp_clear = (inquiry)logging___ExtendedDebugLogger_clear,
+    .tp_getset = logging___ExtendedDebugLogger_getseters,
+    .tp_methods = logging___ExtendedDebugLogger_methods,
+    .tp_basicsize = sizeof(faster_eth_utils___logging___ExtendedDebugLoggerObject),
+    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_HAVE_GC | Py_TPFLAGS_MANAGED_DICT,
+    .tp_doc = PyDoc_STR("ExtendedDebugLogger()\n--\n\n"),
+};
+static PyTypeObject *CPyType_logging___ExtendedDebugLogger_template = &CPyType_logging___ExtendedDebugLogger_template_;
+
+PyObject *CPyDef_logging_____mypyc__ExtendedDebugLogger_setup(PyObject *cpy_r_type)
+{
+    PyTypeObject *type = (PyTypeObject*)cpy_r_type;
+    faster_eth_utils___logging___ExtendedDebugLoggerObject *self;
+    self = (faster_eth_utils___logging___ExtendedDebugLoggerObject *)type->tp_alloc(type, 0);
+    if (self == NULL)
+        return NULL;
+    self->vtable = logging___ExtendedDebugLogger_vtable;
+    return (PyObject *)self;
+}
+
+PyObject *CPyDef_logging___ExtendedDebugLogger(PyObject *cpy_r_args, PyObject *cpy_r_kwargs)
+{
+    PyObject *self = CPyDef_logging_____mypyc__ExtendedDebugLogger_setup((PyObject *)CPyType_logging___ExtendedDebugLogger);
+    if (self == NULL)
+        return NULL;
+    int res = CPyType_logging___ExtendedDebugLogger->tp_init(self, cpy_r_args, cpy_r_kwargs);
+    if (res < 0) {
+        Py_DECREF(self);
+        return NULL;
+    }
+    return self;
+}
+
+
+static PyObject *
+logging___ExtendedDebugLogger_get_show_debug2(faster_eth_utils___logging___ExtendedDebugLoggerObject *self, void *closure)
+{
+    char retval = CPyDef_logging___ExtendedDebugLogger___show_debug2((PyObject *) self);
+    if (retval == 2) {
+        return NULL;
+    }
+    PyObject *retbox = retval ? Py_True : Py_False;
+    CPy_INCREF(retbox);
+    return retbox;
+}
+
+PyObject *CPyDef_logging_____mypyc__HasExtendedDebugLogger_setup(PyObject *cpy_r_type);
+PyObject *CPyDef_logging___HasExtendedDebugLogger(void);
+
+static PyObject *
+logging___HasExtendedDebugLogger_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+{
+    if (type != CPyType_logging___HasExtendedDebugLogger) {
+        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+        return NULL;
+    }
+    PyObject *self = CPyDef_logging_____mypyc__HasExtendedDebugLogger_setup((PyObject*)type);
+    if (self == NULL)
+        return NULL;
+    return self;
+}
+
+static int
+logging___HasExtendedDebugLogger_traverse(faster_eth_utils___logging___HasExtendedDebugLoggerObject *self, visitproc visit, void *arg)
+{
+    Py_VISIT(self->_logger);
+    return 0;
+}
+
+static int
+logging___HasExtendedDebugLogger_clear(faster_eth_utils___logging___HasExtendedDebugLoggerObject *self)
+{
+    Py_CLEAR(self->_logger);
+    return 0;
+}
+
+static void
+logging___HasExtendedDebugLogger_dealloc(faster_eth_utils___logging___HasExtendedDebugLoggerObject *self)
+{
+    PyObject_GC_UnTrack(self);
+    CPy_TRASHCAN_BEGIN(self, logging___HasExtendedDebugLogger_dealloc)
+    logging___HasExtendedDebugLogger_clear(self);
+    Py_TYPE(self)->tp_free((PyObject *)self);
+    CPy_TRASHCAN_END(self)
+    done: ;
+}
+
+static CPyVTableItem logging___HasExtendedDebugLogger_vtable[1];
+static bool
+CPyDef_logging___HasExtendedDebugLogger_trait_vtable_setup(void)
+{
+    CPyVTableItem logging___HasExtendedDebugLogger_vtable_scratch[] = {
+        NULL
+    };
+    memcpy(logging___HasExtendedDebugLogger_vtable, logging___HasExtendedDebugLogger_vtable_scratch, sizeof(logging___HasExtendedDebugLogger_vtable));
+    return 1;
+}
+
+static PyObject *
+logging___HasExtendedDebugLogger_get_logger(faster_eth_utils___logging___HasExtendedDebugLoggerObject *self, void *closure);
+static int
+logging___HasExtendedDebugLogger_set_logger(faster_eth_utils___logging___HasExtendedDebugLoggerObject *self, PyObject *value, void *closure);
+
+static PyGetSetDef logging___HasExtendedDebugLogger_getseters[] = {
+    {"logger",
+     (getter)logging___HasExtendedDebugLogger_get_logger, (setter)logging___HasExtendedDebugLogger_set_logger,
+     NULL, NULL},
+    {NULL}  /* Sentinel */
+};
+
+static PyMethodDef logging___HasExtendedDebugLogger_methods[] = {
+    {"__internal_mypyc_setup", (PyCFunction)CPyDef_logging_____mypyc__HasExtendedDebugLogger_setup, METH_O, NULL},
+    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
+    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
+    {NULL}  /* Sentinel */
+};
+
+static PyTypeObject CPyType_logging___HasExtendedDebugLogger_template_ = {
+    PyVarObject_HEAD_INIT(NULL, 0)
+    .tp_name = "HasExtendedDebugLogger",
+    .tp_new = logging___HasExtendedDebugLogger_new,
+    .tp_dealloc = (destructor)logging___HasExtendedDebugLogger_dealloc,
+    .tp_traverse = (traverseproc)logging___HasExtendedDebugLogger_traverse,
+    .tp_clear = (inquiry)logging___HasExtendedDebugLogger_clear,
+    .tp_getset = logging___HasExtendedDebugLogger_getseters,
+    .tp_methods = logging___HasExtendedDebugLogger_methods,
+    .tp_basicsize = sizeof(faster_eth_utils___logging___HasExtendedDebugLoggerObject),
+    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_HAVE_GC,
+    .tp_doc = PyDoc_STR("HasExtendedDebugLogger()\n--\n\n"),
+};
+static PyTypeObject *CPyType_logging___HasExtendedDebugLogger_template = &CPyType_logging___HasExtendedDebugLogger_template_;
+
+PyObject *CPyDef_logging_____mypyc__HasExtendedDebugLogger_setup(PyObject *cpy_r_type)
+{
+    PyTypeObject *type = (PyTypeObject*)cpy_r_type;
+    faster_eth_utils___logging___HasExtendedDebugLoggerObject *self;
+    self = (faster_eth_utils___logging___HasExtendedDebugLoggerObject *)type->tp_alloc(type, 0);
+    if (self == NULL)
+        return NULL;
+    self->vtable = logging___HasExtendedDebugLogger_vtable;
+    return (PyObject *)self;
+}
+
+PyObject *CPyDef_logging___HasExtendedDebugLogger(void)
+{
+    PyObject *self = CPyDef_logging_____mypyc__HasExtendedDebugLogger_setup((PyObject *)CPyType_logging___HasExtendedDebugLogger);
+    if (self == NULL)
+        return NULL;
+    return self;
+}
+
+static PyObject *
+logging___HasExtendedDebugLogger_get_logger(faster_eth_utils___logging___HasExtendedDebugLoggerObject *self, void *closure)
+{
+    if (unlikely(self->_logger == NULL)) {
+        PyErr_SetString(PyExc_AttributeError,
+            "attribute 'logger' of 'HasExtendedDebugLogger' undefined");
+        return NULL;
+    }
+    CPy_INCREF_NO_IMM(self->_logger);
+    PyObject *retval = self->_logger;
+    return retval;
+}
+
+static int
+logging___HasExtendedDebugLogger_set_logger(faster_eth_utils___logging___HasExtendedDebugLoggerObject *self, PyObject *value, void *closure)
+{
+    if (value == NULL) {
+        PyErr_SetString(PyExc_AttributeError,
+            "'HasExtendedDebugLogger' object attribute 'logger' cannot be deleted");
+        return -1;
+    }
+    if (self->_logger != NULL) {
+        CPy_DECREF_NO_IMM(self->_logger);
+    }
+    PyObject *tmp;
+    if (likely(Py_TYPE(value) == CPyType_logging___ExtendedDebugLogger))
+        tmp = value;
+    else {
+        CPy_TypeError("faster_eth_utils.logging.ExtendedDebugLogger", value); 
+        tmp = NULL;
+    }
+    if (!tmp)
+        return -1;
+    CPy_INCREF_NO_IMM(tmp);
+    self->_logger = tmp;
+    return 0;
+}
+
+PyObject *CPyDef_logging_____mypyc__debug2_ExtendedDebugLogger_env_setup(PyObject *cpy_r_type);
+PyObject *CPyDef_logging___debug2_ExtendedDebugLogger_env(void);
+
+static PyObject *
+logging___debug2_ExtendedDebugLogger_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+{
+    if (type != CPyType_logging___debug2_ExtendedDebugLogger_env) {
+        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+        return NULL;
+    }
+    PyObject *self = CPyDef_logging_____mypyc__debug2_ExtendedDebugLogger_env_setup((PyObject*)type);
+    if (self == NULL)
+        return NULL;
+    return self;
+}
+
+static int
+logging___debug2_ExtendedDebugLogger_env_traverse(faster_eth_utils___logging___debug2_ExtendedDebugLogger_envObject *self, visitproc visit, void *arg)
+{
+    Py_VISIT(self->___mypyc_self__);
+    Py_VISIT(self->_self);
+    Py_VISIT(self->_message);
+    Py_VISIT(self->_args);
+    Py_VISIT(self->_kwargs);
+    return 0;
+}
+
+static int
+logging___debug2_ExtendedDebugLogger_env_clear(faster_eth_utils___logging___debug2_ExtendedDebugLogger_envObject *self)
+{
+    Py_CLEAR(self->___mypyc_self__);
+    Py_CLEAR(self->_self);
+    Py_CLEAR(self->_message);
+    Py_CLEAR(self->_args);
+    Py_CLEAR(self->_kwargs);
+    return 0;
+}
+
+static void
+logging___debug2_ExtendedDebugLogger_env_dealloc(faster_eth_utils___logging___debug2_ExtendedDebugLogger_envObject *self)
+{
+    PyObject_GC_UnTrack(self);
+    if (logging___debug2_ExtendedDebugLogger_env_free_instance == NULL) {
+        logging___debug2_ExtendedDebugLogger_env_free_instance = self;
+        Py_CLEAR(self->___mypyc_self__);
+        Py_CLEAR(self->_self);
+        Py_CLEAR(self->_message);
+        Py_CLEAR(self->_args);
+        Py_CLEAR(self->_kwargs);
+        return;
+    }
+    CPy_TRASHCAN_BEGIN(self, logging___debug2_ExtendedDebugLogger_env_dealloc)
+    logging___debug2_ExtendedDebugLogger_env_clear(self);
+    Py_TYPE(self)->tp_free((PyObject *)self);
+    CPy_TRASHCAN_END(self)
+    done: ;
+}
+
+static CPyVTableItem logging___debug2_ExtendedDebugLogger_env_vtable[1];
+static bool
+CPyDef_logging___debug2_ExtendedDebugLogger_env_trait_vtable_setup(void)
+{
+    CPyVTableItem logging___debug2_ExtendedDebugLogger_env_vtable_scratch[] = {
+        NULL
+    };
+    memcpy(logging___debug2_ExtendedDebugLogger_env_vtable, logging___debug2_ExtendedDebugLogger_env_vtable_scratch, sizeof(logging___debug2_ExtendedDebugLogger_env_vtable));
+    return 1;
+}
+
+static PyMethodDef logging___debug2_ExtendedDebugLogger_env_methods[] = {
+    {"__internal_mypyc_setup", (PyCFunction)CPyDef_logging_____mypyc__debug2_ExtendedDebugLogger_env_setup, METH_O, NULL},
+    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
+    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
+    {NULL}  /* Sentinel */
+};
+
+static PyTypeObject CPyType_logging___debug2_ExtendedDebugLogger_env_template_ = {
+    PyVarObject_HEAD_INIT(NULL, 0)
+    .tp_name = "debug2_ExtendedDebugLogger_env",
+    .tp_new = logging___debug2_ExtendedDebugLogger_env_new,
+    .tp_dealloc = (destructor)logging___debug2_ExtendedDebugLogger_env_dealloc,
+    .tp_traverse = (traverseproc)logging___debug2_ExtendedDebugLogger_env_traverse,
+    .tp_clear = (inquiry)logging___debug2_ExtendedDebugLogger_env_clear,
+    .tp_methods = logging___debug2_ExtendedDebugLogger_env_methods,
+    .tp_basicsize = sizeof(faster_eth_utils___logging___debug2_ExtendedDebugLogger_envObject),
+    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_HAVE_GC,
+    .tp_doc = PyDoc_STR("debug2_ExtendedDebugLogger_env()\n--\n\n"),
+};
+static PyTypeObject *CPyType_logging___debug2_ExtendedDebugLogger_env_template = &CPyType_logging___debug2_ExtendedDebugLogger_env_template_;
+
+PyObject *CPyDef_logging_____mypyc__debug2_ExtendedDebugLogger_env_setup(PyObject *cpy_r_type)
+{
+    PyTypeObject *type = (PyTypeObject*)cpy_r_type;
+    faster_eth_utils___logging___debug2_ExtendedDebugLogger_envObject *self;
+    if (logging___debug2_ExtendedDebugLogger_env_free_instance != NULL) {
+        self = logging___debug2_ExtendedDebugLogger_env_free_instance;
+        logging___debug2_ExtendedDebugLogger_env_free_instance = NULL;
+        Py_SET_REFCNT(self, 1);
+        PyObject_GC_Track(self);
+        return (PyObject *)self;
+    }
+    self = (faster_eth_utils___logging___debug2_ExtendedDebugLogger_envObject *)type->tp_alloc(type, 0);
+    if (self == NULL)
+        return NULL;
+    self->vtable = logging___debug2_ExtendedDebugLogger_env_vtable;
+    return (PyObject *)self;
+}
+
+PyObject *CPyDef_logging___debug2_ExtendedDebugLogger_env(void)
+{
+    PyObject *self = CPyDef_logging_____mypyc__debug2_ExtendedDebugLogger_env_setup((PyObject *)CPyType_logging___debug2_ExtendedDebugLogger_env);
+    if (self == NULL)
+        return NULL;
+    return self;
+}
+
+
+static PyObject *CPyDunder___get__logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj(PyObject *self, PyObject *instance, PyObject *owner) {
+    instance = instance ? instance : Py_None;
+    return CPyDef_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_____get__(self, instance, owner);
+}
+PyObject *CPyDef_logging_____mypyc___3__mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_setup(PyObject *cpy_r_type);
+PyObject *CPyDef_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj(void);
+
+static PyObject *
+logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+{
+    if (type != CPyType_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj) {
+        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+        return NULL;
+    }
+    PyObject *self = CPyDef_logging_____mypyc___3__mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_setup((PyObject*)type);
+    if (self == NULL)
+        return NULL;
+    return self;
+}
+
+static int
+logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_traverse(faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject *self, visitproc visit, void *arg)
+{
+    Py_VISIT(self->___mypyc_env__);
+    PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+    return 0;
+}
+
+static int
+logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_clear(faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject *self)
+{
+    Py_CLEAR(self->___mypyc_env__);
+    PyObject_ClearManagedDict((PyObject *)self);
+    return 0;
+}
+
+static void
+logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_dealloc(faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject *self)
+{
+    PyObject_GC_UnTrack(self);
+    if (logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_free_instance == NULL) {
+        logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_free_instance = self;
+        Py_CLEAR(self->___mypyc_env__);
+        return;
+    }
+    CPy_TRASHCAN_BEGIN(self, logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_dealloc)
+    logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_clear(self);
+    Py_TYPE(self)->tp_free((PyObject *)self);
+    CPy_TRASHCAN_END(self)
+    done: ;
+}
+
+static CPyVTableItem logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_vtable[2];
+static bool
+CPyDef_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_trait_vtable_setup(void)
+{
+    CPyVTableItem logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_vtable_scratch[] = {
+        (CPyVTableItem)CPyDef_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_____call__,
+        (CPyVTableItem)CPyDef_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_____get__,
+    };
+    memcpy(logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_vtable, logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_vtable_scratch, sizeof(logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_vtable));
+    return 1;
+}
+
+static PyObject *
+logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_get___3_mypyc_env__(faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject *self, void *closure);
+static int
+logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_set___3_mypyc_env__(faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject *self, PyObject *value, void *closure);
+
+static PyGetSetDef logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_getseters[] = {
+    {"__mypyc_env__",
+     (getter)logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_get___3_mypyc_env__, (setter)logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_set___3_mypyc_env__,
+     NULL, NULL},
+    {"__dict__", PyObject_GenericGetDict, PyObject_GenericSetDict},
+    {NULL}  /* Sentinel */
+};
+
+static PyMethodDef logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_methods[] = {
+    {"__internal_mypyc_setup", (PyCFunction)CPyDef_logging_____mypyc___3__mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_setup, METH_O, NULL},
+    {"__call__",
+     (PyCFunction)CPyPy_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_____call__,
+     METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("__call__($message, *args, **kwargs)\n--\n\n")},
+    {"__get__",
+     (PyCFunction)CPyPy_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_____get__,
+     METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("__get__($instance, owner)\n--\n\n")},
+    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
+    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
+    {NULL}  /* Sentinel */
+};
+
+static PyTypeObject CPyType_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_template_ = {
+    PyVarObject_HEAD_INIT(NULL, 0)
+    .tp_name = "__mypyc_lambda__0_debug2_ExtendedDebugLogger_obj",
+    .tp_new = logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_new,
+    .tp_dealloc = (destructor)logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_dealloc,
+    .tp_traverse = (traverseproc)logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_traverse,
+    .tp_clear = (inquiry)logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_clear,
+    .tp_getset = logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_getseters,
+    .tp_methods = logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_methods,
+    .tp_call = PyVectorcall_Call,
+    .tp_descr_get = CPyDunder___get__logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj,
+    .tp_basicsize = sizeof(faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject),
+    .tp_vectorcall_offset = offsetof(faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject, vectorcall),
+    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_HAVE_GC | _Py_TPFLAGS_HAVE_VECTORCALL | Py_TPFLAGS_MANAGED_DICT,
+    .tp_doc = PyDoc_STR("__mypyc_lambda__0_debug2_ExtendedDebugLogger_obj()\n--\n\n"),
+};
+static PyTypeObject *CPyType_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_template = &CPyType_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_template_;
+
+PyObject *CPyDef_logging_____mypyc___3__mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_setup(PyObject *cpy_r_type)
+{
+    PyTypeObject *type = (PyTypeObject*)cpy_r_type;
+    faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject *self;
+    if (logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_free_instance != NULL) {
+        self = logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_free_instance;
+        logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_free_instance = NULL;
+        Py_SET_REFCNT(self, 1);
+        PyObject_GC_Track(self);
+        return (PyObject *)self;
+    }
+    self = (faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject *)type->tp_alloc(type, 0);
+    if (self == NULL)
+        return NULL;
+    self->vtable = logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_vtable;
+    self->vectorcall = CPyPy_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_____call__;
+    return (PyObject *)self;
+}
+
+PyObject *CPyDef_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj(void)
+{
+    PyObject *self = CPyDef_logging_____mypyc___3__mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_setup((PyObject *)CPyType_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj);
+    if (self == NULL)
+        return NULL;
+    return self;
+}
+
+static PyObject *
+logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_get___3_mypyc_env__(faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject *self, void *closure)
+{
+    if (unlikely(self->___mypyc_env__ == NULL)) {
+        PyErr_SetString(PyExc_AttributeError,
+            "attribute '__mypyc_env__' of '__mypyc_lambda__0_debug2_ExtendedDebugLogger_obj' undefined");
+        return NULL;
+    }
+    CPy_INCREF_NO_IMM(self->___mypyc_env__);
+    PyObject *retval = self->___mypyc_env__;
+    return retval;
+}
+
+static int
+logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_set___3_mypyc_env__(faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject *self, PyObject *value, void *closure)
+{
+    if (value == NULL) {
+        PyErr_SetString(PyExc_AttributeError,
+            "'__mypyc_lambda__0_debug2_ExtendedDebugLogger_obj' object attribute '__mypyc_env__' cannot be deleted");
+        return -1;
+    }
+    if (self->___mypyc_env__ != NULL) {
+        CPy_DECREF_NO_IMM(self->___mypyc_env__);
+    }
+    PyObject *tmp;
+    if (likely(Py_TYPE(value) == CPyType_logging___debug2_ExtendedDebugLogger_env))
+        tmp = value;
+    else {
+        CPy_TypeError("faster_eth_utils.logging.debug2_ExtendedDebugLogger_env", value); 
+        tmp = NULL;
+    }
+    if (!tmp)
+        return -1;
+    CPy_INCREF_NO_IMM(tmp);
+    self->___mypyc_env__ = tmp;
+    return 0;
+}
+
+PyObject *CPyDef_logging_____mypyc___3_use_logger_class_gen_setup(PyObject *cpy_r_type);
+PyObject *CPyDef_logging____use_logger_class_gen(void);
+
+static PyObject *
+logging____use_logger_class_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+{
+    if (type != CPyType_logging____use_logger_class_gen) {
+        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+        return NULL;
+    }
+    PyObject *self = CPyDef_logging_____mypyc___3_use_logger_class_gen_setup((PyObject*)type);
+    if (self == NULL)
+        return NULL;
+    return self;
+}
+
+static int
+logging____use_logger_class_gen_traverse(faster_eth_utils___logging____use_logger_class_genObject *self, visitproc visit, void *arg)
+{
+    Py_VISIT(self->___mypyc_generator_attribute__logger_class);
+    Py_VISIT(self->___mypyc_generator_attribute__original_logger_class);
+    return 0;
+}
+
+static int
+logging____use_logger_class_gen_clear(faster_eth_utils___logging____use_logger_class_genObject *self)
+{
+    Py_CLEAR(self->___mypyc_generator_attribute__logger_class);
+    Py_CLEAR(self->___mypyc_generator_attribute__original_logger_class);
+    return 0;
+}
+
+static void
+logging____use_logger_class_gen_dealloc(faster_eth_utils___logging____use_logger_class_genObject *self)
+{
+    PyObject_GC_UnTrack(self);
+    if (logging____use_logger_class_gen_free_instance == NULL) {
+        logging____use_logger_class_gen_free_instance = self;
+        Py_CLEAR(self->___mypyc_generator_attribute__logger_class);
+        self->___mypyc_next_label__ = -113;
+        Py_CLEAR(self->___mypyc_generator_attribute__original_logger_class);
+        return;
+    }
+    CPy_TRASHCAN_BEGIN(self, logging____use_logger_class_gen_dealloc)
+    logging____use_logger_class_gen_clear(self);
+    Py_TYPE(self)->tp_free((PyObject *)self);
+    CPy_TRASHCAN_END(self)
+    done: ;
+}
+
+static CPyVTableItem logging____use_logger_class_gen_vtable[6];
+static bool
+CPyDef_logging____use_logger_class_gen_trait_vtable_setup(void)
+{
+    CPyVTableItem logging____use_logger_class_gen_vtable_scratch[] = {
+        (CPyVTableItem)CPyDef_logging____use_logger_class_gen_____mypyc_generator_helper__,
+        (CPyVTableItem)CPyDef_logging____use_logger_class_gen_____next__,
+        (CPyVTableItem)CPyDef_logging____use_logger_class_gen___send,
+        (CPyVTableItem)CPyDef_logging____use_logger_class_gen_____iter__,
+        (CPyVTableItem)CPyDef_logging____use_logger_class_gen___throw,
+        (CPyVTableItem)CPyDef_logging____use_logger_class_gen___close,
+    };
+    memcpy(logging____use_logger_class_gen_vtable, logging____use_logger_class_gen_vtable_scratch, sizeof(logging____use_logger_class_gen_vtable));
+    return 1;
+}
+
+static PyMethodDef logging____use_logger_class_gen_methods[] = {
+    {"__internal_mypyc_setup", (PyCFunction)CPyDef_logging_____mypyc___3_use_logger_class_gen_setup, METH_O, NULL},
+    {"__next__",
+     (PyCFunction)CPyPy_logging____use_logger_class_gen_____next__,
+     METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("__next__()\n--\n\n")},
+    {"send",
+     (PyCFunction)CPyPy_logging____use_logger_class_gen___send,
+     METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("send($arg)\n--\n\n")},
+    {"__iter__",
+     (PyCFunction)CPyPy_logging____use_logger_class_gen_____iter__,
+     METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("__iter__()\n--\n\n")},
+    {"throw",
+     (PyCFunction)CPyPy_logging____use_logger_class_gen___throw,
+     METH_FASTCALL | METH_KEYWORDS, PyDoc_STR(NULL)},
+    {"close",
+     (PyCFunction)CPyPy_logging____use_logger_class_gen___close,
+     METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("close()\n--\n\n")},
+    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
+    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
+    {NULL}  /* Sentinel */
+};
+
+static PyTypeObject CPyType_logging____use_logger_class_gen_template_ = {
+    PyVarObject_HEAD_INIT(NULL, 0)
+    .tp_name = "_use_logger_class_gen",
+    .tp_new = logging____use_logger_class_gen_new,
+    .tp_dealloc = (destructor)logging____use_logger_class_gen_dealloc,
+    .tp_traverse = (traverseproc)logging____use_logger_class_gen_traverse,
+    .tp_clear = (inquiry)logging____use_logger_class_gen_clear,
+    .tp_methods = logging____use_logger_class_gen_methods,
+    .tp_iter = CPyDef_logging____use_logger_class_gen_____iter__,
+    .tp_iternext = CPyDef_logging____use_logger_class_gen_____next__,
+    .tp_basicsize = sizeof(faster_eth_utils___logging____use_logger_class_genObject),
+    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_HAVE_GC,
+    .tp_doc = PyDoc_STR("_use_logger_class_gen()\n--\n\n"),
+};
+static PyTypeObject *CPyType_logging____use_logger_class_gen_template = &CPyType_logging____use_logger_class_gen_template_;
+
+PyObject *CPyDef_logging_____mypyc___3_use_logger_class_gen_setup(PyObject *cpy_r_type)
+{
+    PyTypeObject *type = (PyTypeObject*)cpy_r_type;
+    faster_eth_utils___logging____use_logger_class_genObject *self;
+    if (logging____use_logger_class_gen_free_instance != NULL) {
+        self = logging____use_logger_class_gen_free_instance;
+        logging____use_logger_class_gen_free_instance = NULL;
+        Py_SET_REFCNT(self, 1);
+        PyObject_GC_Track(self);
+        return (PyObject *)self;
+    }
+    self = (faster_eth_utils___logging____use_logger_class_genObject *)type->tp_alloc(type, 0);
+    if (self == NULL)
+        return NULL;
+    self->vtable = logging____use_logger_class_gen_vtable;
+    self->___mypyc_next_label__ = -113;
+    return (PyObject *)self;
+}
+
+PyObject *CPyDef_logging____use_logger_class_gen(void)
+{
+    PyObject *self = CPyDef_logging_____mypyc___3_use_logger_class_gen_setup((PyObject *)CPyType_logging____use_logger_class_gen);
+    if (self == NULL)
+        return NULL;
+    return self;
+}
+
+
+static PyObject *CPyDunder___get__logging_____new___3_HasLoggerMeta_obj(PyObject *self, PyObject *instance, PyObject *owner) {
+    instance = instance ? instance : Py_None;
+    return CPyDef_logging_____new___3_HasLoggerMeta_obj_____get__(self, instance, owner);
+}
+PyObject *CPyDef_logging_____mypyc___3__new___3_HasLoggerMeta_obj_setup(PyObject *cpy_r_type);
+PyObject *CPyDef_logging_____new___3_HasLoggerMeta_obj(void);
+
+static PyObject *
+logging_____new___3_HasLoggerMeta_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+{
+    if (type != CPyType_logging_____new___3_HasLoggerMeta_obj) {
+        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+        return NULL;
+    }
+    PyObject *self = CPyDef_logging_____mypyc___3__new___3_HasLoggerMeta_obj_setup((PyObject*)type);
+    if (self == NULL)
+        return NULL;
+    return self;
+}
+
+static int
+logging_____new___3_HasLoggerMeta_obj_traverse(faster_eth_utils___logging_____new___3_HasLoggerMeta_objObject *self, visitproc visit, void *arg)
+{
+    return 0;
+}
+
+static int
+logging_____new___3_HasLoggerMeta_obj_clear(faster_eth_utils___logging_____new___3_HasLoggerMeta_objObject *self)
+{
+    return 0;
+}
+
+static void
+logging_____new___3_HasLoggerMeta_obj_dealloc(faster_eth_utils___logging_____new___3_HasLoggerMeta_objObject *self)
+{
+    PyObject_GC_UnTrack(self);
+    if (logging_____new___3_HasLoggerMeta_obj_free_instance == NULL) {
+        logging_____new___3_HasLoggerMeta_obj_free_instance = self;
+        return;
+    }
+    CPy_TRASHCAN_BEGIN(self, logging_____new___3_HasLoggerMeta_obj_dealloc)
+    logging_____new___3_HasLoggerMeta_obj_clear(self);
+    Py_TYPE(self)->tp_free((PyObject *)self);
+    CPy_TRASHCAN_END(self)
+    done: ;
+}
+
+static CPyVTableItem logging_____new___3_HasLoggerMeta_obj_vtable[2];
+static bool
+CPyDef_logging_____new___3_HasLoggerMeta_obj_trait_vtable_setup(void)
+{
+    CPyVTableItem logging_____new___3_HasLoggerMeta_obj_vtable_scratch[] = {
+        (CPyVTableItem)CPyDef_logging_____new___3_HasLoggerMeta_obj_____call__,
+        (CPyVTableItem)CPyDef_logging_____new___3_HasLoggerMeta_obj_____get__,
+    };
+    memcpy(logging_____new___3_HasLoggerMeta_obj_vtable, logging_____new___3_HasLoggerMeta_obj_vtable_scratch, sizeof(logging_____new___3_HasLoggerMeta_obj_vtable));
+    return 1;
+}
+
+static PyMethodDef logging_____new___3_HasLoggerMeta_obj_methods[] = {
+    {"__internal_mypyc_setup", (PyCFunction)CPyDef_logging_____mypyc___3__new___3_HasLoggerMeta_obj_setup, METH_O, NULL},
+    {"__call__",
+     (PyCFunction)CPyPy_logging_____new___3_HasLoggerMeta_obj_____call__,
+     METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("__call__($mcls, name, bases, namespace)\n--\n\n")},
+    {"__get__",
+     (PyCFunction)CPyPy_logging_____new___3_HasLoggerMeta_obj_____get__,
+     METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("__get__($instance, owner)\n--\n\n")},
+    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
+    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
+    {NULL}  /* Sentinel */
+};
+
+static PyTypeObject CPyType_logging_____new___3_HasLoggerMeta_obj_template_ = {
+    PyVarObject_HEAD_INIT(NULL, 0)
+    .tp_name = "__new___HasLoggerMeta_obj",
+    .tp_new = logging_____new___3_HasLoggerMeta_obj_new,
+    .tp_dealloc = (destructor)logging_____new___3_HasLoggerMeta_obj_dealloc,
+    .tp_traverse = (traverseproc)logging_____new___3_HasLoggerMeta_obj_traverse,
+    .tp_clear = (inquiry)logging_____new___3_HasLoggerMeta_obj_clear,
+    .tp_methods = logging_____new___3_HasLoggerMeta_obj_methods,
+    .tp_call = PyVectorcall_Call,
+    .tp_descr_get = CPyDunder___get__logging_____new___3_HasLoggerMeta_obj,
+    .tp_basicsize = sizeof(faster_eth_utils___logging_____new___3_HasLoggerMeta_objObject),
+    .tp_vectorcall_offset = offsetof(faster_eth_utils___logging_____new___3_HasLoggerMeta_objObject, vectorcall),
+    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_HAVE_GC | _Py_TPFLAGS_HAVE_VECTORCALL,
+    .tp_doc = PyDoc_STR("__new___HasLoggerMeta_obj()\n--\n\n"),
+};
+static PyTypeObject *CPyType_logging_____new___3_HasLoggerMeta_obj_template = &CPyType_logging_____new___3_HasLoggerMeta_obj_template_;
+
+PyObject *CPyDef_logging_____mypyc___3__new___3_HasLoggerMeta_obj_setup(PyObject *cpy_r_type)
+{
+    PyTypeObject *type = (PyTypeObject*)cpy_r_type;
+    faster_eth_utils___logging_____new___3_HasLoggerMeta_objObject *self;
+    if (logging_____new___3_HasLoggerMeta_obj_free_instance != NULL) {
+        self = logging_____new___3_HasLoggerMeta_obj_free_instance;
+        logging_____new___3_HasLoggerMeta_obj_free_instance = NULL;
+        Py_SET_REFCNT(self, 1);
+        PyObject_GC_Track(self);
+        return (PyObject *)self;
+    }
+    self = (faster_eth_utils___logging_____new___3_HasLoggerMeta_objObject *)type->tp_alloc(type, 0);
+    if (self == NULL)
+        return NULL;
+    self->vtable = logging_____new___3_HasLoggerMeta_obj_vtable;
+    self->vectorcall = CPyPy_logging_____new___3_HasLoggerMeta_obj_____call__;
+    return (PyObject *)self;
+}
+
+PyObject *CPyDef_logging_____new___3_HasLoggerMeta_obj(void)
+{
+    PyObject *self = CPyDef_logging_____mypyc___3__new___3_HasLoggerMeta_obj_setup((PyObject *)CPyType_logging_____new___3_HasLoggerMeta_obj);
+    if (self == NULL)
+        return NULL;
+    return self;
+}
+
+
+static PyObject *CPyDunder___get__logging___replace_logger_class_HasLoggerMeta_obj(PyObject *self, PyObject *instance, PyObject *owner) {
+    instance = instance ? instance : Py_None;
+    return CPyDef_logging___replace_logger_class_HasLoggerMeta_obj_____get__(self, instance, owner);
+}
+PyObject *CPyDef_logging_____mypyc__replace_logger_class_HasLoggerMeta_obj_setup(PyObject *cpy_r_type);
+PyObject *CPyDef_logging___replace_logger_class_HasLoggerMeta_obj(void);
+
+static PyObject *
+logging___replace_logger_class_HasLoggerMeta_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+{
+    if (type != CPyType_logging___replace_logger_class_HasLoggerMeta_obj) {
+        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+        return NULL;
+    }
+    PyObject *self = CPyDef_logging_____mypyc__replace_logger_class_HasLoggerMeta_obj_setup((PyObject*)type);
+    if (self == NULL)
+        return NULL;
+    return self;
+}
+
+static int
+logging___replace_logger_class_HasLoggerMeta_obj_traverse(faster_eth_utils___logging___replace_logger_class_HasLoggerMeta_objObject *self, visitproc visit, void *arg)
+{
+    return 0;
+}
+
+static int
+logging___replace_logger_class_HasLoggerMeta_obj_clear(faster_eth_utils___logging___replace_logger_class_HasLoggerMeta_objObject *self)
+{
+    return 0;
+}
+
+static void
+logging___replace_logger_class_HasLoggerMeta_obj_dealloc(faster_eth_utils___logging___replace_logger_class_HasLoggerMeta_objObject *self)
+{
+    PyObject_GC_UnTrack(self);
+    if (logging___replace_logger_class_HasLoggerMeta_obj_free_instance == NULL) {
+        logging___replace_logger_class_HasLoggerMeta_obj_free_instance = self;
+        return;
+    }
+    CPy_TRASHCAN_BEGIN(self, logging___replace_logger_class_HasLoggerMeta_obj_dealloc)
+    logging___replace_logger_class_HasLoggerMeta_obj_clear(self);
+    Py_TYPE(self)->tp_free((PyObject *)self);
+    CPy_TRASHCAN_END(self)
+    done: ;
+}
+
+static CPyVTableItem logging___replace_logger_class_HasLoggerMeta_obj_vtable[2];
+static bool
+CPyDef_logging___replace_logger_class_HasLoggerMeta_obj_trait_vtable_setup(void)
+{
+    CPyVTableItem logging___replace_logger_class_HasLoggerMeta_obj_vtable_scratch[] = {
+        (CPyVTableItem)CPyDef_logging___replace_logger_class_HasLoggerMeta_obj_____call__,
+        (CPyVTableItem)CPyDef_logging___replace_logger_class_HasLoggerMeta_obj_____get__,
+    };
+    memcpy(logging___replace_logger_class_HasLoggerMeta_obj_vtable, logging___replace_logger_class_HasLoggerMeta_obj_vtable_scratch, sizeof(logging___replace_logger_class_HasLoggerMeta_obj_vtable));
+    return 1;
+}
+
+static PyMethodDef logging___replace_logger_class_HasLoggerMeta_obj_methods[] = {
+    {"__internal_mypyc_setup", (PyCFunction)CPyDef_logging_____mypyc__replace_logger_class_HasLoggerMeta_obj_setup, METH_O, NULL},
+    {"__call__",
+     (PyCFunction)CPyPy_logging___replace_logger_class_HasLoggerMeta_obj_____call__,
+     METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("__call__($mcls, value)\n--\n\n")},
+    {"__get__",
+     (PyCFunction)CPyPy_logging___replace_logger_class_HasLoggerMeta_obj_____get__,
+     METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("__get__($instance, owner)\n--\n\n")},
+    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
+    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
+    {NULL}  /* Sentinel */
+};
+
+static PyTypeObject CPyType_logging___replace_logger_class_HasLoggerMeta_obj_template_ = {
+    PyVarObject_HEAD_INIT(NULL, 0)
+    .tp_name = "replace_logger_class_HasLoggerMeta_obj",
+    .tp_new = logging___replace_logger_class_HasLoggerMeta_obj_new,
+    .tp_dealloc = (destructor)logging___replace_logger_class_HasLoggerMeta_obj_dealloc,
+    .tp_traverse = (traverseproc)logging___replace_logger_class_HasLoggerMeta_obj_traverse,
+    .tp_clear = (inquiry)logging___replace_logger_class_HasLoggerMeta_obj_clear,
+    .tp_methods = logging___replace_logger_class_HasLoggerMeta_obj_methods,
+    .tp_call = PyVectorcall_Call,
+    .tp_descr_get = CPyDunder___get__logging___replace_logger_class_HasLoggerMeta_obj,
+    .tp_basicsize = sizeof(faster_eth_utils___logging___replace_logger_class_HasLoggerMeta_objObject),
+    .tp_vectorcall_offset = offsetof(faster_eth_utils___logging___replace_logger_class_HasLoggerMeta_objObject, vectorcall),
+    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_HAVE_GC | _Py_TPFLAGS_HAVE_VECTORCALL,
+    .tp_doc = PyDoc_STR("replace_logger_class_HasLoggerMeta_obj()\n--\n\n"),
+};
+static PyTypeObject *CPyType_logging___replace_logger_class_HasLoggerMeta_obj_template = &CPyType_logging___replace_logger_class_HasLoggerMeta_obj_template_;
+
+PyObject *CPyDef_logging_____mypyc__replace_logger_class_HasLoggerMeta_obj_setup(PyObject *cpy_r_type)
+{
+    PyTypeObject *type = (PyTypeObject*)cpy_r_type;
+    faster_eth_utils___logging___replace_logger_class_HasLoggerMeta_objObject *self;
+    if (logging___replace_logger_class_HasLoggerMeta_obj_free_instance != NULL) {
+        self = logging___replace_logger_class_HasLoggerMeta_obj_free_instance;
+        logging___replace_logger_class_HasLoggerMeta_obj_free_instance = NULL;
+        Py_SET_REFCNT(self, 1);
+        PyObject_GC_Track(self);
+        return (PyObject *)self;
+    }
+    self = (faster_eth_utils___logging___replace_logger_class_HasLoggerMeta_objObject *)type->tp_alloc(type, 0);
+    if (self == NULL)
+        return NULL;
+    self->vtable = logging___replace_logger_class_HasLoggerMeta_obj_vtable;
+    self->vectorcall = CPyPy_logging___replace_logger_class_HasLoggerMeta_obj_____call__;
+    return (PyObject *)self;
+}
+
+PyObject *CPyDef_logging___replace_logger_class_HasLoggerMeta_obj(void)
+{
+    PyObject *self = CPyDef_logging_____mypyc__replace_logger_class_HasLoggerMeta_obj_setup((PyObject *)CPyType_logging___replace_logger_class_HasLoggerMeta_obj);
+    if (self == NULL)
+        return NULL;
+    return self;
+}
+
+
+static PyObject *CPyDunder___get__logging___meta_compat_HasLoggerMeta_obj(PyObject *self, PyObject *instance, PyObject *owner) {
+    instance = instance ? instance : Py_None;
+    return CPyDef_logging___meta_compat_HasLoggerMeta_obj_____get__(self, instance, owner);
+}
+PyObject *CPyDef_logging_____mypyc__meta_compat_HasLoggerMeta_obj_setup(PyObject *cpy_r_type);
+PyObject *CPyDef_logging___meta_compat_HasLoggerMeta_obj(void);
+
+static PyObject *
+logging___meta_compat_HasLoggerMeta_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+{
+    if (type != CPyType_logging___meta_compat_HasLoggerMeta_obj) {
+        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+        return NULL;
+    }
+    PyObject *self = CPyDef_logging_____mypyc__meta_compat_HasLoggerMeta_obj_setup((PyObject*)type);
+    if (self == NULL)
+        return NULL;
+    return self;
+}
+
+static int
+logging___meta_compat_HasLoggerMeta_obj_traverse(faster_eth_utils___logging___meta_compat_HasLoggerMeta_objObject *self, visitproc visit, void *arg)
+{
+    return 0;
+}
+
+static int
+logging___meta_compat_HasLoggerMeta_obj_clear(faster_eth_utils___logging___meta_compat_HasLoggerMeta_objObject *self)
+{
+    return 0;
+}
+
+static void
+logging___meta_compat_HasLoggerMeta_obj_dealloc(faster_eth_utils___logging___meta_compat_HasLoggerMeta_objObject *self)
+{
+    PyObject_GC_UnTrack(self);
+    if (logging___meta_compat_HasLoggerMeta_obj_free_instance == NULL) {
+        logging___meta_compat_HasLoggerMeta_obj_free_instance = self;
+        return;
+    }
+    CPy_TRASHCAN_BEGIN(self, logging___meta_compat_HasLoggerMeta_obj_dealloc)
+    logging___meta_compat_HasLoggerMeta_obj_clear(self);
+    Py_TYPE(self)->tp_free((PyObject *)self);
+    CPy_TRASHCAN_END(self)
+    done: ;
+}
+
+static CPyVTableItem logging___meta_compat_HasLoggerMeta_obj_vtable[2];
+static bool
+CPyDef_logging___meta_compat_HasLoggerMeta_obj_trait_vtable_setup(void)
+{
+    CPyVTableItem logging___meta_compat_HasLoggerMeta_obj_vtable_scratch[] = {
+        (CPyVTableItem)CPyDef_logging___meta_compat_HasLoggerMeta_obj_____call__,
+        (CPyVTableItem)CPyDef_logging___meta_compat_HasLoggerMeta_obj_____get__,
+    };
+    memcpy(logging___meta_compat_HasLoggerMeta_obj_vtable, logging___meta_compat_HasLoggerMeta_obj_vtable_scratch, sizeof(logging___meta_compat_HasLoggerMeta_obj_vtable));
+    return 1;
+}
+
+static PyMethodDef logging___meta_compat_HasLoggerMeta_obj_methods[] = {
+    {"__internal_mypyc_setup", (PyCFunction)CPyDef_logging_____mypyc__meta_compat_HasLoggerMeta_obj_setup, METH_O, NULL},
+    {"__call__",
+     (PyCFunction)CPyPy_logging___meta_compat_HasLoggerMeta_obj_____call__,
+     METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("__call__($mcls, other)\n--\n\n")},
+    {"__get__",
+     (PyCFunction)CPyPy_logging___meta_compat_HasLoggerMeta_obj_____get__,
+     METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("__get__($instance, owner)\n--\n\n")},
+    {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
+    {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
+    {NULL}  /* Sentinel */
+};
+
+static PyTypeObject CPyType_logging___meta_compat_HasLoggerMeta_obj_template_ = {
+    PyVarObject_HEAD_INIT(NULL, 0)
+    .tp_name = "meta_compat_HasLoggerMeta_obj",
+    .tp_new = logging___meta_compat_HasLoggerMeta_obj_new,
+    .tp_dealloc = (destructor)logging___meta_compat_HasLoggerMeta_obj_dealloc,
+    .tp_traverse = (traverseproc)logging___meta_compat_HasLoggerMeta_obj_traverse,
+    .tp_clear = (inquiry)logging___meta_compat_HasLoggerMeta_obj_clear,
+    .tp_methods = logging___meta_compat_HasLoggerMeta_obj_methods,
+    .tp_call = PyVectorcall_Call,
+    .tp_descr_get = CPyDunder___get__logging___meta_compat_HasLoggerMeta_obj,
+    .tp_basicsize = sizeof(faster_eth_utils___logging___meta_compat_HasLoggerMeta_objObject),
+    .tp_vectorcall_offset = offsetof(faster_eth_utils___logging___meta_compat_HasLoggerMeta_objObject, vectorcall),
+    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_HAVE_GC | _Py_TPFLAGS_HAVE_VECTORCALL,
+    .tp_doc = PyDoc_STR("meta_compat_HasLoggerMeta_obj()\n--\n\n"),
+};
+static PyTypeObject *CPyType_logging___meta_compat_HasLoggerMeta_obj_template = &CPyType_logging___meta_compat_HasLoggerMeta_obj_template_;
+
+PyObject *CPyDef_logging_____mypyc__meta_compat_HasLoggerMeta_obj_setup(PyObject *cpy_r_type)
+{
+    PyTypeObject *type = (PyTypeObject*)cpy_r_type;
+    faster_eth_utils___logging___meta_compat_HasLoggerMeta_objObject *self;
+    if (logging___meta_compat_HasLoggerMeta_obj_free_instance != NULL) {
+        self = logging___meta_compat_HasLoggerMeta_obj_free_instance;
+        logging___meta_compat_HasLoggerMeta_obj_free_instance = NULL;
+        Py_SET_REFCNT(self, 1);
+        PyObject_GC_Track(self);
+        return (PyObject *)self;
+    }
+    self = (faster_eth_utils___logging___meta_compat_HasLoggerMeta_objObject *)type->tp_alloc(type, 0);
+    if (self == NULL)
+        return NULL;
+    self->vtable = logging___meta_compat_HasLoggerMeta_obj_vtable;
+    self->vectorcall = CPyPy_logging___meta_compat_HasLoggerMeta_obj_____call__;
+    return (PyObject *)self;
+}
+
+PyObject *CPyDef_logging___meta_compat_HasLoggerMeta_obj(void)
+{
+    PyObject *self = CPyDef_logging_____mypyc__meta_compat_HasLoggerMeta_obj_setup((PyObject *)CPyType_logging___meta_compat_HasLoggerMeta_obj);
+    if (self == NULL)
+        return NULL;
+    return self;
+}
+
+static PyMethodDef loggingmodule_methods[] = {
+    {"setup_DEBUG2_logging", (PyCFunction)CPyPy_logging___setup_DEBUG2_logging, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("setup_DEBUG2_logging()\n--\n\n") /* docstring */},
+    {"_use_logger_class", (PyCFunction)CPyPy_logging____use_logger_class, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("_use_logger_class(logger_class)\n--\n\n") /* docstring */},
+    {"get_logger", (PyCFunction)CPyPy_logging___get_logger, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("get_logger(name, logger_class=None)\n--\n\n") /* docstring */},
+    {"get_extended_debug_logger", (PyCFunction)CPyPy_logging___get_extended_debug_logger, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("get_extended_debug_logger(name)\n--\n\n") /* docstring */},
+    {NULL, NULL, 0, NULL}
+};
+
+int CPyExec_faster_eth_utils___logging(PyObject *module)
+{
+    PyObject* modname = NULL;
+    modname = PyObject_GetAttrString((PyObject *)CPyModule_faster_eth_utils___logging__internal, "__name__");
+    CPyStatic_logging___globals = PyModule_GetDict(CPyModule_faster_eth_utils___logging__internal);
+    if (unlikely(CPyStatic_logging___globals == NULL))
+        goto fail;
+    CPyType_logging___debug2_ExtendedDebugLogger_env = (PyTypeObject *)CPyType_FromTemplate((PyObject *)CPyType_logging___debug2_ExtendedDebugLogger_env_template, NULL, modname);
+    if (unlikely(!CPyType_logging___debug2_ExtendedDebugLogger_env))
+        goto fail;
+    CPyDef_logging___debug2_ExtendedDebugLogger_env_trait_vtable_setup();
+    CPyType_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj = (PyTypeObject *)CPyType_FromTemplate((PyObject *)CPyType_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_template, NULL, modname);
+    if (unlikely(!CPyType_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj))
+        goto fail;
+    CPyDef_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_trait_vtable_setup();
+    CPyType_logging____use_logger_class_gen = (PyTypeObject *)CPyType_FromTemplate((PyObject *)CPyType_logging____use_logger_class_gen_template, NULL, modname);
+    if (unlikely(!CPyType_logging____use_logger_class_gen))
+        goto fail;
+    CPyDef_logging____use_logger_class_gen_trait_vtable_setup();
+    CPyType_logging_____new___3_HasLoggerMeta_obj = (PyTypeObject *)CPyType_FromTemplate((PyObject *)CPyType_logging_____new___3_HasLoggerMeta_obj_template, NULL, modname);
+    if (unlikely(!CPyType_logging_____new___3_HasLoggerMeta_obj))
+        goto fail;
+    CPyDef_logging_____new___3_HasLoggerMeta_obj_trait_vtable_setup();
+    CPyType_logging___replace_logger_class_HasLoggerMeta_obj = (PyTypeObject *)CPyType_FromTemplate((PyObject *)CPyType_logging___replace_logger_class_HasLoggerMeta_obj_template, NULL, modname);
+    if (unlikely(!CPyType_logging___replace_logger_class_HasLoggerMeta_obj))
+        goto fail;
+    CPyDef_logging___replace_logger_class_HasLoggerMeta_obj_trait_vtable_setup();
+    CPyType_logging___meta_compat_HasLoggerMeta_obj = (PyTypeObject *)CPyType_FromTemplate((PyObject *)CPyType_logging___meta_compat_HasLoggerMeta_obj_template, NULL, modname);
+    if (unlikely(!CPyType_logging___meta_compat_HasLoggerMeta_obj))
+        goto fail;
+    CPyDef_logging___meta_compat_HasLoggerMeta_obj_trait_vtable_setup();
+    if (CPyGlobalsInit() < 0)
+        goto fail;
+    char result = CPyDef_logging_____top_level__();
+    if (result == 2)
+        goto fail;
+    Py_DECREF(modname);
+    return 0;
+    fail:
+    Py_CLEAR(CPyModule_faster_eth_utils___logging__internal);
+    Py_CLEAR(modname);
+    CPy_XDECREF(CPyStatic_logging___Logger);
+    CPyStatic_logging___Logger = NULL;
+    CPy_XDECREF(CPyStatic_logging___getLogger);
+    CPyStatic_logging___getLogger = NULL;
+    CPy_XDECREF(CPyStatic_logging___getLoggerClass);
+    CPyStatic_logging___getLoggerClass = NULL;
+    CPy_XDECREF(CPyStatic_logging___setLoggerClass);
+    CPyStatic_logging___setLoggerClass = NULL;
+    Py_CLEAR(CPyType_logging___ExtendedDebugLogger);
+    Py_CLEAR(CPyType_logging___HasLoggerMeta);
+    Py_CLEAR(CPyType_logging___HasLogger);
+    Py_CLEAR(CPyType_logging___HasExtendedDebugLogger);
+    Py_CLEAR(CPyType_logging___debug2_ExtendedDebugLogger_env);
+    Py_CLEAR(CPyType_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj);
+    Py_CLEAR(CPyType_logging____use_logger_class_gen);
+    Py_CLEAR(CPyType_logging_____new___3_HasLoggerMeta_obj);
+    Py_CLEAR(CPyType_logging___replace_logger_class_HasLoggerMeta_obj);
+    Py_CLEAR(CPyType_logging___meta_compat_HasLoggerMeta_obj);
+    return -1;
+}
+static struct PyModuleDef loggingmodule = {
+    PyModuleDef_HEAD_INIT,
+    "faster_eth_utils.logging",
+    NULL, /* docstring */
+    0,       /* size of per-interpreter state of the module */
+    loggingmodule_methods,
+    NULL,
+};
+
+PyObject *CPyInit_faster_eth_utils___logging(void)
+{
+    if (CPyModule_faster_eth_utils___logging__internal) {
+        Py_INCREF(CPyModule_faster_eth_utils___logging__internal);
+        return CPyModule_faster_eth_utils___logging__internal;
+    }
+    CPyModule_faster_eth_utils___logging__internal = PyModule_Create(&loggingmodule);
+    if (unlikely(CPyModule_faster_eth_utils___logging__internal == NULL))
+        goto fail;
+    if (CPyExec_faster_eth_utils___logging(CPyModule_faster_eth_utils___logging__internal) != 0)
+        goto fail;
+    return CPyModule_faster_eth_utils___logging__internal;
+    fail:
+    return NULL;
+}
+
+char CPyDef_logging___ExtendedDebugLogger___show_debug2(PyObject *cpy_r_self) {
+    PyObject *cpy_r_r0;
+    PyObject *cpy_r_r1;
+    PyObject **cpy_r_r3;
+    PyObject *cpy_r_r4;
+    char cpy_r_r5;
+    char cpy_r_r6;
+    cpy_r_r0 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'isEnabledFor' */
+    cpy_r_r1 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 8 */
+    PyObject *cpy_r_r2[2] = {cpy_r_self, cpy_r_r1};
+    cpy_r_r3 = (PyObject **)&cpy_r_r2;
+    cpy_r_r4 = PyObject_VectorcallMethod(cpy_r_r0, cpy_r_r3, 9223372036854775810ULL, 0);
+    if (unlikely(cpy_r_r4 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "show_debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL3;
+    }
+    if (unlikely(!PyBool_Check(cpy_r_r4))) {
+        CPy_TypeError("bool", cpy_r_r4); cpy_r_r5 = 2;
+    } else
+        cpy_r_r5 = cpy_r_r4 == Py_True;
+    CPy_DECREF(cpy_r_r4);
+    if (unlikely(cpy_r_r5 == 2)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "show_debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL3;
+    }
+    return cpy_r_r5;
+CPyL3: ;
+    cpy_r_r6 = 2;
+    return cpy_r_r6;
+}
+
+PyObject *CPyPy_logging___ExtendedDebugLogger___show_debug2(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    PyObject *obj_self = self;
+    static const char * const kwlist[] = {0};
+    static CPyArg_Parser parser = {":show_debug2", kwlist, 0};
+    if (!CPyArg_ParseStackAndKeywordsNoArgs(args, nargs, kwnames, &parser)) {
+        return NULL;
+    }
+    PyObject *arg_self;
+    if (likely(Py_TYPE(obj_self) == CPyType_logging___ExtendedDebugLogger))
+        arg_self = obj_self;
+    else {
+        CPy_TypeError("faster_eth_utils.logging.ExtendedDebugLogger", obj_self); 
+        goto fail;
+    }
+    char retval = CPyDef_logging___ExtendedDebugLogger___show_debug2(arg_self);
+    if (retval == 2) {
+        return NULL;
+    }
+    PyObject *retbox = retval ? Py_True : Py_False;
+    CPy_INCREF(retbox);
+    return retbox;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "show_debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+    return NULL;
+}
+
+PyObject *CPyDef_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner) {
+    PyObject *cpy_r_r0;
+    char cpy_r_r1;
+    PyObject *cpy_r_r2;
+    PyObject *cpy_r_r3;
+    cpy_r_r0 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r1 = cpy_r_instance == cpy_r_r0;
+    if (!cpy_r_r1) goto CPyL2;
+    CPy_INCREF(cpy_r___mypyc_self__);
+    return cpy_r___mypyc_self__;
+CPyL2: ;
+    cpy_r_r2 = PyMethod_New(cpy_r___mypyc_self__, cpy_r_instance);
+    if (cpy_r_r2 == NULL) goto CPyL4;
+    return cpy_r_r2;
+CPyL4: ;
+    cpy_r_r3 = NULL;
+    return cpy_r_r3;
+}
+
+PyObject *CPyPy_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    PyObject *obj___mypyc_self__ = self;
+    static const char * const kwlist[] = {"instance", "owner", 0};
+    static CPyArg_Parser parser = {"OO:__get__", kwlist, 0};
+    PyObject *obj_instance;
+    PyObject *obj_owner;
+    if (!CPyArg_ParseStackAndKeywordsSimple(args, nargs, kwnames, &parser, &obj_instance, &obj_owner)) {
+        return NULL;
+    }
+    PyObject *arg___mypyc_self__ = obj___mypyc_self__;
+    PyObject *arg_instance = obj_instance;
+    PyObject *arg_owner = obj_owner;
+    PyObject *retval = CPyDef_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_____get__(arg___mypyc_self__, arg_instance, arg_owner);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "__get__", -1, CPyStatic_logging___globals);
+    return NULL;
+}
+
+char CPyDef_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_message, PyObject *cpy_r_args, PyObject *cpy_r_kwargs) {
+    PyObject *cpy_r_r0;
+    char cpy_r_r1;
+    cpy_r_r0 = ((faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject *)cpy_r___mypyc_self__)->___mypyc_env__;
+    if (unlikely(cpy_r_r0 == NULL)) {
+        CPy_AttributeError("faster_eth_utils/logging.py", "<lambda>", "__mypyc_lambda__0_debug2_ExtendedDebugLogger_obj", "__mypyc_env__", 57, CPyStatic_logging___globals);
+        goto CPyL2;
+    }
+    CPy_INCREF_NO_IMM(cpy_r_r0);
+    goto CPyL3;
+CPyL1: ;
+    return 1;
+CPyL2: ;
+    cpy_r_r1 = 2;
+    return cpy_r_r1;
+CPyL3: ;
+    CPy_DECREF_NO_IMM(cpy_r_r0);
+    goto CPyL1;
+}
+
+PyObject *CPyPy_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    PyObject *obj___mypyc_self__ = self;
+    static const char * const kwlist[] = {"message", 0};
+    static CPyArg_Parser parser = {"%O:__call__", kwlist, 0};
+    PyObject *obj_message;
+    PyObject *obj_args;
+    PyObject *obj_kwargs;
+    if (!CPyArg_ParseStackAndKeywords(args, PyVectorcall_NARGS(nargs), kwnames, &parser, &obj_args, &obj_kwargs, &obj_message)) {
+        return NULL;
+    }
+    PyObject *arg___mypyc_self__ = obj___mypyc_self__;
+    PyObject *arg_message = obj_message;
+    PyObject *arg_args = obj_args;
+    PyObject *arg_kwargs = obj_kwargs;
+    char retval = CPyDef_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_____call__(arg___mypyc_self__, arg_message, arg_args, arg_kwargs);
+    CPy_DECREF(obj_args);
+    CPy_DECREF(obj_kwargs);
+    if (retval == 2) {
+        return NULL;
+    }
+    PyObject *retbox = Py_None;
+    CPy_INCREF(retbox);
+    return retbox;
+fail: ;
+    CPy_DECREF(obj_args);
+    CPy_DECREF(obj_kwargs);
+    CPy_AddTraceback("faster_eth_utils/logging.py", "<lambda>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+    return NULL;
+}
+
+char CPyDef_logging___ExtendedDebugLogger___debug2(PyObject *cpy_r_self, PyObject *cpy_r_message, PyObject *cpy_r_args, PyObject *cpy_r_kwargs) {
+    PyObject *cpy_r_r0;
+    char cpy_r_r1;
+    PyObject *cpy_r_r2;
+    PyObject *cpy_r_r3;
+    PyObject *cpy_r_r4;
+    PyObject *cpy_r_r5;
+    CPyPtr cpy_r_r6;
+    CPyPtr cpy_r_r7;
+    CPyPtr cpy_r_r8;
+    PyObject *cpy_r_r9;
+    PyObject *cpy_r_r10;
+    int32_t cpy_r_r11;
+    char cpy_r_r12;
+    PyObject *cpy_r_r13;
+    PyObject *cpy_r_r14;
+    PyObject *cpy_r_r15;
+    char cpy_r_r16;
+    PyObject *cpy_r_r17;
+    PyObject *cpy_r_r18;
+    PyObject *cpy_r_r19;
+    PyObject *cpy_r_r20;
+    int32_t cpy_r_r21;
+    char cpy_r_r22;
+    char cpy_r_r23;
+    cpy_r_r0 = CPyDef_logging___debug2_ExtendedDebugLogger_env();
+    if (unlikely(cpy_r_r0 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL16;
+    }
+    cpy_r_r1 = CPyDef_logging___ExtendedDebugLogger___show_debug2(cpy_r_self);
+    if (unlikely(cpy_r_r1 == 2)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL17;
+    }
+CPyL2: ;
+    if (cpy_r_r1) {
+        goto CPyL18;
+    } else
+        goto CPyL10;
+CPyL3: ;
+    cpy_r_r2 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'log' */
+    cpy_r_r3 = CPyObject_GetAttr(cpy_r_self, cpy_r_r2);
+    if (unlikely(cpy_r_r3 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL16;
+    }
+    cpy_r_r4 = PyList_New(2);
+    if (unlikely(cpy_r_r4 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL19;
+    }
+    cpy_r_r5 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 8 */
+    cpy_r_r6 = (CPyPtr)&((PyListObject *)cpy_r_r4)->ob_item;
+    cpy_r_r7 = *(CPyPtr *)cpy_r_r6;
+    *(PyObject * *)cpy_r_r7 = cpy_r_r5;
+    CPy_INCREF(cpy_r_message);
+    cpy_r_r8 = cpy_r_r7 + 8;
+    *(PyObject * *)cpy_r_r8 = cpy_r_message;
+    cpy_r_r9 = CPyList_Extend(cpy_r_r4, cpy_r_args);
+    if (unlikely(cpy_r_r9 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL20;
+    } else
+        goto CPyL21;
+CPyL6: ;
+    cpy_r_r10 = PyDict_New();
+    if (unlikely(cpy_r_r10 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL20;
+    }
+    cpy_r_r11 = CPyDict_UpdateInDisplay(cpy_r_r10, cpy_r_kwargs);
+    cpy_r_r12 = cpy_r_r11 >= 0;
+    if (unlikely(!cpy_r_r12)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL22;
+    }
+    cpy_r_r13 = PyList_AsTuple(cpy_r_r4);
+    CPy_DECREF_NO_IMM(cpy_r_r4);
+    if (unlikely(cpy_r_r13 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL23;
+    }
+    cpy_r_r14 = PyObject_Call(cpy_r_r3, cpy_r_r13, cpy_r_r10);
+    CPy_DECREF(cpy_r_r3);
+    CPy_DECREF(cpy_r_r13);
+    CPy_DECREF(cpy_r_r10);
+    if (unlikely(cpy_r_r14 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL16;
+    } else
+        goto CPyL24;
+CPyL10: ;
+    cpy_r_r15 = CPyDef_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj();
+    if (unlikely(cpy_r_r15 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL17;
+    }
+    if (((faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject *)cpy_r_r15)->___mypyc_env__ != NULL) {
+        CPy_DECREF_NO_IMM(((faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject *)cpy_r_r15)->___mypyc_env__);
+    }
+    ((faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject *)cpy_r_r15)->___mypyc_env__ = cpy_r_r0;
+    cpy_r_r16 = 1;
+    if (unlikely(!cpy_r_r16)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL25;
+    }
+    cpy_r_r17 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__dict__' */
+    cpy_r_r18 = CPyObject_GetAttr(cpy_r_self, cpy_r_r17);
+    if (unlikely(cpy_r_r18 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL25;
+    }
+    if (likely(PyDict_Check(cpy_r_r18)))
+        cpy_r_r19 = cpy_r_r18;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_utils/logging.py", "debug2", 57, CPyStatic_logging___globals, "dict", cpy_r_r18);
+        goto CPyL25;
+    }
+    cpy_r_r20 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'debug2' */
+    cpy_r_r21 = CPyDict_SetItem(cpy_r_r19, cpy_r_r20, cpy_r_r15);
+    CPy_DECREF(cpy_r_r19);
+    CPy_DECREF_NO_IMM(cpy_r_r15);
+    cpy_r_r22 = cpy_r_r21 >= 0;
+    if (unlikely(!cpy_r_r22)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL16;
+    }
+CPyL15: ;
+    return 1;
+CPyL16: ;
+    cpy_r_r23 = 2;
+    return cpy_r_r23;
+CPyL17: ;
+    CPy_DecRef(cpy_r_r0);
+    goto CPyL16;
+CPyL18: ;
+    CPy_DECREF_NO_IMM(cpy_r_r0);
+    goto CPyL3;
+CPyL19: ;
+    CPy_DecRef(cpy_r_r3);
+    goto CPyL16;
+CPyL20: ;
+    CPy_DecRef(cpy_r_r3);
+    CPy_DecRef(cpy_r_r4);
+    goto CPyL16;
+CPyL21: ;
+    CPy_DECREF(cpy_r_r9);
+    goto CPyL6;
+CPyL22: ;
+    CPy_DecRef(cpy_r_r3);
+    CPy_DecRef(cpy_r_r4);
+    CPy_DecRef(cpy_r_r10);
+    goto CPyL16;
+CPyL23: ;
+    CPy_DecRef(cpy_r_r3);
+    CPy_DecRef(cpy_r_r10);
+    goto CPyL16;
+CPyL24: ;
+    CPy_DECREF(cpy_r_r14);
+    goto CPyL15;
+CPyL25: ;
+    CPy_DecRef(cpy_r_r15);
+    goto CPyL16;
+}
+
+PyObject *CPyPy_logging___ExtendedDebugLogger___debug2(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    PyObject *obj_self = self;
+    static const char * const kwlist[] = {"message", 0};
+    static CPyArg_Parser parser = {"%O:debug2", kwlist, 0};
+    PyObject *obj_message;
+    PyObject *obj_args;
+    PyObject *obj_kwargs;
+    if (!CPyArg_ParseStackAndKeywords(args, nargs, kwnames, &parser, &obj_args, &obj_kwargs, &obj_message)) {
+        return NULL;
+    }
+    PyObject *arg_self;
+    if (likely(Py_TYPE(obj_self) == CPyType_logging___ExtendedDebugLogger))
+        arg_self = obj_self;
+    else {
+        CPy_TypeError("faster_eth_utils.logging.ExtendedDebugLogger", obj_self); 
+        goto fail;
+    }
+    PyObject *arg_message;
+    if (likely(PyUnicode_Check(obj_message)))
+        arg_message = obj_message;
+    else {
+        CPy_TypeError("str", obj_message); 
+        goto fail;
+    }
+    PyObject *arg_args = obj_args;
+    PyObject *arg_kwargs = obj_kwargs;
+    char retval = CPyDef_logging___ExtendedDebugLogger___debug2(arg_self, arg_message, arg_args, arg_kwargs);
+    CPy_DECREF(obj_args);
+    CPy_DECREF(obj_kwargs);
+    if (retval == 2) {
+        return NULL;
+    }
+    PyObject *retbox = Py_None;
+    CPy_INCREF(retbox);
+    return retbox;
+fail: ;
+    CPy_DECREF(obj_args);
+    CPy_DECREF(obj_kwargs);
+    CPy_AddTraceback("faster_eth_utils/logging.py", "debug2", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+    return NULL;
+}
+
+PyObject *CPyDef_logging___ExtendedDebugLogger_____reduce__(PyObject *cpy_r_self) {
+    PyObject *cpy_r_r0;
+    PyObject *cpy_r_r1;
+    PyObject *cpy_r_r2;
+    PyObject *cpy_r_r3;
+    PyObject *cpy_r_r4;
+    PyObject *cpy_r_r5;
+    tuple_T1O cpy_r_r6;
+    tuple_T2OT1O cpy_r_r7;
+    PyObject *cpy_r_r8;
+    PyObject *cpy_r_r9;
+    cpy_r_r0 = CPyStatic_logging___globals;
+    cpy_r_r1 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'get_extended_debug_logger' */
+    cpy_r_r2 = CPyDict_GetItem(cpy_r_r0, cpy_r_r1);
+    if (unlikely(cpy_r_r2 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__reduce__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL4;
+    }
+    cpy_r_r3 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'name' */
+    cpy_r_r4 = CPyObject_GetAttr(cpy_r_self, cpy_r_r3);
+    if (unlikely(cpy_r_r4 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__reduce__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL5;
+    }
+    if (likely(PyUnicode_Check(cpy_r_r4)))
+        cpy_r_r5 = cpy_r_r4;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_utils/logging.py", "__reduce__", 62, CPyStatic_logging___globals, "str", cpy_r_r4);
+        goto CPyL5;
+    }
+    cpy_r_r6.f0 = cpy_r_r5;
+    cpy_r_r7.f0 = cpy_r_r2;
+    cpy_r_r7.f1 = cpy_r_r6;
+    cpy_r_r8 = PyTuple_New(2);
+    if (unlikely(cpy_r_r8 == NULL))
+        CPyError_OutOfMemory();
+    PyObject *__tmp216 = cpy_r_r7.f0;
+    PyTuple_SET_ITEM(cpy_r_r8, 0, __tmp216);
+    PyObject *__tmp217 = PyTuple_New(1);
+    if (unlikely(__tmp217 == NULL))
+        CPyError_OutOfMemory();
+    PyObject *__tmp218 = cpy_r_r7.f1.f0;
+    PyTuple_SET_ITEM(__tmp217, 0, __tmp218);
+    PyTuple_SET_ITEM(cpy_r_r8, 1, __tmp217);
+    return cpy_r_r8;
+CPyL4: ;
+    cpy_r_r9 = NULL;
+    return cpy_r_r9;
+CPyL5: ;
+    CPy_DecRef(cpy_r_r2);
+    goto CPyL4;
+}
+
+PyObject *CPyPy_logging___ExtendedDebugLogger_____reduce__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    PyObject *obj_self = self;
+    static const char * const kwlist[] = {0};
+    static CPyArg_Parser parser = {":__reduce__", kwlist, 0};
+    if (!CPyArg_ParseStackAndKeywordsNoArgs(args, nargs, kwnames, &parser)) {
+        return NULL;
+    }
+    PyObject *arg_self;
+    if (likely(Py_TYPE(obj_self) == CPyType_logging___ExtendedDebugLogger))
+        arg_self = obj_self;
+    else {
+        CPy_TypeError("faster_eth_utils.logging.ExtendedDebugLogger", obj_self); 
+        goto fail;
+    }
+    PyObject *retval = CPyDef_logging___ExtendedDebugLogger_____reduce__(arg_self);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "__reduce__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+    return NULL;
+}
+
+char CPyDef_logging___setup_DEBUG2_logging(void) {
+    PyObject *cpy_r_r0;
+    PyObject *cpy_r_r1;
+    char cpy_r_r2;
+    PyObject *cpy_r_r3;
+    PyObject *cpy_r_r4;
+    PyObject *cpy_r_r5;
+    PyObject *cpy_r_r6;
+    PyObject *cpy_r_r7;
+    PyObject **cpy_r_r9;
+    PyObject *cpy_r_r10;
+    PyObject *cpy_r_r11;
+    PyObject *cpy_r_r12;
+    PyObject *cpy_r_r13;
+    int32_t cpy_r_r14;
+    char cpy_r_r15;
+    char cpy_r_r16;
+    cpy_r_r0 = CPyModule_logging;
+    cpy_r_r1 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'DEBUG2' */
+    cpy_r_r2 = PyObject_HasAttr(cpy_r_r0, cpy_r_r1);
+    if (cpy_r_r2) goto CPyL4;
+    cpy_r_r3 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'DEBUG2' */
+    cpy_r_r4 = CPyModule_logging;
+    cpy_r_r5 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'addLevelName' */
+    cpy_r_r6 = CPyObject_GetAttr(cpy_r_r4, cpy_r_r5);
+    if (unlikely(cpy_r_r6 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "setup_DEBUG2_logging", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL5;
+    }
+    cpy_r_r7 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 8 */
+    PyObject *cpy_r_r8[2] = {cpy_r_r7, cpy_r_r3};
+    cpy_r_r9 = (PyObject **)&cpy_r_r8;
+    cpy_r_r10 = PyObject_Vectorcall(cpy_r_r6, cpy_r_r9, 2, 0);
+    CPy_DECREF(cpy_r_r6);
+    if (unlikely(cpy_r_r10 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "setup_DEBUG2_logging", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL5;
+    } else
+        goto CPyL6;
+CPyL3: ;
+    cpy_r_r11 = CPyModule_logging;
+    cpy_r_r12 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'DEBUG2' */
+    cpy_r_r13 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 8 */
+    cpy_r_r14 = PyObject_SetAttr(cpy_r_r11, cpy_r_r12, cpy_r_r13);
+    cpy_r_r15 = cpy_r_r14 >= 0;
+    if (unlikely(!cpy_r_r15)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "setup_DEBUG2_logging", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL5;
+    }
+CPyL4: ;
+    return 1;
+CPyL5: ;
+    cpy_r_r16 = 2;
+    return cpy_r_r16;
+CPyL6: ;
+    CPy_DECREF(cpy_r_r10);
+    goto CPyL3;
+}
+
+PyObject *CPyPy_logging___setup_DEBUG2_logging(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    static const char * const kwlist[] = {0};
+    static CPyArg_Parser parser = {":setup_DEBUG2_logging", kwlist, 0};
+    if (!CPyArg_ParseStackAndKeywordsNoArgs(args, nargs, kwnames, &parser)) {
+        return NULL;
+    }
+    char retval = CPyDef_logging___setup_DEBUG2_logging();
+    if (retval == 2) {
+        return NULL;
+    }
+    PyObject *retbox = Py_None;
+    CPy_INCREF(retbox);
+    return retbox;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "setup_DEBUG2_logging", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+    return NULL;
+}
+
+PyObject *CPyDef_logging____use_logger_class_gen_____mypyc_generator_helper__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg, PyObject **cpy_r_stop_iter_ptr) {
+    int32_t cpy_r_r0;
+    PyObject *cpy_r_r1;
+    char cpy_r_r2;
+    PyObject *cpy_r_r3;
+    char cpy_r_r4;
+    PyObject *cpy_r_r5;
+    char cpy_r_r6;
+    PyObject *cpy_r_r7;
+    PyObject *cpy_r_r8;
+    char cpy_r_r9;
+    PyObject **cpy_r_r11;
+    PyObject *cpy_r_r12;
+    PyObject *cpy_r_r13;
+    char cpy_r_r14;
+    PyObject *cpy_r_r15;
+    char cpy_r_r16;
+    tuple_T3OOO cpy_r_r17;
+    tuple_T3OOO cpy_r_r18;
+    tuple_T3OOO cpy_r_r19;
+    PyObject *cpy_r_r20;
+    PyObject *cpy_r_r21;
+    char cpy_r_r22;
+    PyObject **cpy_r_r24;
+    PyObject *cpy_r_r25;
+    char cpy_r_r26;
+    PyObject *cpy_r_r27;
+    char cpy_r_r28;
+    char cpy_r_r29;
+    char cpy_r_r30;
+    char cpy_r_r31;
+    PyObject *cpy_r_r32;
+    cpy_r_r0 = ((faster_eth_utils___logging____use_logger_class_genObject *)cpy_r___mypyc_self__)->___mypyc_next_label__;
+    goto CPyL38;
+CPyL1: ;
+    cpy_r_r1 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r2 = cpy_r_type != cpy_r_r1;
+    if (!cpy_r_r2) goto CPyL4;
+    CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
+    if (unlikely(!0)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "_use_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL42;
+    }
+    CPy_Unreachable();
+CPyL4: ;
+    cpy_r_r3 = CPyStatic_logging___getLoggerClass;
+    if (likely(cpy_r_r3 != NULL)) goto CPyL7;
+    PyErr_SetString(PyExc_NameError, "value for final name \"getLoggerClass\" was not set");
+    cpy_r_r4 = 0;
+    if (unlikely(!cpy_r_r4)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "_use_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL42;
+    }
+    CPy_Unreachable();
+CPyL7: ;
+    cpy_r_r5 = PyObject_Vectorcall(cpy_r_r3, 0, 0, 0);
+    if (unlikely(cpy_r_r5 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "_use_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL42;
+    }
+    if (((faster_eth_utils___logging____use_logger_class_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__original_logger_class != NULL) {
+        CPy_DECREF(((faster_eth_utils___logging____use_logger_class_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__original_logger_class);
+    }
+    ((faster_eth_utils___logging____use_logger_class_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__original_logger_class = cpy_r_r5;
+    cpy_r_r6 = 1;
+    if (unlikely(!cpy_r_r6)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "_use_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL42;
+    }
+    cpy_r_r7 = ((faster_eth_utils___logging____use_logger_class_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__logger_class;
+    if (unlikely(cpy_r_r7 == NULL)) {
+        CPy_AttributeError("faster_eth_utils/logging.py", "_use_logger_class", "_use_logger_class_gen", "logger_class", 77, CPyStatic_logging___globals);
+        goto CPyL42;
+    }
+    CPy_INCREF(cpy_r_r7);
+CPyL10: ;
+    cpy_r_r8 = CPyStatic_logging___setLoggerClass;
+    if (unlikely(cpy_r_r8 == NULL)) {
+        goto CPyL43;
+    } else
+        goto CPyL13;
+CPyL11: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"setLoggerClass\" was not set");
+    cpy_r_r9 = 0;
+    if (unlikely(!cpy_r_r9)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "_use_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL42;
+    }
+    CPy_Unreachable();
+CPyL13: ;
+    PyObject *cpy_r_r10[1] = {cpy_r_r7};
+    cpy_r_r11 = (PyObject **)&cpy_r_r10;
+    cpy_r_r12 = PyObject_Vectorcall(cpy_r_r8, cpy_r_r11, 1, 0);
+    if (unlikely(cpy_r_r12 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "_use_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL44;
+    } else
+        goto CPyL45;
+CPyL14: ;
+    CPy_DECREF(cpy_r_r7);
+    cpy_r_r13 = Py_None;
+    ((faster_eth_utils___logging____use_logger_class_genObject *)cpy_r___mypyc_self__)->___mypyc_next_label__ = 1;
+    return cpy_r_r13;
+CPyL16: ;
+    cpy_r_r15 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r16 = cpy_r_type != cpy_r_r15;
+    if (!cpy_r_r16) goto CPyL19;
+    CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
+    if (unlikely(!0)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "_use_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL20;
+    }
+    CPy_Unreachable();
+CPyL19: ;
+    tuple_T3OOO __tmp219 = { NULL, NULL, NULL };
+    cpy_r_r17 = __tmp219;
+    cpy_r_r18 = cpy_r_r17;
+    goto CPyL21;
+CPyL20: ;
+    cpy_r_r19 = CPy_CatchError();
+    cpy_r_r18 = cpy_r_r19;
+CPyL21: ;
+    cpy_r_r20 = ((faster_eth_utils___logging____use_logger_class_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__original_logger_class;
+    if (unlikely(cpy_r_r20 == NULL)) {
+        CPy_AttributeError("faster_eth_utils/logging.py", "_use_logger_class", "_use_logger_class_gen", "original_logger_class", 81, CPyStatic_logging___globals);
+        goto CPyL29;
+    }
+    CPy_INCREF(cpy_r_r20);
+CPyL22: ;
+    cpy_r_r21 = CPyStatic_logging___setLoggerClass;
+    if (unlikely(cpy_r_r21 == NULL)) {
+        goto CPyL46;
+    } else
+        goto CPyL25;
+CPyL23: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"setLoggerClass\" was not set");
+    cpy_r_r22 = 0;
+    if (unlikely(!cpy_r_r22)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "_use_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL29;
+    } else
+        goto CPyL47;
+CPyL24: ;
+    CPy_Unreachable();
+CPyL25: ;
+    PyObject *cpy_r_r23[1] = {cpy_r_r20};
+    cpy_r_r24 = (PyObject **)&cpy_r_r23;
+    cpy_r_r25 = PyObject_Vectorcall(cpy_r_r21, cpy_r_r24, 1, 0);
+    if (unlikely(cpy_r_r25 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "_use_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL48;
+    } else
+        goto CPyL49;
+CPyL26: ;
+    CPy_DECREF(cpy_r_r20);
+    if (cpy_r_r18.f0 == NULL) goto CPyL33;
+    CPy_Reraise();
+    if (!0) {
+        goto CPyL29;
+    } else
+        goto CPyL50;
+CPyL28: ;
+    CPy_Unreachable();
+CPyL29: ;
+    if (cpy_r_r18.f0 == NULL) goto CPyL31;
+    CPy_RestoreExcInfo(cpy_r_r18);
+    CPy_XDECREF(cpy_r_r18.f0);
+    CPy_XDECREF(cpy_r_r18.f1);
+    CPy_XDECREF(cpy_r_r18.f2);
+CPyL31: ;
+    cpy_r_r26 = CPy_KeepPropagating();
+    if (!cpy_r_r26) goto CPyL42;
+    CPy_Unreachable();
+CPyL33: ;
+    cpy_r_r27 = Py_None;
+    ((faster_eth_utils___logging____use_logger_class_genObject *)cpy_r___mypyc_self__)->___mypyc_next_label__ = -1;
+    if (cpy_r_stop_iter_ptr != NULL) goto CPyL37;
+    CPyGen_SetStopIterationValue(cpy_r_r27);
+    if (!0) goto CPyL42;
+    CPy_Unreachable();
+CPyL37: ;
+    *(PyObject * *)cpy_r_stop_iter_ptr = cpy_r_r27;
+    return 0;
+CPyL38: ;
+    cpy_r_r29 = cpy_r_r0 == 0;
+    if (cpy_r_r29) goto CPyL1;
+    cpy_r_r30 = cpy_r_r0 == 1;
+    if (cpy_r_r30) goto CPyL16;
+    PyErr_SetNone(PyExc_StopIteration);
+    cpy_r_r31 = 0;
+    if (unlikely(!cpy_r_r31)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "_use_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL42;
+    }
+    CPy_Unreachable();
+CPyL42: ;
+    cpy_r_r32 = NULL;
+    return cpy_r_r32;
+CPyL43: ;
+    CPy_DecRef(cpy_r_r7);
+    goto CPyL11;
+CPyL44: ;
+    CPy_DecRef(cpy_r_r7);
+    goto CPyL42;
+CPyL45: ;
+    CPy_DECREF(cpy_r_r12);
+    goto CPyL14;
+CPyL46: ;
+    CPy_DecRef(cpy_r_r20);
+    goto CPyL23;
+CPyL47: ;
+    CPy_XDecRef(cpy_r_r18.f0);
+    CPy_XDecRef(cpy_r_r18.f1);
+    CPy_XDecRef(cpy_r_r18.f2);
+    goto CPyL24;
+CPyL48: ;
+    CPy_DecRef(cpy_r_r20);
+    goto CPyL29;
+CPyL49: ;
+    CPy_DECREF(cpy_r_r25);
+    goto CPyL26;
+CPyL50: ;
+    CPy_XDECREF(cpy_r_r18.f0);
+    CPy_XDECREF(cpy_r_r18.f1);
+    CPy_XDECREF(cpy_r_r18.f2);
+    goto CPyL28;
+}
+
+PyObject *CPyDef_logging____use_logger_class_gen_____next__(PyObject *cpy_r___mypyc_self__) {
+    PyObject *cpy_r_r0;
+    PyObject *cpy_r_r1;
+    PyObject *cpy_r_r2;
+    cpy_r_r0 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r1 = CPyDef_logging____use_logger_class_gen_____mypyc_generator_helper__(cpy_r___mypyc_self__, cpy_r_r0, cpy_r_r0, cpy_r_r0, cpy_r_r0, 0);
+    if (cpy_r_r1 == NULL) goto CPyL2;
+    return cpy_r_r1;
+CPyL2: ;
+    cpy_r_r2 = NULL;
+    return cpy_r_r2;
+}
+
+PyObject *CPyPy_logging____use_logger_class_gen_____next__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    PyObject *obj___mypyc_self__ = self;
+    static const char * const kwlist[] = {0};
+    static CPyArg_Parser parser = {":__next__", kwlist, 0};
+    if (!CPyArg_ParseStackAndKeywordsNoArgs(args, nargs, kwnames, &parser)) {
+        return NULL;
+    }
+    PyObject *arg___mypyc_self__;
+    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType_logging____use_logger_class_gen))
+        arg___mypyc_self__ = obj___mypyc_self__;
+    else {
+        CPy_TypeError("faster_eth_utils.logging._use_logger_class_gen", obj___mypyc_self__); 
+        goto fail;
+    }
+    PyObject *retval = CPyDef_logging____use_logger_class_gen_____next__(arg___mypyc_self__);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "__next__", -1, CPyStatic_logging___globals);
+    return NULL;
+}
+
+PyObject *CPyDef_logging____use_logger_class_gen___send(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg) {
+    PyObject *cpy_r_r0;
+    PyObject *cpy_r_r1;
+    PyObject *cpy_r_r2;
+    cpy_r_r0 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r1 = CPyDef_logging____use_logger_class_gen_____mypyc_generator_helper__(cpy_r___mypyc_self__, cpy_r_r0, cpy_r_r0, cpy_r_r0, cpy_r_arg, 0);
+    if (cpy_r_r1 == NULL) goto CPyL2;
+    return cpy_r_r1;
+CPyL2: ;
+    cpy_r_r2 = NULL;
+    return cpy_r_r2;
+}
+
+PyObject *CPyPy_logging____use_logger_class_gen___send(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    PyObject *obj___mypyc_self__ = self;
+    static const char * const kwlist[] = {"arg", 0};
+    static CPyArg_Parser parser = {"O:send", kwlist, 0};
+    PyObject *obj_arg;
+    if (!CPyArg_ParseStackAndKeywordsOneArg(args, nargs, kwnames, &parser, &obj_arg)) {
+        return NULL;
+    }
+    PyObject *arg___mypyc_self__;
+    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType_logging____use_logger_class_gen))
+        arg___mypyc_self__ = obj___mypyc_self__;
+    else {
+        CPy_TypeError("faster_eth_utils.logging._use_logger_class_gen", obj___mypyc_self__); 
+        goto fail;
+    }
+    PyObject *arg_arg = obj_arg;
+    PyObject *retval = CPyDef_logging____use_logger_class_gen___send(arg___mypyc_self__, arg_arg);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "send", -1, CPyStatic_logging___globals);
+    return NULL;
+}
+
+PyObject *CPyDef_logging____use_logger_class_gen_____iter__(PyObject *cpy_r___mypyc_self__) {
+    CPy_INCREF_NO_IMM(cpy_r___mypyc_self__);
+    return cpy_r___mypyc_self__;
+}
+
+PyObject *CPyPy_logging____use_logger_class_gen_____iter__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    PyObject *obj___mypyc_self__ = self;
+    static const char * const kwlist[] = {0};
+    static CPyArg_Parser parser = {":__iter__", kwlist, 0};
+    if (!CPyArg_ParseStackAndKeywordsNoArgs(args, nargs, kwnames, &parser)) {
+        return NULL;
+    }
+    PyObject *arg___mypyc_self__;
+    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType_logging____use_logger_class_gen))
+        arg___mypyc_self__ = obj___mypyc_self__;
+    else {
+        CPy_TypeError("faster_eth_utils.logging._use_logger_class_gen", obj___mypyc_self__); 
+        goto fail;
+    }
+    PyObject *retval = CPyDef_logging____use_logger_class_gen_____iter__(arg___mypyc_self__);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "__iter__", -1, CPyStatic_logging___globals);
+    return NULL;
+}
+
+PyObject *CPyDef_logging____use_logger_class_gen___throw(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback) {
+    PyObject *cpy_r_r0;
+    PyObject *cpy_r_r1;
+    PyObject *cpy_r_r2;
+    cpy_r_r0 = (PyObject *)&_Py_NoneStruct;
+    if (cpy_r_value != NULL) goto CPyL7;
+    CPy_INCREF(cpy_r_r0);
+    cpy_r_value = cpy_r_r0;
+CPyL2: ;
+    if (cpy_r_traceback != NULL) goto CPyL8;
+    CPy_INCREF(cpy_r_r0);
+    cpy_r_traceback = cpy_r_r0;
+CPyL4: ;
+    cpy_r_r1 = CPyDef_logging____use_logger_class_gen_____mypyc_generator_helper__(cpy_r___mypyc_self__, cpy_r_type, cpy_r_value, cpy_r_traceback, cpy_r_r0, 0);
+    CPy_DECREF(cpy_r_value);
+    CPy_DECREF(cpy_r_traceback);
+    if (cpy_r_r1 == NULL) goto CPyL6;
+    return cpy_r_r1;
+CPyL6: ;
+    cpy_r_r2 = NULL;
+    return cpy_r_r2;
+CPyL7: ;
+    CPy_INCREF(cpy_r_value);
+    goto CPyL2;
+CPyL8: ;
+    CPy_INCREF(cpy_r_traceback);
+    goto CPyL4;
+}
+
+PyObject *CPyPy_logging____use_logger_class_gen___throw(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    PyObject *obj___mypyc_self__ = self;
+    static const char * const kwlist[] = {"type", "value", "traceback", 0};
+    static CPyArg_Parser parser = {"O|OO:throw", kwlist, 0};
+    PyObject *obj_type;
+    PyObject *obj_value = NULL;
+    PyObject *obj_traceback = NULL;
+    if (!CPyArg_ParseStackAndKeywordsSimple(args, nargs, kwnames, &parser, &obj_type, &obj_value, &obj_traceback)) {
+        return NULL;
+    }
+    PyObject *arg___mypyc_self__;
+    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType_logging____use_logger_class_gen))
+        arg___mypyc_self__ = obj___mypyc_self__;
+    else {
+        CPy_TypeError("faster_eth_utils.logging._use_logger_class_gen", obj___mypyc_self__); 
+        goto fail;
+    }
+    PyObject *arg_type = obj_type;
+    PyObject *arg_value;
+    if (obj_value == NULL) {
+        arg_value = NULL;
+    } else {
+        arg_value = obj_value; 
+    }
+    PyObject *arg_traceback;
+    if (obj_traceback == NULL) {
+        arg_traceback = NULL;
+    } else {
+        arg_traceback = obj_traceback; 
+    }
+    PyObject *retval = CPyDef_logging____use_logger_class_gen___throw(arg___mypyc_self__, arg_type, arg_value, arg_traceback);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "throw", -1, CPyStatic_logging___globals);
+    return NULL;
+}
+
+PyObject *CPyDef_logging____use_logger_class_gen___close(PyObject *cpy_r___mypyc_self__) {
+    PyObject *cpy_r_r0;
+    PyObject *cpy_r_r1;
+    PyObject *cpy_r_r2;
+    PyObject *cpy_r_r3;
+    PyObject *cpy_r_r4;
+    PyObject *cpy_r_r5;
+    tuple_T3OOO cpy_r_r6;
+    PyObject *cpy_r_r7;
+    PyObject *cpy_r_r8;
+    PyObject *cpy_r_r9;
+    tuple_T2OO cpy_r_r10;
+    PyObject *cpy_r_r11;
+    char cpy_r_r12;
+    PyObject *cpy_r_r13;
+    char cpy_r_r14;
+    PyObject *cpy_r_r15;
+    cpy_r_r0 = CPyModule_builtins;
+    cpy_r_r1 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'GeneratorExit' */
+    cpy_r_r2 = CPyObject_GetAttr(cpy_r_r0, cpy_r_r1);
+    if (cpy_r_r2 == NULL) goto CPyL3;
+    cpy_r_r3 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r4 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r5 = CPyDef_logging____use_logger_class_gen___throw(cpy_r___mypyc_self__, cpy_r_r2, cpy_r_r3, cpy_r_r4);
+    if (cpy_r_r5 != NULL) goto CPyL11;
+CPyL3: ;
+    cpy_r_r6 = CPy_CatchError();
+    cpy_r_r7 = CPyModule_builtins;
+    cpy_r_r8 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'StopIteration' */
+    cpy_r_r9 = CPyObject_GetAttr(cpy_r_r7, cpy_r_r8);
+    if (cpy_r_r9 == NULL) goto CPyL12;
+    cpy_r_r10.f0 = cpy_r_r2;
+    cpy_r_r10.f1 = cpy_r_r9;
+    cpy_r_r11 = PyTuple_New(2);
+    if (unlikely(cpy_r_r11 == NULL))
+        CPyError_OutOfMemory();
+    PyObject *__tmp220 = cpy_r_r10.f0;
+    PyTuple_SET_ITEM(cpy_r_r11, 0, __tmp220);
+    PyObject *__tmp221 = cpy_r_r10.f1;
+    PyTuple_SET_ITEM(cpy_r_r11, 1, __tmp221);
+    cpy_r_r12 = CPy_ExceptionMatches(cpy_r_r11);
+    CPy_DECREF(cpy_r_r11);
+    if (!cpy_r_r12) goto CPyL13;
+    CPy_RestoreExcInfo(cpy_r_r6);
+    CPy_DECREF(cpy_r_r6.f0);
+    CPy_DECREF(cpy_r_r6.f1);
+    CPy_DECREF(cpy_r_r6.f2);
+    cpy_r_r13 = (PyObject *)&_Py_NoneStruct;
+    CPy_INCREF(cpy_r_r13);
+    return cpy_r_r13;
+CPyL6: ;
+    CPy_Reraise();
+    if (!0) goto CPyL10;
+    CPy_Unreachable();
+CPyL8: ;
+    PyErr_SetString(PyExc_RuntimeError, "generator ignored GeneratorExit");
+    cpy_r_r14 = 0;
+    if (!cpy_r_r14) goto CPyL10;
+    CPy_Unreachable();
+CPyL10: ;
+    cpy_r_r15 = NULL;
+    return cpy_r_r15;
+CPyL11: ;
+    CPy_DECREF(cpy_r_r2);
+    CPy_DECREF(cpy_r_r5);
+    goto CPyL8;
+CPyL12: ;
+    CPy_DECREF(cpy_r_r2);
+    CPy_DECREF(cpy_r_r6.f0);
+    CPy_DECREF(cpy_r_r6.f1);
+    CPy_DECREF(cpy_r_r6.f2);
+    goto CPyL10;
+CPyL13: ;
+    CPy_DECREF(cpy_r_r6.f0);
+    CPy_DECREF(cpy_r_r6.f1);
+    CPy_DECREF(cpy_r_r6.f2);
+    goto CPyL6;
+}
+
+PyObject *CPyPy_logging____use_logger_class_gen___close(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    PyObject *obj___mypyc_self__ = self;
+    static const char * const kwlist[] = {0};
+    static CPyArg_Parser parser = {":close", kwlist, 0};
+    if (!CPyArg_ParseStackAndKeywordsNoArgs(args, nargs, kwnames, &parser)) {
+        return NULL;
+    }
+    PyObject *arg___mypyc_self__;
+    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType_logging____use_logger_class_gen))
+        arg___mypyc_self__ = obj___mypyc_self__;
+    else {
+        CPy_TypeError("faster_eth_utils.logging._use_logger_class_gen", obj___mypyc_self__); 
+        goto fail;
+    }
+    PyObject *retval = CPyDef_logging____use_logger_class_gen___close(arg___mypyc_self__);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "close", -1, CPyStatic_logging___globals);
+    return NULL;
+}
+
+PyObject *CPyDef_logging____use_logger_class(PyObject *cpy_r_logger_class) {
+    PyObject *cpy_r_r0;
+    char cpy_r_r1;
+    char cpy_r_r2;
+    PyObject *cpy_r_r3;
+    cpy_r_r0 = CPyDef_logging____use_logger_class_gen();
+    if (unlikely(cpy_r_r0 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "_use_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL3;
+    }
+    ((faster_eth_utils___logging____use_logger_class_genObject *)cpy_r_r0)->___mypyc_next_label__ = 0;
+    CPy_INCREF(cpy_r_logger_class);
+    if (((faster_eth_utils___logging____use_logger_class_genObject *)cpy_r_r0)->___mypyc_generator_attribute__logger_class != NULL) {
+        CPy_DECREF(((faster_eth_utils___logging____use_logger_class_genObject *)cpy_r_r0)->___mypyc_generator_attribute__logger_class);
+    }
+    ((faster_eth_utils___logging____use_logger_class_genObject *)cpy_r_r0)->___mypyc_generator_attribute__logger_class = cpy_r_logger_class;
+    cpy_r_r2 = 1;
+    if (unlikely(!cpy_r_r2)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "_use_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL4;
+    }
+    return cpy_r_r0;
+CPyL3: ;
+    cpy_r_r3 = NULL;
+    return cpy_r_r3;
+CPyL4: ;
+    CPy_DecRef(cpy_r_r0);
+    goto CPyL3;
+}
+
+PyObject *CPyPy_logging____use_logger_class(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    static const char * const kwlist[] = {"logger_class", 0};
+    static CPyArg_Parser parser = {"O:_use_logger_class", kwlist, 0};
+    PyObject *obj_logger_class;
+    if (!CPyArg_ParseStackAndKeywordsOneArg(args, nargs, kwnames, &parser, &obj_logger_class)) {
+        return NULL;
+    }
+    PyObject *arg_logger_class = obj_logger_class;
+    PyObject *retval = CPyDef_logging____use_logger_class(arg_logger_class);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "_use_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+    return NULL;
+}
+
+PyObject *CPyDef_logging___get_logger(PyObject *cpy_r_name, PyObject *cpy_r_logger_class) {
+    PyObject *cpy_r_r0;
+    PyObject *cpy_r_r1;
+    char cpy_r_r2;
+    PyObject *cpy_r_r3;
+    char cpy_r_r4;
+    PyObject **cpy_r_r6;
+    PyObject *cpy_r_r7;
+    PyObject *cpy_r_r8;
+    PyObject *cpy_r_r9;
+    PyObject *cpy_r_r10;
+    PyObject **cpy_r_r12;
+    PyObject *cpy_r_r13;
+    PyObject *cpy_r_r14;
+    PyObject *cpy_r_r15;
+    PyObject *cpy_r_r16;
+    PyObject *cpy_r_r17;
+    PyObject *cpy_r_r18;
+    PyObject **cpy_r_r20;
+    PyObject *cpy_r_r21;
+    char cpy_r_r22;
+    PyObject *cpy_r_r23;
+    char cpy_r_r24;
+    PyObject *cpy_r_r25;
+    PyObject *cpy_r_r26;
+    PyObject *cpy_r_r27;
+    PyObject *cpy_r_r28;
+    PyObject *cpy_r_r29;
+    PyObject *cpy_r_r30;
+    PyObject *cpy_r_cached_logger;
+    PyObject *cpy_r_r31;
+    char cpy_r_r32;
+    PyObject *cpy_r_r33;
+    char cpy_r_r34;
+    char cpy_r_r35;
+    int32_t cpy_r_r36;
+    char cpy_r_r37;
+    PyObject *cpy_r_r38;
+    char cpy_r_r39;
+    PyObject **cpy_r_r41;
+    PyObject *cpy_r_r42;
+    PyObject *cpy_r_r43;
+    tuple_T3OOO cpy_r_r44;
+    tuple_T3OOO cpy_r_r45;
+    PyObject *cpy_r_r46;
+    PyObject *cpy_r_r47;
+    PyObject *cpy_r_r48;
+    PyObject **cpy_r_r50;
+    PyObject *cpy_r_r51;
+    int32_t cpy_r_r52;
+    char cpy_r_r53;
+    char cpy_r_r54;
+    char cpy_r_r55;
+    PyObject *cpy_r_r56;
+    tuple_T3OOO cpy_r_r57;
+    tuple_T3OOO cpy_r_r58;
+    PyObject *cpy_r_r59;
+    tuple_T3OOO cpy_r_r60;
+    PyObject *cpy_r_r61;
+    PyObject **cpy_r_r63;
+    PyObject *cpy_r_r64;
+    char cpy_r_r65;
+    PyObject *cpy_r_r66;
+    PyObject *cpy_r_r67;
+    if (cpy_r_logger_class != NULL) goto CPyL54;
+    cpy_r_r0 = Py_None;
+    cpy_r_logger_class = cpy_r_r0;
+CPyL2: ;
+    cpy_r_r1 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r2 = cpy_r_logger_class == cpy_r_r1;
+    if (cpy_r_r2) {
+        goto CPyL55;
+    } else
+        goto CPyL8;
+CPyL3: ;
+    cpy_r_r3 = CPyStatic_logging___getLogger;
+    if (likely(cpy_r_r3 != NULL)) goto CPyL6;
+    PyErr_SetString(PyExc_NameError, "value for final name \"getLogger\" was not set");
+    cpy_r_r4 = 0;
+    if (unlikely(!cpy_r_r4)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL53;
+    }
+    CPy_Unreachable();
+CPyL6: ;
+    PyObject *cpy_r_r5[1] = {cpy_r_name};
+    cpy_r_r6 = (PyObject **)&cpy_r_r5;
+    cpy_r_r7 = PyObject_Vectorcall(cpy_r_r3, cpy_r_r6, 1, 0);
+    if (unlikely(cpy_r_r7 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL53;
+    }
+    return cpy_r_r7;
+CPyL8: ;
+    cpy_r_r8 = CPyStatic_logging___globals;
+    cpy_r_r9 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_use_logger_class' */
+    cpy_r_r10 = CPyDict_GetItem(cpy_r_r8, cpy_r_r9);
+    if (unlikely(cpy_r_r10 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL56;
+    }
+    PyObject *cpy_r_r11[1] = {cpy_r_logger_class};
+    cpy_r_r12 = (PyObject **)&cpy_r_r11;
+    cpy_r_r13 = PyObject_Vectorcall(cpy_r_r10, cpy_r_r12, 1, 0);
+    CPy_DECREF(cpy_r_r10);
+    if (unlikely(cpy_r_r13 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL56;
+    }
+    cpy_r_r14 = CPy_TYPE(cpy_r_r13);
+    cpy_r_r15 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__exit__' */
+    cpy_r_r16 = CPyObject_GetAttr(cpy_r_r14, cpy_r_r15);
+    if (unlikely(cpy_r_r16 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL57;
+    }
+    cpy_r_r17 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__enter__' */
+    cpy_r_r18 = CPyObject_GetAttr(cpy_r_r14, cpy_r_r17);
+    CPy_DECREF(cpy_r_r14);
+    if (unlikely(cpy_r_r18 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL58;
+    }
+    PyObject *cpy_r_r19[1] = {cpy_r_r13};
+    cpy_r_r20 = (PyObject **)&cpy_r_r19;
+    cpy_r_r21 = PyObject_Vectorcall(cpy_r_r18, cpy_r_r20, 1, 0);
+    CPy_DECREF(cpy_r_r18);
+    if (unlikely(cpy_r_r21 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL58;
+    } else
+        goto CPyL59;
+CPyL13: ;
+    cpy_r_r22 = 1;
+    cpy_r_r23 = CPyStatic_logging___Logger;
+    if (unlikely(cpy_r_r23 == NULL)) {
+        goto CPyL60;
+    } else
+        goto CPyL17;
+CPyL15: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"Logger\" was not set");
+    cpy_r_r24 = 0;
+    if (unlikely(!cpy_r_r24)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL29;
+    } else
+        goto CPyL61;
+CPyL16: ;
+    CPy_Unreachable();
+CPyL17: ;
+    cpy_r_r25 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'manager' */
+    cpy_r_r26 = CPyObject_GetAttr(cpy_r_r23, cpy_r_r25);
+    if (unlikely(cpy_r_r26 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL62;
+    }
+    cpy_r_r27 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'loggerDict' */
+    cpy_r_r28 = CPyObject_GetAttr(cpy_r_r26, cpy_r_r27);
+    CPy_DECREF(cpy_r_r26);
+    if (unlikely(cpy_r_r28 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL62;
+    }
+    if (likely(PyDict_Check(cpy_r_r28)))
+        cpy_r_r29 = cpy_r_r28;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_utils/logging.py", "get_logger", 99, CPyStatic_logging___globals, "dict", cpy_r_r28);
+        goto CPyL62;
+    }
+    cpy_r_r30 = CPyDict_GetWithNone(cpy_r_r29, cpy_r_name);
+    if (unlikely(cpy_r_r30 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL63;
+    }
+    cpy_r_cached_logger = cpy_r_r30;
+    cpy_r_r31 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r32 = cpy_r_cached_logger != cpy_r_r31;
+    if (!cpy_r_r32) goto CPyL64;
+    cpy_r_r33 = CPy_TYPE(cpy_r_cached_logger);
+    CPy_DECREF(cpy_r_cached_logger);
+    cpy_r_r34 = cpy_r_r33 == cpy_r_logger_class;
+    CPy_DECREF(cpy_r_r33);
+    CPy_DECREF(cpy_r_logger_class);
+    cpy_r_r35 = cpy_r_r34 ^ 1;
+    if (!cpy_r_r35) goto CPyL65;
+    cpy_r_r36 = PyObject_DelItem(cpy_r_r29, cpy_r_name);
+    CPy_DECREF(cpy_r_r29);
+    cpy_r_r37 = cpy_r_r36 >= 0;
+    if (unlikely(!cpy_r_r37)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL29;
+    }
+CPyL24: ;
+    cpy_r_r38 = CPyStatic_logging___getLogger;
+    if (likely(cpy_r_r38 != NULL)) goto CPyL27;
+    PyErr_SetString(PyExc_NameError, "value for final name \"getLogger\" was not set");
+    cpy_r_r39 = 0;
+    if (unlikely(!cpy_r_r39)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL29;
+    } else
+        goto CPyL66;
+CPyL26: ;
+    CPy_Unreachable();
+CPyL27: ;
+    PyObject *cpy_r_r40[1] = {cpy_r_name};
+    cpy_r_r41 = (PyObject **)&cpy_r_r40;
+    cpy_r_r42 = PyObject_Vectorcall(cpy_r_r38, cpy_r_r41, 1, 0);
+    if (unlikely(cpy_r_r42 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL29;
+    }
+    cpy_r_r43 = cpy_r_r42;
+    goto CPyL38;
+CPyL29: ;
+    cpy_r_r44 = CPy_CatchError();
+    cpy_r_r22 = 0;
+    cpy_r_r45 = CPy_GetExcInfo();
+    cpy_r_r46 = cpy_r_r45.f0;
+    CPy_INCREF(cpy_r_r46);
+    cpy_r_r47 = cpy_r_r45.f1;
+    CPy_INCREF(cpy_r_r47);
+    cpy_r_r48 = cpy_r_r45.f2;
+    CPy_INCREF(cpy_r_r48);
+    CPy_DecRef(cpy_r_r45.f0);
+    CPy_DecRef(cpy_r_r45.f1);
+    CPy_DecRef(cpy_r_r45.f2);
+    PyObject *cpy_r_r49[4] = {cpy_r_r13, cpy_r_r46, cpy_r_r47, cpy_r_r48};
+    cpy_r_r50 = (PyObject **)&cpy_r_r49;
+    cpy_r_r51 = PyObject_Vectorcall(cpy_r_r16, cpy_r_r50, 4, 0);
+    if (unlikely(cpy_r_r51 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL67;
+    }
+    CPy_DecRef(cpy_r_r46);
+    CPy_DecRef(cpy_r_r47);
+    CPy_DecRef(cpy_r_r48);
+    cpy_r_r52 = PyObject_IsTrue(cpy_r_r51);
+    CPy_DecRef(cpy_r_r51);
+    cpy_r_r53 = cpy_r_r52 >= 0;
+    if (unlikely(!cpy_r_r53)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL35;
+    }
+    cpy_r_r54 = cpy_r_r52;
+    if (cpy_r_r54) goto CPyL34;
+    CPy_Reraise();
+    if (!0) {
+        goto CPyL35;
+    } else
+        goto CPyL68;
+CPyL33: ;
+    CPy_Unreachable();
+CPyL34: ;
+    CPy_RestoreExcInfo(cpy_r_r44);
+    CPy_DecRef(cpy_r_r44.f0);
+    CPy_DecRef(cpy_r_r44.f1);
+    CPy_DecRef(cpy_r_r44.f2);
+    goto CPyL37;
+CPyL35: ;
+    CPy_RestoreExcInfo(cpy_r_r44);
+    CPy_DecRef(cpy_r_r44.f0);
+    CPy_DecRef(cpy_r_r44.f1);
+    CPy_DecRef(cpy_r_r44.f2);
+    cpy_r_r55 = CPy_KeepPropagating();
+    if (!cpy_r_r55) {
+        goto CPyL39;
+    } else
+        goto CPyL69;
+CPyL36: ;
+    CPy_Unreachable();
+CPyL37: ;
+    cpy_r_r56 = NULL;
+    cpy_r_r43 = cpy_r_r56;
+CPyL38: ;
+    tuple_T3OOO __tmp222 = { NULL, NULL, NULL };
+    cpy_r_r57 = __tmp222;
+    cpy_r_r58 = cpy_r_r57;
+    goto CPyL40;
+CPyL39: ;
+    cpy_r_r59 = NULL;
+    cpy_r_r43 = cpy_r_r59;
+    cpy_r_r60 = CPy_CatchError();
+    cpy_r_r58 = cpy_r_r60;
+CPyL40: ;
+    if (!cpy_r_r22) goto CPyL70;
+    cpy_r_r61 = (PyObject *)&_Py_NoneStruct;
+    PyObject *cpy_r_r62[4] = {cpy_r_r13, cpy_r_r61, cpy_r_r61, cpy_r_r61};
+    cpy_r_r63 = (PyObject **)&cpy_r_r62;
+    cpy_r_r64 = PyObject_Vectorcall(cpy_r_r16, cpy_r_r63, 4, 0);
+    CPy_DECREF(cpy_r_r16);
+    if (unlikely(cpy_r_r64 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL71;
+    } else
+        goto CPyL72;
+CPyL42: ;
+    CPy_DECREF(cpy_r_r13);
+CPyL43: ;
+    if (cpy_r_r58.f0 == NULL) {
+        goto CPyL46;
+    } else
+        goto CPyL73;
+CPyL44: ;
+    CPy_Reraise();
+    if (!0) {
+        goto CPyL48;
+    } else
+        goto CPyL74;
+CPyL45: ;
+    CPy_Unreachable();
+CPyL46: ;
+    if (cpy_r_r43 == NULL) goto CPyL52;
+    return cpy_r_r43;
+CPyL48: ;
+    if (cpy_r_r58.f0 == NULL) goto CPyL50;
+    CPy_RestoreExcInfo(cpy_r_r58);
+    CPy_XDECREF(cpy_r_r58.f0);
+    CPy_XDECREF(cpy_r_r58.f1);
+    CPy_XDECREF(cpy_r_r58.f2);
+CPyL50: ;
+    cpy_r_r65 = CPy_KeepPropagating();
+    if (!cpy_r_r65) goto CPyL53;
+    CPy_Unreachable();
+CPyL52: ;
+    cpy_r_r66 = Py_None;
+    return cpy_r_r66;
+CPyL53: ;
+    cpy_r_r67 = NULL;
+    return cpy_r_r67;
+CPyL54: ;
+    CPy_INCREF(cpy_r_logger_class);
+    goto CPyL2;
+CPyL55: ;
+    CPy_DECREF(cpy_r_logger_class);
+    goto CPyL3;
+CPyL56: ;
+    CPy_DecRef(cpy_r_logger_class);
+    goto CPyL53;
+CPyL57: ;
+    CPy_DecRef(cpy_r_logger_class);
+    CPy_DecRef(cpy_r_r13);
+    CPy_DecRef(cpy_r_r14);
+    goto CPyL53;
+CPyL58: ;
+    CPy_DecRef(cpy_r_logger_class);
+    CPy_DecRef(cpy_r_r13);
+    CPy_DecRef(cpy_r_r16);
+    goto CPyL53;
+CPyL59: ;
+    CPy_DECREF(cpy_r_r21);
+    goto CPyL13;
+CPyL60: ;
+    CPy_DecRef(cpy_r_logger_class);
+    goto CPyL15;
+CPyL61: ;
+    CPy_DecRef(cpy_r_r13);
+    CPy_DecRef(cpy_r_r16);
+    goto CPyL16;
+CPyL62: ;
+    CPy_DecRef(cpy_r_logger_class);
+    goto CPyL29;
+CPyL63: ;
+    CPy_DecRef(cpy_r_logger_class);
+    CPy_DecRef(cpy_r_r29);
+    goto CPyL29;
+CPyL64: ;
+    CPy_DECREF(cpy_r_logger_class);
+    CPy_DECREF(cpy_r_r29);
+    CPy_DECREF(cpy_r_cached_logger);
+    goto CPyL24;
+CPyL65: ;
+    CPy_DECREF(cpy_r_r29);
+    goto CPyL24;
+CPyL66: ;
+    CPy_DecRef(cpy_r_r13);
+    CPy_DecRef(cpy_r_r16);
+    goto CPyL26;
+CPyL67: ;
+    CPy_DecRef(cpy_r_r46);
+    CPy_DecRef(cpy_r_r47);
+    CPy_DecRef(cpy_r_r48);
+    goto CPyL35;
+CPyL68: ;
+    CPy_DecRef(cpy_r_r13);
+    CPy_DecRef(cpy_r_r16);
+    CPy_DecRef(cpy_r_r44.f0);
+    CPy_DecRef(cpy_r_r44.f1);
+    CPy_DecRef(cpy_r_r44.f2);
+    goto CPyL33;
+CPyL69: ;
+    CPy_DecRef(cpy_r_r13);
+    CPy_DecRef(cpy_r_r16);
+    goto CPyL36;
+CPyL70: ;
+    CPy_DECREF(cpy_r_r13);
+    CPy_DECREF(cpy_r_r16);
+    goto CPyL43;
+CPyL71: ;
+    CPy_DecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r43);
+    goto CPyL48;
+CPyL72: ;
+    CPy_DECREF(cpy_r_r64);
+    goto CPyL42;
+CPyL73: ;
+    CPy_XDECREF(cpy_r_r43);
+    goto CPyL44;
+CPyL74: ;
+    CPy_XDECREF(cpy_r_r58.f0);
+    CPy_XDECREF(cpy_r_r58.f1);
+    CPy_XDECREF(cpy_r_r58.f2);
+    goto CPyL45;
+}
+
+PyObject *CPyPy_logging___get_logger(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    static const char * const kwlist[] = {"name", "logger_class", 0};
+    static CPyArg_Parser parser = {"O|O:get_logger", kwlist, 0};
+    PyObject *obj_name;
+    PyObject *obj_logger_class = NULL;
+    if (!CPyArg_ParseStackAndKeywordsSimple(args, nargs, kwnames, &parser, &obj_name, &obj_logger_class)) {
+        return NULL;
+    }
+    PyObject *arg_name;
+    if (likely(PyUnicode_Check(obj_name)))
+        arg_name = obj_name;
+    else {
+        CPy_TypeError("str", obj_name); 
+        goto fail;
+    }
+    PyObject *arg_logger_class;
+    if (obj_logger_class == NULL) {
+        arg_logger_class = NULL;
+        goto __LL223;
+    }
+    arg_logger_class = obj_logger_class;
+    if (arg_logger_class != NULL) goto __LL223;
+    if (obj_logger_class == Py_None)
+        arg_logger_class = obj_logger_class;
+    else {
+        arg_logger_class = NULL;
+    }
+    if (arg_logger_class != NULL) goto __LL223;
+    CPy_TypeError("object or None", obj_logger_class); 
+    goto fail;
+__LL223: ;
+    PyObject *retval = CPyDef_logging___get_logger(arg_name, arg_logger_class);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "get_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+    return NULL;
+}
+
+PyObject *CPyDef_logging___get_extended_debug_logger(PyObject *cpy_r_name) {
+    PyObject *cpy_r_r0;
+    PyObject *cpy_r_r1;
+    PyObject *cpy_r_r2;
+    PyObject *cpy_r_r3;
+    cpy_r_r0 = (PyObject *)CPyType_logging___ExtendedDebugLogger;
+    cpy_r_r1 = CPyDef_logging___get_logger(cpy_r_name, cpy_r_r0);
+    if (unlikely(cpy_r_r1 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "get_extended_debug_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL3;
+    }
+    if (likely(Py_TYPE(cpy_r_r1) == CPyType_logging___ExtendedDebugLogger))
+        cpy_r_r2 = cpy_r_r1;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_utils/logging.py", "get_extended_debug_logger", 107, CPyStatic_logging___globals, "faster_eth_utils.logging.ExtendedDebugLogger", cpy_r_r1);
+        goto CPyL3;
+    }
+    return cpy_r_r2;
+CPyL3: ;
+    cpy_r_r3 = NULL;
+    return cpy_r_r3;
+}
+
+PyObject *CPyPy_logging___get_extended_debug_logger(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    static const char * const kwlist[] = {"name", 0};
+    static CPyArg_Parser parser = {"O:get_extended_debug_logger", kwlist, 0};
+    PyObject *obj_name;
+    if (!CPyArg_ParseStackAndKeywordsOneArg(args, nargs, kwnames, &parser, &obj_name)) {
+        return NULL;
+    }
+    PyObject *arg_name;
+    if (likely(PyUnicode_Check(obj_name)))
+        arg_name = obj_name;
+    else {
+        CPy_TypeError("str", obj_name); 
+        goto fail;
+    }
+    PyObject *retval = CPyDef_logging___get_extended_debug_logger(arg_name);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "get_extended_debug_logger", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+    return NULL;
+}
+
+PyObject *CPyDef_logging_____new___3_HasLoggerMeta_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner) {
+    PyObject *cpy_r_r0;
+    char cpy_r_r1;
+    PyObject *cpy_r_r2;
+    PyObject *cpy_r_r3;
+    cpy_r_r0 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r1 = cpy_r_instance == cpy_r_r0;
+    if (!cpy_r_r1) goto CPyL2;
+    CPy_INCREF(cpy_r___mypyc_self__);
+    return cpy_r___mypyc_self__;
+CPyL2: ;
+    cpy_r_r2 = PyMethod_New(cpy_r___mypyc_self__, cpy_r_instance);
+    if (cpy_r_r2 == NULL) goto CPyL4;
+    return cpy_r_r2;
+CPyL4: ;
+    cpy_r_r3 = NULL;
+    return cpy_r_r3;
+}
+
+PyObject *CPyPy_logging_____new___3_HasLoggerMeta_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    PyObject *obj___mypyc_self__ = self;
+    static const char * const kwlist[] = {"instance", "owner", 0};
+    static CPyArg_Parser parser = {"OO:__get__", kwlist, 0};
+    PyObject *obj_instance;
+    PyObject *obj_owner;
+    if (!CPyArg_ParseStackAndKeywordsSimple(args, nargs, kwnames, &parser, &obj_instance, &obj_owner)) {
+        return NULL;
+    }
+    PyObject *arg___mypyc_self__ = obj___mypyc_self__;
+    PyObject *arg_instance = obj_instance;
+    PyObject *arg_owner = obj_owner;
+    PyObject *retval = CPyDef_logging_____new___3_HasLoggerMeta_obj_____get__(arg___mypyc_self__, arg_instance, arg_owner);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "__get__", -1, CPyStatic_logging___globals);
+    return NULL;
+}
+
+PyObject *CPyDef_logging_____new___3_HasLoggerMeta_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_mcls, PyObject *cpy_r_name, PyObject *cpy_r_bases, PyObject *cpy_r_namespace) {
+    PyObject *cpy_r_r0;
+    PyObject *cpy_r_r1;
+    PyObject *cpy_r_r2;
+    PyObject *cpy_r_r3;
+    PyObject *cpy_r_r4;
+    PyObject *cpy_r_r5;
+    PyObject **cpy_r_r7;
+    PyObject *cpy_r_r8;
+    char cpy_r_r9;
+    PyObject *cpy_r_r10;
+    PyObject *cpy_r_r11;
+    PyObject *cpy_r_r12;
+    PyObject *cpy_r_r13;
+    PyObject *cpy_r_r14;
+    PyObject *cpy_r_new_class;
+    PyObject *cpy_r_r15;
+    PyObject *cpy_r_r16;
+    PyObject *cpy_r_r17;
+    PyObject *cpy_r_r18;
+    int32_t cpy_r_r19;
+    char cpy_r_r20;
+    char cpy_r_r21;
+    PyObject **cpy_r_r23;
+    PyObject *cpy_r_r24;
+    PyObject *cpy_r_r25;
+    PyObject *cpy_r_r26;
+    int32_t cpy_r_r27;
+    char cpy_r_r28;
+    char cpy_r_r29;
+    char cpy_r_r30;
+    PyObject *cpy_r_r31;
+    PyObject *cpy_r_r32;
+    PyObject *cpy_r_r33;
+    PyObject *cpy_r_r34;
+    PyObject **cpy_r_r36;
+    PyObject *cpy_r_r37;
+    PyObject *cpy_r_r38;
+    PyObject *cpy_r_r39;
+    PyObject *cpy_r_r40;
+    PyObject *cpy_r_r41;
+    PyObject *cpy_r_r42;
+    PyObject *cpy_r_r43;
+    PyObject *cpy_r_r44;
+    PyObject *cpy_r_r45;
+    char cpy_r_r46;
+    PyObject **cpy_r_r48;
+    PyObject *cpy_r_r49;
+    PyObject **cpy_r_r51;
+    PyObject *cpy_r_r52;
+    PyObject *cpy_r_r53;
+    PyObject *cpy_r_r54;
+    cpy_r_r0 = CPyStatic_logging___globals;
+    cpy_r_r1 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ABCMeta' */
+    cpy_r_r2 = CPyDict_GetItem(cpy_r_r0, cpy_r_r1);
+    if (unlikely(cpy_r_r2 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL32;
+    }
+    cpy_r_r3 = CPyModule_builtins;
+    cpy_r_r4 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'issubclass' */
+    cpy_r_r5 = CPyObject_GetAttr(cpy_r_r3, cpy_r_r4);
+    if (unlikely(cpy_r_r5 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL33;
+    }
+    PyObject *cpy_r_r6[2] = {cpy_r_mcls, cpy_r_r2};
+    cpy_r_r7 = (PyObject **)&cpy_r_r6;
+    cpy_r_r8 = PyObject_Vectorcall(cpy_r_r5, cpy_r_r7, 2, 0);
+    CPy_DECREF(cpy_r_r5);
+    if (unlikely(cpy_r_r8 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL33;
+    }
+    CPy_DECREF(cpy_r_r2);
+    if (unlikely(!PyBool_Check(cpy_r_r8))) {
+        CPy_TypeError("bool", cpy_r_r8); cpy_r_r9 = 2;
+    } else
+        cpy_r_r9 = cpy_r_r8 == Py_True;
+    CPy_DECREF(cpy_r_r8);
+    if (unlikely(cpy_r_r9 == 2)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL32;
+    }
+    if (!cpy_r_r9) goto CPyL8;
+    cpy_r_r10 = CPyStatic_logging___globals;
+    cpy_r_r11 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ABCMeta' */
+    cpy_r_r12 = CPyDict_GetItem(cpy_r_r10, cpy_r_r11);
+    if (unlikely(cpy_r_r12 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL32;
+    }
+    cpy_r_r13 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__new__' */
+    cpy_r_r14 = CPyObject_GetAttr(cpy_r_r12, cpy_r_r13);
+    CPy_DECREF(cpy_r_r12);
+    if (unlikely(cpy_r_r14 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL32;
+    }
+    cpy_r_new_class = cpy_r_r14;
+    goto CPyL10;
+CPyL8: ;
+    cpy_r_r15 = (PyObject *)&PyType_Type;
+    cpy_r_r16 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__new__' */
+    cpy_r_r17 = CPyObject_GetAttr(cpy_r_r15, cpy_r_r16);
+    if (unlikely(cpy_r_r17 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL32;
+    }
+    cpy_r_new_class = cpy_r_r17;
+CPyL10: ;
+    cpy_r_r18 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'logger' */
+    cpy_r_r19 = PyDict_Contains(cpy_r_namespace, cpy_r_r18);
+    cpy_r_r20 = cpy_r_r19 >= 0;
+    if (unlikely(!cpy_r_r20)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL34;
+    }
+    cpy_r_r21 = cpy_r_r19;
+    if (!cpy_r_r21) goto CPyL15;
+    PyObject *cpy_r_r22[4] = {cpy_r_mcls, cpy_r_name, cpy_r_bases, cpy_r_namespace};
+    cpy_r_r23 = (PyObject **)&cpy_r_r22;
+    cpy_r_r24 = PyObject_Vectorcall(cpy_r_new_class, cpy_r_r23, 4, 0);
+    CPy_DECREF(cpy_r_new_class);
+    if (unlikely(cpy_r_r24 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL32;
+    }
+    if (likely(Py_TYPE(cpy_r_r24) == CPyType_logging___HasLoggerMeta))
+        cpy_r_r25 = cpy_r_r24;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_utils/logging.py", "__new__", 138, CPyStatic_logging___globals, "faster_eth_utils.logging.HasLoggerMeta", cpy_r_r24);
+        goto CPyL32;
+    }
+    return cpy_r_r25;
+CPyL15: ;
+    cpy_r_r26 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__qualname__' */
+    cpy_r_r27 = PyDict_Contains(cpy_r_namespace, cpy_r_r26);
+    cpy_r_r28 = cpy_r_r27 >= 0;
+    if (unlikely(!cpy_r_r28)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL34;
+    }
+    cpy_r_r29 = cpy_r_r27;
+    cpy_r_r30 = cpy_r_r29 ^ 1;
+    if (cpy_r_r30) {
+        goto CPyL35;
+    } else
+        goto CPyL21;
+CPyL17: ;
+    cpy_r_r31 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Missing __qualname__' */
+    cpy_r_r32 = CPyModule_builtins;
+    cpy_r_r33 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'AttributeError' */
+    cpy_r_r34 = CPyObject_GetAttr(cpy_r_r32, cpy_r_r33);
+    if (unlikely(cpy_r_r34 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL32;
+    }
+    PyObject *cpy_r_r35[1] = {cpy_r_r31};
+    cpy_r_r36 = (PyObject **)&cpy_r_r35;
+    cpy_r_r37 = PyObject_Vectorcall(cpy_r_r34, cpy_r_r36, 1, 0);
+    CPy_DECREF(cpy_r_r34);
+    if (unlikely(cpy_r_r37 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL32;
+    }
+    CPy_Raise(cpy_r_r37);
+    CPy_DECREF(cpy_r_r37);
+    if (unlikely(!0)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL32;
+    }
+    CPy_Unreachable();
+CPyL21: ;
+    cpy_r_r38 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__qualname__' */
+    cpy_r_r39 = CPyDict_GetItem(cpy_r_namespace, cpy_r_r38);
+    if (unlikely(cpy_r_r39 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL34;
+    }
+    cpy_r_r40 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'logger_class' */
+    cpy_r_r41 = CPyObject_GetAttr(cpy_r_mcls, cpy_r_r40);
+    if (unlikely(cpy_r_r41 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL36;
+    }
+    if (likely(PyUnicode_Check(cpy_r_r39)))
+        cpy_r_r42 = cpy_r_r39;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_utils/logging.py", "__new__", 142, CPyStatic_logging___globals, "str", cpy_r_r39);
+        goto CPyL37;
+    }
+    cpy_r_r43 = CPyDef_logging___get_logger(cpy_r_r42, cpy_r_r41);
+    CPy_DECREF(cpy_r_r42);
+    CPy_DECREF(cpy_r_r41);
+    if (unlikely(cpy_r_r43 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL34;
+    }
+    cpy_r_r44 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'logger' */
+    cpy_r_r45 = CPyStatic_toolz___assoc;
+    if (unlikely(cpy_r_r45 == NULL)) {
+        goto CPyL38;
+    } else
+        goto CPyL28;
+CPyL26: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"assoc\" was not set");
+    cpy_r_r46 = 0;
+    if (unlikely(!cpy_r_r46)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL32;
+    }
+    CPy_Unreachable();
+CPyL28: ;
+    PyObject *cpy_r_r47[3] = {cpy_r_namespace, cpy_r_r44, cpy_r_r43};
+    cpy_r_r48 = (PyObject **)&cpy_r_r47;
+    cpy_r_r49 = PyObject_Vectorcall(cpy_r_r45, cpy_r_r48, 3, 0);
+    if (unlikely(cpy_r_r49 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL39;
+    }
+    CPy_DECREF(cpy_r_r43);
+    PyObject *cpy_r_r50[4] = {cpy_r_mcls, cpy_r_name, cpy_r_bases, cpy_r_r49};
+    cpy_r_r51 = (PyObject **)&cpy_r_r50;
+    cpy_r_r52 = PyObject_Vectorcall(cpy_r_new_class, cpy_r_r51, 4, 0);
+    CPy_DECREF(cpy_r_new_class);
+    if (unlikely(cpy_r_r52 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL40;
+    }
+    CPy_DECREF(cpy_r_r49);
+    if (likely(Py_TYPE(cpy_r_r52) == CPyType_logging___HasLoggerMeta))
+        cpy_r_r53 = cpy_r_r52;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_utils/logging.py", "__new__", 144, CPyStatic_logging___globals, "faster_eth_utils.logging.HasLoggerMeta", cpy_r_r52);
+        goto CPyL32;
+    }
+    return cpy_r_r53;
+CPyL32: ;
+    cpy_r_r54 = NULL;
+    return cpy_r_r54;
+CPyL33: ;
+    CPy_DecRef(cpy_r_r2);
+    goto CPyL32;
+CPyL34: ;
+    CPy_DecRef(cpy_r_new_class);
+    goto CPyL32;
+CPyL35: ;
+    CPy_DECREF(cpy_r_new_class);
+    goto CPyL17;
+CPyL36: ;
+    CPy_DecRef(cpy_r_new_class);
+    CPy_DecRef(cpy_r_r39);
+    goto CPyL32;
+CPyL37: ;
+    CPy_DecRef(cpy_r_new_class);
+    CPy_DecRef(cpy_r_r41);
+    goto CPyL32;
+CPyL38: ;
+    CPy_DecRef(cpy_r_new_class);
+    CPy_DecRef(cpy_r_r43);
+    goto CPyL26;
+CPyL39: ;
+    CPy_DecRef(cpy_r_new_class);
+    CPy_DecRef(cpy_r_r43);
+    goto CPyL32;
+CPyL40: ;
+    CPy_DecRef(cpy_r_r49);
+    goto CPyL32;
+}
+
+PyObject *CPyPy_logging_____new___3_HasLoggerMeta_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    PyObject *obj___mypyc_self__ = self;
+    static const char * const kwlist[] = {"mcls", "name", "bases", "namespace", 0};
+    static CPyArg_Parser parser = {"OOOO:__call__", kwlist, 0};
+    PyObject *obj_mcls;
+    PyObject *obj_name;
+    PyObject *obj_bases;
+    PyObject *obj_namespace;
+    if (!CPyArg_ParseStackAndKeywordsSimple(args, PyVectorcall_NARGS(nargs), kwnames, &parser, &obj_mcls, &obj_name, &obj_bases, &obj_namespace)) {
+        return NULL;
+    }
+    PyObject *arg___mypyc_self__ = obj___mypyc_self__;
+    PyObject *arg_mcls = obj_mcls;
+    PyObject *arg_name;
+    if (likely(PyUnicode_Check(obj_name)))
+        arg_name = obj_name;
+    else {
+        CPy_TypeError("str", obj_name); 
+        goto fail;
+    }
+    PyObject * arg_bases;
+    if (likely(PyTuple_Check(obj_bases)))
+        arg_bases = obj_bases;
+    else {
+        CPy_TypeError("tuple", obj_bases); 
+        goto fail;
+    }
+    PyObject *arg_namespace;
+    if (likely(PyDict_Check(obj_namespace)))
+        arg_namespace = obj_namespace;
+    else {
+        CPy_TypeError("dict", obj_namespace); 
+        goto fail;
+    }
+    PyObject *retval = CPyDef_logging_____new___3_HasLoggerMeta_obj_____call__(arg___mypyc_self__, arg_mcls, arg_name, arg_bases, arg_namespace);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "__new__", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+    return NULL;
+}
+
+PyObject *CPyDef_logging___replace_logger_class_HasLoggerMeta_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner) {
+    PyObject *cpy_r_r0;
+    char cpy_r_r1;
+    PyObject *cpy_r_r2;
+    PyObject *cpy_r_r3;
+    cpy_r_r0 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r1 = cpy_r_instance == cpy_r_r0;
+    if (!cpy_r_r1) goto CPyL2;
+    CPy_INCREF(cpy_r___mypyc_self__);
+    return cpy_r___mypyc_self__;
+CPyL2: ;
+    cpy_r_r2 = PyMethod_New(cpy_r___mypyc_self__, cpy_r_instance);
+    if (cpy_r_r2 == NULL) goto CPyL4;
+    return cpy_r_r2;
+CPyL4: ;
+    cpy_r_r3 = NULL;
+    return cpy_r_r3;
+}
+
+PyObject *CPyPy_logging___replace_logger_class_HasLoggerMeta_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    PyObject *obj___mypyc_self__ = self;
+    static const char * const kwlist[] = {"instance", "owner", 0};
+    static CPyArg_Parser parser = {"OO:__get__", kwlist, 0};
+    PyObject *obj_instance;
+    PyObject *obj_owner;
+    if (!CPyArg_ParseStackAndKeywordsSimple(args, nargs, kwnames, &parser, &obj_instance, &obj_owner)) {
+        return NULL;
+    }
+    PyObject *arg___mypyc_self__ = obj___mypyc_self__;
+    PyObject *arg_instance = obj_instance;
+    PyObject *arg_owner = obj_owner;
+    PyObject *retval = CPyDef_logging___replace_logger_class_HasLoggerMeta_obj_____get__(arg___mypyc_self__, arg_instance, arg_owner);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "__get__", -1, CPyStatic_logging___globals);
+    return NULL;
+}
+
+PyObject *CPyDef_logging___replace_logger_class_HasLoggerMeta_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_mcls, PyObject *cpy_r_value) {
+    PyObject *cpy_r_r0;
+    PyObject *cpy_r_r1;
+    tuple_T1O cpy_r_r2;
+    PyObject *cpy_r_r3;
+    PyObject *cpy_r_r4;
+    PyObject *cpy_r_r5;
+    PyObject *cpy_r_r6;
+    PyObject **cpy_r_r8;
+    PyObject *cpy_r_r9;
+    PyObject *cpy_r_r10;
+    cpy_r_r0 = CPy_GetName(cpy_r_mcls);
+    if (unlikely(cpy_r_r0 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "replace_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL5;
+    }
+    if (likely(PyUnicode_Check(cpy_r_r0)))
+        cpy_r_r1 = cpy_r_r0;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_utils/logging.py", "replace_logger_class", 150, CPyStatic_logging___globals, "str", cpy_r_r0);
+        goto CPyL5;
+    }
+    CPy_INCREF(cpy_r_mcls);
+    cpy_r_r2.f0 = cpy_r_mcls;
+    cpy_r_r3 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'logger_class' */
+    cpy_r_r4 = CPyDict_Build(1, cpy_r_r3, cpy_r_value);
+    if (unlikely(cpy_r_r4 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "replace_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL6;
+    }
+    cpy_r_r5 = (PyObject *)&PyType_Type;
+    cpy_r_r6 = PyTuple_New(1);
+    if (unlikely(cpy_r_r6 == NULL))
+        CPyError_OutOfMemory();
+    PyObject *__tmp224 = cpy_r_r2.f0;
+    PyTuple_SET_ITEM(cpy_r_r6, 0, __tmp224);
+    PyObject *cpy_r_r7[3] = {cpy_r_r1, cpy_r_r6, cpy_r_r4};
+    cpy_r_r8 = (PyObject **)&cpy_r_r7;
+    cpy_r_r9 = PyObject_Vectorcall(cpy_r_r5, cpy_r_r8, 3, 0);
+    if (unlikely(cpy_r_r9 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "replace_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL7;
+    }
+    CPy_DECREF(cpy_r_r1);
+    CPy_DECREF(cpy_r_r6);
+    CPy_DECREF(cpy_r_r4);
+    return cpy_r_r9;
+CPyL5: ;
+    cpy_r_r10 = NULL;
+    return cpy_r_r10;
+CPyL6: ;
+    CPy_DecRef(cpy_r_r1);
+    CPy_DecRef(cpy_r_r2.f0);
+    goto CPyL5;
+CPyL7: ;
+    CPy_DecRef(cpy_r_r1);
+    CPy_DecRef(cpy_r_r4);
+    CPy_DecRef(cpy_r_r6);
+    goto CPyL5;
+}
+
+PyObject *CPyPy_logging___replace_logger_class_HasLoggerMeta_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    PyObject *obj___mypyc_self__ = self;
+    static const char * const kwlist[] = {"mcls", "value", 0};
+    static CPyArg_Parser parser = {"OO:__call__", kwlist, 0};
+    PyObject *obj_mcls;
+    PyObject *obj_value;
+    if (!CPyArg_ParseStackAndKeywordsSimple(args, PyVectorcall_NARGS(nargs), kwnames, &parser, &obj_mcls, &obj_value)) {
+        return NULL;
+    }
+    PyObject *arg___mypyc_self__ = obj___mypyc_self__;
+    PyObject *arg_mcls = obj_mcls;
+    PyObject *arg_value = obj_value;
+    PyObject *retval = CPyDef_logging___replace_logger_class_HasLoggerMeta_obj_____call__(arg___mypyc_self__, arg_mcls, arg_value);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "replace_logger_class", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+    return NULL;
+}
+
+PyObject *CPyDef_logging___meta_compat_HasLoggerMeta_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner) {
+    PyObject *cpy_r_r0;
+    char cpy_r_r1;
+    PyObject *cpy_r_r2;
+    PyObject *cpy_r_r3;
+    cpy_r_r0 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r1 = cpy_r_instance == cpy_r_r0;
+    if (!cpy_r_r1) goto CPyL2;
+    CPy_INCREF(cpy_r___mypyc_self__);
+    return cpy_r___mypyc_self__;
+CPyL2: ;
+    cpy_r_r2 = PyMethod_New(cpy_r___mypyc_self__, cpy_r_instance);
+    if (cpy_r_r2 == NULL) goto CPyL4;
+    return cpy_r_r2;
+CPyL4: ;
+    cpy_r_r3 = NULL;
+    return cpy_r_r3;
+}
+
+PyObject *CPyPy_logging___meta_compat_HasLoggerMeta_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    PyObject *obj___mypyc_self__ = self;
+    static const char * const kwlist[] = {"instance", "owner", 0};
+    static CPyArg_Parser parser = {"OO:__get__", kwlist, 0};
+    PyObject *obj_instance;
+    PyObject *obj_owner;
+    if (!CPyArg_ParseStackAndKeywordsSimple(args, nargs, kwnames, &parser, &obj_instance, &obj_owner)) {
+        return NULL;
+    }
+    PyObject *arg___mypyc_self__ = obj___mypyc_self__;
+    PyObject *arg_instance = obj_instance;
+    PyObject *arg_owner = obj_owner;
+    PyObject *retval = CPyDef_logging___meta_compat_HasLoggerMeta_obj_____get__(arg___mypyc_self__, arg_instance, arg_owner);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "__get__", -1, CPyStatic_logging___globals);
+    return NULL;
+}
+
+PyObject *CPyDef_logging___meta_compat_HasLoggerMeta_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_mcls, PyObject *cpy_r_other) {
+    PyObject *cpy_r_r0;
+    PyObject *cpy_r_r1;
+    tuple_T2OO cpy_r_r2;
+    PyObject *cpy_r_r3;
+    PyObject *cpy_r_r4;
+    PyObject *cpy_r_r5;
+    PyObject **cpy_r_r7;
+    PyObject *cpy_r_r8;
+    PyObject *cpy_r_r9;
+    cpy_r_r0 = CPy_GetName(cpy_r_mcls);
+    if (unlikely(cpy_r_r0 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "meta_compat", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL5;
+    }
+    if (likely(PyUnicode_Check(cpy_r_r0)))
+        cpy_r_r1 = cpy_r_r0;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_utils/logging.py", "meta_compat", 156, CPyStatic_logging___globals, "str", cpy_r_r0);
+        goto CPyL5;
+    }
+    CPy_INCREF(cpy_r_mcls);
+    CPy_INCREF(cpy_r_other);
+    cpy_r_r2.f0 = cpy_r_mcls;
+    cpy_r_r2.f1 = cpy_r_other;
+    cpy_r_r3 = PyDict_New();
+    if (unlikely(cpy_r_r3 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "meta_compat", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL6;
+    }
+    cpy_r_r4 = (PyObject *)&PyType_Type;
+    cpy_r_r5 = PyTuple_New(2);
+    if (unlikely(cpy_r_r5 == NULL))
+        CPyError_OutOfMemory();
+    PyObject *__tmp225 = cpy_r_r2.f0;
+    PyTuple_SET_ITEM(cpy_r_r5, 0, __tmp225);
+    PyObject *__tmp226 = cpy_r_r2.f1;
+    PyTuple_SET_ITEM(cpy_r_r5, 1, __tmp226);
+    PyObject *cpy_r_r6[3] = {cpy_r_r1, cpy_r_r5, cpy_r_r3};
+    cpy_r_r7 = (PyObject **)&cpy_r_r6;
+    cpy_r_r8 = PyObject_Vectorcall(cpy_r_r4, cpy_r_r7, 3, 0);
+    if (unlikely(cpy_r_r8 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "meta_compat", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL7;
+    }
+    CPy_DECREF(cpy_r_r1);
+    CPy_DECREF(cpy_r_r5);
+    CPy_DECREF(cpy_r_r3);
+    return cpy_r_r8;
+CPyL5: ;
+    cpy_r_r9 = NULL;
+    return cpy_r_r9;
+CPyL6: ;
+    CPy_DecRef(cpy_r_r1);
+    CPy_DecRef(cpy_r_r2.f0);
+    CPy_DecRef(cpy_r_r2.f1);
+    goto CPyL5;
+CPyL7: ;
+    CPy_DecRef(cpy_r_r1);
+    CPy_DecRef(cpy_r_r3);
+    CPy_DecRef(cpy_r_r5);
+    goto CPyL5;
+}
+
+PyObject *CPyPy_logging___meta_compat_HasLoggerMeta_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+    PyObject *obj___mypyc_self__ = self;
+    static const char * const kwlist[] = {"mcls", "other", 0};
+    static CPyArg_Parser parser = {"OO:__call__", kwlist, 0};
+    PyObject *obj_mcls;
+    PyObject *obj_other;
+    if (!CPyArg_ParseStackAndKeywordsSimple(args, PyVectorcall_NARGS(nargs), kwnames, &parser, &obj_mcls, &obj_other)) {
+        return NULL;
+    }
+    PyObject *arg___mypyc_self__ = obj___mypyc_self__;
+    PyObject *arg_mcls = obj_mcls;
+    PyObject *arg_other = obj_other;
+    PyObject *retval = CPyDef_logging___meta_compat_HasLoggerMeta_obj_____call__(arg___mypyc_self__, arg_mcls, arg_other);
+    return retval;
+fail: ;
+    CPy_AddTraceback("faster_eth_utils/logging.py", "meta_compat", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+    return NULL;
+}
+
+char CPyDef_logging_____top_level__(void) {
+    PyObject *cpy_r_r0;
+    PyObject *cpy_r_r1;
+    char cpy_r_r2;
+    PyObject *cpy_r_r3;
+    PyObject *cpy_r_r4;
+    PyObject **cpy_r_r5;
+    void *cpy_r_r7;
+    void *cpy_r_r9;
+    PyObject *cpy_r_r10;
+    PyObject *cpy_r_r11;
+    PyObject *cpy_r_r12;
+    PyObject *cpy_r_r13;
+    char cpy_r_r14;
+    PyObject *cpy_r_r15;
+    PyObject *cpy_r_r16;
+    PyObject *cpy_r_r17;
+    PyObject *cpy_r_r18;
+    PyObject *cpy_r_r19;
+    PyObject *cpy_r_r20;
+    PyObject *cpy_r_r21;
+    PyObject *cpy_r_r22;
+    PyObject *cpy_r_r23;
+    PyObject *cpy_r_r24;
+    PyObject *cpy_r_r25;
+    PyObject *cpy_r_r26;
+    PyObject *cpy_r_r27;
+    PyObject *cpy_r_r28;
+    PyObject *cpy_r_r29;
+    PyObject *cpy_r_r30;
+    PyObject *cpy_r_r31;
+    PyObject *cpy_r_r32;
+    PyObject *cpy_r_r33;
+    PyObject *cpy_r_r34;
+    PyObject *cpy_r_r35;
+    PyObject *cpy_r_r36;
+    PyObject *cpy_r_r37;
+    PyObject *cpy_r_r38;
+    PyObject *cpy_r_r39;
+    PyObject *cpy_r_r40;
+    PyObject *cpy_r_r41;
+    PyObject *cpy_r_r42;
+    PyObject *cpy_r_r43;
+    PyObject *cpy_r_r44;
+    PyObject *cpy_r_r45;
+    int32_t cpy_r_r46;
+    char cpy_r_r47;
+    PyObject *cpy_r_r48;
+    PyObject *cpy_r_r49;
+    PyObject *cpy_r_r50;
+    PyObject *cpy_r_r51;
+    PyObject *cpy_r_r52;
+    PyObject *cpy_r_r53;
+    PyObject *cpy_r_r54;
+    PyObject **cpy_r_r56;
+    PyObject *cpy_r_r57;
+    PyObject *cpy_r_r58;
+    PyObject *cpy_r_r59;
+    PyObject *cpy_r_r60;
+    int32_t cpy_r_r61;
+    char cpy_r_r62;
+    PyObject *cpy_r_r63;
+    PyObject *cpy_r_r64;
+    PyObject *cpy_r_r65;
+    PyObject *cpy_r_r66;
+    PyObject *cpy_r_r67;
+    int32_t cpy_r_r68;
+    char cpy_r_r69;
+    PyObject *cpy_r_r70;
+    PyObject *cpy_r_r71;
+    PyObject *cpy_r_r72;
+    PyObject *cpy_r_r73;
+    PyObject *cpy_r_r74;
+    int32_t cpy_r_r75;
+    char cpy_r_r76;
+    PyObject *cpy_r_r77;
+    PyObject *cpy_r_r78;
+    PyObject *cpy_r_r79;
+    PyObject *cpy_r_r80;
+    PyObject *cpy_r_r81;
+    int32_t cpy_r_r82;
+    char cpy_r_r83;
+    PyObject *cpy_r_r84;
+    PyObject *cpy_r_r85;
+    PyObject *cpy_r_r86;
+    PyObject *cpy_r_r87;
+    PyObject *cpy_r_r88;
+    int32_t cpy_r_r89;
+    char cpy_r_r90;
+    PyObject *cpy_r_r91;
+    PyObject *cpy_r_r92;
+    PyObject *cpy_r_r93;
+    PyObject *cpy_r_r94;
+    PyObject *cpy_r_r95;
+    PyObject *cpy_r_r96;
+    PyObject *cpy_r_r97;
+    char cpy_r_r98;
+    PyObject *cpy_r_r99;
+    PyObject *cpy_r_r100;
+    PyObject *cpy_r_r101;
+    int32_t cpy_r_r102;
+    char cpy_r_r103;
+    PyObject *cpy_r_r104;
+    PyObject *cpy_r_r105;
+    int32_t cpy_r_r106;
+    char cpy_r_r107;
+    PyObject *cpy_r_r108;
+    PyObject *cpy_r_r109;
+    PyObject *cpy_r_r110;
+    PyObject *cpy_r_r111;
+    PyObject *cpy_r_r112;
+    PyObject *cpy_r_r113;
+    PyObject **cpy_r_r115;
+    PyObject *cpy_r_r116;
+    PyObject *cpy_r_r117;
+    PyObject *cpy_r_r118;
+    int32_t cpy_r_r119;
+    char cpy_r_r120;
+    PyObject *cpy_r_r121;
+    PyObject *cpy_r_r122;
+    PyObject *cpy_r_r123;
+    PyObject *cpy_r_r124;
+    PyObject *cpy_r_r125;
+    PyObject **cpy_r_r127;
+    PyObject *cpy_r_r128;
+    PyObject *cpy_r_r129;
+    PyObject *cpy_r_r130;
+    PyObject *cpy_r_r131;
+    int32_t cpy_r_r132;
+    char cpy_r_r133;
+    PyObject *cpy_r_r134;
+    PyObject *cpy_r_r135;
+    PyObject *cpy_r_r136;
+    PyObject *cpy_r_r137;
+    PyObject *cpy_r_r138;
+    PyObject *cpy_r_r139;
+    PyObject *cpy_r_r140;
+    char cpy_r_r141;
+    PyObject *cpy_r_r142;
+    PyObject *cpy_r_r143;
+    PyObject *cpy_r_r144;
+    PyObject **cpy_r_r146;
+    PyObject *cpy_r_r147;
+    PyObject *cpy_r_r148;
+    PyObject *cpy_r_r149;
+    PyObject *cpy_r_r150;
+    PyObject *cpy_r_r151;
+    PyObject *cpy_r_r152;
+    PyObject *cpy_r_r153;
+    int32_t cpy_r_r154;
+    char cpy_r_r155;
+    PyObject *cpy_r_r156;
+    char cpy_r_r157;
+    PyObject *cpy_r_r158;
+    int32_t cpy_r_r159;
+    char cpy_r_r160;
+    PyObject *cpy_r_r161;
+    PyObject *cpy_r_r162;
+    PyObject *cpy_r_r163;
+    PyObject *cpy_r_r164;
+    PyObject **cpy_r_r166;
+    PyObject *cpy_r_r167;
+    PyObject *cpy_r_r168;
+    int32_t cpy_r_r169;
+    char cpy_r_r170;
+    PyObject *cpy_r_r171;
+    PyObject *cpy_r_r172;
+    PyObject *cpy_r_r173;
+    PyObject *cpy_r_r174;
+    PyObject **cpy_r_r176;
+    PyObject *cpy_r_r177;
+    PyObject *cpy_r_r178;
+    int32_t cpy_r_r179;
+    char cpy_r_r180;
+    PyObject *cpy_r_r181;
+    PyObject *cpy_r_r182;
+    PyObject *cpy_r_r183;
+    PyObject *cpy_r_r184;
+    PyObject **cpy_r_r186;
+    PyObject *cpy_r_r187;
+    PyObject *cpy_r_r188;
+    int32_t cpy_r_r189;
+    char cpy_r_r190;
+    PyObject *cpy_r_r191;
+    PyObject *cpy_r_r192;
+    int32_t cpy_r_r193;
+    char cpy_r_r194;
+    PyObject *cpy_r_r195;
+    PyObject *cpy_r_r196;
+    int32_t cpy_r_r197;
+    char cpy_r_r198;
+    PyObject *cpy_r_r199;
+    PyObject *cpy_r_r200;
+    int32_t cpy_r_r201;
+    char cpy_r_r202;
+    PyObject **cpy_r_r204;
+    PyObject *cpy_r_r205;
+    PyObject *cpy_r_r206;
+    PyObject *cpy_r_r207;
+    PyObject *cpy_r_r208;
+    PyObject *cpy_r_r209;
+    PyObject **cpy_r_r211;
+    PyObject *cpy_r_r212;
+    PyObject *cpy_r_r213;
+    PyObject **cpy_r_r215;
+    PyObject *cpy_r_r216;
+    PyObject *cpy_r_r217;
+    PyObject *cpy_r_r218;
+    int32_t cpy_r_r219;
+    char cpy_r_r220;
+    PyObject *cpy_r_r221;
+    PyObject *cpy_r_r222;
+    PyObject *cpy_r_r223;
+    PyObject *cpy_r_r224;
+    PyObject *cpy_r_r225;
+    char cpy_r_r226;
+    PyObject *cpy_r_r227;
+    PyObject *cpy_r_r228;
+    PyObject *cpy_r_r229;
+    PyObject **cpy_r_r231;
+    PyObject *cpy_r_r232;
+    PyObject *cpy_r_r233;
+    PyObject *cpy_r_r234;
+    PyObject *cpy_r_r235;
+    PyObject *cpy_r_r236;
+    PyObject *cpy_r_r237;
+    PyObject *cpy_r_r238;
+    PyObject *cpy_r_r239;
+    PyObject *cpy_r_r240;
+    int32_t cpy_r_r241;
+    char cpy_r_r242;
+    PyObject *cpy_r_r243;
+    PyObject *cpy_r_r244;
+    int32_t cpy_r_r245;
+    char cpy_r_r246;
+    PyObject *cpy_r_r247;
+    PyObject *cpy_r_r248;
+    int32_t cpy_r_r249;
+    char cpy_r_r250;
+    PyObject *cpy_r_r251;
+    PyObject *cpy_r_r252;
+    int32_t cpy_r_r253;
+    char cpy_r_r254;
+    PyObject **cpy_r_r256;
+    PyObject *cpy_r_r257;
+    PyObject *cpy_r_r258;
+    PyObject *cpy_r_r259;
+    PyObject *cpy_r_r260;
+    PyObject **cpy_r_r262;
+    PyObject *cpy_r_r263;
+    PyObject *cpy_r_r264;
+    PyObject *cpy_r_r265;
+    int32_t cpy_r_r266;
+    char cpy_r_r267;
+    PyObject *cpy_r_r268;
+    PyObject *cpy_r_r269;
+    PyObject *cpy_r_r270;
+    PyObject *cpy_r_r271;
+    PyObject **cpy_r_r273;
+    PyObject *cpy_r_r274;
+    PyObject *cpy_r_r275;
+    PyObject *cpy_r_r276;
+    int32_t cpy_r_r277;
+    char cpy_r_r278;
+    PyObject *cpy_r_r279;
+    PyObject *cpy_r_r280;
+    PyObject *cpy_r_r281;
+    PyObject *cpy_r_r282;
+    char cpy_r_r283;
+    PyObject *cpy_r_r284;
+    PyObject *cpy_r_r285;
+    PyObject *cpy_r_r286;
+    int32_t cpy_r_r287;
+    char cpy_r_r288;
+    PyObject *cpy_r_r289;
+    PyObject *cpy_r_r290;
+    int32_t cpy_r_r291;
+    char cpy_r_r292;
+    char cpy_r_r293;
+    cpy_r_r0 = CPyModule_builtins;
+    cpy_r_r1 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r2 = cpy_r_r0 != cpy_r_r1;
+    if (cpy_r_r2) goto CPyL3;
+    cpy_r_r3 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'builtins' */
+    cpy_r_r4 = PyImport_Import(cpy_r_r3);
+    if (unlikely(cpy_r_r4 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", -1, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    CPyModule_builtins = cpy_r_r4;
+    CPy_INCREF(CPyModule_builtins);
+    CPy_DECREF(cpy_r_r4);
+CPyL3: ;
+    cpy_r_r5 = (PyObject **)&CPyModule_logging;
+    PyObject **cpy_r_r6[1] = {cpy_r_r5};
+    cpy_r_r7 = (void *)&cpy_r_r6;
+    int64_t cpy_r_r8[1] = {1};
+    cpy_r_r9 = (void *)&cpy_r_r8;
+    cpy_r_r10 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* (('logging', 'logging', 'logging'),) */
+    cpy_r_r11 = CPyStatic_logging___globals;
+    cpy_r_r12 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils/logging.py' */
+    cpy_r_r13 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '<module>' */
+    cpy_r_r14 = CPyImport_ImportMany(cpy_r_r10, cpy_r_r7, cpy_r_r11, cpy_r_r12, cpy_r_r13, cpy_r_r9);
+    if (!cpy_r_r14) goto CPyL100;
+    cpy_r_r15 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('ABCMeta',) */
+    cpy_r_r16 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'abc' */
+    cpy_r_r17 = CPyStatic_logging___globals;
+    cpy_r_r18 = CPyImport_ImportFromMany(cpy_r_r16, cpy_r_r15, cpy_r_r15, cpy_r_r17);
+    if (unlikely(cpy_r_r18 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    CPyModule_abc = cpy_r_r18;
+    CPy_INCREF(CPyModule_abc);
+    CPy_DECREF(cpy_r_r18);
+    cpy_r_r19 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('Iterator',) */
+    cpy_r_r20 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'collections.abc' */
+    cpy_r_r21 = CPyStatic_logging___globals;
+    cpy_r_r22 = CPyImport_ImportFromMany(cpy_r_r20, cpy_r_r19, cpy_r_r19, cpy_r_r21);
+    if (unlikely(cpy_r_r22 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    CPyModule_collections___abc = cpy_r_r22;
+    CPy_INCREF(CPyModule_collections___abc);
+    CPy_DECREF(cpy_r_r22);
+    cpy_r_r23 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('contextmanager',) */
+    cpy_r_r24 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'contextlib' */
+    cpy_r_r25 = CPyStatic_logging___globals;
+    cpy_r_r26 = CPyImport_ImportFromMany(cpy_r_r24, cpy_r_r23, cpy_r_r23, cpy_r_r25);
+    if (unlikely(cpy_r_r26 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    CPyModule_contextlib = cpy_r_r26;
+    CPy_INCREF(CPyModule_contextlib);
+    CPy_DECREF(cpy_r_r26);
+    cpy_r_r27 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('cached_property',) */
+    cpy_r_r28 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'functools' */
+    cpy_r_r29 = CPyStatic_logging___globals;
+    cpy_r_r30 = CPyImport_ImportFromMany(cpy_r_r28, cpy_r_r27, cpy_r_r27, cpy_r_r29);
+    if (unlikely(cpy_r_r30 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    CPyModule_functools = cpy_r_r30;
+    CPy_INCREF(CPyModule_functools);
+    CPy_DECREF(cpy_r_r30);
+    cpy_r_r31 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('mypyc_attr',) */
+    cpy_r_r32 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'mypy_extensions' */
+    cpy_r_r33 = CPyStatic_logging___globals;
+    cpy_r_r34 = CPyImport_ImportFromMany(cpy_r_r32, cpy_r_r31, cpy_r_r31, cpy_r_r33);
+    if (unlikely(cpy_r_r34 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    CPyModule_mypy_extensions = cpy_r_r34;
+    CPy_INCREF(CPyModule_mypy_extensions);
+    CPy_DECREF(cpy_r_r34);
+    cpy_r_r35 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('Any', 'Final', 'TypeVar', 'cast', 'final', 'overload') */
+    cpy_r_r36 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'typing' */
+    cpy_r_r37 = CPyStatic_logging___globals;
+    cpy_r_r38 = CPyImport_ImportFromMany(cpy_r_r36, cpy_r_r35, cpy_r_r35, cpy_r_r37);
+    if (unlikely(cpy_r_r38 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    CPyModule_typing = cpy_r_r38;
+    CPy_INCREF(CPyModule_typing);
+    CPy_DECREF(cpy_r_r38);
+    cpy_r_r39 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('assoc',) */
+    cpy_r_r40 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.toolz' */
+    cpy_r_r41 = CPyStatic_logging___globals;
+    cpy_r_r42 = CPyImport_ImportFromMany(cpy_r_r40, cpy_r_r39, cpy_r_r39, cpy_r_r41);
+    if (unlikely(cpy_r_r42 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    CPyModule_faster_eth_utils___toolz = cpy_r_r42;
+    CPy_INCREF(CPyModule_faster_eth_utils___toolz);
+    CPy_DECREF(cpy_r_r42);
+    cpy_r_r43 = CPyStatic_logging___globals;
+    cpy_r_r44 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'DEBUG2_LEVEL_NUM' */
+    cpy_r_r45 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 8 */
+    cpy_r_r46 = CPyDict_SetItem(cpy_r_r43, cpy_r_r44, cpy_r_r45);
+    cpy_r_r47 = cpy_r_r46 >= 0;
+    if (unlikely(!cpy_r_r47)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r48 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TLogger' */
+    cpy_r_r49 = CPyModule_logging;
+    cpy_r_r50 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Logger' */
+    cpy_r_r51 = CPyObject_GetAttr(cpy_r_r49, cpy_r_r50);
+    if (unlikely(cpy_r_r51 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r52 = CPyStatic_logging___globals;
+    cpy_r_r53 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TypeVar' */
+    cpy_r_r54 = CPyDict_GetItem(cpy_r_r52, cpy_r_r53);
+    if (unlikely(cpy_r_r54 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL101;
+    }
+    PyObject *cpy_r_r55[2] = {cpy_r_r48, cpy_r_r51};
+    cpy_r_r56 = (PyObject **)&cpy_r_r55;
+    cpy_r_r57 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('bound',) */
+    cpy_r_r58 = PyObject_Vectorcall(cpy_r_r54, cpy_r_r56, 1, cpy_r_r57);
+    CPy_DECREF(cpy_r_r54);
+    if (unlikely(cpy_r_r58 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL101;
+    }
+    CPy_DECREF(cpy_r_r51);
+    cpy_r_r59 = CPyStatic_logging___globals;
+    cpy_r_r60 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TLogger' */
+    cpy_r_r61 = CPyDict_SetItem(cpy_r_r59, cpy_r_r60, cpy_r_r58);
+    CPy_DECREF(cpy_r_r58);
+    cpy_r_r62 = cpy_r_r61 >= 0;
+    if (unlikely(!cpy_r_r62)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r63 = CPyModule_logging;
+    cpy_r_r64 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Logger' */
+    cpy_r_r65 = CPyObject_GetAttr(cpy_r_r63, cpy_r_r64);
+    if (unlikely(cpy_r_r65 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    CPyStatic_logging___Logger = cpy_r_r65;
+    CPy_INCREF(CPyStatic_logging___Logger);
+    cpy_r_r66 = CPyStatic_logging___globals;
+    cpy_r_r67 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Logger' */
+    cpy_r_r68 = CPyDict_SetItem(cpy_r_r66, cpy_r_r67, cpy_r_r65);
+    CPy_DECREF(cpy_r_r65);
+    cpy_r_r69 = cpy_r_r68 >= 0;
+    if (unlikely(!cpy_r_r69)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r70 = CPyModule_logging;
+    cpy_r_r71 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'getLogger' */
+    cpy_r_r72 = CPyObject_GetAttr(cpy_r_r70, cpy_r_r71);
+    if (unlikely(cpy_r_r72 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    CPyStatic_logging___getLogger = cpy_r_r72;
+    CPy_INCREF(CPyStatic_logging___getLogger);
+    cpy_r_r73 = CPyStatic_logging___globals;
+    cpy_r_r74 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'getLogger' */
+    cpy_r_r75 = CPyDict_SetItem(cpy_r_r73, cpy_r_r74, cpy_r_r72);
+    CPy_DECREF(cpy_r_r72);
+    cpy_r_r76 = cpy_r_r75 >= 0;
+    if (unlikely(!cpy_r_r76)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r77 = CPyModule_logging;
+    cpy_r_r78 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'getLoggerClass' */
+    cpy_r_r79 = CPyObject_GetAttr(cpy_r_r77, cpy_r_r78);
+    if (unlikely(cpy_r_r79 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    CPyStatic_logging___getLoggerClass = cpy_r_r79;
+    CPy_INCREF(CPyStatic_logging___getLoggerClass);
+    cpy_r_r80 = CPyStatic_logging___globals;
+    cpy_r_r81 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'getLoggerClass' */
+    cpy_r_r82 = CPyDict_SetItem(cpy_r_r80, cpy_r_r81, cpy_r_r79);
+    CPy_DECREF(cpy_r_r79);
+    cpy_r_r83 = cpy_r_r82 >= 0;
+    if (unlikely(!cpy_r_r83)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r84 = CPyModule_logging;
+    cpy_r_r85 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'setLoggerClass' */
+    cpy_r_r86 = CPyObject_GetAttr(cpy_r_r84, cpy_r_r85);
+    if (unlikely(cpy_r_r86 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    CPyStatic_logging___setLoggerClass = cpy_r_r86;
+    CPy_INCREF(CPyStatic_logging___setLoggerClass);
+    cpy_r_r87 = CPyStatic_logging___globals;
+    cpy_r_r88 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'setLoggerClass' */
+    cpy_r_r89 = CPyDict_SetItem(cpy_r_r87, cpy_r_r88, cpy_r_r86);
+    CPy_DECREF(cpy_r_r86);
+    cpy_r_r90 = cpy_r_r89 >= 0;
+    if (unlikely(!cpy_r_r90)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r91 = CPyModule_logging;
+    cpy_r_r92 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Logger' */
+    cpy_r_r93 = CPyObject_GetAttr(cpy_r_r91, cpy_r_r92);
+    if (unlikely(cpy_r_r93 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r94 = PyTuple_Pack(1, cpy_r_r93);
+    CPy_DECREF(cpy_r_r93);
+    if (unlikely(cpy_r_r94 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r95 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.logging' */
+    cpy_r_r96 = (PyObject *)CPyType_logging___ExtendedDebugLogger_template;
+    cpy_r_r97 = CPyType_FromTemplate(cpy_r_r96, cpy_r_r94, cpy_r_r95);
+    CPy_DECREF(cpy_r_r94);
+    if (unlikely(cpy_r_r97 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r98 = CPyDef_logging___ExtendedDebugLogger_trait_vtable_setup();
+    if (unlikely(cpy_r_r98 == 2)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", -1, CPyStatic_logging___globals);
+        goto CPyL102;
+    }
+    cpy_r_r99 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__mypyc_attrs__' */
+    cpy_r_r100 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__dict__' */
+    cpy_r_r101 = PyTuple_Pack(1, cpy_r_r100);
+    if (unlikely(cpy_r_r101 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL102;
+    }
+    cpy_r_r102 = PyObject_SetAttr(cpy_r_r97, cpy_r_r99, cpy_r_r101);
+    CPy_DECREF(cpy_r_r101);
+    cpy_r_r103 = cpy_r_r102 >= 0;
+    if (unlikely(!cpy_r_r103)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL102;
+    }
+    CPyType_logging___ExtendedDebugLogger = (PyTypeObject *)cpy_r_r97;
+    CPy_INCREF(CPyType_logging___ExtendedDebugLogger);
+    cpy_r_r104 = CPyStatic_logging___globals;
+    cpy_r_r105 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ExtendedDebugLogger' */
+    cpy_r_r106 = PyDict_SetItem(cpy_r_r104, cpy_r_r105, cpy_r_r97);
+    CPy_DECREF(cpy_r_r97);
+    cpy_r_r107 = cpy_r_r106 >= 0;
+    if (unlikely(!cpy_r_r107)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r108 = CPyStatic_logging___globals;
+    cpy_r_r109 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_use_logger_class' */
+    cpy_r_r110 = CPyDict_GetItem(cpy_r_r108, cpy_r_r109);
+    if (unlikely(cpy_r_r110 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r111 = CPyStatic_logging___globals;
+    cpy_r_r112 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'contextmanager' */
+    cpy_r_r113 = CPyDict_GetItem(cpy_r_r111, cpy_r_r112);
+    if (unlikely(cpy_r_r113 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL103;
+    }
+    PyObject *cpy_r_r114[1] = {cpy_r_r110};
+    cpy_r_r115 = (PyObject **)&cpy_r_r114;
+    cpy_r_r116 = PyObject_Vectorcall(cpy_r_r113, cpy_r_r115, 1, 0);
+    CPy_DECREF(cpy_r_r113);
+    if (unlikely(cpy_r_r116 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL103;
+    }
+    CPy_DECREF(cpy_r_r110);
+    cpy_r_r117 = CPyStatic_logging___globals;
+    cpy_r_r118 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_use_logger_class' */
+    cpy_r_r119 = PyDict_SetItem(cpy_r_r117, cpy_r_r118, cpy_r_r116);
+    CPy_DECREF(cpy_r_r116);
+    cpy_r_r120 = cpy_r_r119 >= 0;
+    if (unlikely(!cpy_r_r120)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r121 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'THasLoggerMeta' */
+    cpy_r_r122 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'HasLoggerMeta' */
+    cpy_r_r123 = CPyStatic_logging___globals;
+    cpy_r_r124 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TypeVar' */
+    cpy_r_r125 = CPyDict_GetItem(cpy_r_r123, cpy_r_r124);
+    if (unlikely(cpy_r_r125 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    PyObject *cpy_r_r126[2] = {cpy_r_r121, cpy_r_r122};
+    cpy_r_r127 = (PyObject **)&cpy_r_r126;
+    cpy_r_r128 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('bound',) */
+    cpy_r_r129 = PyObject_Vectorcall(cpy_r_r125, cpy_r_r127, 1, cpy_r_r128);
+    CPy_DECREF(cpy_r_r125);
+    if (unlikely(cpy_r_r129 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r130 = CPyStatic_logging___globals;
+    cpy_r_r131 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'THasLoggerMeta' */
+    cpy_r_r132 = CPyDict_SetItem(cpy_r_r130, cpy_r_r131, cpy_r_r129);
+    CPy_DECREF(cpy_r_r129);
+    cpy_r_r133 = cpy_r_r132 >= 0;
+    if (unlikely(!cpy_r_r133)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r134 = CPyModule_builtins;
+    cpy_r_r135 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'type' */
+    cpy_r_r136 = CPyObject_GetAttr(cpy_r_r134, cpy_r_r135);
+    if (unlikely(cpy_r_r136 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r137 = PyTuple_Pack(1, cpy_r_r136);
+    CPy_DECREF(cpy_r_r136);
+    if (unlikely(cpy_r_r137 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r138 = (PyObject *)&PyType_Type;
+    cpy_r_r139 = CPy_CalculateMetaclass(cpy_r_r138, cpy_r_r137);
+    if (unlikely(cpy_r_r139 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL104;
+    }
+    cpy_r_r140 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__prepare__' */
+    cpy_r_r141 = PyObject_HasAttr(cpy_r_r139, cpy_r_r140);
+    if (!cpy_r_r141) goto CPyL46;
+    cpy_r_r142 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'HasLoggerMeta' */
+    cpy_r_r143 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__prepare__' */
+    cpy_r_r144 = CPyObject_GetAttr(cpy_r_r139, cpy_r_r143);
+    if (unlikely(cpy_r_r144 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL104;
+    }
+    PyObject *cpy_r_r145[2] = {cpy_r_r142, cpy_r_r137};
+    cpy_r_r146 = (PyObject **)&cpy_r_r145;
+    cpy_r_r147 = PyObject_Vectorcall(cpy_r_r144, cpy_r_r146, 2, 0);
+    CPy_DECREF(cpy_r_r144);
+    if (unlikely(cpy_r_r147 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL104;
+    }
+    if (likely(PyDict_Check(cpy_r_r147)))
+        cpy_r_r148 = cpy_r_r147;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_utils/logging.py", "<module>", 114, CPyStatic_logging___globals, "dict", cpy_r_r147);
+        goto CPyL104;
+    }
+    cpy_r_r149 = cpy_r_r148;
+    goto CPyL48;
+CPyL46: ;
+    cpy_r_r150 = PyDict_New();
+    if (unlikely(cpy_r_r150 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL104;
+    }
+    cpy_r_r149 = cpy_r_r150;
+CPyL48: ;
+    cpy_r_r151 = PyDict_New();
+    if (unlikely(cpy_r_r151 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL105;
+    }
+    cpy_r_r152 = (PyObject *)&PyType_Type;
+    cpy_r_r153 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'logger_class' */
+    cpy_r_r154 = PyDict_SetItem(cpy_r_r151, cpy_r_r153, cpy_r_r152);
+    cpy_r_r155 = cpy_r_r154 >= 0;
+    if (unlikely(!cpy_r_r155)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL106;
+    }
+    cpy_r_r156 = CPyStatic_logging___Logger;
+    if (unlikely(cpy_r_r156 == NULL)) {
+        goto CPyL107;
+    } else
+        goto CPyL53;
+CPyL51: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"Logger\" was not set");
+    cpy_r_r157 = 0;
+    if (unlikely(!cpy_r_r157)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    CPy_Unreachable();
+CPyL53: ;
+    cpy_r_r158 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'logger_class' */
+    cpy_r_r159 = CPyDict_SetItem(cpy_r_r149, cpy_r_r158, cpy_r_r156);
+    cpy_r_r160 = cpy_r_r159 >= 0;
+    if (unlikely(!cpy_r_r160)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL106;
+    }
+    cpy_r_r161 = CPyDef_logging_____new___3_HasLoggerMeta_obj();
+    if (unlikely(cpy_r_r161 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL106;
+    }
+    cpy_r_r162 = CPyModule_builtins;
+    cpy_r_r163 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'staticmethod' */
+    cpy_r_r164 = CPyObject_GetAttr(cpy_r_r162, cpy_r_r163);
+    if (unlikely(cpy_r_r164 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL108;
+    }
+    PyObject *cpy_r_r165[1] = {cpy_r_r161};
+    cpy_r_r166 = (PyObject **)&cpy_r_r165;
+    cpy_r_r167 = PyObject_Vectorcall(cpy_r_r164, cpy_r_r166, 1, 0);
+    CPy_DECREF(cpy_r_r164);
+    if (unlikely(cpy_r_r167 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL108;
+    }
+    CPy_DECREF_NO_IMM(cpy_r_r161);
+    cpy_r_r168 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__new__' */
+    cpy_r_r169 = CPyDict_SetItem(cpy_r_r149, cpy_r_r168, cpy_r_r167);
+    CPy_DECREF(cpy_r_r167);
+    cpy_r_r170 = cpy_r_r169 >= 0;
+    if (unlikely(!cpy_r_r170)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL106;
+    }
+    cpy_r_r171 = CPyDef_logging___replace_logger_class_HasLoggerMeta_obj();
+    if (unlikely(cpy_r_r171 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL106;
+    }
+    cpy_r_r172 = CPyModule_builtins;
+    cpy_r_r173 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'classmethod' */
+    cpy_r_r174 = CPyObject_GetAttr(cpy_r_r172, cpy_r_r173);
+    if (unlikely(cpy_r_r174 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL109;
+    }
+    PyObject *cpy_r_r175[1] = {cpy_r_r171};
+    cpy_r_r176 = (PyObject **)&cpy_r_r175;
+    cpy_r_r177 = PyObject_Vectorcall(cpy_r_r174, cpy_r_r176, 1, 0);
+    CPy_DECREF(cpy_r_r174);
+    if (unlikely(cpy_r_r177 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL109;
+    }
+    CPy_DECREF_NO_IMM(cpy_r_r171);
+    cpy_r_r178 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'replace_logger_class' */
+    cpy_r_r179 = CPyDict_SetItem(cpy_r_r149, cpy_r_r178, cpy_r_r177);
+    CPy_DECREF(cpy_r_r177);
+    cpy_r_r180 = cpy_r_r179 >= 0;
+    if (unlikely(!cpy_r_r180)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL106;
+    }
+    cpy_r_r181 = CPyDef_logging___meta_compat_HasLoggerMeta_obj();
+    if (unlikely(cpy_r_r181 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL106;
+    }
+    cpy_r_r182 = CPyModule_builtins;
+    cpy_r_r183 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'classmethod' */
+    cpy_r_r184 = CPyObject_GetAttr(cpy_r_r182, cpy_r_r183);
+    if (unlikely(cpy_r_r184 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL110;
+    }
+    PyObject *cpy_r_r185[1] = {cpy_r_r181};
+    cpy_r_r186 = (PyObject **)&cpy_r_r185;
+    cpy_r_r187 = PyObject_Vectorcall(cpy_r_r184, cpy_r_r186, 1, 0);
+    CPy_DECREF(cpy_r_r184);
+    if (unlikely(cpy_r_r187 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL110;
+    }
+    CPy_DECREF_NO_IMM(cpy_r_r181);
+    cpy_r_r188 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'meta_compat' */
+    cpy_r_r189 = CPyDict_SetItem(cpy_r_r149, cpy_r_r188, cpy_r_r187);
+    CPy_DECREF(cpy_r_r187);
+    cpy_r_r190 = cpy_r_r189 >= 0;
+    if (unlikely(!cpy_r_r190)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL106;
+    }
+    cpy_r_r191 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'HasLoggerMeta' */
+    cpy_r_r192 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__annotations__' */
+    cpy_r_r193 = CPyDict_SetItem(cpy_r_r149, cpy_r_r192, cpy_r_r151);
+    CPy_DECREF(cpy_r_r151);
+    cpy_r_r194 = cpy_r_r193 >= 0;
+    if (unlikely(!cpy_r_r194)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL105;
+    }
+    cpy_r_r195 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'mypyc filler docstring' */
+    cpy_r_r196 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__doc__' */
+    cpy_r_r197 = CPyDict_SetItem(cpy_r_r149, cpy_r_r196, cpy_r_r195);
+    cpy_r_r198 = cpy_r_r197 >= 0;
+    if (unlikely(!cpy_r_r198)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL105;
+    }
+    cpy_r_r199 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.logging' */
+    cpy_r_r200 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__module__' */
+    cpy_r_r201 = CPyDict_SetItem(cpy_r_r149, cpy_r_r200, cpy_r_r199);
+    cpy_r_r202 = cpy_r_r201 >= 0;
+    if (unlikely(!cpy_r_r202)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL105;
+    }
+    PyObject *cpy_r_r203[3] = {cpy_r_r191, cpy_r_r137, cpy_r_r149};
+    cpy_r_r204 = (PyObject **)&cpy_r_r203;
+    cpy_r_r205 = PyObject_Vectorcall(cpy_r_r139, cpy_r_r204, 3, 0);
+    if (unlikely(cpy_r_r205 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL105;
+    }
+    CPy_DECREF(cpy_r_r137);
+    CPy_DECREF(cpy_r_r149);
+    cpy_r_r206 = CPyStatic_logging___globals;
+    cpy_r_r207 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'mypyc_attr' */
+    cpy_r_r208 = CPyDict_GetItem(cpy_r_r206, cpy_r_r207);
+    if (unlikely(cpy_r_r208 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL111;
+    }
+    cpy_r_r209 = 0 ? Py_True : Py_False;
+    PyObject *cpy_r_r210[1] = {cpy_r_r209};
+    cpy_r_r211 = (PyObject **)&cpy_r_r210;
+    cpy_r_r212 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('native_class',) */
+    cpy_r_r213 = PyObject_Vectorcall(cpy_r_r208, cpy_r_r211, 0, cpy_r_r212);
+    CPy_DECREF(cpy_r_r208);
+    if (unlikely(cpy_r_r213 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL111;
+    }
+    PyObject *cpy_r_r214[1] = {cpy_r_r205};
+    cpy_r_r215 = (PyObject **)&cpy_r_r214;
+    cpy_r_r216 = PyObject_Vectorcall(cpy_r_r213, cpy_r_r215, 1, 0);
+    CPy_DECREF(cpy_r_r213);
+    if (unlikely(cpy_r_r216 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL111;
+    }
+    CPy_DECREF(cpy_r_r205);
+    CPyType_logging___HasLoggerMeta = (PyTypeObject *)cpy_r_r216;
+    CPy_INCREF(CPyType_logging___HasLoggerMeta);
+    cpy_r_r217 = CPyStatic_logging___globals;
+    cpy_r_r218 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'HasLoggerMeta' */
+    cpy_r_r219 = PyDict_SetItem(cpy_r_r217, cpy_r_r218, cpy_r_r216);
+    CPy_DECREF(cpy_r_r216);
+    cpy_r_r220 = cpy_r_r219 >= 0;
+    if (unlikely(!cpy_r_r220)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r221 = (PyObject *)CPyType_logging___HasLoggerMeta;
+    cpy_r_r222 = CPyTuple_LoadEmptyTupleConstant();
+    cpy_r_r223 = (PyObject *)CPyType_logging___HasLoggerMeta;
+    cpy_r_r224 = CPy_CalculateMetaclass(cpy_r_r223, cpy_r_r222);
+    if (unlikely(cpy_r_r224 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL112;
+    }
+    cpy_r_r225 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__prepare__' */
+    cpy_r_r226 = PyObject_HasAttr(cpy_r_r224, cpy_r_r225);
+    if (!cpy_r_r226) goto CPyL80;
+    cpy_r_r227 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'HasLogger' */
+    cpy_r_r228 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__prepare__' */
+    cpy_r_r229 = CPyObject_GetAttr(cpy_r_r224, cpy_r_r228);
+    if (unlikely(cpy_r_r229 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL112;
+    }
+    PyObject *cpy_r_r230[2] = {cpy_r_r227, cpy_r_r222};
+    cpy_r_r231 = (PyObject **)&cpy_r_r230;
+    cpy_r_r232 = PyObject_Vectorcall(cpy_r_r229, cpy_r_r231, 2, 0);
+    CPy_DECREF(cpy_r_r229);
+    if (unlikely(cpy_r_r232 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL112;
+    }
+    if (likely(PyDict_Check(cpy_r_r232)))
+        cpy_r_r233 = cpy_r_r232;
+    else {
+        CPy_TypeErrorTraceback("faster_eth_utils/logging.py", "<module>", 160, CPyStatic_logging___globals, "dict", cpy_r_r232);
+        goto CPyL112;
+    }
+    cpy_r_r234 = cpy_r_r233;
+    goto CPyL82;
+CPyL80: ;
+    cpy_r_r235 = PyDict_New();
+    if (unlikely(cpy_r_r235 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL112;
+    }
+    cpy_r_r234 = cpy_r_r235;
+CPyL82: ;
+    cpy_r_r236 = PyDict_New();
+    if (unlikely(cpy_r_r236 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL113;
+    }
+    cpy_r_r237 = CPyModule_logging;
+    cpy_r_r238 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Logger' */
+    cpy_r_r239 = CPyObject_GetAttr(cpy_r_r237, cpy_r_r238);
+    if (unlikely(cpy_r_r239 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL114;
+    }
+    cpy_r_r240 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'logger' */
+    cpy_r_r241 = PyDict_SetItem(cpy_r_r236, cpy_r_r240, cpy_r_r239);
+    CPy_DECREF(cpy_r_r239);
+    cpy_r_r242 = cpy_r_r241 >= 0;
+    if (unlikely(!cpy_r_r242)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL114;
+    }
+    cpy_r_r243 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'HasLogger' */
+    cpy_r_r244 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__annotations__' */
+    cpy_r_r245 = CPyDict_SetItem(cpy_r_r234, cpy_r_r244, cpy_r_r236);
+    CPy_DECREF(cpy_r_r236);
+    cpy_r_r246 = cpy_r_r245 >= 0;
+    if (unlikely(!cpy_r_r246)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL113;
+    }
+    cpy_r_r247 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'mypyc filler docstring' */
+    cpy_r_r248 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__doc__' */
+    cpy_r_r249 = CPyDict_SetItem(cpy_r_r234, cpy_r_r248, cpy_r_r247);
+    cpy_r_r250 = cpy_r_r249 >= 0;
+    if (unlikely(!cpy_r_r250)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL113;
+    }
+    cpy_r_r251 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.logging' */
+    cpy_r_r252 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__module__' */
+    cpy_r_r253 = CPyDict_SetItem(cpy_r_r234, cpy_r_r252, cpy_r_r251);
+    cpy_r_r254 = cpy_r_r253 >= 0;
+    if (unlikely(!cpy_r_r254)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL113;
+    }
+    PyObject *cpy_r_r255[3] = {cpy_r_r243, cpy_r_r222, cpy_r_r234};
+    cpy_r_r256 = (PyObject **)&cpy_r_r255;
+    cpy_r_r257 = PyObject_Vectorcall(cpy_r_r224, cpy_r_r256, 3, 0);
+    if (unlikely(cpy_r_r257 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL113;
+    }
+    CPy_DECREF(cpy_r_r234);
+    cpy_r_r258 = CPyStatic_logging___globals;
+    cpy_r_r259 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'final' */
+    cpy_r_r260 = CPyDict_GetItem(cpy_r_r258, cpy_r_r259);
+    if (unlikely(cpy_r_r260 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL115;
+    }
+    PyObject *cpy_r_r261[1] = {cpy_r_r257};
+    cpy_r_r262 = (PyObject **)&cpy_r_r261;
+    cpy_r_r263 = PyObject_Vectorcall(cpy_r_r260, cpy_r_r262, 1, 0);
+    CPy_DECREF(cpy_r_r260);
+    if (unlikely(cpy_r_r263 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL115;
+    }
+    CPy_DECREF(cpy_r_r257);
+    CPyType_logging___HasLogger = (PyTypeObject *)cpy_r_r263;
+    CPy_INCREF(CPyType_logging___HasLogger);
+    cpy_r_r264 = CPyStatic_logging___globals;
+    cpy_r_r265 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'HasLogger' */
+    cpy_r_r266 = PyDict_SetItem(cpy_r_r264, cpy_r_r265, cpy_r_r263);
+    CPy_DECREF(cpy_r_r263);
+    cpy_r_r267 = cpy_r_r266 >= 0;
+    if (unlikely(!cpy_r_r267)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL112;
+    }
+    cpy_r_r268 = (PyObject *)CPyType_logging___HasLogger;
+    cpy_r_r269 = (PyObject *)CPyType_logging___ExtendedDebugLogger;
+    CPy_DECREF(cpy_r_r222);
+    cpy_r_r270 = (PyObject *)CPyType_logging___HasLoggerMeta;
+    cpy_r_r271 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'replace_logger_class' */
+    PyObject *cpy_r_r272[2] = {cpy_r_r270, cpy_r_r269};
+    cpy_r_r273 = (PyObject **)&cpy_r_r272;
+    cpy_r_r274 = PyObject_VectorcallMethod(cpy_r_r271, cpy_r_r273, 9223372036854775810ULL, 0);
+    if (unlikely(cpy_r_r274 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r275 = CPyStatic_logging___globals;
+    cpy_r_r276 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'HasExtendedDebugLoggerMeta' */
+    cpy_r_r277 = CPyDict_SetItem(cpy_r_r275, cpy_r_r276, cpy_r_r274);
+    CPy_DECREF(cpy_r_r274);
+    cpy_r_r278 = cpy_r_r277 >= 0;
+    if (unlikely(!cpy_r_r278)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r279 = NULL;
+    cpy_r_r280 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.logging' */
+    cpy_r_r281 = (PyObject *)CPyType_logging___HasExtendedDebugLogger_template;
+    cpy_r_r282 = CPyType_FromTemplate(cpy_r_r281, cpy_r_r279, cpy_r_r280);
+    if (unlikely(cpy_r_r282 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    cpy_r_r283 = CPyDef_logging___HasExtendedDebugLogger_trait_vtable_setup();
+    if (unlikely(cpy_r_r283 == 2)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", -1, CPyStatic_logging___globals);
+        goto CPyL116;
+    }
+    cpy_r_r284 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__mypyc_attrs__' */
+    cpy_r_r285 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'logger' */
+    cpy_r_r286 = PyTuple_Pack(1, cpy_r_r285);
+    if (unlikely(cpy_r_r286 == NULL)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL116;
+    }
+    cpy_r_r287 = PyObject_SetAttr(cpy_r_r282, cpy_r_r284, cpy_r_r286);
+    CPy_DECREF(cpy_r_r286);
+    cpy_r_r288 = cpy_r_r287 >= 0;
+    if (unlikely(!cpy_r_r288)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL116;
+    }
+    CPyType_logging___HasExtendedDebugLogger = (PyTypeObject *)cpy_r_r282;
+    CPy_INCREF(CPyType_logging___HasExtendedDebugLogger);
+    cpy_r_r289 = CPyStatic_logging___globals;
+    cpy_r_r290 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'HasExtendedDebugLogger' */
+    cpy_r_r291 = PyDict_SetItem(cpy_r_r289, cpy_r_r290, cpy_r_r282);
+    CPy_DECREF(cpy_r_r282);
+    cpy_r_r292 = cpy_r_r291 >= 0;
+    if (unlikely(!cpy_r_r292)) {
+        CPy_AddTraceback("faster_eth_utils/logging.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_logging___globals);
+        goto CPyL100;
+    }
+    return 1;
+CPyL100: ;
+    cpy_r_r293 = 2;
+    return cpy_r_r293;
+CPyL101: ;
+    CPy_DecRef(cpy_r_r51);
+    goto CPyL100;
+CPyL102: ;
+    CPy_DecRef(cpy_r_r97);
+    goto CPyL100;
+CPyL103: ;
+    CPy_DecRef(cpy_r_r110);
+    goto CPyL100;
+CPyL104: ;
+    CPy_DecRef(cpy_r_r137);
+    goto CPyL100;
+CPyL105: ;
+    CPy_DecRef(cpy_r_r137);
+    CPy_DecRef(cpy_r_r149);
+    goto CPyL100;
+CPyL106: ;
+    CPy_DecRef(cpy_r_r137);
+    CPy_DecRef(cpy_r_r149);
+    CPy_DecRef(cpy_r_r151);
+    goto CPyL100;
+CPyL107: ;
+    CPy_DecRef(cpy_r_r137);
+    CPy_DecRef(cpy_r_r149);
+    CPy_DecRef(cpy_r_r151);
+    goto CPyL51;
+CPyL108: ;
+    CPy_DecRef(cpy_r_r137);
+    CPy_DecRef(cpy_r_r149);
+    CPy_DecRef(cpy_r_r151);
+    CPy_DecRef(cpy_r_r161);
+    goto CPyL100;
+CPyL109: ;
+    CPy_DecRef(cpy_r_r137);
+    CPy_DecRef(cpy_r_r149);
+    CPy_DecRef(cpy_r_r151);
+    CPy_DecRef(cpy_r_r171);
+    goto CPyL100;
+CPyL110: ;
+    CPy_DecRef(cpy_r_r137);
+    CPy_DecRef(cpy_r_r149);
+    CPy_DecRef(cpy_r_r151);
+    CPy_DecRef(cpy_r_r181);
+    goto CPyL100;
+CPyL111: ;
+    CPy_DecRef(cpy_r_r205);
+    goto CPyL100;
+CPyL112: ;
+    CPy_DecRef(cpy_r_r222);
+    goto CPyL100;
+CPyL113: ;
+    CPy_DecRef(cpy_r_r222);
+    CPy_DecRef(cpy_r_r234);
+    goto CPyL100;
+CPyL114: ;
+    CPy_DecRef(cpy_r_r222);
+    CPy_DecRef(cpy_r_r234);
+    CPy_DecRef(cpy_r_r236);
+    goto CPyL100;
+CPyL115: ;
+    CPy_DecRef(cpy_r_r222);
+    CPy_DecRef(cpy_r_r257);
+    goto CPyL100;
+CPyL116: ;
+    CPy_DecRef(cpy_r_r282);
+    goto CPyL100;
+}
 static PyMethodDef module_loadingmodule_methods[] = {
     {"import_string", (PyCFunction)CPyPy_module_loading___import_string, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("import_string(dotted_path)\n--\n\n") /* docstring */},
     {NULL, NULL, 0, NULL}
@@ -39672,8 +44040,8 @@ CPyL32: ;
 CPyL33: ;
     CPy_Unreachable();
 CPyL34: ;
-    tuple_T3OOO __tmp216 = { NULL, NULL, NULL };
-    cpy_r_r69 = __tmp216;
+    tuple_T3OOO __tmp227 = { NULL, NULL, NULL };
+    cpy_r_r69 = __tmp227;
     cpy_r_r70 = cpy_r_r69;
     goto CPyL36;
 CPyL35: ;
@@ -40773,16 +45141,16 @@ CPyL3: ;
     else {
         cpy_r_r45 = NULL;
     }
-    if (cpy_r_r45 != NULL) goto __LL217;
+    if (cpy_r_r45 != NULL) goto __LL228;
     if (cpy_r_r44 == Py_None)
         cpy_r_r45 = cpy_r_r44;
     else {
         cpy_r_r45 = NULL;
     }
-    if (cpy_r_r45 != NULL) goto __LL217;
+    if (cpy_r_r45 != NULL) goto __LL228;
     CPy_TypeErrorTraceback("faster_eth_utils/network.py", "<module>", 23, CPyStatic_network___globals, "str or None", cpy_r_r44);
     goto CPyL70;
-__LL217: ;
+__LL228: ;
     cpy_r_r46 = CPyStatic_network___globals;
     cpy_r_r47 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Path' */
     cpy_r_r48 = CPyDict_GetItem(cpy_r_r46, cpy_r_r47);
@@ -41586,72 +45954,72 @@ PyObject *CPyPy_numeric___clamp(PyObject *self, PyObject *const *args, size_t na
     else {
         arg_lower_bound = NULL;
     }
-    if (arg_lower_bound != NULL) goto __LL218;
+    if (arg_lower_bound != NULL) goto __LL229;
     arg_lower_bound = obj_lower_bound;
-    if (arg_lower_bound != NULL) goto __LL218;
+    if (arg_lower_bound != NULL) goto __LL229;
     if (PyLong_Check(obj_lower_bound))
         arg_lower_bound = obj_lower_bound;
     else {
         arg_lower_bound = NULL;
     }
-    if (arg_lower_bound != NULL) goto __LL218;
+    if (arg_lower_bound != NULL) goto __LL229;
     if (CPyFloat_Check(obj_lower_bound))
         arg_lower_bound = obj_lower_bound;
     else {
         arg_lower_bound = NULL;
     }
-    if (arg_lower_bound != NULL) goto __LL218;
+    if (arg_lower_bound != NULL) goto __LL229;
     CPy_TypeError("union[faster_eth_utils.numeric.Comparable, object, int, float]", obj_lower_bound); 
     goto fail;
-__LL218: ;
+__LL229: ;
     PyObject *arg_upper_bound;
     if (PyObject_TypeCheck(obj_upper_bound, CPyType_numeric___Comparable))
         arg_upper_bound = obj_upper_bound;
     else {
         arg_upper_bound = NULL;
     }
-    if (arg_upper_bound != NULL) goto __LL219;
+    if (arg_upper_bound != NULL) goto __LL230;
     arg_upper_bound = obj_upper_bound;
-    if (arg_upper_bound != NULL) goto __LL219;
+    if (arg_upper_bound != NULL) goto __LL230;
     if (PyLong_Check(obj_upper_bound))
         arg_upper_bound = obj_upper_bound;
     else {
         arg_upper_bound = NULL;
     }
-    if (arg_upper_bound != NULL) goto __LL219;
+    if (arg_upper_bound != NULL) goto __LL230;
     if (CPyFloat_Check(obj_upper_bound))
         arg_upper_bound = obj_upper_bound;
     else {
         arg_upper_bound = NULL;
     }
-    if (arg_upper_bound != NULL) goto __LL219;
+    if (arg_upper_bound != NULL) goto __LL230;
     CPy_TypeError("union[faster_eth_utils.numeric.Comparable, object, int, float]", obj_upper_bound); 
     goto fail;
-__LL219: ;
+__LL230: ;
     PyObject *arg_value;
     if (PyObject_TypeCheck(obj_value, CPyType_numeric___Comparable))
         arg_value = obj_value;
     else {
         arg_value = NULL;
     }
-    if (arg_value != NULL) goto __LL220;
+    if (arg_value != NULL) goto __LL231;
     arg_value = obj_value;
-    if (arg_value != NULL) goto __LL220;
+    if (arg_value != NULL) goto __LL231;
     if (PyLong_Check(obj_value))
         arg_value = obj_value;
     else {
         arg_value = NULL;
     }
-    if (arg_value != NULL) goto __LL220;
+    if (arg_value != NULL) goto __LL231;
     if (CPyFloat_Check(obj_value))
         arg_value = obj_value;
     else {
         arg_value = NULL;
     }
-    if (arg_value != NULL) goto __LL220;
+    if (arg_value != NULL) goto __LL231;
     CPy_TypeError("union[faster_eth_utils.numeric.Comparable, object, int, float]", obj_value); 
     goto fail;
-__LL220: ;
+__LL231: ;
     PyObject *retval = CPyDef_numeric___clamp(arg_lower_bound, arg_upper_bound, arg_value);
     return retval;
 fail: ;
@@ -41868,16 +46236,16 @@ CPyL3: ;
     cpy_r_r54 = PyTuple_New(5);
     if (unlikely(cpy_r_r54 == NULL))
         CPyError_OutOfMemory();
-    PyObject *__tmp221 = cpy_r_r53.f0;
-    PyTuple_SET_ITEM(cpy_r_r54, 0, __tmp221);
-    PyObject *__tmp222 = cpy_r_r53.f1;
-    PyTuple_SET_ITEM(cpy_r_r54, 1, __tmp222);
-    PyObject *__tmp223 = cpy_r_r53.f2;
-    PyTuple_SET_ITEM(cpy_r_r54, 2, __tmp223);
-    PyObject *__tmp224 = cpy_r_r53.f3;
-    PyTuple_SET_ITEM(cpy_r_r54, 3, __tmp224);
-    PyObject *__tmp225 = cpy_r_r53.f4;
-    PyTuple_SET_ITEM(cpy_r_r54, 4, __tmp225);
+    PyObject *__tmp232 = cpy_r_r53.f0;
+    PyTuple_SET_ITEM(cpy_r_r54, 0, __tmp232);
+    PyObject *__tmp233 = cpy_r_r53.f1;
+    PyTuple_SET_ITEM(cpy_r_r54, 1, __tmp233);
+    PyObject *__tmp234 = cpy_r_r53.f2;
+    PyTuple_SET_ITEM(cpy_r_r54, 2, __tmp234);
+    PyObject *__tmp235 = cpy_r_r53.f3;
+    PyTuple_SET_ITEM(cpy_r_r54, 3, __tmp235);
+    PyObject *__tmp236 = cpy_r_r53.f4;
+    PyTuple_SET_ITEM(cpy_r_r54, 4, __tmp236);
     cpy_r_r55 = PyObject_GetItem(cpy_r_r43, cpy_r_r54);
     CPy_DECREF(cpy_r_r43);
     CPy_DECREF(cpy_r_r54);
@@ -48352,10 +52720,10 @@ CPyL3: ;
     cpy_r_r2 = PyTuple_New(2);
     if (unlikely(cpy_r_r2 == NULL))
         CPyError_OutOfMemory();
-    PyObject *__tmp226 = cpy_r_r0.f0;
-    PyTuple_SET_ITEM(cpy_r_r2, 0, __tmp226);
-    PyObject *__tmp227 = cpy_r_r0.f1;
-    PyTuple_SET_ITEM(cpy_r_r2, 1, __tmp227);
+    PyObject *__tmp237 = cpy_r_r0.f0;
+    PyTuple_SET_ITEM(cpy_r_r2, 0, __tmp237);
+    PyObject *__tmp238 = cpy_r_r0.f1;
+    PyTuple_SET_ITEM(cpy_r_r2, 1, __tmp238);
     cpy_r_r3 = PyObject_IsInstance(cpy_r_value, cpy_r_r2);
     CPy_DECREF(cpy_r_r2);
     cpy_r_r4 = cpy_r_r3 >= 0;
@@ -48440,12 +52808,12 @@ CPyL3: ;
     cpy_r_r2 = PyTuple_New(3);
     if (unlikely(cpy_r_r2 == NULL))
         CPyError_OutOfMemory();
-    PyObject *__tmp228 = cpy_r_r0.f0;
-    PyTuple_SET_ITEM(cpy_r_r2, 0, __tmp228);
-    PyObject *__tmp229 = cpy_r_r0.f1;
-    PyTuple_SET_ITEM(cpy_r_r2, 1, __tmp229);
-    PyObject *__tmp230 = cpy_r_r0.f2;
-    PyTuple_SET_ITEM(cpy_r_r2, 2, __tmp230);
+    PyObject *__tmp239 = cpy_r_r0.f0;
+    PyTuple_SET_ITEM(cpy_r_r2, 0, __tmp239);
+    PyObject *__tmp240 = cpy_r_r0.f1;
+    PyTuple_SET_ITEM(cpy_r_r2, 1, __tmp240);
+    PyObject *__tmp241 = cpy_r_r0.f2;
+    PyTuple_SET_ITEM(cpy_r_r2, 2, __tmp241);
     cpy_r_r3 = PyObject_IsInstance(cpy_r_value, cpy_r_r2);
     CPy_DECREF(cpy_r_r2);
     cpy_r_r4 = cpy_r_r3 >= 0;
@@ -48982,10 +53350,10 @@ CPyL3: ;
     cpy_r_r52 = PyTuple_New(2);
     if (unlikely(cpy_r_r52 == NULL))
         CPyError_OutOfMemory();
-    PyObject *__tmp231 = cpy_r_r49.f0;
-    PyTuple_SET_ITEM(cpy_r_r52, 0, __tmp231);
-    PyObject *__tmp232 = cpy_r_r49.f1;
-    PyTuple_SET_ITEM(cpy_r_r52, 1, __tmp232);
+    PyObject *__tmp242 = cpy_r_r49.f0;
+    PyTuple_SET_ITEM(cpy_r_r52, 0, __tmp242);
+    PyObject *__tmp243 = cpy_r_r49.f1;
+    PyTuple_SET_ITEM(cpy_r_r52, 1, __tmp243);
     cpy_r_r53 = CPyDict_SetItem(cpy_r_r50, cpy_r_r51, cpy_r_r52);
     CPy_DECREF(cpy_r_r52);
     cpy_r_r54 = cpy_r_r53 >= 0;
@@ -49003,8 +53371,8 @@ CPyL3: ;
     cpy_r_r59 = PyTuple_New(1);
     if (unlikely(cpy_r_r59 == NULL))
         CPyError_OutOfMemory();
-    PyObject *__tmp233 = cpy_r_r56.f0;
-    PyTuple_SET_ITEM(cpy_r_r59, 0, __tmp233);
+    PyObject *__tmp244 = cpy_r_r56.f0;
+    PyTuple_SET_ITEM(cpy_r_r59, 0, __tmp244);
     cpy_r_r60 = CPyDict_SetItem(cpy_r_r57, cpy_r_r58, cpy_r_r59);
     CPy_DECREF(cpy_r_r59);
     cpy_r_r61 = cpy_r_r60 >= 0;
@@ -49022,8 +53390,8 @@ CPyL3: ;
     cpy_r_r66 = PyTuple_New(1);
     if (unlikely(cpy_r_r66 == NULL))
         CPyError_OutOfMemory();
-    PyObject *__tmp234 = cpy_r_r63.f0;
-    PyTuple_SET_ITEM(cpy_r_r66, 0, __tmp234);
+    PyObject *__tmp245 = cpy_r_r63.f0;
+    PyTuple_SET_ITEM(cpy_r_r66, 0, __tmp245);
     cpy_r_r67 = CPyDict_SetItem(cpy_r_r64, cpy_r_r65, cpy_r_r66);
     CPy_DECREF(cpy_r_r66);
     cpy_r_r68 = cpy_r_r67 >= 0;
@@ -49054,12 +53422,12 @@ CPyL3: ;
     cpy_r_r77 = PyTuple_New(3);
     if (unlikely(cpy_r_r77 == NULL))
         CPyError_OutOfMemory();
-    PyObject *__tmp235 = cpy_r_r74.f0;
-    PyTuple_SET_ITEM(cpy_r_r77, 0, __tmp235);
-    PyObject *__tmp236 = cpy_r_r74.f1;
-    PyTuple_SET_ITEM(cpy_r_r77, 1, __tmp236);
-    PyObject *__tmp237 = cpy_r_r74.f2;
-    PyTuple_SET_ITEM(cpy_r_r77, 2, __tmp237);
+    PyObject *__tmp246 = cpy_r_r74.f0;
+    PyTuple_SET_ITEM(cpy_r_r77, 0, __tmp246);
+    PyObject *__tmp247 = cpy_r_r74.f1;
+    PyTuple_SET_ITEM(cpy_r_r77, 1, __tmp247);
+    PyObject *__tmp248 = cpy_r_r74.f2;
+    PyTuple_SET_ITEM(cpy_r_r77, 2, __tmp248);
     cpy_r_r78 = CPyDict_SetItem(cpy_r_r75, cpy_r_r76, cpy_r_r77);
     CPy_DECREF(cpy_r_r77);
     cpy_r_r79 = cpy_r_r78 >= 0;
@@ -50150,6 +54518,16 @@ int CPyGlobalsInit(void)
     CPyModule_eth_typing = Py_None;
     CPyModule_faster_eth_utils___currency = Py_None;
     CPyModule_faster_eth_utils = Py_None;
+    CPyModule_faster_eth_utils___logging = Py_None;
+    CPyModule_builtins = Py_None;
+    CPyModule_logging = Py_None;
+    CPyModule_abc = Py_None;
+    CPyModule_collections___abc = Py_None;
+    CPyModule_contextlib = Py_None;
+    CPyModule_functools = Py_None;
+    CPyModule_mypy_extensions = Py_None;
+    CPyModule_typing = Py_None;
+    CPyModule_faster_eth_utils___toolz = Py_None;
     CPyModule_faster_eth_utils___module_loading = Py_None;
     CPyModule_builtins = Py_None;
     CPyModule_importlib = Py_None;
@@ -50280,21 +54658,31 @@ const char * const CPyLit_Str[] = {
     "\v\005parse\burlparse\006netloc\aipfs://\006scheme\004ipfs\002Qm\tenumerate\001-\a(empty)\001|",
     "\006\034faster_eth_utils/humanize.py\bIterator\006urllib\003URI\006Hash32\bfrom_wei",
     "\n\005toolz\020faster_eth_utils\006islice\006SECOND\006MINUTE\004HOUR\003DAY\004YEAR\005MONTH\004WEEK",
-    "\t\001y\001m\001w\001d\001h\001s\005UNITS\022DISPLAY_HASH_CHARS  doesn\'t look like a module path",
-    "\004\vImportError\rimport_module\bModule \"\025\" does not define a \"",
-    "\006\021\" attribute/class\timportlib\006__json\004path\004join\aabspath",
-    "\b\021eth_networks.json\005UTF-8\004open\bencoding\004load\achainId\tshortName\aChainId",
-    "\004\bchain_id\006symbol\016networks_by_id\034chain_id is not recognized: ",
-    "\004\023network_names_by_id\031network_short_names_by_id\tdataclass\vdataclasses",
-    "\a\004json\002os\033faster_eth_utils/network.py\004Path\apathlib\amodules\b__file__",
-    "\004\006parent\027FASTER_ETH_UTILS_FOLDER\030faster_eth_utils.network\aNetwork",
-    "\005\017__annotations__\026mypyc filler docstring\a__doc__\n__module__\bnetworks",
-    "\005\003ABC\016abstractmethod\003abc\anumbers\033faster_eth_utils/numeric.py",
+    "\v\001y\001m\001w\001d\001h\001s\005UNITS\022DISPLAY_HASH_CHARS\fisEnabledFor\003log\006debug2",
+    "\004\031get_extended_debug_logger\006DEBUG2\faddLevelName\021_use_logger_class",
+    "\a\amanager\nloggerDict\aABCMeta\nissubclass\a__new__\006logger\f__qualname__",
+    "\004\024Missing __qualname__\flogger_class\alogging\033faster_eth_utils/logging.py",
+    "\005\003abc\016contextmanager\ncontextlib\017cached_property\nmypyc_attr",
+    "\006\017mypy_extensions\005assoc\020DEBUG2_LEVEL_NUM\aTLogger\006Logger\tgetLogger",
+    "\003\016getLoggerClass\016setLoggerClass\030faster_eth_utils.logging",
+    "\004\023ExtendedDebugLogger\016THasLoggerMeta\rHasLoggerMeta\v__prepare__",
+    "\004\fstaticmethod\vclassmethod\024replace_logger_class\vmeta_compat",
+    "\004\017__annotations__\026mypyc filler docstring\a__doc__\n__module__",
+    "\003\fnative_class\tHasLogger\032HasExtendedDebugLoggerMeta",
+    "\003\026HasExtendedDebugLogger  doesn\'t look like a module path\vImportError",
+    "\004\rimport_module\bModule \"\025\" does not define a \"\021\" attribute/class",
+    "\b\timportlib\006__json\004path\004join\aabspath\021eth_networks.json\005UTF-8\004open",
+    "\a\bencoding\004load\achainId\tshortName\aChainId\bchain_id\006symbol",
+    "\003\016networks_by_id\034chain_id is not recognized: \023network_names_by_id",
+    "\005\031network_short_names_by_id\tdataclass\vdataclasses\004json\002os",
+    "\006\033faster_eth_utils/network.py\004Path\apathlib\amodules\b__file__\006parent",
+    "\005\027FASTER_ETH_UTILS_FOLDER\030faster_eth_utils.network\aNetwork\bnetworks\003ABC",
+    "\003\016abstractmethod\anumbers\033faster_eth_utils/numeric.py",
     "\006\030faster_eth_utils.numeric\nComparable\004Real\vTComparable\006TValue\acytoolz",
-    "\006\031faster_eth_utils/toolz.py\002cy\naccumulate\005assoc\bassoc_in\004comp",
-    "\t\ncomplement\006concat\aconcatv\004cons\005count\acountby\acurried\tdicttoolz\004diff",
-    "\n\006dissoc\002do\004drop\aexcepts\006filter\005first\004flip\vfrequencies\tfunctoolz\003get",
-    "\a\006get_in\agroupby\bidentity\ninterleave\tinterpose\nisdistinct\nisiterable",
+    "\006\031faster_eth_utils/toolz.py\002cy\naccumulate\bassoc_in\004comp\ncomplement",
+    "\n\006concat\aconcatv\004cons\005count\acountby\acurried\tdicttoolz\004diff\006dissoc\002do",
+    "\t\004drop\aexcepts\006filter\005first\004flip\vfrequencies\tfunctoolz\003get\006get_in",
+    "\006\agroupby\bidentity\ninterleave\tinterpose\nisdistinct\nisiterable",
     "\b\nitemfilter\aitemmap\aiterate\titertoolz\004juxt\tkeyfilter\006keymap\004last",
     "\b\006mapcat\amemoize\005merge\fmerge_sorted\nmerge_with\003nth\apartial\tpartition",
     "\a\rpartition_all\vpartitionby\004peek\004pipe\005pluck\rrandom_sample\arecipes",
@@ -50314,31 +54702,33 @@ const char * const CPyLit_Bytes[] = {
 const char * const CPyLit_Int[] = {
     "\0031\0002\0000",
     "\001115792089237316195423570985008687907853269984665640564039457584007913129639935",
-    "\n999\00010\0003\00060\0003600\00086400\00031536000\0002628000\000604800\0004",
+    "\v999\00010\0003\00060\0003600\00086400\00031536000\0002628000\000604800\0004\0008",
     "",
 };
 const double CPyLit_Float[] = {0};
 const double CPyLit_Complex[] = {0};
 const int CPyLit_Tuple[] = {
-    98, 2, 11, 37, 1, 55, 3, 8, 8, 8, 3, 58, 58, 58, 3, 59, 59, 59, 3,
-    531, 532, 533, 3, 62, 10, 63, 7, 65, 66, 67, 68, 69, 70, 71, 9, 73,
-    74, 75, 76, 77, 78, 79, 80, 81, 1, 83, 1, 85, 1, 87, 1, 533, 3, 65,
-    66, 116, 3, 117, 117, 117, 1, 543, 5, 118, 119, 120, 121, 122, 2, 123,
+    108, 2, 11, 37, 1, 55, 3, 8, 8, 8, 3, 58, 58, 58, 3, 59, 59, 59, 3,
+    574, 575, 576, 3, 62, 10, 63, 7, 65, 66, 67, 68, 69, 70, 71, 9, 73,
+    74, 75, 76, 77, 78, 79, 80, 81, 1, 83, 1, 85, 1, 87, 1, 576, 3, 65,
+    66, 116, 3, 117, 117, 117, 1, 586, 5, 118, 119, 120, 121, 122, 2, 123,
     105, 2, 125, 126, 2, 128, 129, 1, 142, 1, 154, 4, 160, 161, 10, 63, 6,
-    162, 65, 116, 69, 70, 71, 3, 163, 163, 163, 1, 553, 1, 165, 1, 152, 2,
+    162, 65, 116, 69, 70, 71, 3, 163, 163, 163, 1, 596, 1, 165, 1, 152, 2,
     168, 169, 1, 191, 1, 193, 2, 69, 194, 1, 160, 2, 122, 195, 2, 196,
     197, 5, 199, 125, 200, 201, 126, 1, 202, 1, 204, 1, 122, 1, 206, 2,
-    237, 238, 1, 237, 3, 245, 245, 245, 1, 571, 1, 232, 3, 66, 194, 247,
+    237, 238, 1, 237, 3, 245, 245, 245, 1, 614, 1, 232, 3, 66, 194, 247,
     2, 248, 202, 1, 207, 1, 259, 3, 264, 264, 264, 3, 266, 266, 266, 3,
-    267, 267, 267, 3, 578, 579, 580, 3, 275, 275, 275, 1, 582, 6, 65, 277,
-    66, 67, 69, 247, 1, 278, 1, 282, 3, 292, 293, 293, 1, 587, 3, 298,
-    298, 298, 3, 589, 582, 532, 3, 160, 62, 10, 6, 300, 301, 302, 303, 69,
-    194, 1, 168, 1, 304, 3, 324, 324, 324, 2, 595, 533, 1, 532, 2, 62,
-    347, 2, 65, 66, 1, 335, 2, 349, 350, 2, 251, 351, 1, 352, 1, 372, 1,
-    65, 1, 384, 1, 395, 3, 397, 397, 397, 3, 398, 398, 398, 3, 608, 609,
-    580, 1, 400, 1, 66, 1, 388, 1, 295, 2, 413, 414, 3, 416, 416, 416, 2,
-    571, 616, 3, 65, 69, 194, 3, 423, 423, 423, 1, 619, 3, 352, 352, 352,
-    1, 621, 3, 64, 298, 298, 2, 623, 616, 3, 65, 66, 68, 1, 116
+    267, 267, 267, 3, 621, 622, 623, 3, 275, 275, 275, 1, 625, 6, 65, 277,
+    66, 67, 69, 247, 1, 278, 1, 282, 3, 292, 293, 293, 1, 630, 3, 298,
+    298, 298, 3, 632, 625, 575, 3, 160, 62, 10, 6, 300, 301, 302, 303, 69,
+    194, 1, 168, 1, 304, 3, 324, 324, 324, 2, 638, 576, 1, 575, 2, 62,
+    347, 2, 65, 66, 1, 335, 2, 349, 350, 2, 251, 351, 1, 352, 3, 386, 386,
+    386, 1, 647, 1, 379, 1, 347, 1, 389, 1, 391, 1, 392, 6, 65, 66, 69,
+    70, 247, 71, 1, 394, 1, 414, 1, 420, 1, 65, 1, 432, 1, 443, 3, 445,
+    445, 445, 3, 446, 446, 446, 3, 661, 662, 623, 1, 448, 1, 66, 1, 436,
+    1, 295, 2, 457, 458, 3, 459, 459, 459, 2, 614, 669, 3, 65, 69, 194, 3,
+    466, 466, 466, 1, 672, 3, 352, 352, 352, 1, 674, 3, 64, 298, 298, 2,
+    676, 669, 3, 65, 66, 68, 1, 116
 };
 const int CPyLit_FrozenSet[] = {1, 2, 25, 24};
 CPyModule *CPyModule_faster_eth_utils___abi__internal = NULL;
@@ -50408,6 +54798,13 @@ CPyModule *CPyModule_faster_eth_utils___humanize;
 PyObject *CPyStatic_humanize___globals;
 CPyModule *CPyModule_urllib;
 CPyModule *CPyModule_faster_eth_utils;
+CPyModule *CPyModule_faster_eth_utils___logging__internal = NULL;
+CPyModule *CPyModule_faster_eth_utils___logging;
+PyObject *CPyStatic_logging___globals;
+CPyModule *CPyModule_logging;
+CPyModule *CPyModule_abc;
+CPyModule *CPyModule_contextlib;
+CPyModule *CPyModule_mypy_extensions;
 CPyModule *CPyModule_faster_eth_utils___module_loading__internal = NULL;
 CPyModule *CPyModule_faster_eth_utils___module_loading;
 PyObject *CPyStatic_module_loading___globals;
@@ -50422,7 +54819,6 @@ CPyModule *CPyModule_pathlib;
 CPyModule *CPyModule_faster_eth_utils___numeric__internal = NULL;
 CPyModule *CPyModule_faster_eth_utils___numeric;
 PyObject *CPyStatic_numeric___globals;
-CPyModule *CPyModule_abc;
 CPyModule *CPyModule_numbers;
 PyObject *CPyStatic_toolz___globals;
 CPyModule *CPyModule_cytoolz;
@@ -50923,6 +55319,76 @@ PyObject *CPyPy_humanize___humanize_integer_sequence(PyObject *self, PyObject *c
 PyObject *CPyDef_humanize___humanize_wei(CPyTagged cpy_r_number);
 PyObject *CPyPy_humanize___humanize_wei(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 char CPyDef_humanize_____top_level__(void);
+PyObject *CPyStatic_logging___Logger = NULL;
+PyObject *CPyStatic_logging___getLogger = NULL;
+PyObject *CPyStatic_logging___getLoggerClass = NULL;
+PyObject *CPyStatic_logging___setLoggerClass = NULL;
+PyTypeObject *CPyType_logging___ExtendedDebugLogger;
+PyObject *CPyDef_logging___ExtendedDebugLogger(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+PyTypeObject *CPyType_logging___HasLoggerMeta;
+PyTypeObject *CPyType_logging___HasLogger;
+PyTypeObject *CPyType_logging___HasExtendedDebugLogger;
+PyObject *CPyDef_logging___HasExtendedDebugLogger(void);
+PyTypeObject *CPyType_logging___debug2_ExtendedDebugLogger_env;
+PyObject *CPyDef_logging___debug2_ExtendedDebugLogger_env(void);
+CPyThreadLocal faster_eth_utils___logging___debug2_ExtendedDebugLogger_envObject *logging___debug2_ExtendedDebugLogger_env_free_instance;
+PyTypeObject *CPyType_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj;
+PyObject *CPyDef_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj(void);
+CPyThreadLocal faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject *logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_free_instance;
+PyTypeObject *CPyType_logging____use_logger_class_gen;
+PyObject *CPyDef_logging____use_logger_class_gen(void);
+CPyThreadLocal faster_eth_utils___logging____use_logger_class_genObject *logging____use_logger_class_gen_free_instance;
+PyTypeObject *CPyType_logging_____new___3_HasLoggerMeta_obj;
+PyObject *CPyDef_logging_____new___3_HasLoggerMeta_obj(void);
+CPyThreadLocal faster_eth_utils___logging_____new___3_HasLoggerMeta_objObject *logging_____new___3_HasLoggerMeta_obj_free_instance;
+PyTypeObject *CPyType_logging___replace_logger_class_HasLoggerMeta_obj;
+PyObject *CPyDef_logging___replace_logger_class_HasLoggerMeta_obj(void);
+CPyThreadLocal faster_eth_utils___logging___replace_logger_class_HasLoggerMeta_objObject *logging___replace_logger_class_HasLoggerMeta_obj_free_instance;
+PyTypeObject *CPyType_logging___meta_compat_HasLoggerMeta_obj;
+PyObject *CPyDef_logging___meta_compat_HasLoggerMeta_obj(void);
+CPyThreadLocal faster_eth_utils___logging___meta_compat_HasLoggerMeta_objObject *logging___meta_compat_HasLoggerMeta_obj_free_instance;
+char CPyDef_logging___ExtendedDebugLogger___show_debug2(PyObject *cpy_r_self);
+PyObject *CPyPy_logging___ExtendedDebugLogger___show_debug2(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+PyObject *CPyPy_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+char CPyDef_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_message, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+PyObject *CPyPy_logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+char CPyDef_logging___ExtendedDebugLogger___debug2(PyObject *cpy_r_self, PyObject *cpy_r_message, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+PyObject *CPyPy_logging___ExtendedDebugLogger___debug2(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef_logging___ExtendedDebugLogger_____reduce__(PyObject *cpy_r_self);
+PyObject *CPyPy_logging___ExtendedDebugLogger_____reduce__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+char CPyDef_logging___setup_DEBUG2_logging(void);
+PyObject *CPyPy_logging___setup_DEBUG2_logging(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef_logging____use_logger_class_gen_____mypyc_generator_helper__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg, PyObject **cpy_r_stop_iter_ptr);
+PyObject *CPyDef_logging____use_logger_class_gen_____next__(PyObject *cpy_r___mypyc_self__);
+PyObject *CPyPy_logging____use_logger_class_gen_____next__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef_logging____use_logger_class_gen___send(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);
+PyObject *CPyPy_logging____use_logger_class_gen___send(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef_logging____use_logger_class_gen_____iter__(PyObject *cpy_r___mypyc_self__);
+PyObject *CPyPy_logging____use_logger_class_gen_____iter__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef_logging____use_logger_class_gen___throw(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback);
+PyObject *CPyPy_logging____use_logger_class_gen___throw(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef_logging____use_logger_class_gen___close(PyObject *cpy_r___mypyc_self__);
+PyObject *CPyPy_logging____use_logger_class_gen___close(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef_logging____use_logger_class(PyObject *cpy_r_logger_class);
+PyObject *CPyPy_logging____use_logger_class(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef_logging___get_logger(PyObject *cpy_r_name, PyObject *cpy_r_logger_class);
+PyObject *CPyPy_logging___get_logger(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef_logging___get_extended_debug_logger(PyObject *cpy_r_name);
+PyObject *CPyPy_logging___get_extended_debug_logger(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef_logging_____new___3_HasLoggerMeta_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+PyObject *CPyPy_logging_____new___3_HasLoggerMeta_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef_logging_____new___3_HasLoggerMeta_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_mcls, PyObject *cpy_r_name, PyObject *cpy_r_bases, PyObject *cpy_r_namespace);
+PyObject *CPyPy_logging_____new___3_HasLoggerMeta_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef_logging___replace_logger_class_HasLoggerMeta_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+PyObject *CPyPy_logging___replace_logger_class_HasLoggerMeta_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef_logging___replace_logger_class_HasLoggerMeta_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_mcls, PyObject *cpy_r_value);
+PyObject *CPyPy_logging___replace_logger_class_HasLoggerMeta_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef_logging___meta_compat_HasLoggerMeta_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+PyObject *CPyPy_logging___meta_compat_HasLoggerMeta_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef_logging___meta_compat_HasLoggerMeta_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_mcls, PyObject *cpy_r_other);
+PyObject *CPyPy_logging___meta_compat_HasLoggerMeta_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+char CPyDef_logging_____top_level__(void);
 PyObject *CPyDef_module_loading___import_string(PyObject *cpy_r_dotted_path);
 PyObject *CPyPy_module_loading___import_string(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 char CPyDef_module_loading_____top_level__(void);
@@ -51198,6 +55664,17 @@ static int exec_faster_eth_utils__mypyc(PyObject *module)
         goto fail;
     }
     res = PyObject_SetAttrString(module, "init_faster_eth_utils___humanize", capsule);
+    Py_DECREF(capsule);
+    if (res < 0) {
+        goto fail;
+    }
+    
+    extern PyObject *CPyInit_faster_eth_utils___logging(void);
+    capsule = PyCapsule_New((void *)CPyInit_faster_eth_utils___logging, "faster_eth_utils__mypyc.init_faster_eth_utils___logging", NULL);
+    if (!capsule) {
+        goto fail;
+    }
+    res = PyObject_SetAttrString(module, "init_faster_eth_utils___logging", capsule);
     Py_DECREF(capsule);
     if (res < 0) {
         goto fail;

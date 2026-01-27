@@ -80,6 +80,21 @@ typedef struct tuple_T2II {
 } tuple_T2II;
 #endif
 
+#ifndef MYPYC_DECLARED_tuple_T1O
+#define MYPYC_DECLARED_tuple_T1O
+typedef struct tuple_T1O {
+    PyObject *f0;
+} tuple_T1O;
+#endif
+
+#ifndef MYPYC_DECLARED_tuple_T2OT1O
+#define MYPYC_DECLARED_tuple_T2OT1O
+typedef struct tuple_T2OT1O {
+    PyObject *f0;
+    tuple_T1O f1;
+} tuple_T2OT1O;
+#endif
+
 #ifndef MYPYC_DECLARED_tuple_T0
 #define MYPYC_DECLARED_tuple_T0
 typedef struct tuple_T0 {
@@ -96,13 +111,6 @@ typedef struct tuple_T5OOOOO {
     PyObject *f3;
     PyObject *f4;
 } tuple_T5OOOOO;
-#endif
-
-#ifndef MYPYC_DECLARED_tuple_T1O
-#define MYPYC_DECLARED_tuple_T1O
-typedef struct tuple_T1O {
-    PyObject *f0;
-} tuple_T1O;
 #endif
 
 typedef struct {
@@ -508,6 +516,60 @@ typedef struct {
     PyObject *___mypyc_generator_attribute__right;
     PyObject *___mypyc_generator_attribute__chunk;
 } faster_eth_utils___humanize____extract_integer_ranges_genObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+} faster_eth_utils___logging___ExtendedDebugLoggerObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *_logger;
+} faster_eth_utils___logging___HasExtendedDebugLoggerObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
+    PyObject *_self;
+    PyObject *_message;
+    PyObject *_args;
+    PyObject *_kwargs;
+} faster_eth_utils___logging___debug2_ExtendedDebugLogger_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+    PyObject *___mypyc_env__;
+} faster_eth_utils___logging_____mypyc_lambda__0_debug2_ExtendedDebugLogger_objObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_generator_attribute__logger_class;
+    int32_t ___mypyc_next_label__;
+    PyObject *___mypyc_generator_attribute__original_logger_class;
+} faster_eth_utils___logging____use_logger_class_genObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+} faster_eth_utils___logging_____new___3_HasLoggerMeta_objObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+} faster_eth_utils___logging___replace_logger_class_HasLoggerMeta_objObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+} faster_eth_utils___logging___meta_compat_HasLoggerMeta_objObject;
 
 typedef struct {
     PyObject_HEAD
