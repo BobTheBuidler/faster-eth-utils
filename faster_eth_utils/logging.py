@@ -16,8 +16,7 @@ from typing import (
     overload,
 )
 
-
-DEBUG2_LEVEL_NUM = 8
+DEBUG2_LEVEL_NUM: Final = 8
 
 TLogger = TypeVar("TLogger", bound=logging.Logger)
 
