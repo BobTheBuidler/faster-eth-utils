@@ -16,9 +16,6 @@ from typing import (
     overload,
 )
 
-from .toolz import (
-    assoc,
-)
 
 DEBUG2_LEVEL_NUM = 8
 
@@ -126,7 +123,9 @@ class HasLoggerMeta(type):
     
         logger = get_logger(namespace["__qualname__"], mcls.logger_class)
 
-        return super().__new__(mcls, name, bases, assoc(namespace, "logger", logger))
+        namespace_with_logger = dict(namespace)
+        namespace_with_logger["logger"] = logger
+        return super().__new__(mcls, name, bases, namespace_with_logger)
 
     @classmethod
     def replace_logger_class(
