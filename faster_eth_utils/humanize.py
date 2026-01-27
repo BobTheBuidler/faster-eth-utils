@@ -1,3 +1,4 @@
+import itertools
 from collections.abc import (
     Iterable,
     Iterator,
@@ -22,6 +23,8 @@ from faster_eth_utils.currency import (
 
 from . import toolz
 
+islice: Final = itertools.islice
+
 
 def humanize_seconds(seconds: float | int) -> str:
     seconds_int = int(seconds)
@@ -30,7 +33,7 @@ def humanize_seconds(seconds: float | int) -> str:
 
     unit_values = _consume_leading_zero_units(_humanize_seconds(seconds_int))
 
-    return "".join(f"{amount}{unit}" for amount, unit in toolz.take(3, unit_values))
+    return "".join(f"{amount}{unit}" for amount, unit in islice(unit_values, 3))
 
 
 SECOND: Final = 1
