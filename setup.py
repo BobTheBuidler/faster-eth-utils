@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 import sys
+import platform
+from typing import Final
 
 from setuptools import Extension, find_packages, setup
 
@@ -13,41 +15,50 @@ else:
         for cmd in ("sdist", "egg_info", "--name", "--version", "--help", "--help-commands")
     )
 
+VERSION: Final = "5.3.24"
+DESCRIPTION: Final = "A faster fork of eth-utils: Common utility functions for python code that interacts with Ethereum. Implemented in C."
+
 ext_modules: list[Extension] = []
 
 if not skip_mypyc:
+    mypyc_targets = [
+        "faster_eth_utils/abi.py",
+        "faster_eth_utils/address.py",
+        "faster_eth_utils/applicators.py",
+        "faster_eth_utils/conversions.py",
+        "faster_eth_utils/crypto.py",
+        "faster_eth_utils/currency.py",
+        "faster_eth_utils/debug.py",
+        "faster_eth_utils/decorators.py",
+        "faster_eth_utils/encoding.py",
+        "faster_eth_utils/exceptions.py",
+        "faster_eth_utils/functional.py",
+        "faster_eth_utils/hexadecimal.py",
+        "faster_eth_utils/humanize.py",
+        "faster_eth_utils/logging.py",
+        "faster_eth_utils/module_loading.py",
+        "faster_eth_utils/network.py",
+        "faster_eth_utils/numeric.py",
+        "faster_eth_utils/toolz.py",
+        "faster_eth_utils/types.py",
+        "faster_eth_utils/units.py",
+        "--strict",
+        "--disable-error-code=unused-ignore",
+        "--disable-error-code=redundant-cast",
+    ]
+
+    if sys.platform.startswith("linux") and platform.architecture()[0] == "32bit":
+        # 32-bit Linux release runners miss the pydantic build-time dependency,
+        # so mypyc needs this relaxation to avoid failing type checks there.
+        mypyc_targets.append("--disable-error-code=no-any-return")
+
     ext_modules = mypycify(
-        [
-            "faster_eth_utils/abi.py",
-            "faster_eth_utils/address.py",
-            "faster_eth_utils/applicators.py",
-            "faster_eth_utils/conversions.py",
-            "faster_eth_utils/crypto.py",
-            "faster_eth_utils/currency.py",
-            "faster_eth_utils/debug.py",
-            "faster_eth_utils/decorators.py",
-            "faster_eth_utils/encoding.py",
-            "faster_eth_utils/exceptions.py",
-            "faster_eth_utils/functional.py",
-            "faster_eth_utils/hexadecimal.py",
-            "faster_eth_utils/humanize.py",
-            "faster_eth_utils/logging.py",
-            "faster_eth_utils/module_loading.py",
-            "faster_eth_utils/network.py",
-            "faster_eth_utils/numeric.py",
-            "faster_eth_utils/toolz.py",
-            "faster_eth_utils/types.py",
-            "faster_eth_utils/units.py",
-            "--pretty",
-            "--strict",
-            "--disable-error-code=unused-ignore",
-            "--disable-error-code=redundant-cast",
-        ],
+        mypyc_targets,
         group_name="faster_eth_utils",
         strict_dunder_typing=True,
     )
 
-MYPY_REQUIREMENT = "mypy==1.18.2"
+MYPY_REQUIREMENT = "mypy==1.19.1"
 PYTEST_REQUIREMENT = "pytest>=7.0.0"
 
 
@@ -89,10 +100,8 @@ with open("./README.md") as readme:
 setup(
     name="faster-eth-utils",
     # *IMPORTANT*: Don't manually change the version here. Use `make bump`, as described in readme
-    version="5.3.21",
-    description=(
-        """A faster fork of eth-utils: Common utility functions for python code that interacts with Ethereum. Implemented in C"""
-    ),
+    version=VERSION,
+    description=DESCRIPTION,
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="The Ethereum Foundation",
@@ -110,10 +119,11 @@ setup(
     },
     include_package_data=True,
     install_requires=[
-        "cchecksum==0.3.9",
+        "cchecksum==0.4.1",
         "eth-hash>=0.3.1",
         "eth-typing==5.2.1",
         "eth-utils==5.3.1",
+        "mypy-extensions>=0.4.2",
         "toolz>0.8.2;implementation_name=='pypy'",
         "cytoolz>=0.10.1;implementation_name=='cpython'",
         "pydantic>=2.0.0,<3",
@@ -122,11 +132,13 @@ setup(
     extras_require=extras_require,
     py_modules=["eth_utils"],
     license="MIT",
+    license_files=["LICENSE"],
     zip_safe=False,
     keywords="ethereum",
-    packages=find_packages(exclude=["tests", "tests.*"]),
+    packages=find_packages(exclude=["scripts", "scripts.*", "tests", "tests.*"]),
+    ext_modules=ext_modules,
+    package_data={"faster_eth_utils": ["py.typed"]},
     classifiers=[
-        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
