@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 import sys
-from setuptools import (
-    find_packages,
-    setup,
-)
+
+from setuptools import Extension, find_packages, setup
+
 try:
     from mypyc.build import mypycify
 except ImportError:
@@ -14,9 +13,9 @@ else:
         for cmd in ("sdist", "egg_info", "--name", "--version", "--help", "--help-commands")
     )
 
-if skip_mypyc:
-    ext_modules = []
-else:
+ext_modules: list[Extension] = []
+
+if not skip_mypyc:
     ext_modules = mypycify(
         [
             "faster_eth_utils/abi.py",
@@ -40,12 +39,9 @@ else:
             "faster_eth_utils/types.py",
             "faster_eth_utils/units.py",
             "--pretty",
-            "--install-types",
-            "--disable-error-code=attr-defined",
-            "--disable-error-code=comparison-overlap",
-            "--disable-error-code=no-any-return",
-            "--disable-error-code=misc",
+            "--strict",
             "--disable-error-code=unused-ignore",
+            "--disable-error-code=redundant-cast",
         ],
         group_name="faster_eth_utils",
         strict_dunder_typing=True,
@@ -55,7 +51,7 @@ MYPY_REQUIREMENT = "mypy==1.18.2"
 PYTEST_REQUIREMENT = "pytest>=7.0.0"
 
 
-def read_requirements(path):
+def read_requirements(path: str) -> list[str]:
     with open(path) as f:
         reqs = set()
         for line in f:
@@ -93,7 +89,7 @@ with open("./README.md") as readme:
 setup(
     name="faster-eth-utils",
     # *IMPORTANT*: Don't manually change the version here. Use `make bump`, as described in readme
-    version="5.3.20",
+    version="5.3.21",
     description=(
         """A faster fork of eth-utils: Common utility functions for python code that interacts with Ethereum. Implemented in C"""
     ),
@@ -114,7 +110,7 @@ setup(
     },
     include_package_data=True,
     install_requires=[
-        "cchecksum==0.3.7.dev0",
+        "cchecksum==0.3.9",
         "eth-hash>=0.3.1",
         "eth-typing==5.2.1",
         "eth-utils==5.3.1",
@@ -122,26 +118,23 @@ setup(
         "cytoolz>=0.10.1;implementation_name=='cpython'",
         "pydantic>=2.0.0,<3",
     ],
-    python_requires=">=3.8, <4",
+    python_requires=">=3.10, <4",
     extras_require=extras_require,
     py_modules=["eth_utils"],
     license="MIT",
-    license_files=["LICENSE"],
     zip_safe=False,
     keywords="ethereum",
-    packages=find_packages(exclude=["scripts", "scripts.*", "tests", "tests.*"]),
-    ext_modules=ext_modules,
-    package_data={"faster_eth_utils": ["py.typed"]},
+    packages=find_packages(exclude=["tests", "tests.*"]),
     classifiers=[
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
         "Programming Language :: Python :: Implementation :: CPython",
     ],
 )

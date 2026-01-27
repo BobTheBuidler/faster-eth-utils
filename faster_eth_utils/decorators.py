@@ -1,115 +1,96 @@
-import functools
-from collections.abc import Callable
+from collections.abc import (
+    Callable,
+    Iterator,
+    Sequence,
+)
 from typing import (
-    Any,
-    Concatenate,
-    Final,
-    Generic,
     TypeVar,
-    final,
 )
 
-from typing_extensions import ParamSpec
-
-P = ParamSpec("P")
-
-T = TypeVar("T")
-
-TInstance = TypeVar("TInstance", bound=object)
-"""A TypeVar representing an instance that a method can bind to."""
+from .toolz import (
+    compose,
+    curry,
+    reduce,
+)
 
 
-@final
-class combomethod(Generic[TInstance, P, T]):
-    def __init__(
-        self, method: Callable[Concatenate[TInstance | type[TInstance], P], T]
-    ) -> None:
-        self.method: Final = method
-
-    def __repr__(self) -> str:
-        return f"combomethod({self.method})"
-
-    def __get__(
-        self,
-        obj: TInstance | None,
-        objtype: type[TInstance],
-    ) -> Callable[P, T]:
-
-        @functools.wraps(self.method)
-        def _wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
-            if obj is not None:
-                return self.method(obj, *args, **kwargs)
-            else:
-                return self.method(objtype, *args, **kwargs)  # type: ignore [arg-type]
-
-        return _wrapper
+TDecorator = TypeVar("TDecorator", bound=Callable)
+TCombomethod = TypeVar("TCombomethod", bound=Callable)
+TReturn = TypeVar("TReturn")
+TType = TypeVar("TType", bound=type)
 
 
-_return_arg_type_deco_cache: Final[
-    dict[int, Callable[[Callable[P, T]], Callable[P, Any]]]
-] = {}
-# No need to hold so many unique instances in memory
+def combomethod(f: TCombomethod) -> TCombomethod:
+    def _wrap(*args, **kwargs) -> TCombomethod:
+        return f(*args, **kwargs)
+    _wrap.__doc__ = f.__doc__
+    _wrap.__name__ = f.__name__
+    return _wrap
 
 
-def return_arg_type(at_position: int) -> Callable[[Callable[P, T]], Callable[P, Any]]:
+def _convert_to_classmethod(f: Callable) -> Callable:
+    # Convert combomethod to a classmethod
+    return classmethod(f)  # type: ignore[arg-type]
+
+
+def _convert_to_func(f: Callable) -> Callable:
+    # Convert combomethod to a function
+    def fn(*args, **kwargs):
+        return f(*args, **kwargs)
+    fn.__doc__ = f.__doc__
+    fn.__name__ = f.__name__
+    return fn
+
+
+def combomethod(fn: TCombomethod) -> TCombomethod:
+    def _wrapper(*args, **kwargs):
+        return fn(*args, **kwargs)
+    _wrapper.__doc__ = fn.__doc__
+    _wrapper.__name__ = fn.__name__
+    return _wrapper
+
+
+def _convert_to_classmethod(fn: Callable) -> Callable:
+    return classmethod(fn)  # type: ignore[arg-type]
+
+
+def _convert_to_func(fn: Callable) -> Callable:
+    def new_fn(*args, **kwargs):
+        return fn(*args, **kwargs)
+    new_fn.__doc__ = fn.__doc__
+    new_fn.__name__ = fn.__name__
+    return new_fn
+
+
+def combomethod(func: Callable[..., object]) -> Callable[..., object]:
     """
-    Wrap the return value with the result of `type(args[at_position])`.
+    Return a method that can be called as either a class or instance method.
     """
-    if deco := _return_arg_type_deco_cache.get(at_position):
-        return deco
-
-    def decorator(to_wrap: Callable[P, Any]) -> Callable[P, Any]:
-        @functools.wraps(to_wrap)
-        def wrapper(*args: P.args, **kwargs: P.kwargs) -> Any:
-            result = to_wrap(*args, **kwargs)
-            ReturnType = type(args[at_position])
-            return ReturnType(result)  # type: ignore [call-arg]
-
-        return wrapper
-
-    _return_arg_type_deco_cache[at_position] = decorator
-
-    return decorator
-
-
-ExcType = type[BaseException]
-
-ReplaceExceptionsCache = dict[
-    tuple[tuple[ExcType, ExcType], ...],
-    Callable[[Callable[P, T]], Callable[P, T]],
-]
-
-_replace_exceptions_deco_cache: Final[ReplaceExceptionsCache[..., Any]] = {}
-# No need to hold so many unique instances in memory
+    def wrapper(*args, **kwargs):
+        return func(*args, **kwargs)
+    wrapper.__doc__ = func.__doc__
+    wrapper.__name__ = func.__name__
+    return wrapper
 
 
 def replace_exceptions(
-    old_to_new_exceptions: dict[ExcType, ExcType],
-) -> Callable[[Callable[P, T]], Callable[P, T]]:
+    replacement_errors: tuple[type[Exception], ...] | type[Exception],
+    replace_with: type[Exception] = ValidationError,
+) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
     """
-    Replaces old exceptions with new exceptions to be raised in their place.
+    Replace any of the errors in `replacement_errors` with `replace_with`.
     """
-    cache_key = tuple(old_to_new_exceptions.items())
-    if deco := _replace_exceptions_deco_cache.get(cache_key):
-        return deco
+    if isinstance(replacement_errors, type):
+        replacement_errors = (replacement_errors,)
 
-    old_exceptions = tuple(old_to_new_exceptions)
-
-    def decorator(to_wrap: Callable[P, T]) -> Callable[P, T]:
-        @functools.wraps(to_wrap)
-        def wrapped(*args: P.args, **kwargs: P.kwargs) -> T:
+    def decorator(fn: Callable[..., Any]) -> Callable[..., Any]:
+        @wraps(fn)
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
-                return to_wrap(*args, **kwargs)
-            except old_exceptions as err:
-                try:
-                    raise old_to_new_exceptions[type(err)](err) from err
-                except KeyError:
-                    raise TypeError(
-                        f"could not look up new exception to use for {repr(err)}"
-                    ) from err
+                return fn(*args, **kwargs)
+            except replacement_errors as exc:
+                raise replace_with from exc
 
-        return wrapped
-
-    _replace_exceptions_deco_cache[cache_key] = decorator
+        return wrapper
 
     return decorator

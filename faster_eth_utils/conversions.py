@@ -1,189 +1,262 @@
+import collections
+from collections.abc import (
+    Mapping,
+    Sequence,
+)
 from typing import (
-    TypeVar,
-    Union,
-)
-from collections.abc import Callable
-
-from eth_typing import (
-    HexStr,
-    Primitives,
+    Any,
+    cast,
 )
 
-from .encoding import (
-    big_endian_to_int,
-    int_to_big_endian,
-)
-from .hexadecimal import (
-    add_0x_prefix,
-    decode_hex,
-    encode_hex,
-    is_hexstr,
-    remove_0x_prefix,
-)
-from .types import (
-    is_string,
+from .functional import (
+    to_ordered_dict,
 )
 
-T = TypeVar("T")
 
-BytesLike = Union[Primitives, bytearray, memoryview]
-
-
-def to_hex(
-    primitive: BytesLike | None = None,
-    hexstr: HexStr | None = None,
+def to_dict(
+    primitive: Any,
+    hexstr: str | None = None,
     text: str | None = None,
-) -> HexStr:
-    """
-    Auto converts any supported value into its hex representation.
-    Trims leading zeros, as defined in:
-    https://github.com/ethereum/wiki/wiki/JSON-RPC#hex-value-encoding
-    """
+) -> dict[Any, Any]:
     if hexstr is not None:
-        return add_0x_prefix(HexStr(hexstr.lower()))
-
-    if text is not None:
-        return encode_hex(text.encode("utf-8"))
-
-    if isinstance(primitive, bool):
-        return HexStr("0x1") if primitive else HexStr("0x0")
-
-    if isinstance(primitive, (bytes, bytearray)):
-        return encode_hex(primitive)
-
-    if isinstance(primitive, memoryview):
-        return encode_hex(bytes(primitive))
-
-    elif is_string(primitive):
-        raise TypeError(
-            "Unsupported type: The primitive argument must be one of: bytes,"
-            "bytearray, int or bool and not str"
-        )
-
-    if isinstance(primitive, int):
-        return HexStr(hex(primitive))
-
-    raise TypeError(
-        f"Unsupported type: '{repr(type(primitive))}'. Must be one of: bool, str, "
-        "bytes, bytearray or int."
-    )
-
-
-def to_int(
-    primitive: BytesLike | None = None,
-    hexstr: HexStr | None = None,
-    text: str | None = None,
-) -> int:
-    """
-    Converts value to its integer representation.
-    Values are converted this way:
-
-     * primitive:
-
-       * bytes, bytearray, memoryview: big-endian integer
-       * bool: True => 1, False => 0
-       * int: unchanged
-     * hexstr: interpret hex as integer
-     * text: interpret as string of digits, like '12' => 12
-    """
-    if hexstr is not None:
-        return int(hexstr, 16)
+        return to_dict(hexstr, text=text)
     elif text is not None:
-        return int(text)
-    elif isinstance(primitive, (bytes, bytearray)):
-        return big_endian_to_int(primitive)
-    elif isinstance(primitive, memoryview):
-        return big_endian_to_int(bytes(primitive))
-    elif isinstance(primitive, str):
-        raise TypeError("Pass in strings with keyword hexstr or text")
-    elif isinstance(primitive, (int, bool)):
-        return int(primitive)
-    else:
-        raise TypeError(
-            "Invalid type. Expected one of int/bool/str/bytes/bytearray. Got "
-            f"{type(primitive)}"
-        )
-
-
-def to_bytes(
-    primitive: BytesLike | None = None,
-    hexstr: HexStr | None = None,
-    text: str | None = None,
-) -> bytes:
-    if isinstance(primitive, bool):
-        return b"\x01" if primitive else b"\x00"
-    elif isinstance(primitive, (bytearray, memoryview)):
-        return bytes(primitive)
-    elif isinstance(primitive, bytes):
+        return to_dict(text)
+    elif is_dict(primitive):
         return primitive
-    elif isinstance(primitive, int):
-        return to_bytes(hexstr=to_hex(primitive))
-    elif hexstr is not None:
-        if len(hexstr) % 2:
-            hexstr = "0x0" + remove_0x_prefix(hexstr)  # type: ignore [assignment]
-        return decode_hex(hexstr)
-    elif text is not None:
-        return text.encode("utf-8")
-    raise TypeError(
-        "expected a bool, int, byte or bytearray in first arg, "
-        "or keyword of hexstr or text"
-    )
+    elif not isinstance(primitive, str):
+        return dict(cast(Mapping, primitive))
+    return _to_dict_from_str(primitive)
 
 
-def to_text(
-    primitive: BytesLike | None = None,
-    hexstr: HexStr | None = None,
+def _to_dict_from_str(primitive: str) -> dict[Any, Any]:
+    if is_0x_prefixed(primitive):
+        return to_dict(hexstr=primitive)
+    elif not isinstance(primitive, str):
+        raise TypeError("Value must be an instance of str")
+    elif not hexstr and not text:
+        raise TypeError(
+            "must provide a hexstr or text keyword argument if value is string"
+        )
+    elif hexstr is not None and text is not None:
+        raise TypeError("cannot provide both hexstr and text")
+
+    return _to_dict_from_str(primitive)
+
+
+def to_ordered_dict(
+    primitive: Any,
+    hexstr: str | None = None,
     text: str | None = None,
-) -> str:
-    if hexstr is not None:
-        return to_bytes(hexstr=hexstr).decode("utf-8")
-    elif text is not None:
-        return text
-    elif isinstance(primitive, str):
-        return to_text(hexstr=primitive)
-    elif isinstance(primitive, (bytes, bytearray)):
-        return primitive.decode("utf-8")
-    elif isinstance(primitive, memoryview):
-        return bytes(primitive).decode("utf-8")
-    elif isinstance(primitive, int):
-        return int_to_big_endian(primitive).decode("utf-8")
-    raise TypeError("Expected an int, bytes, bytearray or hexstr.")
+) -> collections.OrderedDict[Any, Any]:
+    return collections.OrderedDict(to_dict(primitive, hexstr=hexstr, text=text))
 
 
-def text_if_str(
-    to_type: Callable[..., T], text_or_primitive: bytes | int | str
-) -> T:
-    """
-    Convert to a type, assuming that strings can be only unicode text (not a hexstr).
-
-    :param to_type function: takes the arguments (primitive, hexstr=hexstr, text=text),
-        eg~ to_bytes, to_text, to_hex, to_int, etc
-    :param text_or_primitive bytes, str, int: value to convert
-    """
-    if isinstance(text_or_primitive, str):
-        return to_type(text=text_or_primitive)
-    else:
-        return to_type(text_or_primitive)
+def is_tuple(value: Any) -> bool:
+    return isinstance(value, tuple)
 
 
-def hexstr_if_str(
-    to_type: Callable[..., T], hexstr_or_primitive: bytes | int | str
-) -> T:
-    """
-    Convert to a type, assuming that strings can be only hexstr (not unicode text).
+def is_list(value: Any) -> bool:
+    return isinstance(value, list)
 
-    :param to_type function: takes the arguments (primitive, hexstr=hexstr, text=text),
-        eg~ to_bytes, to_text, to_hex, to_int, etc
-    :param hexstr_or_primitive bytes, str, int: value to convert
-    """
-    if isinstance(hexstr_or_primitive, str):
-        if remove_0x_prefix(HexStr(hexstr_or_primitive)) and not is_hexstr(
-            hexstr_or_primitive
-        ):
-            raise ValueError(
-                "when sending a str, it must be a hex string. "
-                f"Got: {repr(hexstr_or_primitive)}"
-            )
-        return to_type(hexstr=hexstr_or_primitive)
-    else:
-        return to_type(hexstr_or_primitive)
+
+def is_list_like(value: Any) -> bool:
+    return isinstance(value, (list, tuple, set, range))
+
+
+def is_list_like_or_generator(value: Any) -> bool:
+    return isinstance(value, (list, tuple, set, range, collections.abc.Generator))
+
+
+def is_dict(value: Any) -> bool:
+    return isinstance(value, collections.abc.Mapping)
+
+
+def is_bytes(value: Any) -> bool:
+    return isinstance(value, (bytes, bytearray, memoryview))
+
+
+def is_text(value: Any) -> bool:
+    return isinstance(value, str)
+
+
+def is_string(value: Any) -> bool:
+    return is_text(value)
+
+
+def is_integer(value: Any) -> bool:
+    return isinstance(value, int) and not isinstance(value, bool)
+
+
+def is_boolean(value: Any) -> bool:
+    return isinstance(value, bool)
+
+
+def is_number(value: Any) -> bool:
+    return is_integer(value) or isinstance(value, float)
+
+
+def is_hex(value: Any) -> bool:
+    if not is_text(value):
+        raise TypeError(f"Value must be an instance of str, got {type(value)}")
+    if value[:2] == "0x":
+        value = value[2:]
+    return is_hexstr(value)
+
+
+def is_hex_address(value: Any) -> bool:
+    if not is_text(value):
+        return False
+    return value.startswith("0x")
+
+
+def is_binary_address(value: Any) -> bool:
+    return is_bytes(value)
+
+
+def is_address(value: Any) -> bool:
+    if not is_text(value):
+        return False
+    value = remove_0x_prefix(value)
+    if len(value) != 40:
+        return False
+    return is_hex(value)
+
+
+def is_same_address(address1: str, address2: str) -> bool:
+    if not is_text(address1) or not is_text(address2):
+        raise TypeError("Both values must be strings")
+    if not is_address(address1) or not is_address(address2):
+        raise ValueError("Both values must be valid addresses")
+    return to_normalized_address(address1) == to_normalized_address(address2)
+
+
+def is_checksum_address(value: Any) -> bool:
+    if not is_text(value):
+        return False
+    return value == to_checksum_address(value)
+
+
+def is_checksum_formatted_address(value: Any) -> bool:
+    return is_checksum_address(value)
+
+
+def is_canonical_address(value: Any) -> bool:
+    if not is_bytes(value):
+        return False
+    return len(value) == 20
+
+
+def is_normalized_address(value: Any) -> bool:
+    if not is_text(value):
+        return False
+    return value == to_normalized_address(value)
+
+
+def is_null(value: Any) -> bool:
+    return value is None
+
+
+def is_hexstr(value: Any) -> bool:
+    return is_hex(value)
+
+
+def is_list_like_or_generator(value: Any) -> bool:
+    return isinstance(value, (list, tuple, set, range, collections.abc.Generator))
+
+
+def is_tuple(value: Any) -> bool:
+    return isinstance(value, tuple)
+
+
+def is_dict(value: Any) -> bool:
+    return isinstance(value, collections.abc.Mapping)
+
+
+def is_bytes(value: Any) -> bool:
+    return isinstance(value, (bytes, bytearray, memoryview))
+
+
+def is_text(value: Any) -> bool:
+    return isinstance(value, str)
+
+
+def is_string(value: Any) -> bool:
+    return is_text(value)
+
+
+def is_integer(value: Any) -> bool:
+    return isinstance(value, int) and not isinstance(value, bool)
+
+
+def is_boolean(value: Any) -> bool:
+    return isinstance(value, bool)
+
+
+def is_number(value: Any) -> bool:
+    return is_integer(value) or isinstance(value, float)
+
+
+def is_hex(value: Any) -> bool:
+    if not is_text(value):
+        raise TypeError(f"Value must be an instance of str, got {type(value)}")
+    if value[:2] == "0x":
+        value = value[2:]
+    return is_hexstr(value)
+
+
+def is_hex_address(value: Any) -> bool:
+    if not is_text(value):
+        return False
+    return value.startswith("0x")
+
+
+def is_binary_address(value: Any) -> bool:
+    return is_bytes(value)
+
+
+def is_address(value: Any) -> bool:
+    if not is_text(value):
+        return False
+    value = remove_0x_prefix(value)
+    if len(value) != 40:
+        return False
+    return is_hex(value)
+
+
+def is_same_address(address1: str, address2: str) -> bool:
+    if not is_text(address1) or not is_text(address2):
+        raise TypeError("Both values must be strings")
+    if not is_address(address1) or not is_address(address2):
+        raise ValueError("Both values must be valid addresses")
+    return to_normalized_address(address1) == to_normalized_address(address2)
+
+
+def is_checksum_address(value: Any) -> bool:
+    if not is_text(value):
+        return False
+    return value == to_checksum_address(value)
+
+
+def is_checksum_formatted_address(value: Any) -> bool:
+    return is_checksum_address(value)
+
+
+def is_canonical_address(value: Any) -> bool:
+    if not is_bytes(value):
+        return False
+    return len(value) == 20
+
+
+def is_normalized_address(value: Any) -> bool:
+    if not is_text(value):
+        return False
+    return value == to_normalized_address(value)
+
+
+def is_null(value: Any) -> bool:
+    return value is None
+
+
+def is_hexstr(value: Any) -> bool:
+    return is_hex(value)

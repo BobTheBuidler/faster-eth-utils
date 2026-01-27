@@ -1,53 +1,13 @@
-#### [faster_eth_utils.address](https://github.com/BobTheBuidler/faster-eth-utils/blob/codex/refactor-get_normalized_abi_inputs-function/faster_eth_utils/address.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/codex/refactor-get_normalized_abi_inputs-function/benchmarks/test_address_benchmarks.py)
+# Address
 
-| Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
-|----------|---------------|-------------|----------|-------------|----------|--------|
-| `is_address[empty0]` | 3.989659567242038e-05 | 2.9972665158810986e-05 | 24.87% | 33.11% | 1.33x | ✅ |
-| `is_address[empty1]` | 2.3267977825898566e-05 | 7.56780190070324e-06 | 67.48% | 207.46% | 3.07x | ✅ |
-| `is_address[invalid-hex]` | 5.154023746182037e-05 | 3.926804728053118e-05 | 23.81% | 31.25% | 1.31x | ✅ |
-| `is_address[not-20-bytes]` | 2.3432568149191378e-05 | 7.425267683592793e-06 | 68.31% | 215.58% | 3.16x | ✅ |
-| `is_address[not-hex]` | 4.0419864846373404e-05 | 3.0007380233834103e-05 | 25.76% | 34.70% | 1.35x | ✅ |
-| `is_address[too-long]` | 2.3137039729183267e-05 | 7.4268198112521e-06 | 67.90% | 211.53% | 3.12x | ✅ |
-| `is_address[too-short0]` | 3.9560869767987336e-05 | 2.9752153218567614e-05 | 24.79% | 32.97% | 1.33x | ✅ |
-| `is_address[too-short1]` | 2.3442561610197942e-05 | 7.4259001753255535e-06 | 68.32% | 215.69% | 3.16x | ✅ |
-| `is_address[valid-checksummed0]` | 7.165521639463407e-05 | 6.123144048708088e-05 | 14.55% | 17.02% | 1.17x | ✅ |
-| `is_address[valid-checksummed1]` | 2.29820486613301e-05 | 7.48295633534079e-06 | 67.44% | 207.13% | 3.07x | ✅ |
-| `is_address[valid-lower0]` | 7.347668884155124e-05 | 6.265281147012544e-05 | 14.73% | 17.28% | 1.17x | ✅ |
-| `is_address[valid-lower1]` | 2.3341641301197597e-05 | 7.467858963494497e-06 | 68.01% | 212.56% | 3.13x | ✅ |
-| `is_binary_address[empty]` | 1.114670013807168e-05 | 6.980069728187528e-06 | 37.38% | 59.69% | 1.60x | ✅ |
-| `is_binary_address[not-20-bytes]` | 1.0941225359936639e-05 | 6.96271849940641e-06 | 36.36% | 57.14% | 1.57x | ✅ |
-| `is_binary_address[too-long]` | 1.104342599458052e-05 | 6.9063335437400185e-06 | 37.46% | 59.90% | 1.60x | ✅ |
-| `is_binary_address[too-short]` | 1.1027979016414105e-05 | 6.993874285310066e-06 | 36.58% | 57.68% | 1.58x | ✅ |
-| `is_binary_address[valid-checksummed]` | 1.094390117711365e-05 | 7.1053271061074565e-06 | 35.08% | 54.02% | 1.54x | ✅ |
-| `is_binary_address[valid-lower]` | 1.0967960163888503e-05 | 7.099219444722728e-06 | 35.27% | 54.50% | 1.54x | ✅ |
-| `is_canonical_address[empty]` | 5.746040228823321e-06 | 3.817710952878525e-06 | 33.56% | 50.51% | 1.51x | ✅ |
-| `is_canonical_address[not-20-bytes]` | 5.644088468303791e-06 | 3.7611949604047424e-06 | 33.36% | 50.06% | 1.50x | ✅ |
-| `is_canonical_address[too-long]` | 5.644199553016651e-06 | 3.769433989590526e-06 | 33.22% | 49.74% | 1.50x | ✅ |
-| `is_canonical_address[too-short]` | 5.6091908501348714e-06 | 3.7320353292719087e-06 | 33.47% | 50.30% | 1.50x | ✅ |
-| `is_canonical_address[valid-checksummed]` | 0.00021384427948443975 | 6.586411614191204e-05 | 69.20% | 224.67% | 3.25x | ✅ |
-| `is_canonical_address[valid-lower]` | 0.00020706614321298336 | 6.646475656007475e-05 | 67.90% | 211.54% | 3.12x | ✅ |
-| `is_checksum_address[invalid-false]` | 3.2611564841151316e-06 | 2.086939083761384e-06 | 36.01% | 56.27% | 1.56x | ✅ |
-| `is_checksum_address[not-checksum-false]` | 0.0001683974688015437 | 3.000808134918571e-05 | 82.18% | 461.17% | 5.61x | ✅ |
-| `is_checksum_address[valid-checksum-true]` | 0.00017042762804890348 | 2.9847155544042507e-05 | 82.49% | 471.00% | 5.71x | ✅ |
-| `is_checksum_formatted_address[invalid-false]` | 1.2595738430801712e-05 | 8.950282589900925e-06 | 28.94% | 40.73% | 1.41x | ✅ |
-| `is_checksum_formatted_address[lower-false]` | 6.28568084502849e-05 | 4.747137102988342e-05 | 24.48% | 32.41% | 1.32x | ✅ |
-| `is_checksum_formatted_address[mixed-case-true]` | 7.12292243480102e-05 | 5.755742570553273e-05 | 19.19% | 23.75% | 1.24x | ✅ |
-| `is_checksum_formatted_address[upper-false]` | 7.267269476977361e-05 | 5.740985947536561e-05 | 21.00% | 26.59% | 1.27x | ✅ |
-| `is_hex_address[empty]` | 2.2811590163070484e-05 | 1.6872819597853365e-05 | 26.03% | 35.20% | 1.35x | ✅ |
-| `is_hex_address[invalid-hex]` | 3.374784417981344e-05 | 2.6370080900623267e-05 | 21.86% | 27.98% | 1.28x | ✅ |
-| `is_hex_address[not-hex]` | 2.3314793525535365e-05 | 1.704233422152933e-05 | 26.90% | 36.81% | 1.37x | ✅ |
-| `is_hex_address[too-short]` | 2.3385112629930143e-05 | 1.7039959112163565e-05 | 27.13% | 37.24% | 1.37x | ✅ |
-| `is_hex_address[valid-checksummed]` | 6.915852639971743e-05 | 6.143030606945739e-05 | 11.17% | 12.58% | 1.13x | ✅ |
-| `is_hex_address[valid-lower]` | 7.035752130382769e-05 | 6.2665390776799e-05 | 10.93% | 12.27% | 1.12x | ✅ |
-| `is_normalized_address[normalized-true]` | 0.0002644726596920195 | 0.00010390615540470471 | 60.71% | 154.53% | 2.55x | ✅ |
-| `is_normalized_address[not-an-address-false]` | 2.1419778091489368e-05 | 1.5452905228013127e-05 | 27.86% | 38.61% | 1.39x | ✅ |
-| `is_normalized_address[not-normalized-false]` | 0.0002637371154718644 | 0.00010096657616541737 | 61.72% | 161.21% | 2.61x | ✅ |
-| `is_same_address[different-address]` | 0.00010640221389346291 | 3.989786141441716e-05 | 62.50% | 166.69% | 2.67x | ✅ |
-| `is_same_address[exact-match]` | 0.00010563433590517013 | 1.2630734355542776e-05 | 88.04% | 736.33% | 8.36x | ✅ |
-| `is_same_address[same-address]` | 0.0001056615818427098 | 3.9420408741859185e-05 | 62.69% | 168.04% | 2.68x | ✅ |
-| `to_canonical_address[valid-checksummed]` | 0.0002596758403230418 | 7.989973873175703e-05 | 69.23% | 225.00% | 3.25x | ✅ |
-| `to_canonical_address[valid-lower]` | 0.00026245060104330677 | 8.002191901368718e-05 | 69.51% | 227.97% | 3.28x | ✅ |
-| `to_checksum_address[valid-checksummed]` | 0.00016255458904751617 | 2.2580149594384484e-05 | 86.11% | 619.90% | 7.20x | ✅ |
-| `to_checksum_address[valid-lower]` | 0.0001603700342063289 | 2.2654088171940994e-05 | 85.87% | 607.91% | 7.08x | ✅ |
-| `to_normalized_address[valid-checksummed]` | 0.00022611617724041798 | 6.915165197157719e-05 | 69.42% | 226.99% | 3.27x | ✅ |
-| `to_normalized_address[valid-lower]` | 0.0002256945874076674 | 6.914256938750838e-05 | 69.36% | 226.42% | 3.26x | ✅ |
+## Checks
+
+| `is_address` | `is_binary_address` | `is_canonical_address` | `is_hex_address` | `is_checksum_formatted_address` | `is_checksum_address` | `is_same_address` |
+| --- | --- | --- | --- | --- | --- | --- |
+| `3.71 us` | `2.13 us` | `1.54 us` | `5.65 us` | `6.10 us` | `5.73 us` | `5.05 us` |
+
+## Conversions
+
+| `to_canonical_address` | `to_checksum_address` | `to_normalized_address` |
+| --- | --- | --- |
+| `4.42 us` | `21.44 us` | `4.72 us` |

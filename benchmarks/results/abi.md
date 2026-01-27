@@ -1,56 +1,19 @@
-#### [faster_eth_utils.abi](https://github.com/BobTheBuidler/faster-eth-utils/blob/codex/refactor-get_normalized_abi_inputs-function/faster_eth_utils/abi.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/codex/refactor-get_normalized_abi_inputs-function/benchmarks/test_abi_benchmarks.py)
+# ABI
 
-| Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
-|----------|---------------|-------------|----------|-------------|----------|--------|
-| `abi_to_signature[constructor]` | 0.00015662244596416748 | 7.620109112469968e-05 | 51.35% | 105.54% | 2.06x | ✅ |
-| `abi_to_signature[event]` | 0.00020310994852479417 | 9.399739998083929e-05 | 53.72% | 116.08% | 2.16x | ✅ |
-| `abi_to_signature[fallback]` | 5.755240684136181e-05 | 5.4298848623840424e-05 | 5.65% | 5.99% | 1.06x | ✅ |
-| `abi_to_signature[function]` | 0.00018338376375976863 | 8.968140728959883e-05 | 51.10% | 104.48% | 2.04x | ✅ |
-| `abi_to_signature[receive]` | 5.784102547420102e-05 | 5.3861731879971956e-05 | 6.88% | 7.39% | 1.07x | ✅ |
-| `collapse_if_tuple[constructor]` | 1.8024329870087435e-05 | 5.048907603348679e-06 | 71.99% | 256.99% | 3.57x | ✅ |
-| `collapse_if_tuple[event]` | 1.803666196267601e-05 | 5.028600510708464e-06 | 72.12% | 258.68% | 3.59x | ✅ |
-| `collapse_if_tuple[fallback]` | 1.7823407598254683e-05 | 5.043820458843372e-06 | 71.70% | 253.37% | 3.53x | ✅ |
-| `collapse_if_tuple[function]` | 1.765615533293958e-05 | 5.10425175789129e-06 | 71.09% | 245.91% | 3.46x | ✅ |
-| `collapse_if_tuple[receive]` | 1.7742980209002677e-05 | 5.042061619782252e-06 | 71.58% | 251.90% | 3.52x | ✅ |
-| `event_abi_to_log_topic[constructor]` | 0.0005245727339905474 | 0.0002614457658823353 | 50.16% | 100.64% | 2.01x | ✅ |
-| `event_abi_to_log_topic[event]` | 0.0005716675720187582 | 0.0002757542688759343 | 51.76% | 107.31% | 2.07x | ✅ |
-| `event_abi_to_log_topic[fallback]` | 0.0004159894883228881 | 0.00023131454480083383 | 44.39% | 79.84% | 1.80x | ✅ |
-| `event_abi_to_log_topic[function]` | 0.000553562093308686 | 0.0002742128134653632 | 50.46% | 101.87% | 2.02x | ✅ |
-| `event_abi_to_log_topic[receive]` | 0.0004161457045162972 | 0.00023040016774200916 | 44.63% | 80.62% | 1.81x | ✅ |
-| `event_signature_to_log_topic[Approval]` | 0.0003407379270833637 | 0.00017142088622856808 | 49.69% | 98.77% | 1.99x | ✅ |
-| `event_signature_to_log_topic[Transfer]` | 0.00034144071157207853 | 0.00017210323411440614 | 49.59% | 98.39% | 1.98x | ✅ |
-| `filter_abi_by_name[nonexistent-no-match]` | 2.3732004344123757e-05 | 1.584561504753451e-05 | 33.23% | 49.77% | 1.50x | ✅ |
-| `filter_abi_by_name[transfer-match]` | 2.648098769825651e-05 | 1.7723645018820663e-05 | 33.07% | 49.41% | 1.49x | ✅ |
-| `filter_abi_by_type[error-not-present]` | 0.00047352175262893977 | 1.4988724700580539e-05 | 96.83% | 3059.19% | 31.59x | ✅ |
-| `filter_abi_by_type[event-present]` | 0.0003973944752637197 | 1.5156393185800955e-05 | 96.19% | 2521.96% | 26.22x | ✅ |
-| `filter_abi_by_type[function-present]` | 9.818766666670014e-05 | 1.3692070484015985e-05 | 86.06% | 617.11% | 7.17x | ✅ |
-| `function_abi_to_4byte_selector[constructor]` | 0.0005327466749996291 | 0.0002637300005532449 | 50.50% | 102.00% | 2.02x | ✅ |
-| `function_abi_to_4byte_selector[event]` | 0.0005792027475002826 | 0.00028086878521368236 | 51.51% | 106.22% | 2.06x | ✅ |
-| `function_abi_to_4byte_selector[fallback]` | 0.0004249722695651474 | 0.00023557111029777345 | 44.57% | 80.40% | 1.80x | ✅ |
-| `function_abi_to_4byte_selector[function]` | 0.000558329793231171 | 0.0002785698029495528 | 50.11% | 100.43% | 2.00x | ✅ |
-| `function_abi_to_4byte_selector[receive]` | 0.0004267798746569358 | 0.00023521097636547604 | 44.89% | 81.45% | 1.81x | ✅ |
-| `function_signature_to_4byte_selector[approve]` | 0.0003482686023773408 | 0.00017603467827499017 | 49.45% | 97.84% | 1.98x | ✅ |
-| `function_signature_to_4byte_selector[mint]` | 0.0003524690399086679 | 0.00017562831329445206 | 50.17% | 100.69% | 2.01x | ✅ |
-| `function_signature_to_4byte_selector[transfer]` | 0.0003459153709334421 | 0.0001742569182121442 | 49.62% | 98.51% | 1.99x | ✅ |
-| `get_abi_input_names[approve]` | 6.695401996959126e-05 | 1.9143128708760788e-05 | 71.41% | 249.75% | 3.50x | ✅ |
-| `get_abi_input_names[mint]` | 6.737100123264815e-05 | 1.8793054670318536e-05 | 72.11% | 258.49% | 3.58x | ✅ |
-| `get_abi_input_names[transfer]` | 6.70925322033496e-05 | 1.8870013936259035e-05 | 71.87% | 255.55% | 3.56x | ✅ |
-| `get_abi_input_types[approve]` | 9.752275183301878e-05 | 2.2182912687966404e-05 | 77.25% | 339.63% | 4.40x | ✅ |
-| `get_abi_input_types[mint]` | 9.729439640285453e-05 | 2.2647478831537492e-05 | 76.72% | 329.60% | 4.30x | ✅ |
-| `get_abi_input_types[transfer]` | 9.696603884633847e-05 | 2.268314195643787e-05 | 76.61% | 327.48% | 4.27x | ✅ |
-| `get_abi_output_names[approve]` | 6.122347592223259e-05 | 1.6122577386556087e-05 | 73.67% | 279.74% | 3.80x | ✅ |
-| `get_abi_output_names[mint]` | 6.13669723940968e-05 | 1.599315590150088e-05 | 73.94% | 283.71% | 3.84x | ✅ |
-| `get_abi_output_names[transfer]` | 6.116780455333498e-05 | 1.622493605269305e-05 | 73.47% | 277.00% | 3.77x | ✅ |
-| `get_abi_output_types[approve]` | 7.837144791048363e-05 | 1.744213462806254e-05 | 77.74% | 349.32% | 4.49x | ✅ |
-| `get_abi_output_types[mint]` | 7.8215237462715e-05 | 1.76265534302565e-05 | 77.46% | 343.74% | 4.44x | ✅ |
-| `get_abi_output_types[transfer]` | 7.768764674011013e-05 | 1.730470789576884e-05 | 77.73% | 348.94% | 4.49x | ✅ |
-| `get_aligned_abi_inputs[approve]` | 0.00038005176058077936 | 0.00011395748924870347 | 70.02% | 233.50% | 3.34x | ✅ |
-| `get_aligned_abi_inputs[mint]` | 0.0003785438332632697 | 0.00011407187065206142 | 69.87% | 231.85% | 3.32x | ✅ |
-| `get_aligned_abi_inputs[transfer]` | 0.0003793469315789254 | 0.00011313211711095915 | 70.18% | 235.31% | 3.35x | ✅ |
-| `get_all_event_abis[empty]` | 0.00039187098224847293 | 1.061758989610511e-05 | 97.29% | 3590.77% | 36.91x | ✅ |
-| `get_all_event_abis[function-and-event]` | 0.000406591172629005 | 1.5005986144865965e-05 | 96.31% | 2609.53% | 27.10x | ✅ |
-| `get_all_function_abis[empty]` | 9.26783943434395e-05 | 9.449543434724342e-06 | 89.80% | 880.77% | 9.81x | ✅ |
-| `get_all_function_abis[function-and-event]` | 0.0001002950099877997 | 1.3676386461839866e-05 | 86.36% | 633.34% | 7.33x | ✅ |
-| `get_normalized_abi_inputs[approve]` | 0.0001071659516128577 | 1.8703968378301274e-05 | 82.55% | 472.96% | 5.73x | ✅ |
-| `get_normalized_abi_inputs[mint]` | 0.00010707025514265336 | 1.862751562046299e-05 | 82.60% | 474.80% | 5.75x | ✅ |
-| `get_normalized_abi_inputs[transfer]` | 0.0001084094005456794 | 1.8689597880867522e-05 | 82.76% | 480.05% | 5.80x | ✅ |
+## Type checking and normalization
+
+| `fn_abi_to_4byte_selector` | `abi_to_signature` | `filter_abi_by_name` | `filter_abi_by_type` | `get_all_event_abis` | `get_all_function_abis` | `get_abi_output_types` | `get_abi_output_names` | `get_abi_input_types` | `get_abi_input_names` | `get_abi_inputs` | `get_normalized_abi_inputs` | `get_aligned_abi_inputs` |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `4.58 us` | `8.68 us` | `6.51 us` | `8.16 us` | `10.86 us` | `10.62 us` | `13.15 us` | `15.51 us` | `2.78 us` | `3.43 us` | `2.95 us` | `22.40 us` | `23.54 us` |
+
+## ABI modifications
+
+| `collapse_if_tuple` | `normalize_abi` | `normalize_abi_input` | `normalize_abi_parameter` | `normalize_event_input_types` | `normalize_event_abi` | `normalize_function_input_types` | `normalize_function_abi` | `normalize_abi_type` | `normalize_abi_type_recursive` | `merge_args_and_kwargs` |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `18.40 us` | `82.97 us` | `58.66 us` | `37.37 us` | `37.16 us` | `35.74 us` | `38.38 us` | `35.44 us` | `7.41 us` | `11.54 us` | `1.89 us` |
+
+## Signature to topic or selector
+
+| `function_signature_to_4byte_selector` | `event_abi_to_log_topic` | `event_signature_to_log_topic` |
+| --- | --- | --- |
+| `0.55 us` | `0.63 us` | `0.47 us` |

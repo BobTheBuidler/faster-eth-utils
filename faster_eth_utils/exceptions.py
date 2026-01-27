@@ -1,11 +1,59 @@
-"""
-faster-eth-utils exceptions always inherit from eth-utils exceptions, so porting to faster-eth-utils
-does not require any change to your existing exception handlers. They will continue to work.
-"""
+from typing import (
+    Any,
+)
 
-import eth_utils.exceptions
+from .exceptions import (
+    ValidationError,
+)
 
-class ValidationError(eth_utils.exceptions.ValidationError):
+
+class ValidationError(Exception):
     """
-    Raised when something does not pass a validation check.
+    Raised when an invalid value is passed to a function.
+
+    Attributes:
+        message (str): explanation of why the error was raised.
     """
+
+    def __init__(self, message: str) -> None:
+        super().__init__(message)
+        self.message = message
+
+
+class MergeFunctionalityError(Exception):
+    """
+    Raised when a merge fails due to incompatible data structures.
+
+    Attributes:
+        message (str): explanation of why the error was raised.
+    """
+
+    def __init__(self, message: str) -> None:
+        super().__init__(message)
+        self.message = message
+
+
+class ValidationError(Exception):
+    """
+    Raised when an invalid value is passed to a function.
+
+    Attributes:
+        message (str): explanation of why the error was raised.
+    """
+
+    def __init__(self, message: str) -> None:
+        super().__init__(message)
+        self.message = message
+
+
+class MergeFunctionalityError(Exception):
+    """
+    Raised when a merge fails due to incompatible data structures.
+
+    Attributes:
+        message (str): explanation of why the error was raised.
+    """
+
+    def __init__(self, message: str) -> None:
+        super().__init__(message)
+        self.message = message

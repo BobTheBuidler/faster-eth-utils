@@ -152,6 +152,7 @@ def apply_formatter_if(
 ) -> TReturn | TArg:
     ...
 
+
 def apply_formatter_if(  # type: ignore
     condition: Callable[[TArg], TypeGuard[TOther]] | Callable[[TArg], bool],
     formatter: Callable[[TOther], TReturn] | Callable[[TArg], TReturn] | None = None,
@@ -183,12 +184,12 @@ def apply_one_of_formatters(
 
 
 # This is just a stub to appease mypy, it gets overwritten later
-def apply_one_of_formatters(
+def apply_one_of_formatters(  # type: ignore[empty-body]
     formatter_condition_pairs: Sequence[
         tuple[Callable[[TArg], "SupportsBool"], Callable[[TArg], TReturn]]
     ],
     value: TArg | None = None,
-) -> TReturn: ...
+) -> Callable[[TArg], TReturn] | TReturn: ...
 
 
 @overload
@@ -259,7 +260,6 @@ apply_key_map = curry(apply_key_map)
 apply_one_of_formatters = curry(non_curried_apply_one_of_formatters)  # noqa: F811
 filter_abi_by_name = curry(filter_abi_by_name)
 filter_abi_by_type = curry(filter_abi_by_type)
-flatten_return = curry(flatten_return)
 from_wei = curry(from_wei)
 from_wei_decimals = curry(from_wei_decimals)
 get_aligned_abi_inputs = curry(get_aligned_abi_inputs)
@@ -267,9 +267,7 @@ get_logger = curry(get_logger)
 get_normalized_abi_inputs = curry(get_normalized_abi_inputs)
 hexstr_if_str = curry(non_curried_hexstr_if_str)  # noqa: F811
 is_same_address = curry(is_same_address)
-sort_return = curry(sort_return)
 text_if_str = curry(non_curried_text_if_str)  # noqa: F811
-to_ordered_dict = curry(to_ordered_dict)
 to_wei = curry(to_wei)
 to_wei_decimals = curry(to_wei_decimals)
 clamp = curry(clamp)

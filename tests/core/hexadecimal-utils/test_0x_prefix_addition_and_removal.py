@@ -1,6 +1,6 @@
 import pytest
 
-from faster_eth_utils.hexadecimal import (
+from faster_eth_utils import (
     add_0x_prefix,
     remove_0x_prefix,
 )
@@ -17,12 +17,11 @@ from faster_eth_utils.hexadecimal import (
     ),
 )
 def test_add_0x_prefix(value, expected):
-    actual = add_0x_prefix(value)
-    assert actual == expected
+    assert add_0x_prefix(value) == expected
 
 
 @pytest.mark.parametrize("value", (b"", 123, {}, lambda: None))
-def test_add_0x_prefix_rejects_non_text_types(value):
+def test_add_0x_prefix_rejects_non_text_types(value: Any) -> None:
     with pytest.raises(TypeError):
         add_0x_prefix(value)
 
@@ -38,11 +37,10 @@ def test_add_0x_prefix_rejects_non_text_types(value):
     ),
 )
 def test_remove_0x_prefix(value, expected):
-    actual = remove_0x_prefix(value)
-    assert actual == expected
+    assert remove_0x_prefix(value) == expected
 
 
 @pytest.mark.parametrize("value", (b"", 123, {}, lambda: None))
-def test_remove_0x_prefix_rejects_non_text_types(value):
+def test_remove_0x_prefix_rejects_non_text_types(value: Any) -> None:
     with pytest.raises(TypeError):
         remove_0x_prefix(value)

@@ -1,4 +1,7 @@
 import logging
+from abc import (
+    ABCMeta,
+)
 from collections.abc import (
     Iterator,
 )
@@ -18,10 +21,6 @@ from typing import (
     cast,
     final,
     overload,
-)
-
-from mypy_extensions import (
-    mypyc_attr,
 )
 
 from .toolz import (
@@ -128,16 +127,21 @@ class HasLoggerMeta(type):
         bases: tuple[type[Any], ...],
         namespace: dict[str, Any],
     ) -> THasLoggerMeta:
+        if issubclass(mcls, ABCMeta):
+            new_class = ABCMeta.__new__
+        else:
+            new_class = type.__new__
+
         if "logger" in namespace:
             # If a logger was explicitly declared we shouldn't do anything to
             # replace it.
-            return type.__new__(mcls, name, bases, namespace)
+            return new_class(mcls, name, bases, namespace)
         if "__qualname__" not in namespace:
             raise AttributeError("Missing __qualname__")
 
         logger = get_logger(namespace["__qualname__"], mcls.logger_class)
 
-        return type.__new__(mcls, name, bases, assoc(namespace, "logger", logger))
+        return new_class(mcls, name, bases, assoc(namespace, "logger", logger))
 
     @classmethod
     def replace_logger_class(

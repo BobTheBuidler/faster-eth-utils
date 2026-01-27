@@ -1,24 +1,55 @@
-#### [faster_eth_utils.functional](https://github.com/BobTheBuidler/faster-eth-utils/blob/codex/refactor-get_normalized_abi_inputs-function/faster_eth_utils/functional.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/codex/refactor-get_normalized_abi_inputs-function/benchmarks/test_functional_benchmarks.py)
+# Functional
 
-| Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
-|----------|---------------|-------------|----------|-------------|----------|--------|
-| `apply_to_return_value[add-mul]` | 2.2303932186951193e-06 | 2.577486322685055e-06 | -15.56% | -13.47% | 0.87x | ❌ |
-| `apply_to_return_value[concat-upper]` | 2.9654423606681984e-06 | 2.892587027728978e-06 | 2.46% | 2.52% | 1.03x | ✅ |
-| `combine[add-mul]` | 1.2667968368985188e-06 | 1.3403135134925356e-06 | -5.80% | -5.49% | 0.95x | ❌ |
-| `combine[strip-upper]` | 1.5603672685655105e-06 | 1.3291638709648943e-06 | 14.82% | 17.39% | 1.17x | ✅ |
-| `identity[dict]` | 6.762575480222806e-07 | 5.119659783156937e-07 | 24.29% | 32.09% | 1.32x | ✅ |
-| `identity[int]` | 6.42751045874395e-07 | 4.883902196904617e-07 | 24.02% | 31.61% | 1.32x | ✅ |
-| `identity[list]` | 6.705127466284169e-07 | 5.24541325414672e-07 | 21.77% | 27.83% | 1.28x | ✅ |
-| `identity[str]` | 6.45795001043799e-07 | 4.844211729569509e-07 | 24.99% | 33.31% | 1.33x | ✅ |
-| `to_dict[0-items]` | 3.212130057462433e-06 | 3.851673573946231e-06 | -19.91% | -16.60% | 0.83x | ❌ |
-| `to_dict[1-item]` | 4.0094590761050716e-06 | 4.88913670719604e-06 | -21.94% | -17.99% | 0.82x | ❌ |
-| `to_dict[3-items]` | 4.776313713431052e-06 | 5.505456965739652e-06 | -15.27% | -13.24% | 0.87x | ❌ |
-| `to_list[0-items]` | 2.2841491422689466e-06 | 1.7935735995169784e-06 | 21.48% | 27.35% | 1.27x | ✅ |
-| `to_list[1-item]` | 6.064880686692688e-06 | 5.922500042880062e-06 | 2.35% | 2.40% | 1.02x | ✅ |
-| `to_list[3-items]` | 6.578782540837497e-06 | 6.208840025022587e-06 | 5.62% | 5.96% | 1.06x | ✅ |
-| `to_set[0-items]` | 2.5872725137874847e-06 | 2.3688548840070157e-06 | 8.44% | 9.22% | 1.09x | ✅ |
-| `to_set[1-item]` | 5.0747337672779124e-06 | 4.96133430545063e-06 | 2.23% | 2.29% | 1.02x | ✅ |
-| `to_set[3-items]` | 5.912913577972388e-06 | 5.946821594143048e-06 | -0.57% | -0.57% | 0.99x | ❌ |
-| `to_tuple[0-items]` | 1.8878726507624758e-06 | 1.7743506328448732e-06 | 6.01% | 6.40% | 1.06x | ✅ |
-| `to_tuple[1-item]` | 2.2953532806652444e-06 | 2.25973361782605e-06 | 1.55% | 1.58% | 1.02x | ✅ |
-| `to_tuple[3-items]` | 2.4644387529867816e-06 | 2.5256963372092023e-06 | -2.49% | -2.43% | 0.98x | ❌ |
+## apply_to_return_value
+
+| `apply_to_return_value` |
+| --- |
+| `7.74 us` |
+
+## to_tuple
+
+| `to_tuple` |
+| --- |
+| `1.78 us` |
+
+## to_list
+
+| `to_list` |
+| --- |
+| `2.37 us` |
+
+## to_set
+
+| `to_set` |
+| --- |
+| `2.21 us` |
+
+## to_dict
+
+| `to_dict` |
+| --- |
+| `7.57 us` |
+
+## to_ordered_dict
+
+| `to_ordered_dict` |
+| --- |
+| `9.20 us` |
+
+## sort_return
+
+| `sort_return` |
+| --- |
+| `2.44 us` |
+
+## flatten_return
+
+| `flatten_return` |
+| --- |
+| `2.61 us` |
+
+## reversed_return
+
+| `reversed_return` |
+| --- |
+| `2.38 us` |
