@@ -23,9 +23,6 @@ from typing import (
     overload,
 )
 
-from .toolz import (
-    assoc,
-)
 
 DEBUG2_LEVEL_NUM: Final = 8
 
