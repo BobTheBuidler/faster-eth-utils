@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[625];
+extern PyObject *CPyStatics[628];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -509,6 +509,7 @@ extern PyObject *CPyPy_hexadecimal___is_hexstr(PyObject *self, PyObject *const *
 extern char CPyDef_hexadecimal___is_hex(PyObject *cpy_r_value);
 extern PyObject *CPyPy_hexadecimal___is_hex(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_hexadecimal_____top_level__(void);
+extern PyObject *CPyStatic_humanize___islice;
 extern tuple_T7T2IOT2IOT2IOT2IOT2IOT2IOT2IO CPyStatic_humanize___UNITS;
 extern PyTypeObject *CPyType_humanize____consume_leading_zero_units_gen;
 extern PyObject *CPyDef_humanize____consume_leading_zero_units_gen(void);
