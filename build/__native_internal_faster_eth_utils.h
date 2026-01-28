@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[628];
+extern PyObject *CPyStatics[626];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -107,12 +107,6 @@ extern PyObject *CPyStatic_abi____chain;
 extern PyObject *CPyStatic_abi_____ABI_TYPE_LITERALS;
 extern PyTypeObject *CPyType_abi____repeat;
 extern PyObject *CPyDef_abi____repeat(PyObject *cpy_r_value, PyObject *cpy_r_times);
-extern PyTypeObject *CPyType_abi___get_normalized_abi_inputs_env;
-extern PyObject *CPyDef_abi___get_normalized_abi_inputs_env(void);
-extern CPyThreadLocal faster_eth_utils___abi___get_normalized_abi_inputs_envObject *abi___get_normalized_abi_inputs_env_free_instance;
-extern PyTypeObject *CPyType_abi_____mypyc_lambda__0_get_normalized_abi_inputs_obj;
-extern PyObject *CPyDef_abi_____mypyc_lambda__0_get_normalized_abi_inputs_obj(void);
-extern CPyThreadLocal faster_eth_utils___abi_____mypyc_lambda__0_get_normalized_abi_inputs_objObject *abi_____mypyc_lambda__0_get_normalized_abi_inputs_obj_free_instance;
 extern char CPyDef_abi____repeat_____init__(PyObject *cpy_r_self, PyObject *cpy_r_value, PyObject *cpy_r_times);
 extern PyObject *CPyPy_abi____repeat_____init__(PyObject *self, PyObject *args, PyObject *kw);
 extern PyObject *CPyDef_abi____repeat_____iter__(PyObject *cpy_r_self);
@@ -139,10 +133,6 @@ extern PyObject *CPyDef_abi___get_all_function_abis(PyObject *cpy_r_contract_abi
 extern PyObject *CPyPy_abi___get_all_function_abis(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_abi___get_all_event_abis(PyObject *cpy_r_contract_abi);
 extern PyObject *CPyPy_abi___get_all_event_abis(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_abi_____mypyc_lambda__0_get_normalized_abi_inputs_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
-extern PyObject *CPyPy_abi_____mypyc_lambda__0_get_normalized_abi_inputs_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern CPyTagged CPyDef_abi_____mypyc_lambda__0_get_normalized_abi_inputs_obj_____call__(PyObject *cpy_r___mypyc_self__, tuple_T2OO cpy_r_kv);
-extern PyObject *CPyPy_abi_____mypyc_lambda__0_get_normalized_abi_inputs_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_abi___get_normalized_abi_inputs(PyObject *cpy_r_abi_element, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
 extern PyObject *CPyPy_abi___get_normalized_abi_inputs(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern tuple_T2OO CPyDef_abi___get_aligned_abi_inputs(PyObject *cpy_r_abi_element, PyObject *cpy_r_normalized_args);

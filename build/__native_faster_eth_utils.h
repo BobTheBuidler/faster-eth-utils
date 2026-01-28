@@ -116,33 +116,6 @@ typedef struct {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_self__;
-    PyObject *_arg_positions;
-    PyObject *_abi_element;
-    PyObject *_args;
-    PyObject *_kwargs;
-    PyObject *_function_inputs;
-    PyObject *_kwarg_names;
-    PyObject *_arg_abi;
-    PyObject *_sorted_arg_names;
-    CPyTagged _index;
-    PyObject *_name;
-    PyObject *_args_as_kwargs;
-    PyObject *_duplicate_args;
-    PyObject *_unknown_args;
-    PyObject *_message;
-} faster_eth_utils___abi___get_normalized_abi_inputs_envObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    vectorcallfunc vectorcall;
-    PyObject *___mypyc_env__;
-} faster_eth_utils___abi_____mypyc_lambda__0_get_normalized_abi_inputs_objObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
     PyObject *___mypyc_generator_attribute__formatter;
     CPyTagged ___mypyc_generator_attribute__at_index;
     PyObject *___mypyc_generator_attribute__value;
