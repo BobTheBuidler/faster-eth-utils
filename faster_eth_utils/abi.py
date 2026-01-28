@@ -525,7 +525,6 @@ def get_normalized_abi_inputs(
 
     kwarg_names = set(kwargs.keys())
     sorted_arg_names = tuple(arg_abi["name"] for arg_abi in function_inputs)
-    arg_positions = {name: index for index, name in enumerate(sorted_arg_names)}
     args_as_kwargs = dict(zip(sorted_arg_names, args))
 
     # Check for duplicate args
@@ -549,13 +548,9 @@ def get_normalized_abi_inputs(
             )
         )
 
-    # Sort args according to their position in the ABI and unzip them from their
-    # names
-    sorted_items = sorted(
-        _chain(kwargs.items(), args_as_kwargs.items()),
-        key=lambda kv: arg_positions[kv[0]],
-    )
-    return tuple(val for _, val in sorted_items)
+    # Align args according to their position in the ABI.
+    args_as_kwargs.update(kwargs)
+    return tuple(args_as_kwargs[name] for name in sorted_arg_names)
 
 
 def get_aligned_abi_inputs(
