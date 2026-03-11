@@ -235,7 +235,7 @@ jobs:
           python -m cibuildwheel --output-dir wheelhouse
 
       - name: Upload wheels
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.artifact_name }}
           path: wheelhouse/*.whl
@@ -277,115 +277,115 @@ jobs:
       # Download wheels built on each runner
       # ----------------------------------------------------
       - name: Download manylinux 64-bit wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-ubuntu-latest-manylinux-x64"
           path: wheelhouse/linux-many-x64
 
       - name: Download manylinux 32-bit wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-ubuntu-latest-manylinux-x86"
           path: wheelhouse/linux-many-x86
 
       - name: Download manylinux arm64 wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-ubuntu-latest-manylinux-arm64"
           path: wheelhouse/linux-many-arm64
 
       - name: Download manylinux ppc64le wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-ubuntu-latest-manylinux-ppc64le"
           path: wheelhouse/linux-many-ppc64le
 
       - name: Download manylinux s390x wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-ubuntu-latest-manylinux-s390x"
           path: wheelhouse/linux-many-s390x
 
       - name: Download manylinux armv7l wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-ubuntu-latest-manylinux-armv7l"
           path: wheelhouse/linux-many-armv7l
 
       - name: Download manylinux riscv64 wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-ubuntu-latest-manylinux-riscv64"
           path: wheelhouse/linux-many-riscv64
 
       - name: Download musllinux 64-bit wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-ubuntu-latest-musllinux-x64"
           path: wheelhouse/linux-musl-x64
 
       - name: Download musllinux arm64 wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-ubuntu-latest-musllinux-arm64"
           path: wheelhouse/linux-musl-arm64
 
       - name: Download musllinux 32-bit wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-ubuntu-latest-musllinux-x86"
           path: wheelhouse/linux-musl-x86
 
       - name: Download musllinux ppc64le wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-ubuntu-latest-musllinux-ppc64le"
           path: wheelhouse/linux-musl-ppc64le
 
       - name: Download musllinux s390x wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-ubuntu-latest-musllinux-s390x"
           path: wheelhouse/linux-musl-s390x
 
       - name: Download musllinux armv7l wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-ubuntu-latest-musllinux-armv7l"
           path: wheelhouse/linux-musl-armv7l
 
       - name: Download musllinux riscv64 wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-ubuntu-latest-musllinux-riscv64"
           path: wheelhouse/linux-musl-riscv64
 
       - name: Download macOS x86_64 wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-macos-latest-x64"
           path: wheelhouse/macos-x64
 
       - name: Download macOS arm64 wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-macos-latest-arm64"
           path: wheelhouse/macos-arm64
 
       - name: Download Windows 64-bit wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-windows-latest-x64"
           path: wheelhouse/windows-x64
 
       - name: Download Windows arm64 wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-windows-latest-arm64"
           path: wheelhouse/windows-arm64
 
       - name: Download Windows 32-bit wheels
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: "wheels-windows-latest-x86"
           path: wheelhouse/windows-x86
