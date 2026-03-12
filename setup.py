@@ -15,7 +15,7 @@ else:
         for cmd in ("sdist", "egg_info", "--name", "--version", "--help", "--help-commands")
     )
 
-VERSION: Final = "5.3.24"
+VERSION: Final = "5.3.25"
 DESCRIPTION: Final = "A faster fork of eth-utils: Common utility functions for python code that interacts with Ethereum. Implemented in C."
 
 ext_modules: list[Extension] = []
