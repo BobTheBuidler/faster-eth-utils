@@ -70,15 +70,6 @@ jobs:
             artifact_name: "wheels-ubuntu-latest-manylinux-armv7l"
 
           # ----------------------------------------------------
-          # manylinux riscv64
-          # ----------------------------------------------------
-          - os: ubuntu-latest
-            build_type: manylinux-riscv64
-            cibw_build: "*manylinux*"
-            cibw_archs_linux: riscv64
-            artifact_name: "wheels-ubuntu-latest-manylinux-riscv64"
-
-          # ----------------------------------------------------
           # musllinux 64-bit
           # ----------------------------------------------------
           - os: ubuntu-latest
@@ -106,24 +97,6 @@ jobs:
             artifact_name: "wheels-ubuntu-latest-musllinux-x86"
 
           # ----------------------------------------------------
-          # musllinux ppc64le
-          # ----------------------------------------------------
-          - os: ubuntu-latest
-            build_type: musllinux-ppc64le
-            cibw_build: "*musllinux*"
-            cibw_archs_linux: ppc64le
-            artifact_name: "wheels-ubuntu-latest-musllinux-ppc64le"
-
-          # ----------------------------------------------------
-          # musllinux s390x
-          # ----------------------------------------------------
-          - os: ubuntu-latest
-            build_type: musllinux-s390x
-            cibw_build: "*musllinux*"
-            cibw_archs_linux: s390x
-            artifact_name: "wheels-ubuntu-latest-musllinux-s390x"
-
-          # ----------------------------------------------------
           # musllinux armv7l
           # ----------------------------------------------------
           - os: ubuntu-latest
@@ -131,15 +104,6 @@ jobs:
             cibw_build: "*musllinux*"
             cibw_archs_linux: armv7l
             artifact_name: "wheels-ubuntu-latest-musllinux-armv7l"
-
-          # ----------------------------------------------------
-          # musllinux riscv64
-          # ----------------------------------------------------
-          - os: ubuntu-latest
-            build_type: musllinux-riscv64
-            cibw_build: "*musllinux*"
-            cibw_archs_linux: riscv64
-            artifact_name: "wheels-ubuntu-latest-musllinux-riscv64"
 
           # ----------------------------------------------------
           # macOS 64-bit (x86_64)
@@ -204,10 +168,8 @@ jobs:
             pyproject.toml
 
       - name: Enable QEMU for Linux emulated wheel builds
-        if: runner.os == 'Linux' && (matrix.cibw_archs_linux == 'aarch64' || matrix.cibw_archs_linux == 'ppc64le' || matrix.cibw_archs_linux == 's390x' || matrix.cibw_archs_linux == 'armv7l' || matrix.cibw_archs_linux == 'riscv64')
-        uses: docker/setup-qemu-action@v4
-        with:
-          platforms: arm64,ppc64le,s390x,arm,riscv64
+        if: runner.os == 'Linux' && (matrix.cibw_archs_linux == 'aarch64' || matrix.cibw_archs_linux == 'ppc64le' || matrix.cibw_archs_linux == 's390x' || matrix.cibw_archs_linux == 'armv7l')
+        run: docker run --rm --privileged tonistiigi/binfmt --install arm64,ppc64le,s390x,arm
 
       - name: Install cibuildwheel
         run: |
@@ -312,12 +274,6 @@ jobs:
           name: "wheels-ubuntu-latest-manylinux-armv7l"
           path: wheelhouse/linux-many-armv7l
 
-      - name: Download manylinux riscv64 wheels
-        uses: actions/download-artifact@v8
-        with:
-          name: "wheels-ubuntu-latest-manylinux-riscv64"
-          path: wheelhouse/linux-many-riscv64
-
       - name: Download musllinux 64-bit wheels
         uses: actions/download-artifact@v8
         with:
@@ -336,29 +292,11 @@ jobs:
           name: "wheels-ubuntu-latest-musllinux-x86"
           path: wheelhouse/linux-musl-x86
 
-      - name: Download musllinux ppc64le wheels
-        uses: actions/download-artifact@v8
-        with:
-          name: "wheels-ubuntu-latest-musllinux-ppc64le"
-          path: wheelhouse/linux-musl-ppc64le
-
-      - name: Download musllinux s390x wheels
-        uses: actions/download-artifact@v8
-        with:
-          name: "wheels-ubuntu-latest-musllinux-s390x"
-          path: wheelhouse/linux-musl-s390x
-
       - name: Download musllinux armv7l wheels
         uses: actions/download-artifact@v8
         with:
           name: "wheels-ubuntu-latest-musllinux-armv7l"
           path: wheelhouse/linux-musl-armv7l
-
-      - name: Download musllinux riscv64 wheels
-        uses: actions/download-artifact@v8
-        with:
-          name: "wheels-ubuntu-latest-musllinux-riscv64"
-          path: wheelhouse/linux-musl-riscv64
 
       - name: Download macOS x86_64 wheels
         uses: actions/download-artifact@v8
@@ -407,14 +345,10 @@ jobs:
             wheelhouse/linux-many-ppc64le/*.whl \
             wheelhouse/linux-many-s390x/*.whl \
             wheelhouse/linux-many-armv7l/*.whl \
-            wheelhouse/linux-many-riscv64/*.whl \
             wheelhouse/linux-musl-x64/*.whl \
             wheelhouse/linux-musl-arm64/*.whl \
             wheelhouse/linux-musl-x86/*.whl \
-            wheelhouse/linux-musl-ppc64le/*.whl \
-            wheelhouse/linux-musl-s390x/*.whl \
             wheelhouse/linux-musl-armv7l/*.whl \
-            wheelhouse/linux-musl-riscv64/*.whl \
             wheelhouse/macos-x64/*.whl \
             wheelhouse/macos-arm64/*.whl \
             wheelhouse/windows-x64/*.whl \
