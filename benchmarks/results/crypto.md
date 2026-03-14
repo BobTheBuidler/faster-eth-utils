@@ -1,9 +1,9 @@
-#### [faster_eth_utils.crypto](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/major-github-artifact-actions/faster_eth_utils/crypto.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/major-github-artifact-actions/benchmarks/test_crypto_benchmarks.py)
+#### [faster_eth_utils.crypto](https://github.com/BobTheBuidler/faster-eth-utils/blob/perf/benchmark-ci-compiled-wheel-20260314232900/faster_eth_utils/crypto.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/perf/benchmark-ci-compiled-wheel-20260314232900/benchmarks/test_crypto_benchmarks.py)
 
 | Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
 |----------|---------------|-------------|----------|-------------|----------|--------|
-| `keccak[bool]` | 3.101035659806957e-05 | 1.6781514294288608e-05 | 45.88% | 84.79% | 1.85x | ✅ |
-| `keccak[bytes]` | 3.302575406266553e-05 | 1.8591140877588507e-05 | 43.71% | 77.64% | 1.78x | ✅ |
-| `keccak[hexstr]` | 4.0941712849520094e-05 | 2.057837051414718e-05 | 49.74% | 98.96% | 1.99x | ✅ |
-| `keccak[int]` | 9.42204967237854e-05 | 2.0584533698891397e-05 | 78.15% | 357.72% | 4.58x | ✅ |
-| `keccak[text]` | 3.5183174062643055e-05 | 1.9149591155762538e-05 | 45.57% | 83.73% | 1.84x | ✅ |
+| `keccak[bool]` | 3.123638438614482e-05 | 1.703858771348902e-05 | 45.45% | 83.33% | 1.83x | ✅ |
+| `keccak[bytes]` | 3.297397680293449e-05 | 1.8888792587279946e-05 | 42.72% | 74.57% | 1.75x | ✅ |
+| `keccak[hexstr]` | 4.108650960177406e-05 | 2.0794942872889293e-05 | 49.39% | 97.58% | 1.98x | ✅ |
+| `keccak[int]` | 9.416573676581633e-05 | 2.0909125021567923e-05 | 77.80% | 350.36% | 4.50x | ✅ |
+| `keccak[text]` | 3.552717793884792e-05 | 1.9369099104460326e-05 | 45.48% | 83.42% | 1.83x | ✅ |
