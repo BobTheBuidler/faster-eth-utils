@@ -12,6 +12,7 @@ on:
       - 'requirements-benchmark.txt'
       - 'requirements-codspeed.txt'
       - 'requirements-pytest.txt'
+      - 'scripts/benchmark/**'
   push:
     branches: [main, master]
     paths:
@@ -23,6 +24,7 @@ on:
       - 'requirements-benchmark.txt'
       - 'requirements-codspeed.txt'
       - 'requirements-pytest.txt'
+      - 'scripts/benchmark/**'
   workflow_dispatch:
     inputs:
       run-type:
@@ -65,6 +67,8 @@ jobs:
     needs: build-wheel
     name: Run CodSpeed Benchmarks
     runs-on: ubuntu-latest
+    env:
+      PYTHONHASHSEED: "0"
     if: ${{ github.event.inputs.run-type == 'both' || github.event.inputs.run-type == '' || github.event.inputs.run-type == 'codspeed' }}
     strategy:
       fail-fast: false
@@ -87,15 +91,10 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: ${{ needs.build-wheel.outputs.artifact-name }}
-          path: .
+          path: wheelhouse
 
-      - name: Install built wheel and codspeed dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install "$(find . -name '*.whl')" -r requirements-codspeed.txt
-
-      - name: Remove Python files from test env
-        run: rm -r faster_eth_utils
+      - name: Prepare compiled benchmark environment
+        run: bash scripts/benchmark/setup_compiled_benchmark_env.sh requirements-codspeed.txt
 
       - name: Run CodSpeed
         uses: CodSpeedHQ/action@v4
@@ -107,6 +106,8 @@ jobs:
     name: Run Comparison Benchmarks
     runs-on: ubuntu-latest
     needs: build-wheel
+    env:
+      PYTHONHASHSEED: "0"
     if: ${{ github.event.inputs.run-type == 'both' || github.event.inputs.run-type == '' || github.event.inputs.run-type == 'comparison' }}
     steps:
       - uses: actions/checkout@v6
@@ -125,14 +126,10 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: ${{ needs.build-wheel.outputs.artifact-name }}
-          path: .
+          path: wheelhouse
 
-      - name: Install built wheel and benchmark dependencies
-        run: pip install ./*.whl -r requirements-benchmark.txt
-          
-      - name: Remove Python files from test env
-        run: |
-          rm -r faster_eth_utils
+      - name: Prepare compiled benchmark environment
+        run: bash scripts/benchmark/setup_compiled_benchmark_env.sh requirements-benchmark.txt
           
       - name: Run Pytest Benchmark & Save Output
         run: pytest --benchmark-only --benchmark-json=benchmark.json benchmarks/
