@@ -120,7 +120,7 @@ setup(
     install_requires=[
         "cchecksum==0.4.3",
         "eth-hash>=0.3.1",
-        "eth-typing==5.2.1",
+        "eth-typing==6.0.0",
         "eth-utils==5.3.1",
         "mypy-extensions>=0.4.2",
         "toolz>0.8.2;implementation_name=='pypy'",
