@@ -57,7 +57,7 @@ if not skip_mypyc:
         strict_dunder_typing=True,
     )
 
-MYPY_REQUIREMENT = "mypy==1.19.1"
+MYPY_REQUIREMENT = "mypy==1.20.0"
 PYTEST_REQUIREMENT = "pytest>=7.0.0"
 
 
