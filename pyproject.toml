@@ -4,7 +4,7 @@ requires = [
   "wheel",
   "mypy[mypyc]==1.20.0",
   "cchecksum==0.4.3",
-  "eth-hash==0.7.1",
+  "eth-hash==0.8.0",
   "eth-typing==5.2.1",
   # puccinialin (installed with eth-utils) is unable to install for
   # Python3.14 on 32-bit manylinux or on 32-bit musllinux for any Python version
