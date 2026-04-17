@@ -1,9 +1,9 @@
-#### [faster_eth_utils.numeric](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/pytest-codspeed-4.x/faster_eth_utils/numeric.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/pytest-codspeed-4.x/benchmarks/test_numeric_benchmarks.py)
+#### [faster_eth_utils.numeric](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/actions-github-script-9.x/faster_eth_utils/numeric.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/actions-github-script-9.x/benchmarks/test_numeric_benchmarks.py)
 
 | Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
 |----------|---------------|-------------|----------|-------------|----------|--------|
-| `clamp[above-upper]` | 6.774893294573612e-05 | 7.411511513648164e-05 | -9.40% | -8.59% | 0.91x | ❌ |
-| `clamp[at-lower]` | 6.745867545969942e-05 | 7.25600668578643e-05 | -7.56% | -7.03% | 0.93x | ❌ |
-| `clamp[at-upper]` | 6.88669301520974e-05 | 7.070718194526075e-05 | -2.67% | -2.60% | 0.97x | ❌ |
-| `clamp[below-lower]` | 6.227346957488502e-05 | 6.623072706756535e-05 | -6.35% | -5.97% | 0.94x | ❌ |
-| `clamp[within-bounds]` | 6.708695879013893e-05 | 7.288181001359439e-05 | -8.64% | -7.95% | 0.92x | ❌ |
+| `clamp[above-upper]` | 7.609745313592172e-05 | 7.702055524992512e-05 | -1.21% | -1.20% | 0.99x | ❌ |
+| `clamp[at-lower]` | 7.664668903134574e-05 | 7.598721338662462e-05 | 0.86% | 0.87% | 1.01x | ✅ |
+| `clamp[at-upper]` | 7.536327847000751e-05 | 7.585892293844017e-05 | -0.66% | -0.65% | 0.99x | ❌ |
+| `clamp[below-lower]` | 6.863479079635665e-05 | 6.874135630562423e-05 | -0.16% | -0.16% | 1.00x | ❌ |
+| `clamp[within-bounds]` | 7.583501221195861e-05 | 8.034402006429199e-05 | -5.95% | -5.61% | 0.94x | ❌ |
