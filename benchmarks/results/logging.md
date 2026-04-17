@@ -1,7 +1,7 @@
-#### [faster_eth_utils.logging](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/mypy-1.x/faster_eth_utils/logging.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/mypy-1.x/benchmarks/test_logging_benchmarks.py)
+#### [faster_eth_utils.logging](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/pytest-codspeed-4.x/faster_eth_utils/logging.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/pytest-codspeed-4.x/benchmarks/test_logging_benchmarks.py)
 
 | Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
 |----------|---------------|-------------|----------|-------------|----------|--------|
-| `get_extended_debug_logger` | 0.00021019810609868017 | 0.00020664969529101207 | 1.69% | 1.72% | 1.02x | ✅ |
-| `get_logger` | 4.8569766800298525e-05 | 4.560223386161729e-05 | 6.11% | 6.51% | 1.07x | ✅ |
-| `setup_DEBUG2_logging` | 1.289179443812147e-06 | 1.2041890394459868e-06 | 6.59% | 7.06% | 1.07x | ✅ |
+| `get_extended_debug_logger` | 0.00021804239552283337 | 0.00021497943707707702 | 1.40% | 1.42% | 1.01x | ✅ |
+| `get_logger` | 5.0547732664506615e-05 | 4.532065371462298e-05 | 10.34% | 11.53% | 1.12x | ✅ |
+| `setup_DEBUG2_logging` | 1.2426221856771381e-06 | 1.1557037895039883e-06 | 6.99% | 7.52% | 1.08x | ✅ |
