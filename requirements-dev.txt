@@ -5,6 +5,6 @@ bump_my_version>=0.19.0
 eth-hash[pycryptodome]
 ipython
 pre-commit>=3.4.0
-tox>=4.0.0
+tox>=4.53.0
 twine
 wheel
