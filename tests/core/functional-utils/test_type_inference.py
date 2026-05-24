@@ -38,37 +38,37 @@ def check_mypy_run(
         (
             fixture_dir("to_tuple_decorator.py"),
             fixture_dir(
-                'to_tuple_decorator.py:12: note: Revealed type is "builtins.tuple[builtins.int, ...]"\nSuccess: no issues found in 1 source file\n'  # noqa: E501
+                'to_tuple_decorator.py:12: note: Revealed type is "tuple[int, ...]"\nSuccess: no issues found in 1 source file\n'  # noqa: E501
             ),
         ),
         (
             fixture_dir("to_list_decorator.py"),
             fixture_dir(
-                'to_list_decorator.py:12: note: Revealed type is "builtins.list[builtins.int]"\nSuccess: no issues found in 1 source file\n'  # noqa: E501
+                'to_list_decorator.py:12: note: Revealed type is "list[int]"\nSuccess: no issues found in 1 source file\n'  # noqa: E501
             ),
         ),
         (
             fixture_dir("to_set_decorator.py"),
             fixture_dir(
-                'to_set_decorator.py:12: note: Revealed type is "builtins.set[builtins.int]"\nSuccess: no issues found in 1 source file\n'  # noqa: E501
+                'to_set_decorator.py:12: note: Revealed type is "set[int]"\nSuccess: no issues found in 1 source file\n'  # noqa: E501
             ),
         ),
         (
             fixture_dir("to_dict_decorator.py"),
             fixture_dir(
-                'to_dict_decorator.py:12: note: Revealed type is "builtins.dict[builtins.int, builtins.int]"\nSuccess: no issues found in 1 source file\n'  # noqa: E501
+                'to_dict_decorator.py:12: note: Revealed type is "dict[int, int]"\nSuccess: no issues found in 1 source file\n'  # noqa: E501
             ),
         ),
         (
             fixture_dir("to_ordered_dict_decorator.py"),
             fixture_dir(
-                'to_ordered_dict_decorator.py:12: note: Revealed type is "collections.OrderedDict[builtins.int, builtins.int]"\nSuccess: no issues found in 1 source file\n'  # noqa: E501
+                'to_ordered_dict_decorator.py:12: note: Revealed type is "collections.OrderedDict[int, int]"\nSuccess: no issues found in 1 source file\n'  # noqa: E501
             ),
         ),
         (
             fixture_dir("apply_to_return_value_decorator.py"),
             fixture_dir(
-                'apply_to_return_value_decorator.py:16: note: Revealed type is "builtins.list[builtins.int]"\nSuccess: no issues found in 1 source file\n'  # noqa: E501
+                'apply_to_return_value_decorator.py:16: note: Revealed type is "list[int]"\nSuccess: no issues found in 1 source file\n'  # noqa: E501
             ),
         ),
     ),
