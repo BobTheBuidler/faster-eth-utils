@@ -1,22 +1,22 @@
 #ifndef DIFFCHECK_PLACEHOLDER
 #define DIFFCHECK_PLACEHOLDER 0
 #endif
-#include "init.c"
-#include "getargs.c"
-#include "getargsfast.c"
-#include "int_ops.c"
-#include "float_ops.c"
-#include "str_ops.c"
-#include "bytes_ops.c"
-#include "list_ops.c"
-#include "dict_ops.c"
-#include "set_ops.c"
-#include "tuple_ops.c"
-#include "exc_ops.c"
-#include "misc_ops.c"
-#include "generic_ops.c"
-#include "pythonsupport.c"
-#include "function_wrapper.c"
+#include <init.c>
+#include <getargs.c>
+#include <getargsfast.c>
+#include <int_ops.c>
+#include <float_ops.c>
+#include <str_ops.c>
+#include <bytes_ops.c>
+#include <list_ops.c>
+#include <dict_ops.c>
+#include <set_ops.c>
+#include <tuple_ops.c>
+#include <exc_ops.c>
+#include <misc_ops.c>
+#include <generic_ops.c>
+#include <pythonsupport.c>
+#include <function_wrapper.c>
 #include "__native_faster_eth_utils.h"
 #include "__native_internal_faster_eth_utils.h"
 
@@ -25,25 +25,6 @@ abi____repeat_init(PyObject *self, PyObject *args, PyObject *kwds)
 {
     return 0;
 }
-PyObject *CPyDef_abi_____mypyc___3_repeat_setup(PyObject *cpy_r_type);
-PyObject *CPyDef_abi____repeat(PyObject *cpy_r_value, PyObject *cpy_r_times);
-
-static PyObject *
-abi____repeat_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-{
-    if (type != CPyType_abi____repeat) {
-        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-        return NULL;
-    }
-    PyObject *self = CPyDef_abi_____mypyc___3_repeat_setup((PyObject*)type);
-    if (self == NULL)
-        return NULL;
-    PyObject *ret = CPyPy_abi____repeat_____init__(self, args, kwds);
-    if (ret == NULL)
-        return NULL;
-    return self;
-}
-
 static int
 abi____repeat_traverse(faster_eth_utils___abi____repeatObject *self, visitproc visit, void *arg)
 {
@@ -52,8 +33,10 @@ abi____repeat_traverse(faster_eth_utils___abi____repeatObject *self, visitproc v
     if (CPyTagged_CheckLong(self->__index)) {
         Py_VISIT(CPyTagged_LongAsObject(self->__index));
     }
-    PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-    return 0;
+    int rv = 0;
+    rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+    if (rv != 0) return rv;
+    return rv;
 }
 
 static int
@@ -79,6 +62,28 @@ abi____repeat_dealloc(faster_eth_utils___abi____repeatObject *self)
     Py_TYPE(self)->tp_free((PyObject *)self);
     CPy_TRASHCAN_END(self)
     done: ;
+}
+
+PyObject *CPyDef_abi_____mypyc___3_repeat_setup(PyObject *cpy_r_type);
+PyObject *CPyDef_abi____repeat(PyObject *cpy_r_value, PyObject *cpy_r_times);
+
+static PyObject *
+abi____repeat_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+{
+    if (type != CPyType_abi____repeat) {
+        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+        return NULL;
+    }
+    PyObject *self = CPyDef_abi_____mypyc___3_repeat_setup((PyObject*)type);
+    if (self == NULL)
+        return NULL;
+    PyObject *ret = CPyPy_abi____repeat_____init__(self, args, kwds);
+    if (ret == NULL) {
+            Py_DECREF(self);
+            return NULL;
+    }
+    Py_DECREF(ret);
+    return self;
 }
 
 static CPyVTableItem abi____repeat_vtable[3];
@@ -379,6 +384,20 @@ PyObject *CPyInit_faster_eth_utils___abi(void)
         goto fail;
     modname = PyUnicode_FromString("faster_eth_utils.abi");
     if (modname == NULL) CPyError_OutOfMemory();
+    int rv = 0;
+    PyObject *mod_dict = PyImport_GetModuleDict();
+    PyObject *shared_lib = NULL;
+    rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+    if (rv < 0) goto fail;
+    PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+    if (shared_lib_file == NULL) goto fail;
+    PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+    if (ext_suffix == NULL) CPyError_OutOfMemory();
+    Py_ssize_t is_pkg = 0;
+    rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___abi__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+    Py_DECREF(ext_suffix);
+    Py_DECREF(shared_lib_file);
+    if (rv < 0) goto fail;
     if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___abi__internal) < 0)
         goto fail;
     Py_CLEAR(modname);
@@ -5499,6 +5518,20 @@ CPyL66: ;
             goto fail;
         modname = PyUnicode_FromString("faster_eth_utils.address");
         if (modname == NULL) CPyError_OutOfMemory();
+        int rv = 0;
+        PyObject *mod_dict = PyImport_GetModuleDict();
+        PyObject *shared_lib = NULL;
+        rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+        if (rv < 0) goto fail;
+        PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+        if (shared_lib_file == NULL) goto fail;
+        PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+        if (ext_suffix == NULL) CPyError_OutOfMemory();
+        Py_ssize_t is_pkg = 0;
+        rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___address__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+        Py_DECREF(ext_suffix);
+        Py_DECREF(shared_lib_file);
+        if (rv < 0) goto fail;
         if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___address__internal) < 0)
             goto fail;
         Py_CLEAR(modname);
@@ -7007,22 +7040,6 @@ CPyL39: ;
     goto CPyL34;
 }
         
-        PyObject *CPyDef_applicators_____mypyc__apply_formatter_at_index_gen_setup(PyObject *cpy_r_type);
-        PyObject *CPyDef_applicators___apply_formatter_at_index_gen(void);
-        
-        static PyObject *
-        applicators___apply_formatter_at_index_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-        {
-            if (type != CPyType_applicators___apply_formatter_at_index_gen) {
-                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                return NULL;
-            }
-            PyObject *self = CPyDef_applicators_____mypyc__apply_formatter_at_index_gen_setup((PyObject*)type);
-            if (self == NULL)
-                return NULL;
-            return self;
-        }
-        
         static int
         applicators___apply_formatter_at_index_gen_traverse(faster_eth_utils___applicators___apply_formatter_at_index_genObject *self, visitproc visit, void *arg)
         {
@@ -7043,7 +7060,8 @@ CPyL39: ;
             Py_VISIT(self->___mypyc_temp__4.f0);
             Py_VISIT(self->___mypyc_temp__4.f1);
             Py_VISIT(self->___mypyc_temp__4.f2);
-            return 0;
+            int rv = 0;
+            return rv;
         }
         
         static int
@@ -7106,6 +7124,22 @@ CPyL39: ;
             Py_TYPE(self)->tp_free((PyObject *)self);
             CPy_TRASHCAN_END(self)
             done: ;
+        }
+        
+        PyObject *CPyDef_applicators_____mypyc__apply_formatter_at_index_gen_setup(PyObject *cpy_r_type);
+        PyObject *CPyDef_applicators___apply_formatter_at_index_gen(void);
+        
+        static PyObject *
+        applicators___apply_formatter_at_index_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+        {
+            if (type != CPyType_applicators___apply_formatter_at_index_gen) {
+                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                return NULL;
+            }
+            PyObject *self = CPyDef_applicators_____mypyc__apply_formatter_at_index_gen_setup((PyObject*)type);
+            if (self == NULL)
+                return NULL;
+            return self;
         }
         
         static CPyVTableItem applicators___apply_formatter_at_index_gen_vtable[6];
@@ -7200,22 +7234,6 @@ CPyL39: ;
         }
         
         
-        PyObject *CPyDef_applicators_____mypyc__apply_formatters_to_sequence_gen_setup(PyObject *cpy_r_type);
-        PyObject *CPyDef_applicators___apply_formatters_to_sequence_gen(void);
-        
-        static PyObject *
-        applicators___apply_formatters_to_sequence_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-        {
-            if (type != CPyType_applicators___apply_formatters_to_sequence_gen) {
-                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                return NULL;
-            }
-            PyObject *self = CPyDef_applicators_____mypyc__apply_formatters_to_sequence_gen_setup((PyObject*)type);
-            if (self == NULL)
-                return NULL;
-            return self;
-        }
-        
         static int
         applicators___apply_formatters_to_sequence_gen_traverse(faster_eth_utils___applicators___apply_formatters_to_sequence_genObject *self, visitproc visit, void *arg)
         {
@@ -7232,7 +7250,8 @@ CPyL39: ;
             Py_VISIT(self->___mypyc_temp__8);
             Py_VISIT(self->___mypyc_generator_attribute__formatter);
             Py_VISIT(self->___mypyc_generator_attribute__item);
-            return 0;
+            int rv = 0;
+            return rv;
         }
         
         static int
@@ -7294,6 +7313,22 @@ CPyL39: ;
             Py_TYPE(self)->tp_free((PyObject *)self);
             CPy_TRASHCAN_END(self)
             done: ;
+        }
+        
+        PyObject *CPyDef_applicators_____mypyc__apply_formatters_to_sequence_gen_setup(PyObject *cpy_r_type);
+        PyObject *CPyDef_applicators___apply_formatters_to_sequence_gen(void);
+        
+        static PyObject *
+        applicators___apply_formatters_to_sequence_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+        {
+            if (type != CPyType_applicators___apply_formatters_to_sequence_gen) {
+                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                return NULL;
+            }
+            PyObject *self = CPyDef_applicators_____mypyc__apply_formatters_to_sequence_gen_setup((PyObject*)type);
+            if (self == NULL)
+                return NULL;
+            return self;
         }
         
         static CPyVTableItem applicators___apply_formatters_to_sequence_gen_vtable[6];
@@ -7387,22 +7422,6 @@ CPyL39: ;
         }
         
         
-        PyObject *CPyDef_applicators_____mypyc__apply_formatters_to_dict_env_setup(PyObject *cpy_r_type);
-        PyObject *CPyDef_applicators___apply_formatters_to_dict_env(void);
-        
-        static PyObject *
-        applicators___apply_formatters_to_dict_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-        {
-            if (type != CPyType_applicators___apply_formatters_to_dict_env) {
-                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                return NULL;
-            }
-            PyObject *self = CPyDef_applicators_____mypyc__apply_formatters_to_dict_env_setup((PyObject*)type);
-            if (self == NULL)
-                return NULL;
-            return self;
-        }
-        
         static int
         applicators___apply_formatters_to_dict_env_traverse(faster_eth_utils___applicators___apply_formatters_to_dict_envObject *self, visitproc visit, void *arg)
         {
@@ -7410,7 +7429,8 @@ CPyL39: ;
             Py_VISIT(self->_formatters);
             Py_VISIT(self->_get_value);
             Py_VISIT(self->_value);
-            return 0;
+            int rv = 0;
+            return rv;
         }
         
         static int
@@ -7441,6 +7461,22 @@ CPyL39: ;
             Py_TYPE(self)->tp_free((PyObject *)self);
             CPy_TRASHCAN_END(self)
             done: ;
+        }
+        
+        PyObject *CPyDef_applicators_____mypyc__apply_formatters_to_dict_env_setup(PyObject *cpy_r_type);
+        PyObject *CPyDef_applicators___apply_formatters_to_dict_env(void);
+        
+        static PyObject *
+        applicators___apply_formatters_to_dict_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+        {
+            if (type != CPyType_applicators___apply_formatters_to_dict_env) {
+                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                return NULL;
+            }
+            PyObject *self = CPyDef_applicators_____mypyc__apply_formatters_to_dict_env_setup((PyObject*)type);
+            if (self == NULL)
+                return NULL;
+            return self;
         }
         
         static CPyVTableItem applicators___apply_formatters_to_dict_env_vtable[1];
@@ -7513,28 +7549,14 @@ CPyL39: ;
             instance = instance ? instance : Py_None;
             return CPyDef_applicators___get_value_apply_formatters_to_dict_obj_____get__(self, instance, owner);
         }
-        PyObject *CPyDef_applicators_____mypyc__get_value_apply_formatters_to_dict_obj_setup(PyObject *cpy_r_type);
-        PyObject *CPyDef_applicators___get_value_apply_formatters_to_dict_obj(void);
-        
-        static PyObject *
-        applicators___get_value_apply_formatters_to_dict_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-        {
-            if (type != CPyType_applicators___get_value_apply_formatters_to_dict_obj) {
-                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                return NULL;
-            }
-            PyObject *self = CPyDef_applicators_____mypyc__get_value_apply_formatters_to_dict_obj_setup((PyObject*)type);
-            if (self == NULL)
-                return NULL;
-            return self;
-        }
-        
         static int
         applicators___get_value_apply_formatters_to_dict_obj_traverse(faster_eth_utils___applicators___get_value_apply_formatters_to_dict_objObject *self, visitproc visit, void *arg)
         {
             Py_VISIT(self->___mypyc_env__);
-            PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-            return 0;
+            int rv = 0;
+            rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+            if (rv != 0) return rv;
+            return rv;
         }
         
         static int
@@ -7559,6 +7581,22 @@ CPyL39: ;
             Py_TYPE(self)->tp_free((PyObject *)self);
             CPy_TRASHCAN_END(self)
             done: ;
+        }
+        
+        PyObject *CPyDef_applicators_____mypyc__get_value_apply_formatters_to_dict_obj_setup(PyObject *cpy_r_type);
+        PyObject *CPyDef_applicators___get_value_apply_formatters_to_dict_obj(void);
+        
+        static PyObject *
+        applicators___get_value_apply_formatters_to_dict_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+        {
+            if (type != CPyType_applicators___get_value_apply_formatters_to_dict_obj) {
+                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                return NULL;
+            }
+            PyObject *self = CPyDef_applicators_____mypyc__get_value_apply_formatters_to_dict_obj_setup((PyObject*)type);
+            if (self == NULL)
+                return NULL;
+            return self;
         }
         
         static CPyVTableItem applicators___get_value_apply_formatters_to_dict_obj_vtable[2];
@@ -7688,22 +7726,6 @@ CPyL39: ;
             return 0;
         }
         
-        PyObject *CPyDef_applicators_____mypyc__apply_formatter_to_array_gen_setup(PyObject *cpy_r_type);
-        PyObject *CPyDef_applicators___apply_formatter_to_array_gen(void);
-        
-        static PyObject *
-        applicators___apply_formatter_to_array_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-        {
-            if (type != CPyType_applicators___apply_formatter_to_array_gen) {
-                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                return NULL;
-            }
-            PyObject *self = CPyDef_applicators_____mypyc__apply_formatter_to_array_gen_setup((PyObject*)type);
-            if (self == NULL)
-                return NULL;
-            return self;
-        }
-        
         static int
         applicators___apply_formatter_to_array_gen_traverse(faster_eth_utils___applicators___apply_formatter_to_array_genObject *self, visitproc visit, void *arg)
         {
@@ -7712,7 +7734,8 @@ CPyL39: ;
             Py_VISIT(self->___mypyc_temp__9);
             Py_VISIT(self->___mypyc_temp__10);
             Py_VISIT(self->___mypyc_generator_attribute__item);
-            return 0;
+            int rv = 0;
+            return rv;
         }
         
         static int
@@ -7745,6 +7768,22 @@ CPyL39: ;
             Py_TYPE(self)->tp_free((PyObject *)self);
             CPy_TRASHCAN_END(self)
             done: ;
+        }
+        
+        PyObject *CPyDef_applicators_____mypyc__apply_formatter_to_array_gen_setup(PyObject *cpy_r_type);
+        PyObject *CPyDef_applicators___apply_formatter_to_array_gen(void);
+        
+        static PyObject *
+        applicators___apply_formatter_to_array_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+        {
+            if (type != CPyType_applicators___apply_formatter_to_array_gen) {
+                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                return NULL;
+            }
+            PyObject *self = CPyDef_applicators_____mypyc__apply_formatter_to_array_gen_setup((PyObject*)type);
+            if (self == NULL)
+                return NULL;
+            return self;
         }
         
         static CPyVTableItem applicators___apply_formatter_to_array_gen_vtable[6];
@@ -7835,22 +7874,6 @@ CPyL39: ;
         }
         
         
-        PyObject *CPyDef_applicators_____mypyc__apply_key_map_env_setup(PyObject *cpy_r_type);
-        PyObject *CPyDef_applicators___apply_key_map_env(void);
-        
-        static PyObject *
-        applicators___apply_key_map_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-        {
-            if (type != CPyType_applicators___apply_key_map_env) {
-                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                return NULL;
-            }
-            PyObject *self = CPyDef_applicators_____mypyc__apply_key_map_env_setup((PyObject*)type);
-            if (self == NULL)
-                return NULL;
-            return self;
-        }
-        
         static int
         applicators___apply_key_map_env_traverse(faster_eth_utils___applicators___apply_key_map_envObject *self, visitproc visit, void *arg)
         {
@@ -7861,7 +7884,8 @@ CPyL39: ;
             Py_VISIT(self->_k);
             Py_VISIT(self->_v);
             Py_VISIT(self->_key_conflicts);
-            return 0;
+            int rv = 0;
+            return rv;
         }
         
         static int
@@ -7897,6 +7921,22 @@ CPyL39: ;
             Py_TYPE(self)->tp_free((PyObject *)self);
             CPy_TRASHCAN_END(self)
             done: ;
+        }
+        
+        PyObject *CPyDef_applicators_____mypyc__apply_key_map_env_setup(PyObject *cpy_r_type);
+        PyObject *CPyDef_applicators___apply_key_map_env(void);
+        
+        static PyObject *
+        applicators___apply_key_map_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+        {
+            if (type != CPyType_applicators___apply_key_map_env) {
+                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                return NULL;
+            }
+            PyObject *self = CPyDef_applicators_____mypyc__apply_key_map_env_setup((PyObject*)type);
+            if (self == NULL)
+                return NULL;
+            return self;
         }
         
         static CPyVTableItem applicators___apply_key_map_env_vtable[1];
@@ -7968,28 +8008,14 @@ CPyL39: ;
             instance = instance ? instance : Py_None;
             return CPyDef_applicators___get_key_apply_key_map_obj_____get__(self, instance, owner);
         }
-        PyObject *CPyDef_applicators_____mypyc__get_key_apply_key_map_obj_setup(PyObject *cpy_r_type);
-        PyObject *CPyDef_applicators___get_key_apply_key_map_obj(void);
-        
-        static PyObject *
-        applicators___get_key_apply_key_map_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-        {
-            if (type != CPyType_applicators___get_key_apply_key_map_obj) {
-                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                return NULL;
-            }
-            PyObject *self = CPyDef_applicators_____mypyc__get_key_apply_key_map_obj_setup((PyObject*)type);
-            if (self == NULL)
-                return NULL;
-            return self;
-        }
-        
         static int
         applicators___get_key_apply_key_map_obj_traverse(faster_eth_utils___applicators___get_key_apply_key_map_objObject *self, visitproc visit, void *arg)
         {
             Py_VISIT(self->___mypyc_env__);
-            PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-            return 0;
+            int rv = 0;
+            rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+            if (rv != 0) return rv;
+            return rv;
         }
         
         static int
@@ -8014,6 +8040,22 @@ CPyL39: ;
             Py_TYPE(self)->tp_free((PyObject *)self);
             CPy_TRASHCAN_END(self)
             done: ;
+        }
+        
+        PyObject *CPyDef_applicators_____mypyc__get_key_apply_key_map_obj_setup(PyObject *cpy_r_type);
+        PyObject *CPyDef_applicators___get_key_apply_key_map_obj(void);
+        
+        static PyObject *
+        applicators___get_key_apply_key_map_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+        {
+            if (type != CPyType_applicators___get_key_apply_key_map_obj) {
+                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                return NULL;
+            }
+            PyObject *self = CPyDef_applicators_____mypyc__get_key_apply_key_map_obj_setup((PyObject*)type);
+            if (self == NULL)
+                return NULL;
+            return self;
         }
         
         static CPyVTableItem applicators___get_key_apply_key_map_obj_vtable[2];
@@ -8240,6 +8282,20 @@ CPyL39: ;
                 goto fail;
             modname = PyUnicode_FromString("faster_eth_utils.applicators");
             if (modname == NULL) CPyError_OutOfMemory();
+            int rv = 0;
+            PyObject *mod_dict = PyImport_GetModuleDict();
+            PyObject *shared_lib = NULL;
+            rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+            if (rv < 0) goto fail;
+            PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+            if (shared_lib_file == NULL) goto fail;
+            PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+            if (ext_suffix == NULL) CPyError_OutOfMemory();
+            Py_ssize_t is_pkg = 0;
+            rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___applicators__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+            Py_DECREF(ext_suffix);
+            Py_DECREF(shared_lib_file);
+            if (rv < 0) goto fail;
             if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___applicators__internal) < 0)
                 goto fail;
             Py_CLEAR(modname);
@@ -13282,6 +13338,20 @@ CPyL58: ;
                     goto fail;
                 modname = PyUnicode_FromString("faster_eth_utils.conversions");
                 if (modname == NULL) CPyError_OutOfMemory();
+                int rv = 0;
+                PyObject *mod_dict = PyImport_GetModuleDict();
+                PyObject *shared_lib = NULL;
+                rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+                if (rv < 0) goto fail;
+                PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+                if (shared_lib_file == NULL) goto fail;
+                PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                if (ext_suffix == NULL) CPyError_OutOfMemory();
+                Py_ssize_t is_pkg = 0;
+                rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___conversions__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+                Py_DECREF(ext_suffix);
+                Py_DECREF(shared_lib_file);
+                if (rv < 0) goto fail;
                 if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___conversions__internal) < 0)
                     goto fail;
                 Py_CLEAR(modname);
@@ -15804,6 +15874,20 @@ CPyL38: ;
                         goto fail;
                     modname = PyUnicode_FromString("faster_eth_utils.crypto");
                     if (modname == NULL) CPyError_OutOfMemory();
+                    int rv = 0;
+                    PyObject *mod_dict = PyImport_GetModuleDict();
+                    PyObject *shared_lib = NULL;
+                    rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+                    if (rv < 0) goto fail;
+                    PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+                    if (shared_lib_file == NULL) goto fail;
+                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                    if (ext_suffix == NULL) CPyError_OutOfMemory();
+                    Py_ssize_t is_pkg = 0;
+                    rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___crypto__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+                    Py_DECREF(ext_suffix);
+                    Py_DECREF(shared_lib_file);
+                    if (rv < 0) goto fail;
                     if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___crypto__internal) < 0)
                         goto fail;
                     Py_CLEAR(modname);
@@ -16132,22 +16216,6 @@ CPyL13: ;
     goto CPyL11;
 }
                     
-                    PyObject *CPyDef_currency_____mypyc__denoms_setup(PyObject *cpy_r_type);
-                    PyObject *CPyDef_currency___denoms(void);
-                    
-                    static PyObject *
-                    currency___denoms_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                    {
-                        if (type != CPyType_currency___denoms) {
-                            PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                            return NULL;
-                        }
-                        PyObject *self = CPyDef_currency_____mypyc__denoms_setup((PyObject*)type);
-                        if (self == NULL)
-                            return NULL;
-                        return self;
-                    }
-                    
                     static int
                     currency___denoms_traverse(faster_eth_utils___currency___denomsObject *self, visitproc visit, void *arg)
                     {
@@ -16220,7 +16288,8 @@ CPyL13: ;
                         if (CPyTagged_CheckLong(self->_tether)) {
                             Py_VISIT(CPyTagged_LongAsObject(self->_tether));
                         }
-                        return 0;
+                        int rv = 0;
+                        return rv;
                     }
                     
                     static int
@@ -16353,6 +16422,22 @@ CPyL13: ;
                         Py_TYPE(self)->tp_free((PyObject *)self);
                         CPy_TRASHCAN_END(self)
                         done: ;
+                    }
+                    
+                    PyObject *CPyDef_currency_____mypyc__denoms_setup(PyObject *cpy_r_type);
+                    PyObject *CPyDef_currency___denoms(void);
+                    
+                    static PyObject *
+                    currency___denoms_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                    {
+                        if (type != CPyType_currency___denoms) {
+                            PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                            return NULL;
+                        }
+                        PyObject *self = CPyDef_currency_____mypyc__denoms_setup((PyObject*)type);
+                        if (self == NULL)
+                            return NULL;
+                        return self;
                     }
                     
                     static CPyVTableItem currency___denoms_vtable[1];
@@ -17523,6 +17608,20 @@ CPyL13: ;
                             goto fail;
                         modname = PyUnicode_FromString("faster_eth_utils.currency");
                         if (modname == NULL) CPyError_OutOfMemory();
+                        int rv = 0;
+                        PyObject *mod_dict = PyImport_GetModuleDict();
+                        PyObject *shared_lib = NULL;
+                        rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+                        if (rv < 0) goto fail;
+                        PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+                        if (shared_lib_file == NULL) goto fail;
+                        PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                        if (ext_suffix == NULL) CPyError_OutOfMemory();
+                        Py_ssize_t is_pkg = 0;
+                        rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___currency__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+                        Py_DECREF(ext_suffix);
+                        Py_DECREF(shared_lib_file);
+                        if (rv < 0) goto fail;
                         if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___currency__internal) < 0)
                             goto fail;
                         Py_CLEAR(modname);
@@ -23056,6 +23155,20 @@ CPyL223: ;
                                 goto fail;
                             modname = PyUnicode_FromString("faster_eth_utils.debug");
                             if (modname == NULL) CPyError_OutOfMemory();
+                            int rv = 0;
+                            PyObject *mod_dict = PyImport_GetModuleDict();
+                            PyObject *shared_lib = NULL;
+                            rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+                            if (rv < 0) goto fail;
+                            PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+                            if (shared_lib_file == NULL) goto fail;
+                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                            if (ext_suffix == NULL) CPyError_OutOfMemory();
+                            Py_ssize_t is_pkg = 0;
+                            rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___debug__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+                            Py_DECREF(ext_suffix);
+                            Py_DECREF(shared_lib_file);
+                            if (rv < 0) goto fail;
                             if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___debug__internal) < 0)
                                 goto fail;
                             Py_CLEAR(modname);
@@ -23437,31 +23550,14 @@ CPyL5: ;
                             {
                                 return 0;
                             }
-                            PyObject *CPyDef_decorators_____mypyc__combomethod_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_decorators___combomethod(PyObject *cpy_r_method);
-                            
-                            static PyObject *
-                            decorators___combomethod_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_decorators___combomethod) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_decorators_____mypyc__combomethod_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                PyObject *ret = CPyPy_decorators___combomethod_____init__(self, args, kwds);
-                                if (ret == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             decorators___combomethod_traverse(faster_eth_utils___decorators___combomethodObject *self, visitproc visit, void *arg)
                             {
                                 Py_VISIT(self->_method);
-                                PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                return 0;
+                                int rv = 0;
+                                rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                if (rv != 0) return rv;
+                                return rv;
                             }
                             
                             static int
@@ -23481,6 +23577,28 @@ CPyL5: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_decorators_____mypyc__combomethod_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_decorators___combomethod(PyObject *cpy_r_method);
+                            
+                            static PyObject *
+                            decorators___combomethod_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_decorators___combomethod) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_decorators_____mypyc__combomethod_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                PyObject *ret = CPyPy_decorators___combomethod_____init__(self, args, kwds);
+                                if (ret == NULL) {
+                                        Py_DECREF(self);
+                                        return NULL;
+                                }
+                                Py_DECREF(ret);
+                                return self;
                             }
                             
                             static CPyVTableItem decorators___combomethod_vtable[3];
@@ -23603,22 +23721,6 @@ CPyL5: ;
                                 return 0;
                             }
                             
-                            PyObject *CPyDef_decorators_____mypyc___3__get___3_combomethod_env_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_decorators_____get___3_combomethod_env(void);
-                            
-                            static PyObject *
-                            decorators_____get___3_combomethod_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_decorators_____get___3_combomethod_env) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_decorators_____mypyc___3__get___3_combomethod_env_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             decorators_____get___3_combomethod_env_traverse(faster_eth_utils___decorators_____get___3_combomethod_envObject *self, visitproc visit, void *arg)
                             {
@@ -23629,7 +23731,8 @@ CPyL5: ;
                                 Py_VISIT(self->_self);
                                 Py_VISIT(self->_obj);
                                 Py_VISIT(self->_objtype);
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -23665,6 +23768,22 @@ CPyL5: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_decorators_____mypyc___3__get___3_combomethod_env_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_decorators_____get___3_combomethod_env(void);
+                            
+                            static PyObject *
+                            decorators_____get___3_combomethod_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_decorators_____get___3_combomethod_env) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_decorators_____mypyc___3__get___3_combomethod_env_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem decorators_____get___3_combomethod_env_vtable[1];
@@ -23736,28 +23855,14 @@ CPyL5: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_decorators____wrapper___3_get___3_combomethod_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_decorators_____mypyc___3_wrapper___3_get___3_combomethod_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_decorators____wrapper___3_get___3_combomethod_obj(void);
-                            
-                            static PyObject *
-                            decorators____wrapper___3_get___3_combomethod_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_decorators____wrapper___3_get___3_combomethod_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_decorators_____mypyc___3_wrapper___3_get___3_combomethod_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             decorators____wrapper___3_get___3_combomethod_obj_traverse(faster_eth_utils___decorators____wrapper___3_get___3_combomethod_objObject *self, visitproc visit, void *arg)
                             {
                                 Py_VISIT(self->___mypyc_env__);
-                                PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                return 0;
+                                int rv = 0;
+                                rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                if (rv != 0) return rv;
+                                return rv;
                             }
                             
                             static int
@@ -23782,6 +23887,22 @@ CPyL5: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_decorators_____mypyc___3_wrapper___3_get___3_combomethod_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_decorators____wrapper___3_get___3_combomethod_obj(void);
+                            
+                            static PyObject *
+                            decorators____wrapper___3_get___3_combomethod_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_decorators____wrapper___3_get___3_combomethod_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_decorators_____mypyc___3_wrapper___3_get___3_combomethod_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem decorators____wrapper___3_get___3_combomethod_obj_vtable[2];
@@ -23911,22 +24032,6 @@ CPyL5: ;
                                 return 0;
                             }
                             
-                            PyObject *CPyDef_decorators_____mypyc__return_arg_type_env_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_decorators___return_arg_type_env(void);
-                            
-                            static PyObject *
-                            decorators___return_arg_type_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_decorators___return_arg_type_env) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_decorators_____mypyc__return_arg_type_env_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             decorators___return_arg_type_env_traverse(faster_eth_utils___decorators___return_arg_type_envObject *self, visitproc visit, void *arg)
                             {
@@ -23936,7 +24041,8 @@ CPyL5: ;
                                 }
                                 Py_VISIT(self->_decorator);
                                 Py_VISIT(self->_deco);
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -23976,6 +24082,22 @@ CPyL5: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_decorators_____mypyc__return_arg_type_env_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_decorators___return_arg_type_env(void);
+                            
+                            static PyObject *
+                            decorators___return_arg_type_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_decorators___return_arg_type_env) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_decorators_____mypyc__return_arg_type_env_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem decorators___return_arg_type_env_vtable[1];
@@ -24044,22 +24166,6 @@ CPyL5: ;
                             }
                             
                             
-                            PyObject *CPyDef_decorators_____mypyc__decorator_return_arg_type_env_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_decorators___decorator_return_arg_type_env(void);
-                            
-                            static PyObject *
-                            decorators___decorator_return_arg_type_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_decorators___decorator_return_arg_type_env) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_decorators_____mypyc__decorator_return_arg_type_env_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             decorators___decorator_return_arg_type_env_traverse(faster_eth_utils___decorators___decorator_return_arg_type_envObject *self, visitproc visit, void *arg)
                             {
@@ -24072,7 +24178,8 @@ CPyL5: ;
                                 }
                                 Py_VISIT(self->_decorator);
                                 Py_VISIT(self->_deco);
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -24118,6 +24225,22 @@ CPyL5: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_decorators_____mypyc__decorator_return_arg_type_env_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_decorators___decorator_return_arg_type_env(void);
+                            
+                            static PyObject *
+                            decorators___decorator_return_arg_type_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_decorators___decorator_return_arg_type_env) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_decorators_____mypyc__decorator_return_arg_type_env_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem decorators___decorator_return_arg_type_env_vtable[1];
@@ -24190,28 +24313,14 @@ CPyL5: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_decorators___decorator_return_arg_type_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_decorators_____mypyc__decorator_return_arg_type_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_decorators___decorator_return_arg_type_obj(void);
-                            
-                            static PyObject *
-                            decorators___decorator_return_arg_type_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_decorators___decorator_return_arg_type_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_decorators_____mypyc__decorator_return_arg_type_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             decorators___decorator_return_arg_type_obj_traverse(faster_eth_utils___decorators___decorator_return_arg_type_objObject *self, visitproc visit, void *arg)
                             {
                                 Py_VISIT(self->___mypyc_env__);
-                                PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                return 0;
+                                int rv = 0;
+                                rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                if (rv != 0) return rv;
+                                return rv;
                             }
                             
                             static int
@@ -24236,6 +24345,22 @@ CPyL5: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_decorators_____mypyc__decorator_return_arg_type_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_decorators___decorator_return_arg_type_obj(void);
+                            
+                            static PyObject *
+                            decorators___decorator_return_arg_type_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_decorators___decorator_return_arg_type_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_decorators_____mypyc__decorator_return_arg_type_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem decorators___decorator_return_arg_type_obj_vtable[2];
@@ -24369,28 +24494,14 @@ CPyL5: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_decorators___wrapper_return_arg_type_decorator_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_decorators_____mypyc__wrapper_return_arg_type_decorator_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_decorators___wrapper_return_arg_type_decorator_obj(void);
-                            
-                            static PyObject *
-                            decorators___wrapper_return_arg_type_decorator_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_decorators___wrapper_return_arg_type_decorator_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_decorators_____mypyc__wrapper_return_arg_type_decorator_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             decorators___wrapper_return_arg_type_decorator_obj_traverse(faster_eth_utils___decorators___wrapper_return_arg_type_decorator_objObject *self, visitproc visit, void *arg)
                             {
                                 Py_VISIT(self->___mypyc_env__);
-                                PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                return 0;
+                                int rv = 0;
+                                rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                if (rv != 0) return rv;
+                                return rv;
                             }
                             
                             static int
@@ -24415,6 +24526,22 @@ CPyL5: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_decorators_____mypyc__wrapper_return_arg_type_decorator_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_decorators___wrapper_return_arg_type_decorator_obj(void);
+                            
+                            static PyObject *
+                            decorators___wrapper_return_arg_type_decorator_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_decorators___wrapper_return_arg_type_decorator_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_decorators_____mypyc__wrapper_return_arg_type_decorator_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem decorators___wrapper_return_arg_type_decorator_obj_vtable[2];
@@ -24544,22 +24671,6 @@ CPyL5: ;
                                 return 0;
                             }
                             
-                            PyObject *CPyDef_decorators_____mypyc__replace_exceptions_env_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_decorators___replace_exceptions_env(void);
-                            
-                            static PyObject *
-                            decorators___replace_exceptions_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_decorators___replace_exceptions_env) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_decorators_____mypyc__replace_exceptions_env_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             decorators___replace_exceptions_env_traverse(faster_eth_utils___decorators___replace_exceptions_envObject *self, visitproc visit, void *arg)
                             {
@@ -24569,7 +24680,8 @@ CPyL5: ;
                                 Py_VISIT(self->_decorator);
                                 Py_VISIT(self->_cache_key);
                                 Py_VISIT(self->_deco);
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -24603,6 +24715,22 @@ CPyL5: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_decorators_____mypyc__replace_exceptions_env_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_decorators___replace_exceptions_env(void);
+                            
+                            static PyObject *
+                            decorators___replace_exceptions_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_decorators___replace_exceptions_env) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_decorators_____mypyc__replace_exceptions_env_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem decorators___replace_exceptions_env_vtable[1];
@@ -24670,22 +24798,6 @@ CPyL5: ;
                             }
                             
                             
-                            PyObject *CPyDef_decorators_____mypyc__decorator_replace_exceptions_env_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_decorators___decorator_replace_exceptions_env(void);
-                            
-                            static PyObject *
-                            decorators___decorator_replace_exceptions_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_decorators___decorator_replace_exceptions_env) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_decorators_____mypyc__decorator_replace_exceptions_env_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             decorators___decorator_replace_exceptions_env_traverse(faster_eth_utils___decorators___decorator_replace_exceptions_envObject *self, visitproc visit, void *arg)
                             {
@@ -24698,7 +24810,8 @@ CPyL5: ;
                                 Py_VISIT(self->_decorator);
                                 Py_VISIT(self->_cache_key);
                                 Py_VISIT(self->_deco);
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -24738,6 +24851,22 @@ CPyL5: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_decorators_____mypyc__decorator_replace_exceptions_env_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_decorators___decorator_replace_exceptions_env(void);
+                            
+                            static PyObject *
+                            decorators___decorator_replace_exceptions_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_decorators___decorator_replace_exceptions_env) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_decorators_____mypyc__decorator_replace_exceptions_env_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem decorators___decorator_replace_exceptions_env_vtable[1];
@@ -24809,28 +24938,14 @@ CPyL5: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_decorators___decorator_replace_exceptions_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_decorators_____mypyc__decorator_replace_exceptions_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_decorators___decorator_replace_exceptions_obj(void);
-                            
-                            static PyObject *
-                            decorators___decorator_replace_exceptions_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_decorators___decorator_replace_exceptions_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_decorators_____mypyc__decorator_replace_exceptions_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             decorators___decorator_replace_exceptions_obj_traverse(faster_eth_utils___decorators___decorator_replace_exceptions_objObject *self, visitproc visit, void *arg)
                             {
                                 Py_VISIT(self->___mypyc_env__);
-                                PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                return 0;
+                                int rv = 0;
+                                rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                if (rv != 0) return rv;
+                                return rv;
                             }
                             
                             static int
@@ -24855,6 +24970,22 @@ CPyL5: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_decorators_____mypyc__decorator_replace_exceptions_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_decorators___decorator_replace_exceptions_obj(void);
+                            
+                            static PyObject *
+                            decorators___decorator_replace_exceptions_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_decorators___decorator_replace_exceptions_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_decorators_____mypyc__decorator_replace_exceptions_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem decorators___decorator_replace_exceptions_obj_vtable[2];
@@ -24988,28 +25119,14 @@ CPyL5: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_decorators___wrapped_replace_exceptions_decorator_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_decorators_____mypyc__wrapped_replace_exceptions_decorator_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_decorators___wrapped_replace_exceptions_decorator_obj(void);
-                            
-                            static PyObject *
-                            decorators___wrapped_replace_exceptions_decorator_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_decorators___wrapped_replace_exceptions_decorator_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_decorators_____mypyc__wrapped_replace_exceptions_decorator_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             decorators___wrapped_replace_exceptions_decorator_obj_traverse(faster_eth_utils___decorators___wrapped_replace_exceptions_decorator_objObject *self, visitproc visit, void *arg)
                             {
                                 Py_VISIT(self->___mypyc_env__);
-                                PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                return 0;
+                                int rv = 0;
+                                rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                if (rv != 0) return rv;
+                                return rv;
                             }
                             
                             static int
@@ -25034,6 +25151,22 @@ CPyL5: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_decorators_____mypyc__wrapped_replace_exceptions_decorator_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_decorators___wrapped_replace_exceptions_decorator_obj(void);
+                            
+                            static PyObject *
+                            decorators___wrapped_replace_exceptions_decorator_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_decorators___wrapped_replace_exceptions_decorator_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_decorators_____mypyc__wrapped_replace_exceptions_decorator_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem decorators___wrapped_replace_exceptions_decorator_obj_vtable[2];
@@ -25274,6 +25407,20 @@ CPyL5: ;
                                     goto fail;
                                 modname = PyUnicode_FromString("faster_eth_utils.decorators");
                                 if (modname == NULL) CPyError_OutOfMemory();
+                                int rv = 0;
+                                PyObject *mod_dict = PyImport_GetModuleDict();
+                                PyObject *shared_lib = NULL;
+                                rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+                                if (rv < 0) goto fail;
+                                PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+                                if (shared_lib_file == NULL) goto fail;
+                                PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                if (ext_suffix == NULL) CPyError_OutOfMemory();
+                                Py_ssize_t is_pkg = 0;
+                                rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___decorators__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+                                Py_DECREF(ext_suffix);
+                                Py_DECREF(shared_lib_file);
+                                if (rv < 0) goto fail;
                                 if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___decorators__internal) < 0)
                                     goto fail;
                                 Py_CLEAR(modname);
@@ -27800,6 +27947,20 @@ CPyL69: ;
                                         goto fail;
                                     modname = PyUnicode_FromString("faster_eth_utils.encoding");
                                     if (modname == NULL) CPyError_OutOfMemory();
+                                    int rv = 0;
+                                    PyObject *mod_dict = PyImport_GetModuleDict();
+                                    PyObject *shared_lib = NULL;
+                                    rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+                                    if (rv < 0) goto fail;
+                                    PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+                                    if (shared_lib_file == NULL) goto fail;
+                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                    if (ext_suffix == NULL) CPyError_OutOfMemory();
+                                    Py_ssize_t is_pkg = 0;
+                                    rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___encoding__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+                                    Py_DECREF(ext_suffix);
+                                    Py_DECREF(shared_lib_file);
+                                    if (rv < 0) goto fail;
                                     if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___encoding__internal) < 0)
                                         goto fail;
                                     Py_CLEAR(modname);
@@ -28102,6 +28263,20 @@ CPyL4: ;
                                             goto fail;
                                         modname = PyUnicode_FromString("faster_eth_utils.exceptions");
                                         if (modname == NULL) CPyError_OutOfMemory();
+                                        int rv = 0;
+                                        PyObject *mod_dict = PyImport_GetModuleDict();
+                                        PyObject *shared_lib = NULL;
+                                        rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+                                        if (rv < 0) goto fail;
+                                        PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+                                        if (shared_lib_file == NULL) goto fail;
+                                        PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                        if (ext_suffix == NULL) CPyError_OutOfMemory();
+                                        Py_ssize_t is_pkg = 0;
+                                        rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___exceptions__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+                                        Py_DECREF(ext_suffix);
+                                        Py_DECREF(shared_lib_file);
+                                        if (rv < 0) goto fail;
                                         if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___exceptions__internal) < 0)
                                             goto fail;
                                         Py_CLEAR(modname);
@@ -28242,22 +28417,6 @@ CPyL13: ;
     goto CPyL12;
 }
                                         
-                                        PyObject *CPyDef_functional_____mypyc__combine_env_setup(PyObject *cpy_r_type);
-                                        PyObject *CPyDef_functional___combine_env(void);
-                                        
-                                        static PyObject *
-                                        functional___combine_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                        {
-                                            if (type != CPyType_functional___combine_env) {
-                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                return NULL;
-                                            }
-                                            PyObject *self = CPyDef_functional_____mypyc__combine_env_setup((PyObject*)type);
-                                            if (self == NULL)
-                                                return NULL;
-                                            return self;
-                                        }
-                                        
                                         static int
                                         functional___combine_env_traverse(faster_eth_utils___functional___combine_envObject *self, visitproc visit, void *arg)
                                         {
@@ -28265,7 +28424,8 @@ CPyL13: ;
                                             Py_VISIT(self->_f);
                                             Py_VISIT(self->_g);
                                             Py_VISIT(self->_combined);
-                                            return 0;
+                                            int rv = 0;
+                                            return rv;
                                         }
                                         
                                         static int
@@ -28295,6 +28455,22 @@ CPyL13: ;
                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                             CPy_TRASHCAN_END(self)
                                             done: ;
+                                        }
+                                        
+                                        PyObject *CPyDef_functional_____mypyc__combine_env_setup(PyObject *cpy_r_type);
+                                        PyObject *CPyDef_functional___combine_env(void);
+                                        
+                                        static PyObject *
+                                        functional___combine_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                        {
+                                            if (type != CPyType_functional___combine_env) {
+                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                return NULL;
+                                            }
+                                            PyObject *self = CPyDef_functional_____mypyc__combine_env_setup((PyObject*)type);
+                                            if (self == NULL)
+                                                return NULL;
+                                            return self;
                                         }
                                         
                                         static CPyVTableItem functional___combine_env_vtable[1];
@@ -28366,28 +28542,14 @@ CPyL13: ;
                                             instance = instance ? instance : Py_None;
                                             return CPyDef_functional___combined_combine_obj_____get__(self, instance, owner);
                                         }
-                                        PyObject *CPyDef_functional_____mypyc__combined_combine_obj_setup(PyObject *cpy_r_type);
-                                        PyObject *CPyDef_functional___combined_combine_obj(void);
-                                        
-                                        static PyObject *
-                                        functional___combined_combine_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                        {
-                                            if (type != CPyType_functional___combined_combine_obj) {
-                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                return NULL;
-                                            }
-                                            PyObject *self = CPyDef_functional_____mypyc__combined_combine_obj_setup((PyObject*)type);
-                                            if (self == NULL)
-                                                return NULL;
-                                            return self;
-                                        }
-                                        
                                         static int
                                         functional___combined_combine_obj_traverse(faster_eth_utils___functional___combined_combine_objObject *self, visitproc visit, void *arg)
                                         {
                                             Py_VISIT(self->___mypyc_env__);
-                                            PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                            return 0;
+                                            int rv = 0;
+                                            rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                            if (rv != 0) return rv;
+                                            return rv;
                                         }
                                         
                                         static int
@@ -28412,6 +28574,22 @@ CPyL13: ;
                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                             CPy_TRASHCAN_END(self)
                                             done: ;
+                                        }
+                                        
+                                        PyObject *CPyDef_functional_____mypyc__combined_combine_obj_setup(PyObject *cpy_r_type);
+                                        PyObject *CPyDef_functional___combined_combine_obj(void);
+                                        
+                                        static PyObject *
+                                        functional___combined_combine_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                        {
+                                            if (type != CPyType_functional___combined_combine_obj) {
+                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                return NULL;
+                                            }
+                                            PyObject *self = CPyDef_functional_____mypyc__combined_combine_obj_setup((PyObject*)type);
+                                            if (self == NULL)
+                                                return NULL;
+                                            return self;
                                         }
                                         
                                         static CPyVTableItem functional___combined_combine_obj_vtable[2];
@@ -28541,29 +28719,14 @@ CPyL13: ;
                                             return 0;
                                         }
                                         
-                                        PyObject *CPyDef_functional_____mypyc__apply_to_return_value_env_setup(PyObject *cpy_r_type);
-                                        PyObject *CPyDef_functional___apply_to_return_value_env(void);
-                                        
-                                        static PyObject *
-                                        functional___apply_to_return_value_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                        {
-                                            if (type != CPyType_functional___apply_to_return_value_env) {
-                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                return NULL;
-                                            }
-                                            PyObject *self = CPyDef_functional_____mypyc__apply_to_return_value_env_setup((PyObject*)type);
-                                            if (self == NULL)
-                                                return NULL;
-                                            return self;
-                                        }
-                                        
                                         static int
                                         functional___apply_to_return_value_env_traverse(faster_eth_utils___functional___apply_to_return_value_envObject *self, visitproc visit, void *arg)
                                         {
                                             Py_VISIT(self->___mypyc_self__);
                                             Py_VISIT(self->_callback);
                                             Py_VISIT(self->_outer);
-                                            return 0;
+                                            int rv = 0;
+                                            return rv;
                                         }
                                         
                                         static int
@@ -28591,6 +28754,22 @@ CPyL13: ;
                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                             CPy_TRASHCAN_END(self)
                                             done: ;
+                                        }
+                                        
+                                        PyObject *CPyDef_functional_____mypyc__apply_to_return_value_env_setup(PyObject *cpy_r_type);
+                                        PyObject *CPyDef_functional___apply_to_return_value_env(void);
+                                        
+                                        static PyObject *
+                                        functional___apply_to_return_value_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                        {
+                                            if (type != CPyType_functional___apply_to_return_value_env) {
+                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                return NULL;
+                                            }
+                                            PyObject *self = CPyDef_functional_____mypyc__apply_to_return_value_env_setup((PyObject*)type);
+                                            if (self == NULL)
+                                                return NULL;
+                                            return self;
                                         }
                                         
                                         static CPyVTableItem functional___apply_to_return_value_env_vtable[1];
@@ -28658,22 +28837,6 @@ CPyL13: ;
                                         }
                                         
                                         
-                                        PyObject *CPyDef_functional_____mypyc__outer_apply_to_return_value_env_setup(PyObject *cpy_r_type);
-                                        PyObject *CPyDef_functional___outer_apply_to_return_value_env(void);
-                                        
-                                        static PyObject *
-                                        functional___outer_apply_to_return_value_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                        {
-                                            if (type != CPyType_functional___outer_apply_to_return_value_env) {
-                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                return NULL;
-                                            }
-                                            PyObject *self = CPyDef_functional_____mypyc__outer_apply_to_return_value_env_setup((PyObject*)type);
-                                            if (self == NULL)
-                                                return NULL;
-                                            return self;
-                                        }
-                                        
                                         static int
                                         functional___outer_apply_to_return_value_env_traverse(faster_eth_utils___functional___outer_apply_to_return_value_envObject *self, visitproc visit, void *arg)
                                         {
@@ -28683,7 +28846,8 @@ CPyL13: ;
                                             Py_VISIT(self->_inner);
                                             Py_VISIT(self->_callback);
                                             Py_VISIT(self->_outer);
-                                            return 0;
+                                            int rv = 0;
+                                            return rv;
                                         }
                                         
                                         static int
@@ -28717,6 +28881,22 @@ CPyL13: ;
                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                             CPy_TRASHCAN_END(self)
                                             done: ;
+                                        }
+                                        
+                                        PyObject *CPyDef_functional_____mypyc__outer_apply_to_return_value_env_setup(PyObject *cpy_r_type);
+                                        PyObject *CPyDef_functional___outer_apply_to_return_value_env(void);
+                                        
+                                        static PyObject *
+                                        functional___outer_apply_to_return_value_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                        {
+                                            if (type != CPyType_functional___outer_apply_to_return_value_env) {
+                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                return NULL;
+                                            }
+                                            PyObject *self = CPyDef_functional_____mypyc__outer_apply_to_return_value_env_setup((PyObject*)type);
+                                            if (self == NULL)
+                                                return NULL;
+                                            return self;
                                         }
                                         
                                         static CPyVTableItem functional___outer_apply_to_return_value_env_vtable[1];
@@ -28788,28 +28968,14 @@ CPyL13: ;
                                             instance = instance ? instance : Py_None;
                                             return CPyDef_functional___outer_apply_to_return_value_obj_____get__(self, instance, owner);
                                         }
-                                        PyObject *CPyDef_functional_____mypyc__outer_apply_to_return_value_obj_setup(PyObject *cpy_r_type);
-                                        PyObject *CPyDef_functional___outer_apply_to_return_value_obj(void);
-                                        
-                                        static PyObject *
-                                        functional___outer_apply_to_return_value_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                        {
-                                            if (type != CPyType_functional___outer_apply_to_return_value_obj) {
-                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                return NULL;
-                                            }
-                                            PyObject *self = CPyDef_functional_____mypyc__outer_apply_to_return_value_obj_setup((PyObject*)type);
-                                            if (self == NULL)
-                                                return NULL;
-                                            return self;
-                                        }
-                                        
                                         static int
                                         functional___outer_apply_to_return_value_obj_traverse(faster_eth_utils___functional___outer_apply_to_return_value_objObject *self, visitproc visit, void *arg)
                                         {
                                             Py_VISIT(self->___mypyc_env__);
-                                            PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                            return 0;
+                                            int rv = 0;
+                                            rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                            if (rv != 0) return rv;
+                                            return rv;
                                         }
                                         
                                         static int
@@ -28834,6 +29000,22 @@ CPyL13: ;
                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                             CPy_TRASHCAN_END(self)
                                             done: ;
+                                        }
+                                        
+                                        PyObject *CPyDef_functional_____mypyc__outer_apply_to_return_value_obj_setup(PyObject *cpy_r_type);
+                                        PyObject *CPyDef_functional___outer_apply_to_return_value_obj(void);
+                                        
+                                        static PyObject *
+                                        functional___outer_apply_to_return_value_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                        {
+                                            if (type != CPyType_functional___outer_apply_to_return_value_obj) {
+                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                return NULL;
+                                            }
+                                            PyObject *self = CPyDef_functional_____mypyc__outer_apply_to_return_value_obj_setup((PyObject*)type);
+                                            if (self == NULL)
+                                                return NULL;
+                                            return self;
                                         }
                                         
                                         static CPyVTableItem functional___outer_apply_to_return_value_obj_vtable[2];
@@ -28967,28 +29149,14 @@ CPyL13: ;
                                             instance = instance ? instance : Py_None;
                                             return CPyDef_functional___inner_apply_to_return_value_outer_obj_____get__(self, instance, owner);
                                         }
-                                        PyObject *CPyDef_functional_____mypyc__inner_apply_to_return_value_outer_obj_setup(PyObject *cpy_r_type);
-                                        PyObject *CPyDef_functional___inner_apply_to_return_value_outer_obj(void);
-                                        
-                                        static PyObject *
-                                        functional___inner_apply_to_return_value_outer_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                        {
-                                            if (type != CPyType_functional___inner_apply_to_return_value_outer_obj) {
-                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                return NULL;
-                                            }
-                                            PyObject *self = CPyDef_functional_____mypyc__inner_apply_to_return_value_outer_obj_setup((PyObject*)type);
-                                            if (self == NULL)
-                                                return NULL;
-                                            return self;
-                                        }
-                                        
                                         static int
                                         functional___inner_apply_to_return_value_outer_obj_traverse(faster_eth_utils___functional___inner_apply_to_return_value_outer_objObject *self, visitproc visit, void *arg)
                                         {
                                             Py_VISIT(self->___mypyc_env__);
-                                            PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                            return 0;
+                                            int rv = 0;
+                                            rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                            if (rv != 0) return rv;
+                                            return rv;
                                         }
                                         
                                         static int
@@ -29013,6 +29181,22 @@ CPyL13: ;
                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                             CPy_TRASHCAN_END(self)
                                             done: ;
+                                        }
+                                        
+                                        PyObject *CPyDef_functional_____mypyc__inner_apply_to_return_value_outer_obj_setup(PyObject *cpy_r_type);
+                                        PyObject *CPyDef_functional___inner_apply_to_return_value_outer_obj(void);
+                                        
+                                        static PyObject *
+                                        functional___inner_apply_to_return_value_outer_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                        {
+                                            if (type != CPyType_functional___inner_apply_to_return_value_outer_obj) {
+                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                return NULL;
+                                            }
+                                            PyObject *self = CPyDef_functional_____mypyc__inner_apply_to_return_value_outer_obj_setup((PyObject*)type);
+                                            if (self == NULL)
+                                                return NULL;
+                                            return self;
                                         }
                                         
                                         static CPyVTableItem functional___inner_apply_to_return_value_outer_obj_vtable[2];
@@ -29142,29 +29326,14 @@ CPyL13: ;
                                             return 0;
                                         }
                                         
-                                        PyObject *CPyDef_functional_____mypyc__to_tuple_env_setup(PyObject *cpy_r_type);
-                                        PyObject *CPyDef_functional___to_tuple_env(void);
-                                        
-                                        static PyObject *
-                                        functional___to_tuple_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                        {
-                                            if (type != CPyType_functional___to_tuple_env) {
-                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                return NULL;
-                                            }
-                                            PyObject *self = CPyDef_functional_____mypyc__to_tuple_env_setup((PyObject*)type);
-                                            if (self == NULL)
-                                                return NULL;
-                                            return self;
-                                        }
-                                        
                                         static int
                                         functional___to_tuple_env_traverse(faster_eth_utils___functional___to_tuple_envObject *self, visitproc visit, void *arg)
                                         {
                                             Py_VISIT(self->___mypyc_self__);
                                             Py_VISIT(self->_fn);
                                             Py_VISIT(self->_to_tuple_wrap);
-                                            return 0;
+                                            int rv = 0;
+                                            return rv;
                                         }
                                         
                                         static int
@@ -29192,6 +29361,22 @@ CPyL13: ;
                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                             CPy_TRASHCAN_END(self)
                                             done: ;
+                                        }
+                                        
+                                        PyObject *CPyDef_functional_____mypyc__to_tuple_env_setup(PyObject *cpy_r_type);
+                                        PyObject *CPyDef_functional___to_tuple_env(void);
+                                        
+                                        static PyObject *
+                                        functional___to_tuple_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                        {
+                                            if (type != CPyType_functional___to_tuple_env) {
+                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                return NULL;
+                                            }
+                                            PyObject *self = CPyDef_functional_____mypyc__to_tuple_env_setup((PyObject*)type);
+                                            if (self == NULL)
+                                                return NULL;
+                                            return self;
                                         }
                                         
                                         static CPyVTableItem functional___to_tuple_env_vtable[1];
@@ -29263,28 +29448,14 @@ CPyL13: ;
                                             instance = instance ? instance : Py_None;
                                             return CPyDef_functional___to_tuple_wrap_to_tuple_obj_____get__(self, instance, owner);
                                         }
-                                        PyObject *CPyDef_functional_____mypyc__to_tuple_wrap_to_tuple_obj_setup(PyObject *cpy_r_type);
-                                        PyObject *CPyDef_functional___to_tuple_wrap_to_tuple_obj(void);
-                                        
-                                        static PyObject *
-                                        functional___to_tuple_wrap_to_tuple_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                        {
-                                            if (type != CPyType_functional___to_tuple_wrap_to_tuple_obj) {
-                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                return NULL;
-                                            }
-                                            PyObject *self = CPyDef_functional_____mypyc__to_tuple_wrap_to_tuple_obj_setup((PyObject*)type);
-                                            if (self == NULL)
-                                                return NULL;
-                                            return self;
-                                        }
-                                        
                                         static int
                                         functional___to_tuple_wrap_to_tuple_obj_traverse(faster_eth_utils___functional___to_tuple_wrap_to_tuple_objObject *self, visitproc visit, void *arg)
                                         {
                                             Py_VISIT(self->___mypyc_env__);
-                                            PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                            return 0;
+                                            int rv = 0;
+                                            rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                            if (rv != 0) return rv;
+                                            return rv;
                                         }
                                         
                                         static int
@@ -29309,6 +29480,22 @@ CPyL13: ;
                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                             CPy_TRASHCAN_END(self)
                                             done: ;
+                                        }
+                                        
+                                        PyObject *CPyDef_functional_____mypyc__to_tuple_wrap_to_tuple_obj_setup(PyObject *cpy_r_type);
+                                        PyObject *CPyDef_functional___to_tuple_wrap_to_tuple_obj(void);
+                                        
+                                        static PyObject *
+                                        functional___to_tuple_wrap_to_tuple_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                        {
+                                            if (type != CPyType_functional___to_tuple_wrap_to_tuple_obj) {
+                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                return NULL;
+                                            }
+                                            PyObject *self = CPyDef_functional_____mypyc__to_tuple_wrap_to_tuple_obj_setup((PyObject*)type);
+                                            if (self == NULL)
+                                                return NULL;
+                                            return self;
                                         }
                                         
                                         static CPyVTableItem functional___to_tuple_wrap_to_tuple_obj_vtable[2];
@@ -29438,29 +29625,14 @@ CPyL13: ;
                                             return 0;
                                         }
                                         
-                                        PyObject *CPyDef_functional_____mypyc__to_list_env_setup(PyObject *cpy_r_type);
-                                        PyObject *CPyDef_functional___to_list_env(void);
-                                        
-                                        static PyObject *
-                                        functional___to_list_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                        {
-                                            if (type != CPyType_functional___to_list_env) {
-                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                return NULL;
-                                            }
-                                            PyObject *self = CPyDef_functional_____mypyc__to_list_env_setup((PyObject*)type);
-                                            if (self == NULL)
-                                                return NULL;
-                                            return self;
-                                        }
-                                        
                                         static int
                                         functional___to_list_env_traverse(faster_eth_utils___functional___to_list_envObject *self, visitproc visit, void *arg)
                                         {
                                             Py_VISIT(self->___mypyc_self__);
                                             Py_VISIT(self->_fn);
                                             Py_VISIT(self->_to_list_wrap);
-                                            return 0;
+                                            int rv = 0;
+                                            return rv;
                                         }
                                         
                                         static int
@@ -29488,6 +29660,22 @@ CPyL13: ;
                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                             CPy_TRASHCAN_END(self)
                                             done: ;
+                                        }
+                                        
+                                        PyObject *CPyDef_functional_____mypyc__to_list_env_setup(PyObject *cpy_r_type);
+                                        PyObject *CPyDef_functional___to_list_env(void);
+                                        
+                                        static PyObject *
+                                        functional___to_list_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                        {
+                                            if (type != CPyType_functional___to_list_env) {
+                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                return NULL;
+                                            }
+                                            PyObject *self = CPyDef_functional_____mypyc__to_list_env_setup((PyObject*)type);
+                                            if (self == NULL)
+                                                return NULL;
+                                            return self;
                                         }
                                         
                                         static CPyVTableItem functional___to_list_env_vtable[1];
@@ -29559,28 +29747,14 @@ CPyL13: ;
                                             instance = instance ? instance : Py_None;
                                             return CPyDef_functional___to_list_wrap_to_list_obj_____get__(self, instance, owner);
                                         }
-                                        PyObject *CPyDef_functional_____mypyc__to_list_wrap_to_list_obj_setup(PyObject *cpy_r_type);
-                                        PyObject *CPyDef_functional___to_list_wrap_to_list_obj(void);
-                                        
-                                        static PyObject *
-                                        functional___to_list_wrap_to_list_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                        {
-                                            if (type != CPyType_functional___to_list_wrap_to_list_obj) {
-                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                return NULL;
-                                            }
-                                            PyObject *self = CPyDef_functional_____mypyc__to_list_wrap_to_list_obj_setup((PyObject*)type);
-                                            if (self == NULL)
-                                                return NULL;
-                                            return self;
-                                        }
-                                        
                                         static int
                                         functional___to_list_wrap_to_list_obj_traverse(faster_eth_utils___functional___to_list_wrap_to_list_objObject *self, visitproc visit, void *arg)
                                         {
                                             Py_VISIT(self->___mypyc_env__);
-                                            PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                            return 0;
+                                            int rv = 0;
+                                            rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                            if (rv != 0) return rv;
+                                            return rv;
                                         }
                                         
                                         static int
@@ -29605,6 +29779,22 @@ CPyL13: ;
                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                             CPy_TRASHCAN_END(self)
                                             done: ;
+                                        }
+                                        
+                                        PyObject *CPyDef_functional_____mypyc__to_list_wrap_to_list_obj_setup(PyObject *cpy_r_type);
+                                        PyObject *CPyDef_functional___to_list_wrap_to_list_obj(void);
+                                        
+                                        static PyObject *
+                                        functional___to_list_wrap_to_list_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                        {
+                                            if (type != CPyType_functional___to_list_wrap_to_list_obj) {
+                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                return NULL;
+                                            }
+                                            PyObject *self = CPyDef_functional_____mypyc__to_list_wrap_to_list_obj_setup((PyObject*)type);
+                                            if (self == NULL)
+                                                return NULL;
+                                            return self;
                                         }
                                         
                                         static CPyVTableItem functional___to_list_wrap_to_list_obj_vtable[2];
@@ -29734,29 +29924,14 @@ CPyL13: ;
                                             return 0;
                                         }
                                         
-                                        PyObject *CPyDef_functional_____mypyc__to_set_env_setup(PyObject *cpy_r_type);
-                                        PyObject *CPyDef_functional___to_set_env(void);
-                                        
-                                        static PyObject *
-                                        functional___to_set_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                        {
-                                            if (type != CPyType_functional___to_set_env) {
-                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                return NULL;
-                                            }
-                                            PyObject *self = CPyDef_functional_____mypyc__to_set_env_setup((PyObject*)type);
-                                            if (self == NULL)
-                                                return NULL;
-                                            return self;
-                                        }
-                                        
                                         static int
                                         functional___to_set_env_traverse(faster_eth_utils___functional___to_set_envObject *self, visitproc visit, void *arg)
                                         {
                                             Py_VISIT(self->___mypyc_self__);
                                             Py_VISIT(self->_fn);
                                             Py_VISIT(self->_to_set_wrap);
-                                            return 0;
+                                            int rv = 0;
+                                            return rv;
                                         }
                                         
                                         static int
@@ -29784,6 +29959,22 @@ CPyL13: ;
                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                             CPy_TRASHCAN_END(self)
                                             done: ;
+                                        }
+                                        
+                                        PyObject *CPyDef_functional_____mypyc__to_set_env_setup(PyObject *cpy_r_type);
+                                        PyObject *CPyDef_functional___to_set_env(void);
+                                        
+                                        static PyObject *
+                                        functional___to_set_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                        {
+                                            if (type != CPyType_functional___to_set_env) {
+                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                return NULL;
+                                            }
+                                            PyObject *self = CPyDef_functional_____mypyc__to_set_env_setup((PyObject*)type);
+                                            if (self == NULL)
+                                                return NULL;
+                                            return self;
                                         }
                                         
                                         static CPyVTableItem functional___to_set_env_vtable[1];
@@ -29855,28 +30046,14 @@ CPyL13: ;
                                             instance = instance ? instance : Py_None;
                                             return CPyDef_functional___to_set_wrap_to_set_obj_____get__(self, instance, owner);
                                         }
-                                        PyObject *CPyDef_functional_____mypyc__to_set_wrap_to_set_obj_setup(PyObject *cpy_r_type);
-                                        PyObject *CPyDef_functional___to_set_wrap_to_set_obj(void);
-                                        
-                                        static PyObject *
-                                        functional___to_set_wrap_to_set_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                        {
-                                            if (type != CPyType_functional___to_set_wrap_to_set_obj) {
-                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                return NULL;
-                                            }
-                                            PyObject *self = CPyDef_functional_____mypyc__to_set_wrap_to_set_obj_setup((PyObject*)type);
-                                            if (self == NULL)
-                                                return NULL;
-                                            return self;
-                                        }
-                                        
                                         static int
                                         functional___to_set_wrap_to_set_obj_traverse(faster_eth_utils___functional___to_set_wrap_to_set_objObject *self, visitproc visit, void *arg)
                                         {
                                             Py_VISIT(self->___mypyc_env__);
-                                            PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                            return 0;
+                                            int rv = 0;
+                                            rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                            if (rv != 0) return rv;
+                                            return rv;
                                         }
                                         
                                         static int
@@ -29901,6 +30078,22 @@ CPyL13: ;
                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                             CPy_TRASHCAN_END(self)
                                             done: ;
+                                        }
+                                        
+                                        PyObject *CPyDef_functional_____mypyc__to_set_wrap_to_set_obj_setup(PyObject *cpy_r_type);
+                                        PyObject *CPyDef_functional___to_set_wrap_to_set_obj(void);
+                                        
+                                        static PyObject *
+                                        functional___to_set_wrap_to_set_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                        {
+                                            if (type != CPyType_functional___to_set_wrap_to_set_obj) {
+                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                return NULL;
+                                            }
+                                            PyObject *self = CPyDef_functional_____mypyc__to_set_wrap_to_set_obj_setup((PyObject*)type);
+                                            if (self == NULL)
+                                                return NULL;
+                                            return self;
                                         }
                                         
                                         static CPyVTableItem functional___to_set_wrap_to_set_obj_vtable[2];
@@ -30030,29 +30223,14 @@ CPyL13: ;
                                             return 0;
                                         }
                                         
-                                        PyObject *CPyDef_functional_____mypyc__to_dict_env_setup(PyObject *cpy_r_type);
-                                        PyObject *CPyDef_functional___to_dict_env(void);
-                                        
-                                        static PyObject *
-                                        functional___to_dict_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                        {
-                                            if (type != CPyType_functional___to_dict_env) {
-                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                return NULL;
-                                            }
-                                            PyObject *self = CPyDef_functional_____mypyc__to_dict_env_setup((PyObject*)type);
-                                            if (self == NULL)
-                                                return NULL;
-                                            return self;
-                                        }
-                                        
                                         static int
                                         functional___to_dict_env_traverse(faster_eth_utils___functional___to_dict_envObject *self, visitproc visit, void *arg)
                                         {
                                             Py_VISIT(self->___mypyc_self__);
                                             Py_VISIT(self->_fn);
                                             Py_VISIT(self->_to_dict_wrap);
-                                            return 0;
+                                            int rv = 0;
+                                            return rv;
                                         }
                                         
                                         static int
@@ -30080,6 +30258,22 @@ CPyL13: ;
                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                             CPy_TRASHCAN_END(self)
                                             done: ;
+                                        }
+                                        
+                                        PyObject *CPyDef_functional_____mypyc__to_dict_env_setup(PyObject *cpy_r_type);
+                                        PyObject *CPyDef_functional___to_dict_env(void);
+                                        
+                                        static PyObject *
+                                        functional___to_dict_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                        {
+                                            if (type != CPyType_functional___to_dict_env) {
+                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                return NULL;
+                                            }
+                                            PyObject *self = CPyDef_functional_____mypyc__to_dict_env_setup((PyObject*)type);
+                                            if (self == NULL)
+                                                return NULL;
+                                            return self;
                                         }
                                         
                                         static CPyVTableItem functional___to_dict_env_vtable[1];
@@ -30151,28 +30345,14 @@ CPyL13: ;
                                             instance = instance ? instance : Py_None;
                                             return CPyDef_functional___to_dict_wrap_to_dict_obj_____get__(self, instance, owner);
                                         }
-                                        PyObject *CPyDef_functional_____mypyc__to_dict_wrap_to_dict_obj_setup(PyObject *cpy_r_type);
-                                        PyObject *CPyDef_functional___to_dict_wrap_to_dict_obj(void);
-                                        
-                                        static PyObject *
-                                        functional___to_dict_wrap_to_dict_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                        {
-                                            if (type != CPyType_functional___to_dict_wrap_to_dict_obj) {
-                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                return NULL;
-                                            }
-                                            PyObject *self = CPyDef_functional_____mypyc__to_dict_wrap_to_dict_obj_setup((PyObject*)type);
-                                            if (self == NULL)
-                                                return NULL;
-                                            return self;
-                                        }
-                                        
                                         static int
                                         functional___to_dict_wrap_to_dict_obj_traverse(faster_eth_utils___functional___to_dict_wrap_to_dict_objObject *self, visitproc visit, void *arg)
                                         {
                                             Py_VISIT(self->___mypyc_env__);
-                                            PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                            return 0;
+                                            int rv = 0;
+                                            rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                            if (rv != 0) return rv;
+                                            return rv;
                                         }
                                         
                                         static int
@@ -30197,6 +30377,22 @@ CPyL13: ;
                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                             CPy_TRASHCAN_END(self)
                                             done: ;
+                                        }
+                                        
+                                        PyObject *CPyDef_functional_____mypyc__to_dict_wrap_to_dict_obj_setup(PyObject *cpy_r_type);
+                                        PyObject *CPyDef_functional___to_dict_wrap_to_dict_obj(void);
+                                        
+                                        static PyObject *
+                                        functional___to_dict_wrap_to_dict_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                        {
+                                            if (type != CPyType_functional___to_dict_wrap_to_dict_obj) {
+                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                return NULL;
+                                            }
+                                            PyObject *self = CPyDef_functional_____mypyc__to_dict_wrap_to_dict_obj_setup((PyObject*)type);
+                                            if (self == NULL)
+                                                return NULL;
+                                            return self;
                                         }
                                         
                                         static CPyVTableItem functional___to_dict_wrap_to_dict_obj_vtable[2];
@@ -30457,6 +30653,20 @@ CPyL13: ;
                                                 goto fail;
                                             modname = PyUnicode_FromString("faster_eth_utils.functional");
                                             if (modname == NULL) CPyError_OutOfMemory();
+                                            int rv = 0;
+                                            PyObject *mod_dict = PyImport_GetModuleDict();
+                                            PyObject *shared_lib = NULL;
+                                            rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+                                            if (rv < 0) goto fail;
+                                            PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+                                            if (shared_lib_file == NULL) goto fail;
+                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                            if (ext_suffix == NULL) CPyError_OutOfMemory();
+                                            Py_ssize_t is_pkg = 0;
+                                            rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___functional__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+                                            Py_DECREF(ext_suffix);
+                                            Py_DECREF(shared_lib_file);
+                                            if (rv < 0) goto fail;
                                             if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___functional__internal) < 0)
                                                 goto fail;
                                             Py_CLEAR(modname);
@@ -32615,6 +32825,20 @@ CPyL78: ;
                                                     goto fail;
                                                 modname = PyUnicode_FromString("faster_eth_utils.hexadecimal");
                                                 if (modname == NULL) CPyError_OutOfMemory();
+                                                int rv = 0;
+                                                PyObject *mod_dict = PyImport_GetModuleDict();
+                                                PyObject *shared_lib = NULL;
+                                                rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+                                                if (rv < 0) goto fail;
+                                                PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+                                                if (shared_lib_file == NULL) goto fail;
+                                                PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                if (ext_suffix == NULL) CPyError_OutOfMemory();
+                                                Py_ssize_t is_pkg = 0;
+                                                rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___hexadecimal__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+                                                Py_DECREF(ext_suffix);
+                                                Py_DECREF(shared_lib_file);
+                                                if (rv < 0) goto fail;
                                                 if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___hexadecimal__internal) < 0)
                                                     goto fail;
                                                 Py_CLEAR(modname);
@@ -33485,22 +33709,6 @@ CPyL15: ;
     return cpy_r_r51;
 }
                                                 
-                                                PyObject *CPyDef_humanize_____mypyc___3_consume_leading_zero_units_gen_setup(PyObject *cpy_r_type);
-                                                PyObject *CPyDef_humanize____consume_leading_zero_units_gen(void);
-                                                
-                                                static PyObject *
-                                                humanize____consume_leading_zero_units_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                                {
-                                                    if (type != CPyType_humanize____consume_leading_zero_units_gen) {
-                                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                        return NULL;
-                                                    }
-                                                    PyObject *self = CPyDef_humanize_____mypyc___3_consume_leading_zero_units_gen_setup((PyObject*)type);
-                                                    if (self == NULL)
-                                                        return NULL;
-                                                    return self;
-                                                }
-                                                
                                                 static int
                                                 humanize____consume_leading_zero_units_gen_traverse(faster_eth_utils___humanize____consume_leading_zero_units_genObject *self, visitproc visit, void *arg)
                                                 {
@@ -33515,7 +33723,8 @@ CPyL15: ;
                                                     Py_VISIT(self->___mypyc_temp__3.f0);
                                                     Py_VISIT(self->___mypyc_temp__3.f1);
                                                     Py_VISIT(self->___mypyc_temp__3.f2);
-                                                    return 0;
+                                                    int rv = 0;
+                                                    return rv;
                                                 }
                                                 
                                                 static int
@@ -33566,6 +33775,22 @@ CPyL15: ;
                                                     Py_TYPE(self)->tp_free((PyObject *)self);
                                                     CPy_TRASHCAN_END(self)
                                                     done: ;
+                                                }
+                                                
+                                                PyObject *CPyDef_humanize_____mypyc___3_consume_leading_zero_units_gen_setup(PyObject *cpy_r_type);
+                                                PyObject *CPyDef_humanize____consume_leading_zero_units_gen(void);
+                                                
+                                                static PyObject *
+                                                humanize____consume_leading_zero_units_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                                {
+                                                    if (type != CPyType_humanize____consume_leading_zero_units_gen) {
+                                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                        return NULL;
+                                                    }
+                                                    PyObject *self = CPyDef_humanize_____mypyc___3_consume_leading_zero_units_gen_setup((PyObject*)type);
+                                                    if (self == NULL)
+                                                        return NULL;
+                                                    return self;
                                                 }
                                                 
                                                 static CPyVTableItem humanize____consume_leading_zero_units_gen_vtable[6];
@@ -33658,22 +33883,6 @@ CPyL15: ;
                                                 }
                                                 
                                                 
-                                                PyObject *CPyDef_humanize_____mypyc___3_humanize_seconds_gen_setup(PyObject *cpy_r_type);
-                                                PyObject *CPyDef_humanize____humanize_seconds_gen(void);
-                                                
-                                                static PyObject *
-                                                humanize____humanize_seconds_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                                {
-                                                    if (type != CPyType_humanize____humanize_seconds_gen) {
-                                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                        return NULL;
-                                                    }
-                                                    PyObject *self = CPyDef_humanize_____mypyc___3_humanize_seconds_gen_setup((PyObject*)type);
-                                                    if (self == NULL)
-                                                        return NULL;
-                                                    return self;
-                                                }
-                                                
                                                 static int
                                                 humanize____humanize_seconds_gen_traverse(faster_eth_utils___humanize____humanize_seconds_genObject *self, visitproc visit, void *arg)
                                                 {
@@ -33719,7 +33928,8 @@ CPyL15: ;
                                                     if (CPyTagged_CheckLong(self->___mypyc_generator_attribute__num)) {
                                                         Py_VISIT(CPyTagged_LongAsObject(self->___mypyc_generator_attribute__num));
                                                     }
-                                                    return 0;
+                                                    int rv = 0;
+                                                    return rv;
                                                 }
                                                 
                                                 static int
@@ -33894,6 +34104,22 @@ CPyL15: ;
                                                     done: ;
                                                 }
                                                 
+                                                PyObject *CPyDef_humanize_____mypyc___3_humanize_seconds_gen_setup(PyObject *cpy_r_type);
+                                                PyObject *CPyDef_humanize____humanize_seconds_gen(void);
+                                                
+                                                static PyObject *
+                                                humanize____humanize_seconds_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                                {
+                                                    if (type != CPyType_humanize____humanize_seconds_gen) {
+                                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                        return NULL;
+                                                    }
+                                                    PyObject *self = CPyDef_humanize_____mypyc___3_humanize_seconds_gen_setup((PyObject*)type);
+                                                    if (self == NULL)
+                                                        return NULL;
+                                                    return self;
+                                                }
+                                                
                                                 static CPyVTableItem humanize____humanize_seconds_gen_vtable[6];
                                                 static bool
                                                 CPyDef_humanize____humanize_seconds_gen_trait_vtable_setup(void)
@@ -33987,22 +34213,6 @@ CPyL15: ;
                                                 }
                                                 
                                                 
-                                                PyObject *CPyDef_humanize_____mypyc___3_find_breakpoints_gen_setup(PyObject *cpy_r_type);
-                                                PyObject *CPyDef_humanize____find_breakpoints_gen(void);
-                                                
-                                                static PyObject *
-                                                humanize____find_breakpoints_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                                {
-                                                    if (type != CPyType_humanize____find_breakpoints_gen) {
-                                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                        return NULL;
-                                                    }
-                                                    PyObject *self = CPyDef_humanize_____mypyc___3_find_breakpoints_gen_setup((PyObject*)type);
-                                                    if (self == NULL)
-                                                        return NULL;
-                                                    return self;
-                                                }
-                                                
                                                 static int
                                                 humanize____find_breakpoints_gen_traverse(faster_eth_utils___humanize____find_breakpoints_genObject *self, visitproc visit, void *arg)
                                                 {
@@ -34014,7 +34224,8 @@ CPyL15: ;
                                                     }
                                                     Py_VISIT(self->___mypyc_generator_attribute__left);
                                                     Py_VISIT(self->___mypyc_generator_attribute__right);
-                                                    return 0;
+                                                    int rv = 0;
+                                                    return rv;
                                                 }
                                                 
                                                 static int
@@ -34059,6 +34270,22 @@ CPyL15: ;
                                                     Py_TYPE(self)->tp_free((PyObject *)self);
                                                     CPy_TRASHCAN_END(self)
                                                     done: ;
+                                                }
+                                                
+                                                PyObject *CPyDef_humanize_____mypyc___3_find_breakpoints_gen_setup(PyObject *cpy_r_type);
+                                                PyObject *CPyDef_humanize____find_breakpoints_gen(void);
+                                                
+                                                static PyObject *
+                                                humanize____find_breakpoints_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                                {
+                                                    if (type != CPyType_humanize____find_breakpoints_gen) {
+                                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                        return NULL;
+                                                    }
+                                                    PyObject *self = CPyDef_humanize_____mypyc___3_find_breakpoints_gen_setup((PyObject*)type);
+                                                    if (self == NULL)
+                                                        return NULL;
+                                                    return self;
                                                 }
                                                 
                                                 static CPyVTableItem humanize____find_breakpoints_gen_vtable[6];
@@ -34150,22 +34377,6 @@ CPyL15: ;
                                                 }
                                                 
                                                 
-                                                PyObject *CPyDef_humanize_____mypyc___3_extract_integer_ranges_gen_setup(PyObject *cpy_r_type);
-                                                PyObject *CPyDef_humanize____extract_integer_ranges_gen(void);
-                                                
-                                                static PyObject *
-                                                humanize____extract_integer_ranges_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                                {
-                                                    if (type != CPyType_humanize____extract_integer_ranges_gen) {
-                                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                        return NULL;
-                                                    }
-                                                    PyObject *self = CPyDef_humanize_____mypyc___3_extract_integer_ranges_gen_setup((PyObject*)type);
-                                                    if (self == NULL)
-                                                        return NULL;
-                                                    return self;
-                                                }
-                                                
                                                 static int
                                                 humanize____extract_integer_ranges_gen_traverse(faster_eth_utils___humanize____extract_integer_ranges_genObject *self, visitproc visit, void *arg)
                                                 {
@@ -34175,7 +34386,8 @@ CPyL15: ;
                                                     Py_VISIT(self->___mypyc_generator_attribute__left);
                                                     Py_VISIT(self->___mypyc_generator_attribute__right);
                                                     Py_VISIT(self->___mypyc_generator_attribute__chunk);
-                                                    return 0;
+                                                    int rv = 0;
+                                                    return rv;
                                                 }
                                                 
                                                 static int
@@ -34210,6 +34422,22 @@ CPyL15: ;
                                                     Py_TYPE(self)->tp_free((PyObject *)self);
                                                     CPy_TRASHCAN_END(self)
                                                     done: ;
+                                                }
+                                                
+                                                PyObject *CPyDef_humanize_____mypyc___3_extract_integer_ranges_gen_setup(PyObject *cpy_r_type);
+                                                PyObject *CPyDef_humanize____extract_integer_ranges_gen(void);
+                                                
+                                                static PyObject *
+                                                humanize____extract_integer_ranges_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                                {
+                                                    if (type != CPyType_humanize____extract_integer_ranges_gen) {
+                                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                        return NULL;
+                                                    }
+                                                    PyObject *self = CPyDef_humanize_____mypyc___3_extract_integer_ranges_gen_setup((PyObject*)type);
+                                                    if (self == NULL)
+                                                        return NULL;
+                                                    return self;
                                                 }
                                                 
                                                 static CPyVTableItem humanize____extract_integer_ranges_gen_vtable[6];
@@ -34405,6 +34633,20 @@ CPyL15: ;
                                                         goto fail;
                                                     modname = PyUnicode_FromString("faster_eth_utils.humanize");
                                                     if (modname == NULL) CPyError_OutOfMemory();
+                                                    int rv = 0;
+                                                    PyObject *mod_dict = PyImport_GetModuleDict();
+                                                    PyObject *shared_lib = NULL;
+                                                    rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+                                                    if (rv < 0) goto fail;
+                                                    PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+                                                    if (shared_lib_file == NULL) goto fail;
+                                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                    if (ext_suffix == NULL) CPyError_OutOfMemory();
+                                                    Py_ssize_t is_pkg = 0;
+                                                    rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___humanize__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+                                                    Py_DECREF(ext_suffix);
+                                                    Py_DECREF(shared_lib_file);
+                                                    if (rv < 0) goto fail;
                                                     if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___humanize__internal) < 0)
                                                         goto fail;
                                                     Py_CLEAR(modname);
@@ -39397,6 +39639,20 @@ CPyL34: ;
                                                             goto fail;
                                                         modname = PyUnicode_FromString("faster_eth_utils.module_loading");
                                                         if (modname == NULL) CPyError_OutOfMemory();
+                                                        int rv = 0;
+                                                        PyObject *mod_dict = PyImport_GetModuleDict();
+                                                        PyObject *shared_lib = NULL;
+                                                        rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+                                                        if (rv < 0) goto fail;
+                                                        PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+                                                        if (shared_lib_file == NULL) goto fail;
+                                                        PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                        if (ext_suffix == NULL) CPyError_OutOfMemory();
+                                                        Py_ssize_t is_pkg = 0;
+                                                        rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___module_loading__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+                                                        Py_DECREF(ext_suffix);
+                                                        Py_DECREF(shared_lib_file);
+                                                        if (rv < 0) goto fail;
                                                         if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___module_loading__internal) < 0)
                                                             goto fail;
                                                         Py_CLEAR(modname);
@@ -39794,22 +40050,6 @@ CPyL6: ;
     return cpy_r_r13;
 }
                                                         
-                                                        PyObject *CPyDef_network_____mypyc__Network_setup(PyObject *cpy_r_type);
-                                                        PyObject *CPyDef_network___Network(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
-                                                        
-                                                        static PyObject *
-                                                        network___Network_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                                        {
-                                                            if (type != CPyType_network___Network) {
-                                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                                return NULL;
-                                                            }
-                                                            PyObject *self = CPyDef_network_____mypyc__Network_setup((PyObject*)type);
-                                                            if (self == NULL)
-                                                                return NULL;
-                                                            return self;
-                                                        }
-                                                        
                                                         static int
                                                         network___Network_traverse(faster_eth_utils___network___NetworkObject *self, visitproc visit, void *arg)
                                                         {
@@ -39819,7 +40059,8 @@ CPyL6: ;
                                                             Py_VISIT(self->_name);
                                                             Py_VISIT(self->_shortName);
                                                             Py_VISIT(self->_symbol);
-                                                            return 0;
+                                                            int rv = 0;
+                                                            return rv;
                                                         }
                                                         
                                                         static int
@@ -39845,6 +40086,22 @@ CPyL6: ;
                                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                                             CPy_TRASHCAN_END(self)
                                                             done: ;
+                                                        }
+                                                        
+                                                        PyObject *CPyDef_network_____mypyc__Network_setup(PyObject *cpy_r_type);
+                                                        PyObject *CPyDef_network___Network(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+                                                        
+                                                        static PyObject *
+                                                        network___Network_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                                        {
+                                                            if (type != CPyType_network___Network) {
+                                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                                return NULL;
+                                                            }
+                                                            PyObject *self = CPyDef_network_____mypyc__Network_setup((PyObject*)type);
+                                                            if (self == NULL)
+                                                                return NULL;
+                                                            return self;
                                                         }
                                                         
                                                         static CPyVTableItem network___Network_vtable[1];
@@ -40146,6 +40403,20 @@ CPyL6: ;
                                                                 goto fail;
                                                             modname = PyUnicode_FromString("faster_eth_utils.network");
                                                             if (modname == NULL) CPyError_OutOfMemory();
+                                                            int rv = 0;
+                                                            PyObject *mod_dict = PyImport_GetModuleDict();
+                                                            PyObject *shared_lib = NULL;
+                                                            rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+                                                            if (rv < 0) goto fail;
+                                                            PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+                                                            if (shared_lib_file == NULL) goto fail;
+                                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                            if (ext_suffix == NULL) CPyError_OutOfMemory();
+                                                            Py_ssize_t is_pkg = 0;
+                                                            rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___network__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+                                                            Py_DECREF(ext_suffix);
+                                                            Py_DECREF(shared_lib_file);
+                                                            if (rv < 0) goto fail;
                                                             if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___network__internal) < 0)
                                                                 goto fail;
                                                             Py_CLEAR(modname);
@@ -42193,27 +42464,13 @@ CPyL96: ;
                                                                 Py_INCREF(Py_NotImplemented);
                                                                 return Py_NotImplemented;
                                                             }
-                                                            PyObject *CPyDef_numeric_____mypyc__Comparable_setup(PyObject *cpy_r_type);
-                                                            PyObject *CPyDef_numeric___Comparable(void);
-                                                            
-                                                            static PyObject *
-                                                            numeric___Comparable_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                                            {
-                                                                if (type != CPyType_numeric___Comparable) {
-                                                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                                    return NULL;
-                                                                }
-                                                                PyObject *self = CPyDef_numeric_____mypyc__Comparable_setup((PyObject*)type);
-                                                                if (self == NULL)
-                                                                    return NULL;
-                                                                return self;
-                                                            }
-                                                            
                                                             static int
                                                             numeric___Comparable_traverse(faster_eth_utils___numeric___ComparableObject *self, visitproc visit, void *arg)
                                                             {
-                                                                PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                                                return 0;
+                                                                int rv = 0;
+                                                                rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                                                if (rv != 0) return rv;
+                                                                return rv;
                                                             }
                                                             
                                                             static int
@@ -42232,6 +42489,22 @@ CPyL96: ;
                                                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                                                 CPy_TRASHCAN_END(self)
                                                                 done: ;
+                                                            }
+                                                            
+                                                            PyObject *CPyDef_numeric_____mypyc__Comparable_setup(PyObject *cpy_r_type);
+                                                            PyObject *CPyDef_numeric___Comparable(void);
+                                                            
+                                                            static PyObject *
+                                                            numeric___Comparable_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                                            {
+                                                                if (type != CPyType_numeric___Comparable) {
+                                                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                                    return NULL;
+                                                                }
+                                                                PyObject *self = CPyDef_numeric_____mypyc__Comparable_setup((PyObject*)type);
+                                                                if (self == NULL)
+                                                                    return NULL;
+                                                                return self;
                                                             }
                                                             
                                                             static CPyVTableItem numeric___Comparable_vtable[2];
@@ -42363,6 +42636,20 @@ CPyL96: ;
                                                                     goto fail;
                                                                 modname = PyUnicode_FromString("faster_eth_utils.numeric");
                                                                 if (modname == NULL) CPyError_OutOfMemory();
+                                                                int rv = 0;
+                                                                PyObject *mod_dict = PyImport_GetModuleDict();
+                                                                PyObject *shared_lib = NULL;
+                                                                rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+                                                                if (rv < 0) goto fail;
+                                                                PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+                                                                if (shared_lib_file == NULL) goto fail;
+                                                                PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                                if (ext_suffix == NULL) CPyError_OutOfMemory();
+                                                                Py_ssize_t is_pkg = 0;
+                                                                rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___numeric__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+                                                                Py_DECREF(ext_suffix);
+                                                                Py_DECREF(shared_lib_file);
+                                                                if (rv < 0) goto fail;
                                                                 if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___numeric__internal) < 0)
                                                                     goto fail;
                                                                 Py_CLEAR(modname);
@@ -43093,6 +43380,20 @@ CPyL29: ;
                                                                         goto fail;
                                                                     modname = PyUnicode_FromString("faster_eth_utils.toolz");
                                                                     if (modname == NULL) CPyError_OutOfMemory();
+                                                                    int rv = 0;
+                                                                    PyObject *mod_dict = PyImport_GetModuleDict();
+                                                                    PyObject *shared_lib = NULL;
+                                                                    rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+                                                                    if (rv < 0) goto fail;
+                                                                    PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+                                                                    if (shared_lib_file == NULL) goto fail;
+                                                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                                    if (ext_suffix == NULL) CPyError_OutOfMemory();
+                                                                    Py_ssize_t is_pkg = 0;
+                                                                    rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___toolz__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+                                                                    Py_DECREF(ext_suffix);
+                                                                    Py_DECREF(shared_lib_file);
+                                                                    if (rv < 0) goto fail;
                                                                     if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___toolz__internal) < 0)
                                                                         goto fail;
                                                                     Py_CLEAR(modname);
@@ -49273,6 +49574,20 @@ CPyL758: ;
                                                                             goto fail;
                                                                         modname = PyUnicode_FromString("faster_eth_utils.types");
                                                                         if (modname == NULL) CPyError_OutOfMemory();
+                                                                        int rv = 0;
+                                                                        PyObject *mod_dict = PyImport_GetModuleDict();
+                                                                        PyObject *shared_lib = NULL;
+                                                                        rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+                                                                        if (rv < 0) goto fail;
+                                                                        PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+                                                                        if (shared_lib_file == NULL) goto fail;
+                                                                        PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                                        if (ext_suffix == NULL) CPyError_OutOfMemory();
+                                                                        Py_ssize_t is_pkg = 0;
+                                                                        rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___types__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+                                                                        Py_DECREF(ext_suffix);
+                                                                        Py_DECREF(shared_lib_file);
+                                                                        if (rv < 0) goto fail;
                                                                         if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___types__internal) < 0)
                                                                             goto fail;
                                                                         Py_CLEAR(modname);
@@ -50117,6 +50432,20 @@ CPyL17: ;
                                                                                 goto fail;
                                                                             modname = PyUnicode_FromString("faster_eth_utils.units");
                                                                             if (modname == NULL) CPyError_OutOfMemory();
+                                                                            int rv = 0;
+                                                                            PyObject *mod_dict = PyImport_GetModuleDict();
+                                                                            PyObject *shared_lib = NULL;
+                                                                            rv = PyDict_GetItemStringRef(mod_dict, "faster_eth_utils__mypyc", &shared_lib);
+                                                                            if (rv < 0) goto fail;
+                                                                            PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
+                                                                            if (shared_lib_file == NULL) goto fail;
+                                                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                                            if (ext_suffix == NULL) CPyError_OutOfMemory();
+                                                                            Py_ssize_t is_pkg = 0;
+                                                                            rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___units__internal, modname, shared_lib_file, ext_suffix, is_pkg);
+                                                                            Py_DECREF(ext_suffix);
+                                                                            Py_DECREF(shared_lib_file);
+                                                                            if (rv < 0) goto fail;
                                                                             if (PyObject_SetItem(PyImport_GetModuleDict(), modname, CPyModule_faster_eth_utils___units__internal) < 0)
                                                                                 goto fail;
                                                                             Py_CLEAR(modname);
@@ -52359,6 +52688,7 @@ CPyL75: ;
                                                                                 }
                                                                                 if (exec_faster_eth_utils__mypyc(module) < 0) {
                                                                                     Py_DECREF(module);
+                                                                                    module = NULL;
                                                                                     return NULL;
                                                                                 }
                                                                                 return module;
