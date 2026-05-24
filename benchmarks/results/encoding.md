@@ -1,14 +1,14 @@
-#### [faster_eth_utils.encoding](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/bobthebuidler-mypycify-0.x/faster_eth_utils/encoding.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/bobthebuidler-mypycify-0.x/benchmarks/test_encoding_benchmarks.py)
+#### [faster_eth_utils.encoding](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/pytest-codspeed-4.x/faster_eth_utils/encoding.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/pytest-codspeed-4.x/benchmarks/test_encoding_benchmarks.py)
 
 | Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
 |----------|---------------|-------------|----------|-------------|----------|--------|
-| `big_endian_to_int[32-ff-bytes]` | 2.2076844756500886e-06 | 2.0728063680409554e-06 | 6.11% | 6.51% | 1.07x | ✅ |
-| `big_endian_to_int[empty-bytes]` | 1.5950799819888137e-06 | 1.5126373355794814e-06 | 5.17% | 5.45% | 1.05x | ✅ |
-| `big_endian_to_int[ff-byte]` | 1.884154297798765e-06 | 1.7220385163842264e-06 | 8.60% | 9.41% | 1.09x | ✅ |
-| `big_endian_to_int[one-byte]` | 1.877661442611029e-06 | 1.6651778066775426e-06 | 11.32% | 12.76% | 1.13x | ✅ |
-| `big_endian_to_int[two-bytes]` | 1.9040909134096292e-06 | 1.677177708149704e-06 | 11.92% | 13.53% | 1.14x | ✅ |
-| `int_to_big_endian[255]` | 1.6109111258313655e-06 | 8.890926914006376e-07 | 44.81% | 81.19% | 1.81x | ✅ |
-| `int_to_big_endian[256]` | 1.6151493969997738e-06 | 8.876372934058468e-07 | 45.04% | 81.96% | 1.82x | ✅ |
-| `int_to_big_endian[max]` | 1.999265056668783e-06 | 1.166386839606696e-06 | 41.66% | 71.41% | 1.71x | ✅ |
-| `int_to_big_endian[one]` | 1.625123476890285e-06 | 8.807877902315286e-07 | 45.80% | 84.51% | 1.85x | ✅ |
-| `int_to_big_endian[zero]` | 1.691649606689116e-06 | 1.0017089689725903e-06 | 40.79% | 68.88% | 1.69x | ✅ |
+| `big_endian_to_int[32-ff-bytes]` | 2.0484258546458174e-06 | 1.8581005456850023e-06 | 9.29% | 10.24% | 1.10x | ✅ |
+| `big_endian_to_int[empty-bytes]` | 1.7429763421743262e-06 | 1.5604980095040386e-06 | 10.47% | 11.69% | 1.12x | ✅ |
+| `big_endian_to_int[ff-byte]` | 1.8103420708463394e-06 | 1.6196024133707723e-06 | 10.54% | 11.78% | 1.12x | ✅ |
+| `big_endian_to_int[one-byte]` | 1.8012101806050378e-06 | 1.6294895669641684e-06 | 9.53% | 10.54% | 1.11x | ✅ |
+| `big_endian_to_int[two-bytes]` | 1.785371759472402e-06 | 1.656154208101056e-06 | 7.24% | 7.80% | 1.08x | ✅ |
+| `int_to_big_endian[255]` | 1.5242318963930513e-06 | 9.417840899552964e-07 | 38.21% | 61.85% | 1.62x | ✅ |
+| `int_to_big_endian[256]` | 1.5305752065213374e-06 | 9.24472289567021e-07 | 39.60% | 65.56% | 1.66x | ✅ |
+| `int_to_big_endian[max]` | 1.892922818493205e-06 | 1.1276959928136424e-06 | 40.43% | 67.86% | 1.68x | ✅ |
+| `int_to_big_endian[one]` | 1.5370960878497299e-06 | 9.310678360165517e-07 | 39.43% | 65.09% | 1.65x | ✅ |
+| `int_to_big_endian[zero]` | 1.6752987775117119e-06 | 1.0207765900983128e-06 | 39.07% | 64.12% | 1.64x | ✅ |
