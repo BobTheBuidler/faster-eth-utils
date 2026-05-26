@@ -10,6 +10,7 @@ on:
       - '.github/workflows/tox.yaml'
       - 'pyproject.toml'
       - 'setup.py'
+      - 'requirements*.txt'
   schedule:
     - cron: '0 12 * * *'  # Daily 12:00 UTC
   workflow_dispatch:
