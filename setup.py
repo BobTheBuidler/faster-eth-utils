@@ -118,7 +118,7 @@ setup(
     },
     include_package_data=True,
     install_requires=[
-        "cchecksum==0.4.3",
+        "cchecksum==0.4.4",
         "eth-hash>=0.3.1",
         "eth-typing==5.2.1",
         "eth-utils==5.3.1",
