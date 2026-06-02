@@ -1,4 +1,4 @@
 -r requirements-pytest.txt
 
-pytest-codspeed>=5,<5.1
+pytest-codspeed>=5.0.3,<5.1
 pytest-test-groups
