@@ -100,7 +100,7 @@ jobs:
       - name: Run CodSpeed
         uses: CodSpeedHQ/action@v4
         with:
-          mode: instrumentation
+          mode: simulation
           run: pytest --codspeed -k "test_faster_" --test-group=${{ matrix.shard }} --test-group-count=6 benchmarks/
 
   comparison-benchmark:
