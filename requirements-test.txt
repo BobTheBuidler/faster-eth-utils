@@ -2,4 +2,4 @@
 -r requirements-pytest.txt
 
 hypothesis>=4.43.0
-pytest-xdist>=2.4.0
+pytest-xdist>=3.8.0
