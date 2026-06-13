@@ -1,5 +1,5 @@
-#### [faster_eth_utils.exceptions](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/cchecksum-0.x/faster_eth_utils/exceptions.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/renovate/cchecksum-0.x/benchmarks/test_exceptions_benchmarks.py)
+#### [faster_eth_utils.exceptions](https://github.com/BobTheBuidler/faster-eth-utils/blob/perf/benchmark-ci-compiled-wheel-20260314232900/faster_eth_utils/exceptions.py) - [view benchmarks](https://github.com/BobTheBuidler/faster-eth-utils/blob/perf/benchmark-ci-compiled-wheel-20260314232900/benchmarks/test_exceptions_benchmarks.py)
 
 | Function | Reference Mean | Faster Mean | % Change | Speedup (%) | x Faster | Faster |
 |----------|---------------|-------------|----------|-------------|----------|--------|
-| `validation_error` | 1.8994327536140098e-05 | 1.911941328101068e-05 | -0.66% | -0.65% | 0.99x | ❌ |
+| `validation_error` | 2.1265446226669988e-05 | 2.102289583708514e-05 | 1.14% | 1.15% | 1.01x | ✅ |
