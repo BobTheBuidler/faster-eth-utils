@@ -33,6 +33,11 @@ def test_to_bytes_primitive(val, expected):
     assert to_bytes(val) == expected
 
 
+def test_to_bytes_negative_integer_raises_value_error():
+    with pytest.raises(ValueError):
+        to_bytes(-1)
+
+
 @pytest.mark.parametrize(
     "val, expected",
     (

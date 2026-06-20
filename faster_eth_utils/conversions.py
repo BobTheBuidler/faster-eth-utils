@@ -117,6 +117,8 @@ def to_bytes(
     elif isinstance(primitive, bytes):
         return primitive
     elif isinstance(primitive, int):
+        if primitive < 0:
+            raise ValueError("Cannot convert negative integer to bytes")
         return int_to_big_endian(primitive)
     elif hexstr is not None:
         if len(hexstr) % 2:
