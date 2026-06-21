@@ -136,7 +136,10 @@ setup(
     keywords="ethereum",
     packages=find_packages(exclude=["scripts", "scripts.*", "tests", "tests.*"]),
     ext_modules=ext_modules,
-    package_data={"faster_eth_utils": ["py.typed"]},
+    package_data={
+        "faster_eth_utils": ["py.typed"],
+        "faster_eth_utils.__json": ["*.json"],
+    },
     classifiers=[
         "Intended Audience :: Developers",
         "Natural Language :: English",
