@@ -21,4 +21,5 @@ faster-eth-utils is always compiled. PyPI wheels are compiled, setup compiles th
 13) If the branch you're assigned to work on is from a remote (ie origin/master or upstream/awesome-feature) you must ensure you fetch and pull from the remote before you begin your work.
 14) Local `pip install .` generates `build/`; clean it up before closing a worktree to avoid dirty state.
 
+14) Replace them with ruff IF possible while ensuring behavior parity.
 Reference: https://www.conventionalcommits.org/en/v1.0.0/
