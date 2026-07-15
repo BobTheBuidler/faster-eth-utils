@@ -1,1 +1,1 @@
-mypy[mypyc]>=2.2,<2.3
+mypy[mypyc]>=2.3,<2.4
