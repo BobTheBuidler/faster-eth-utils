@@ -142,7 +142,7 @@ def _is_CIDv0_ipfs_hash(ipfs_hash: str) -> bool:
     return False
 
 
-def _find_breakpoints(*values: int) -> Iterator[int]:
+def _find_breakpoints(values: tuple[int, ...]) -> Iterator[int]:
     yield 0
     for index, (left, right) in enumerate(sliding_window(2, values), 1):
         if left + 1 == right:
@@ -152,7 +152,7 @@ def _find_breakpoints(*values: int) -> Iterator[int]:
     yield len(values)
 
 
-def _extract_integer_ranges(*values: int) -> Iterator[tuple[int, int]]:
+def _extract_integer_ranges(values: tuple[int, ...]) -> Iterator[tuple[int, int]]:
     """
     Return a tuple of consecutive ranges of integers.
 
@@ -162,7 +162,7 @@ def _extract_integer_ranges(*values: int) -> Iterator[tuple[int, int]]:
     - fn(1, 2, 3, 7, 8, 9) -> ((1, 3), (7, 9))
     - fn(1, 7, 8, 9) -> ((1, 1), (7, 9))
     """
-    for left, right in sliding_window(2, _find_breakpoints(*values)):
+    for left, right in sliding_window(2, _find_breakpoints(values)):
         chunk = values[left:right]
         yield chunk[0], chunk[-1]
 
@@ -188,7 +188,7 @@ def humanize_integer_sequence(values_iter: Iterable[int]) -> str:
     if not values:
         return "(empty)"
     else:
-        return "|".join(map(_humanize_range, _extract_integer_ranges(*values)))
+        return "|".join(map(_humanize_range, _extract_integer_ranges(values)))
 
 
 def humanize_wei(number: int) -> str:
