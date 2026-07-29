@@ -89,12 +89,11 @@ def apply_formatter_if(
         return value
 
 
-@to_dict
 def apply_formatters_to_dict(
     formatters: dict[Any, Any],
     value: dict[Any, Any] | CamelModel,
     unaliased: bool = False,
-) -> Generator[tuple[Any, Any], None, None]:
+) -> dict[Any, Any]:
     """
     Apply formatters to a dictionary of values. If the value is a pydantic model,
     it will be serialized to a dictionary first, taking into account the
@@ -109,10 +108,11 @@ def apply_formatters_to_dict(
     if isinstance(value, CamelModel):
         value = value.model_dump(by_alias=not unaliased)
 
+    formatted = {}
     for key, item in value.items():
         if key in formatters:
             try:
-                yield key, formatters[key](item)
+                formatted[key] = formatters[key](item)
             except ValueError as exc:
                 new_error_message = (
                     f"Could not format invalid value {repr(item)} as field {repr(key)}"
@@ -124,7 +124,9 @@ def apply_formatters_to_dict(
                 )
                 raise TypeError(new_error_message) from exc
         else:
-            yield key, item
+            formatted[key] = item
+
+    return formatted
 
 
 @return_arg_type(1)
