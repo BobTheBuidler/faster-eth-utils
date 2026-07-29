@@ -71,19 +71,20 @@ def _align_abi_input(
     else:
         aligned_arg = normalized_arg
 
+    # convert NamedTuple to regular tuple
+    if isinstance(aligned_arg, tuple):
+        return tuple(map(_align_abi_input, sub_abis, aligned_arg))
+
+    if type(aligned_arg) is list:
+        return list(map(_align_abi_input, sub_abis, aligned_arg))
+
     if not is_list_like(aligned_arg):
         raise TypeError(
             f'Expected non-string sequence for "{arg_abi.get("type")}" '
             f"component type: got {aligned_arg}"
         )
 
-    # convert NamedTuple to regular tuple
-    typing = tuple if isinstance(aligned_arg, tuple) else type(aligned_arg)
-
-    return typing(
-        _align_abi_input(sub_abi, sub_arg)
-        for sub_abi, sub_arg in zip(sub_abis, aligned_arg)
-    )
+    return type(aligned_arg)(map(_align_abi_input, sub_abis, aligned_arg))
 
 
 def _get_tuple_type_str_and_dims(s: str) -> tuple[str, str | None] | None:
