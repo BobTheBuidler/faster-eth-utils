@@ -1,3 +1,4 @@
+import itertools
 from collections.abc import (
     Iterable,
     Iterator,
@@ -21,17 +22,19 @@ from eth_utils.currency import (
 
 from .toolz import (
     sliding_window,
-    take,
 )
 
 
 def humanize_seconds(seconds: float | int) -> str:
-    if int(seconds) == 0:
+    seconds_int = int(seconds)
+    if seconds_int == 0:
         return "0s"
 
-    unit_values = _consume_leading_zero_units(_humanize_seconds(int(seconds)))
+    unit_values = _consume_leading_zero_units(_humanize_seconds(seconds_int))
 
-    return "".join((f"{amount}{unit}" for amount, unit in take(3, unit_values)))
+    return "".join(
+        f"{amount}{unit}" for amount, unit in itertools.islice(unit_values, 3)
+    )
 
 
 SECOND = 1
