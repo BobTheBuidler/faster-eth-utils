@@ -353,7 +353,7 @@ PyObject *CPyInit_faster_eth_utils___abi(void)
     if (rv < 0) goto fail;
     PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
     if (shared_lib_file == NULL) goto fail;
-    PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+    PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
     if (ext_suffix == NULL) CPyError_OutOfMemory();
     Py_ssize_t is_pkg = 0;
     rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___abi__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -5009,7 +5009,7 @@ CPyL12: ;
         CPy_AddTraceback("faster_eth_utils/abi.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_abi___globals);
         goto CPyL62;
     }
-    cpy_r_r54 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r54 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r55 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.types' */
     cpy_r_r56 = CPyImport_ImportNative(cpy_r_r55, cpy_r_r46, cpy_r_r47, cpy_r_r48, cpy_r_r38, cpy_r_r39, cpy_r_r40, cpy_r_r53, cpy_r_r54, 0);
     CPy_DECREF(cpy_r_r53);
@@ -5061,7 +5061,7 @@ CPyL20: ;
         CPy_AddTraceback("faster_eth_utils/abi.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_abi___globals);
         goto CPyL62;
     }
-    cpy_r_r76 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r76 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r77 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.crypto' */
     cpy_r_r78 = CPyImport_ImportNative(cpy_r_r77, cpy_r_r68, cpy_r_r69, cpy_r_r70, cpy_r_r60, cpy_r_r61, cpy_r_r62, cpy_r_r75, cpy_r_r76, 0);
     CPy_DECREF(cpy_r_r75);
@@ -5518,7 +5518,7 @@ CPyL71: ;
             if (rv < 0) goto fail;
             PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
             if (shared_lib_file == NULL) goto fail;
-            PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+            PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
             if (ext_suffix == NULL) CPyError_OutOfMemory();
             Py_ssize_t is_pkg = 0;
             rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___address__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -6877,7 +6877,7 @@ CPyL11: ;
         CPy_AddTraceback("faster_eth_utils/address.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_address___globals);
         goto CPyL41;
     }
-    cpy_r_r52 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r52 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r53 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.conversions' */
     cpy_r_r54 = CPyImport_ImportNative(cpy_r_r53, cpy_r_r44, cpy_r_r45, cpy_r_r46, cpy_r_r36, cpy_r_r37, cpy_r_r38, cpy_r_r51, cpy_r_r52, 0);
     CPy_DECREF(cpy_r_r51);
@@ -6929,7 +6929,7 @@ CPyL19: ;
         CPy_AddTraceback("faster_eth_utils/address.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_address___globals);
         goto CPyL41;
     }
-    cpy_r_r74 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r74 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r75 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.hexadecimal' */
     cpy_r_r76 = CPyImport_ImportNative(cpy_r_r75, cpy_r_r66, cpy_r_r67, cpy_r_r68, cpy_r_r58, cpy_r_r59, cpy_r_r60, cpy_r_r73, cpy_r_r74, 0);
     CPy_DECREF(cpy_r_r73);
@@ -6981,7 +6981,7 @@ CPyL27: ;
         CPy_AddTraceback("faster_eth_utils/address.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_address___globals);
         goto CPyL41;
     }
-    cpy_r_r96 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r96 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r97 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.types' */
     cpy_r_r98 = CPyImport_ImportNative(cpy_r_r97, cpy_r_r88, cpy_r_r89, cpy_r_r90, cpy_r_r80, cpy_r_r81, cpy_r_r82, cpy_r_r95, cpy_r_r96, 0);
     CPy_DECREF(cpy_r_r95);
@@ -8328,7 +8328,7 @@ CPyL46: ;
                     if (rv < 0) goto fail;
                     PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                     if (shared_lib_file == NULL) goto fail;
-                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                     if (ext_suffix == NULL) CPyError_OutOfMemory();
                     Py_ssize_t is_pkg = 0;
                     rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___applicators__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -12878,7 +12878,7 @@ CPyL10: ;
         CPy_AddTraceback("faster_eth_utils/applicators.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
         goto CPyL55;
     }
-    cpy_r_r42 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r42 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r43 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.decorators' */
     cpy_r_r44 = CPyImport_ImportNative(cpy_r_r43, cpy_r_r34, cpy_r_r35, cpy_r_r36, cpy_r_r26, cpy_r_r27, cpy_r_r28, cpy_r_r41, cpy_r_r42, 0);
     CPy_DECREF(cpy_r_r41);
@@ -12941,7 +12941,7 @@ CPyL19: ;
         CPy_AddTraceback("faster_eth_utils/applicators.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_applicators___globals);
         goto CPyL55;
     }
-    cpy_r_r69 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r69 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r70 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.toolz' */
     cpy_r_r71 = CPyImport_ImportNative(cpy_r_r70, cpy_r_r61, cpy_r_r62, cpy_r_r63, cpy_r_r53, cpy_r_r54, cpy_r_r55, cpy_r_r68, cpy_r_r69, 0);
     CPy_DECREF(cpy_r_r68);
@@ -13295,7 +13295,7 @@ CPyL63: ;
                             if (rv < 0) goto fail;
                             PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                             if (shared_lib_file == NULL) goto fail;
-                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                             if (ext_suffix == NULL) CPyError_OutOfMemory();
                             Py_ssize_t is_pkg = 0;
                             rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___conversions__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -15671,7 +15671,7 @@ CPyL10: ;
         CPy_AddTraceback("faster_eth_utils/conversions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_conversions___globals);
         goto CPyL40;
     }
-    cpy_r_r37 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r37 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r38 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.encoding' */
     cpy_r_r39 = CPyImport_ImportNative(cpy_r_r38, cpy_r_r29, cpy_r_r30, cpy_r_r31, cpy_r_r21, cpy_r_r22, cpy_r_r23, cpy_r_r36, cpy_r_r37, 0);
     CPy_DECREF(cpy_r_r36);
@@ -15723,7 +15723,7 @@ CPyL18: ;
         CPy_AddTraceback("faster_eth_utils/conversions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_conversions___globals);
         goto CPyL40;
     }
-    cpy_r_r59 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r59 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r60 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.hexadecimal' */
     cpy_r_r61 = CPyImport_ImportNative(cpy_r_r60, cpy_r_r51, cpy_r_r52, cpy_r_r53, cpy_r_r43, cpy_r_r44, cpy_r_r45, cpy_r_r58, cpy_r_r59, 0);
     CPy_DECREF(cpy_r_r58);
@@ -15775,7 +15775,7 @@ CPyL26: ;
         CPy_AddTraceback("faster_eth_utils/conversions.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_conversions___globals);
         goto CPyL40;
     }
-    cpy_r_r81 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r81 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r82 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.types' */
     cpy_r_r83 = CPyImport_ImportNative(cpy_r_r82, cpy_r_r73, cpy_r_r74, cpy_r_r75, cpy_r_r65, cpy_r_r66, cpy_r_r67, cpy_r_r80, cpy_r_r81, 0);
     CPy_DECREF(cpy_r_r80);
@@ -15957,7 +15957,7 @@ CPyL45: ;
                                     if (rv < 0) goto fail;
                                     PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                                     if (shared_lib_file == NULL) goto fail;
-                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                                     if (ext_suffix == NULL) CPyError_OutOfMemory();
                                     Py_ssize_t is_pkg = 0;
                                     rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___crypto__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -16294,7 +16294,7 @@ CPyL9: ;
         CPy_AddTraceback("faster_eth_utils/crypto.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_crypto___globals);
         goto CPyL15;
     }
-    cpy_r_r33 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r33 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r34 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.conversions' */
     cpy_r_r35 = CPyImport_ImportNative(cpy_r_r34, cpy_r_r25, cpy_r_r26, cpy_r_r27, cpy_r_r17, cpy_r_r18, cpy_r_r19, cpy_r_r32, cpy_r_r33, 0);
     CPy_DECREF(cpy_r_r32);
@@ -16551,7 +16551,7 @@ CPyL16: ;
                                             if (rv < 0) goto fail;
                                             PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                                             if (shared_lib_file == NULL) goto fail;
-                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                                             if (ext_suffix == NULL) CPyError_OutOfMemory();
                                             Py_ssize_t is_pkg = 0;
                                             rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___currency__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -19391,7 +19391,7 @@ CPyL10: ;
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
         goto CPyL177;
     }
-    cpy_r_r42 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r42 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r43 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.types' */
     cpy_r_r44 = CPyImport_ImportNative(cpy_r_r43, cpy_r_r34, cpy_r_r35, cpy_r_r36, cpy_r_r26, cpy_r_r27, cpy_r_r28, cpy_r_r41, cpy_r_r42, 0);
     CPy_DECREF(cpy_r_r41);
@@ -19443,7 +19443,7 @@ CPyL18: ;
         CPy_AddTraceback("faster_eth_utils/currency.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_currency___globals);
         goto CPyL177;
     }
-    cpy_r_r64 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r64 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r65 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.units' */
     cpy_r_r66 = CPyImport_ImportNative(cpy_r_r65, cpy_r_r56, cpy_r_r57, cpy_r_r58, cpy_r_r48, cpy_r_r49, cpy_r_r50, cpy_r_r63, cpy_r_r64, 0);
     CPy_DECREF(cpy_r_r63);
@@ -21093,7 +21093,7 @@ CPyL227: ;
                                                     if (rv < 0) goto fail;
                                                     PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                                                     if (shared_lib_file == NULL) goto fail;
-                                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                                                     if (ext_suffix == NULL) CPyError_OutOfMemory();
                                                     Py_ssize_t is_pkg = 0;
                                                     rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___debug__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -23240,7 +23240,7 @@ CPyL6: ;
                                                             if (rv < 0) goto fail;
                                                             PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                                                             if (shared_lib_file == NULL) goto fail;
-                                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                                                             if (ext_suffix == NULL) CPyError_OutOfMemory();
                                                             Py_ssize_t is_pkg = 0;
                                                             rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___decorators__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -25700,7 +25700,7 @@ CPyL70: ;
                                                                     if (rv < 0) goto fail;
                                                                     PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                                                                     if (shared_lib_file == NULL) goto fail;
-                                                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                                                                     if (ext_suffix == NULL) CPyError_OutOfMemory();
                                                                     Py_ssize_t is_pkg = 0;
                                                                     rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___encoding__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -26034,7 +26034,7 @@ CPyL5: ;
                                                                             if (rv < 0) goto fail;
                                                                             PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                                                                             if (shared_lib_file == NULL) goto fail;
-                                                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                                                                             if (ext_suffix == NULL) CPyError_OutOfMemory();
                                                                             Py_ssize_t is_pkg = 0;
                                                                             rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___exceptions__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -28359,7 +28359,7 @@ CPyL14: ;
                                                                                     if (rv < 0) goto fail;
                                                                                     PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                                                                                     if (shared_lib_file == NULL) goto fail;
-                                                                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                                                                                     if (ext_suffix == NULL) CPyError_OutOfMemory();
                                                                                     Py_ssize_t is_pkg = 0;
                                                                                     rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___functional__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -29895,7 +29895,7 @@ CPyL11: ;
         CPy_AddTraceback("faster_eth_utils/functional.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_functional___globals);
         goto CPyL70;
     }
-    cpy_r_r49 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r49 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r50 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.toolz' */
     cpy_r_r51 = CPyImport_ImportNative(cpy_r_r50, cpy_r_r41, cpy_r_r42, cpy_r_r43, cpy_r_r33, cpy_r_r34, cpy_r_r35, cpy_r_r48, cpy_r_r49, 0);
     CPy_DECREF(cpy_r_r48);
@@ -30433,7 +30433,7 @@ CPyL81: ;
                                                                                             if (rv < 0) goto fail;
                                                                                             PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                                                                                             if (shared_lib_file == NULL) goto fail;
-                                                                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                                                                                             if (ext_suffix == NULL) CPyError_OutOfMemory();
                                                                                             Py_ssize_t is_pkg = 0;
                                                                                             rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___hexadecimal__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -32181,7 +32181,7 @@ CPyL16: ;
                                                                                                     if (rv < 0) goto fail;
                                                                                                     PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                                                                                                     if (shared_lib_file == NULL) goto fail;
-                                                                                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                                                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                                                                                                     if (ext_suffix == NULL) CPyError_OutOfMemory();
                                                                                                     Py_ssize_t is_pkg = 0;
                                                                                                     rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___humanize__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -36819,7 +36819,7 @@ CPyL12: ;
         CPy_AddTraceback("faster_eth_utils/humanize.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_humanize___globals);
         goto CPyL37;
     }
-    cpy_r_r52 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r52 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r53 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.currency' */
     cpy_r_r54 = CPyImport_ImportNative(cpy_r_r53, cpy_r_r44, cpy_r_r45, cpy_r_r46, cpy_r_r36, cpy_r_r37, cpy_r_r38, cpy_r_r51, cpy_r_r52, 0);
     CPy_DECREF(cpy_r_r51);
@@ -36872,7 +36872,7 @@ CPyL20: ;
         CPy_AddTraceback("faster_eth_utils/humanize.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_humanize___globals);
         goto CPyL37;
     }
-    cpy_r_r75 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r75 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r76 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.toolz' */
     cpy_r_r77 = CPyImport_ImportNative(cpy_r_r76, cpy_r_r67, cpy_r_r68, cpy_r_r69, cpy_r_r59, cpy_r_r60, cpy_r_r61, cpy_r_r74, cpy_r_r75, 0);
     CPy_DECREF(cpy_r_r74);
@@ -37171,7 +37171,7 @@ CPyL38: ;
                                                                                                             if (rv < 0) goto fail;
                                                                                                             PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                                                                                                             if (shared_lib_file == NULL) goto fail;
-                                                                                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                                                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                                                                                                             if (ext_suffix == NULL) CPyError_OutOfMemory();
                                                                                                             Py_ssize_t is_pkg = 0;
                                                                                                             rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___module_loading__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -37969,7 +37969,7 @@ CPyL7: ;
                                                                                                                     if (rv < 0) goto fail;
                                                                                                                     PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                                                                                                                     if (shared_lib_file == NULL) goto fail;
-                                                                                                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                                                                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                                                                                                                     if (ext_suffix == NULL) CPyError_OutOfMemory();
                                                                                                                     Py_ssize_t is_pkg = 0;
                                                                                                                     rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___network__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -39466,7 +39466,7 @@ CPyL12: ;
         CPy_AddTraceback("faster_eth_utils/network.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_network___globals);
         goto CPyL80;
     }
-    cpy_r_r54 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-314-x86_64-linux-gnu.so' */
+    cpy_r_r54 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '.cpython-315-x86_64-linux-gnu.so' */
     cpy_r_r55 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'faster_eth_utils.exceptions' */
     cpy_r_r56 = CPyImport_ImportNative(cpy_r_r55, cpy_r_r46, cpy_r_r47, cpy_r_r48, cpy_r_r38, cpy_r_r39, cpy_r_r40, cpy_r_r53, cpy_r_r54, 0);
     CPy_DECREF(cpy_r_r53);
@@ -40243,7 +40243,7 @@ CPyL99: ;
                                                                                                                             if (rv < 0) goto fail;
                                                                                                                             PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                                                                                                                             if (shared_lib_file == NULL) goto fail;
-                                                                                                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                                                                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                                                                                                                             if (ext_suffix == NULL) CPyError_OutOfMemory();
                                                                                                                             Py_ssize_t is_pkg = 0;
                                                                                                                             rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___numeric__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -41006,7 +41006,7 @@ CPyL30: ;
                                                                                                                                     if (rv < 0) goto fail;
                                                                                                                                     PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                                                                                                                                     if (shared_lib_file == NULL) goto fail;
-                                                                                                                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                                                                                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                                                                                                                                     if (ext_suffix == NULL) CPyError_OutOfMemory();
                                                                                                                                     Py_ssize_t is_pkg = 0;
                                                                                                                                     rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___toolz__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -47219,7 +47219,7 @@ CPyL759: ;
                                                                                                                                             if (rv < 0) goto fail;
                                                                                                                                             PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                                                                                                                                             if (shared_lib_file == NULL) goto fail;
-                                                                                                                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                                                                                                            PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                                                                                                                                             if (ext_suffix == NULL) CPyError_OutOfMemory();
                                                                                                                                             Py_ssize_t is_pkg = 0;
                                                                                                                                             rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___types__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -48096,7 +48096,7 @@ CPyL18: ;
                                                                                                                                                     if (rv < 0) goto fail;
                                                                                                                                                     PyObject *shared_lib_file = PyObject_GetAttrString(shared_lib, "__file__");
                                                                                                                                                     if (shared_lib_file == NULL) goto fail;
-                                                                                                                                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-314-x86_64-linux-gnu.so");
+                                                                                                                                                    PyObject *ext_suffix = PyUnicode_FromString(".cpython-315-x86_64-linux-gnu.so");
                                                                                                                                                     if (ext_suffix == NULL) CPyError_OutOfMemory();
                                                                                                                                                     Py_ssize_t is_pkg = 0;
                                                                                                                                                     rv = CPyImport_SetDunderAttrs(CPyModule_faster_eth_utils___units__internal, modname, shared_lib_file, ext_suffix, is_pkg);
@@ -49233,7 +49233,7 @@ CPyL76: ;
     "\a\006typing\003ABI\fABIComponent\016ABIConstructor\nABIElement\bABIError\bABIEvent",
     "\006\vABIFallback\vABIFunction\nABIReceive\neth_typing\004Self\021typing_extensions",
     "\003\026faster_eth_utils.types\027faster_eth_utils__mypyc\b__file__",
-    "\003 .cpython-314-x86_64-linux-gnu.so\fis_list_like\027faster_eth_utils.crypto",
+    "\003 .cpython-315-x86_64-linux-gnu.so\fis_list_like\027faster_eth_utils.crypto",
     "\005\006keccak\001T\aABIType ^(tuple)((\\[([1-9]\\d*\\b)\?])*)\?\?$\acompile",
     "\005\022_TUPLE_TYPE_STR_RE\005chain\006_chain\024faster_eth_utils.abi\017__mypyc_attrs__",
     "\a\006_value\006_times\006_index\b__dict__\a_repeat\023__ABI_TYPE_LITERALS\tfullmatch",
