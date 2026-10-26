@@ -1,6 +1,4 @@
-import sys
 
-import pytest
 
 try:
     from cytoolz import (
