@@ -116,32 +116,26 @@ typedef struct {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_generator_attribute__formatter;
-    CPyTagged ___mypyc_generator_attribute__at_index;
-    PyObject *___mypyc_generator_attribute__value;
+    uint32_t mypyc_running;
+    PyObject *___mypyc_generator_frame_attribute__formatter;
+    CPyTagged ___mypyc_generator_frame_attribute__at_index;
+    PyObject *___mypyc_generator_frame_attribute__value;
     int32_t ___mypyc_next_label__;
-    PyObject *___mypyc_generator_attribute__item;
-    tuple_T3OOO ___mypyc_temp__0;
-    PyObject *___mypyc_temp__1;
-    tuple_T3OOO ___mypyc_temp__2;
-    PyObject *___mypyc_temp__3;
-    tuple_T3OOO ___mypyc_temp__4;
+    PyObject *___mypyc_generator_frame_attribute__item;
+    PyObject *___mypyc_temp__3_faster_eth_utils___applicators___apply_formatter_at_index_gen_1;
+    PyObject *___mypyc_temp__3_faster_eth_utils___applicators___apply_formatter_at_index_gen_2;
 } faster_eth_utils___applicators___apply_formatter_at_index_genObject;
 
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_generator_attribute__formatters;
-    PyObject *___mypyc_generator_attribute__sequence;
+    uint32_t mypyc_running;
+    PyObject *___mypyc_generator_frame_attribute__formatters;
+    PyObject *___mypyc_generator_frame_attribute__sequence;
     int32_t ___mypyc_next_label__;
-    CPyTagged ___mypyc_generator_attribute__num_formatters;
-    CPyTagged ___mypyc_generator_attribute__num_items;
-    PyObject *___mypyc_temp__5;
-    int64_t ___mypyc_temp__6;
-    PyObject *___mypyc_temp__7;
-    PyObject *___mypyc_temp__8;
-    PyObject *___mypyc_generator_attribute__formatter;
-    PyObject *___mypyc_generator_attribute__item;
+    int64_t ___mypyc_temp__3_faster_eth_utils___applicators___apply_formatters_to_sequence_gen_0;
+    PyObject *___mypyc_temp__2_faster_eth_utils___applicators___apply_formatters_to_sequence_gen_0;
+    PyObject *___mypyc_temp__2_faster_eth_utils___applicators___apply_formatters_to_sequence_gen_1;
 } faster_eth_utils___applicators___apply_formatters_to_sequence_genObject;
 
 typedef struct {
@@ -150,8 +144,6 @@ typedef struct {
     PyObject *___mypyc_self__;
     PyObject *_formatters;
     PyObject *_get_value;
-    PyObject *_value;
-    char _unaliased;
 } faster_eth_utils___applicators___apply_formatters_to_dict_envObject;
 
 typedef struct {
@@ -164,12 +156,11 @@ typedef struct {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_generator_attribute__formatter;
-    PyObject *___mypyc_generator_attribute__value;
+    uint32_t mypyc_running;
+    PyObject *___mypyc_generator_frame_attribute__formatter;
+    PyObject *___mypyc_generator_frame_attribute__value;
     int32_t ___mypyc_next_label__;
-    PyObject *___mypyc_temp__9;
-    PyObject *___mypyc_temp__10;
-    PyObject *___mypyc_generator_attribute__item;
+    PyObject *___mypyc_temp__2_faster_eth_utils___applicators___apply_formatter_to_array_gen_0;
 } faster_eth_utils___applicators___apply_formatter_to_array_genObject;
 
 typedef struct {
@@ -178,10 +169,6 @@ typedef struct {
     PyObject *___mypyc_self__;
     PyObject *_key_mappings;
     PyObject *_get_key;
-    PyObject *_value;
-    PyObject *_k;
-    PyObject *_v;
-    PyObject *_key_conflicts;
 } faster_eth_utils___applicators___apply_key_map_envObject;
 
 typedef struct {
@@ -194,29 +181,6 @@ typedef struct {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    CPyTagged _wei;
-    CPyTagged _kwei;
-    CPyTagged _babbage;
-    CPyTagged _femtoether;
-    CPyTagged _mwei;
-    CPyTagged _lovelace;
-    CPyTagged _picoether;
-    CPyTagged _gwei;
-    CPyTagged _shannon;
-    CPyTagged _nanoether;
-    CPyTagged _nano;
-    CPyTagged _szabo;
-    CPyTagged _microether;
-    CPyTagged _micro;
-    CPyTagged _finney;
-    CPyTagged _milliether;
-    CPyTagged _milli;
-    CPyTagged _ether;
-    CPyTagged _kether;
-    CPyTagged _grand;
-    CPyTagged _mether;
-    CPyTagged _gether;
-    CPyTagged _tether;
 } faster_eth_utils___currency___denomsObject;
 
 typedef struct {
@@ -232,9 +196,6 @@ typedef struct {
     PyObject *_bound_arg;
     PyObject *_method;
     PyObject *__wrapper;
-    PyObject *_self;
-    PyObject *_obj;
-    PyObject *_objtype;
 } faster_eth_utils___decorators_____get___3_combomethod_envObject;
 
 typedef struct {
@@ -250,7 +211,6 @@ typedef struct {
     PyObject *___mypyc_self__;
     CPyTagged _at_position;
     PyObject *_decorator;
-    PyObject *_deco;
 } faster_eth_utils___decorators___return_arg_type_envObject;
 
 typedef struct {
@@ -260,9 +220,6 @@ typedef struct {
     PyObject *___mypyc_env__;
     PyObject *_to_wrap;
     PyObject *_wrapper;
-    CPyTagged _at_position;
-    PyObject *_decorator;
-    PyObject *_deco;
 } faster_eth_utils___decorators___decorator_return_arg_type_envObject;
 
 typedef struct {
@@ -286,8 +243,6 @@ typedef struct {
     PyObject *_old_to_new_exceptions;
     PyObject *_old_exceptions;
     PyObject *_decorator;
-    PyObject *_cache_key;
-    PyObject *_deco;
 } faster_eth_utils___decorators___replace_exceptions_envObject;
 
 typedef struct {
@@ -297,11 +252,6 @@ typedef struct {
     PyObject *___mypyc_env__;
     PyObject *_to_wrap;
     PyObject *_wrapped;
-    PyObject *_old_to_new_exceptions;
-    PyObject *_old_exceptions;
-    PyObject *_decorator;
-    PyObject *_cache_key;
-    PyObject *_deco;
 } faster_eth_utils___decorators___decorator_replace_exceptions_envObject;
 
 typedef struct {
@@ -354,8 +304,6 @@ typedef struct {
     PyObject *___mypyc_env__;
     PyObject *_fn;
     PyObject *_inner;
-    PyObject *_callback;
-    PyObject *_outer;
 } faster_eth_utils___functional___outer_apply_to_return_value_envObject;
 
 typedef struct {
@@ -435,51 +383,39 @@ typedef struct {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_generator_attribute__units_iter;
+    uint32_t mypyc_running;
+    PyObject *___mypyc_generator_frame_attribute__units_iter;
     int32_t ___mypyc_next_label__;
-    PyObject *___mypyc_temp__0;
-    PyObject *___mypyc_temp__1;
-    CPyTagged ___mypyc_generator_attribute__amount;
-    PyObject *___mypyc_generator_attribute__unit;
-    PyObject *___mypyc_temp__2;
-    tuple_T3OOO ___mypyc_temp__3;
+    PyObject *___mypyc_temp__3_faster_eth_utils___humanize____consume_leading_zero_units_gen_0;
 } faster_eth_utils___humanize____consume_leading_zero_units_genObject;
 
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    CPyTagged ___mypyc_generator_attribute__seconds;
+    uint32_t mypyc_running;
+    CPyTagged ___mypyc_generator_frame_attribute__seconds;
     int32_t ___mypyc_next_label__;
-    CPyTagged ___mypyc_generator_attribute__remainder;
-    tuple_T7T2IOT2IOT2IOT2IOT2IOT2IOT2IO ___mypyc_temp__4;
-    PyObject *___mypyc_temp__5;
-    CPyTagged ___mypyc_generator_attribute__duration;
-    PyObject *___mypyc_generator_attribute__unit;
-    CPyTagged ___mypyc_generator_attribute__num;
+    CPyTagged ___mypyc_generator_frame_attribute__remainder;
+    CPyTagged ___mypyc_generator_frame_attribute__duration;
+    PyObject *___mypyc_temp__2_faster_eth_utils___humanize____humanize_seconds_gen_0;
 } faster_eth_utils___humanize____humanize_seconds_genObject;
 
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_generator_attribute__values;
+    uint32_t mypyc_running;
+    PyObject *___mypyc_generator_frame_attribute__values;
     int32_t ___mypyc_next_label__;
-    PyObject *___mypyc_temp__6;
-    PyObject *___mypyc_temp__7;
-    CPyTagged ___mypyc_generator_attribute__index;
-    PyObject *___mypyc_generator_attribute__left;
-    PyObject *___mypyc_generator_attribute__right;
+    PyObject *___mypyc_temp__2_faster_eth_utils___humanize____find_breakpoints_gen_0;
 } faster_eth_utils___humanize____find_breakpoints_genObject;
 
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_generator_attribute__values;
+    uint32_t mypyc_running;
+    PyObject *___mypyc_generator_frame_attribute__values;
     int32_t ___mypyc_next_label__;
-    PyObject *___mypyc_temp__8;
-    PyObject *___mypyc_temp__9;
-    PyObject *___mypyc_generator_attribute__left;
-    PyObject *___mypyc_generator_attribute__right;
-    PyObject *___mypyc_generator_attribute__chunk;
+    PyObject *___mypyc_temp__2_faster_eth_utils___humanize____extract_integer_ranges_gen_0;
 } faster_eth_utils___humanize____extract_integer_ranges_genObject;
 
 typedef struct {
