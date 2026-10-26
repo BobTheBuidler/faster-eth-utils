@@ -1,5 +1,3 @@
-
-
 try:
     from cytoolz import (
         curry,
